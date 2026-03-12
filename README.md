@@ -15,7 +15,8 @@ Multimodel-Wireless: https://le-liang.github.io/mmw/index.html
 ## Pipeline
 
 1. segmentation on ISAC-generated point cloud
-   - use pretrained model ```randlanet_semantickitti from open3d.ml.torch```  and range filter to label LiDAR dataset (car, building, road)
+   - use pretrained model ```randlanet_semantickitti from open3d.ml.torch```  and range filter to label LiDAR dataset (building, road)
+   - use bounding box to label cars
    - turn json file of radar point cloud into pcd file
    - move labels to radar point cloud
    - train model to segment radar point cloud
