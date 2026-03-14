@@ -1,6 +1,6 @@
 ## GOAL
 
-1. segmentation on ISAC-generated point cloud
+1. segmentation on ISAC-generated point cloud, car detection
 2. attacks like injecting points or eliminating points
 3. improve robustness under attacks
 
