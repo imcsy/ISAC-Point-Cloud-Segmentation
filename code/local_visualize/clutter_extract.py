@@ -20,7 +20,7 @@ COLOR_MAP = {k: tuple(np.array(c)/255.0) for k, c in COLOR_MAP.items()}
 
 #%%
 # Load the file
-index = "016838"
+index = "016888"
 radar_txt_path = os.path.join(MYDATASET_RADAR_PATH, index + ".txt")
 radar_points_labels = np.loadtxt(radar_txt_path, delimiter=',')
 unlabeled_points = radar_points_labels[radar_points_labels[:,-1] == -1]
@@ -33,28 +33,17 @@ max_label = dbscan_labels.max()
 
 #%%
 clutter_ls = []
+prob = 0.15
 for i in range(max_label):
     ps = unlabeled_points[dbscan_labels == i]
-    if 0.2 < np.mean(ps[:, 2], axis=0) < 3:
-        clutter_ls.append(ps[:, :4])
 
-print(clutter_ls[14])
+    # find clutter above the ground with prob of 15%
+    if ps.size > 0 and 0.2 < np.mean(ps[:, 2], axis=0) < 3 and np.random.rand() < prob:
+            centroid = np.mean(ps[:, :3], axis=0)
+            ps[:, 0:3] = ps[:, 0:3] - centroid
+            clutter_ls.append(ps[:, :5])
+
+print(len(clutter_ls))
 
 #%%
-# # box = create_3d_bbox(-6, -3, -16, -13, 0.4, 2)
-
-# max_label = labels.max()
-# colors = plt.get_cmap("tab20")(labels / (max_label if max_label > 0 else 1))
-# colors[labels == -1] = [0.8, 0.8, 0.8, 1]
-
-# pcd = o3d.geometry.PointCloud()
-# pcd.points = o3d.utility.Vector3dVector(unlabeled_points[:,:3])
-# pcd.colors = o3d.utility.Vector3dVector(colors[:, :3])
-
-# axis = o3d.geometry.TriangleMesh.create_coordinate_frame(size=5.0, origin=[0,0,0])
-# o3d.visualization.draw_geometries([pcd, axis],
-#                                   window_name="Radar Point Cloud",
-#                                     zoom=0.1,
-#                                     front=[0.3, 0.3, 0.3],
-#                                     lookat=[-10, -10, 1],
-#                                     up=[0, 0, 1])
+print(clutter_ls[1])
