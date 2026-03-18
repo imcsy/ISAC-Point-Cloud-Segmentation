@@ -45,6 +45,6 @@ for i_car in range(num_car):
     centroid = np.mean(ps[:, :3], axis=0)
     ps[:, 0:3] = ps[:, 0:3] - centroid
 
-    car_save_pth = os.path.join(MYMODELNET_CAR_PATH, f"car_{counter_car:04d}.txt")
+    car_save_pth = os.path.join(MYMODELNET_CAR_PATH, f"car_{counter_car:05d}.txt")
     np.savetxt(car_save_pth, ps, fmt='%.6f', delimiter=',')
     counter_car += 1
