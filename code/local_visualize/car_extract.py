@@ -9,6 +9,8 @@ from utils.car_box2label import is_car
 #%%
 # path
 MYDATASET_RADAR_PATH = r"G:\我的云端硬盘\THESIS_dataset\mmw\MyDataset_rsu1\radar" # (x, y, z, v, label)
+MYDATASET_CAR_BOX_PATH = r"G:\我的云端硬盘\THESIS_dataset\mmw\MyDataset_rsu1\car_box"
+MYMODELNET_CAR_PATH = r"G:\我的云端硬盘\THESIS_dataset\mmw\MyModelNet_cls\car" # (x, y, z, v)
 
 #%%
 # Load the file
@@ -19,26 +21,30 @@ xyz_ls = radar_points_labels[:,0:3]
 xyzv_ls = radar_points_labels[:,0:4]
 
 #%%
-# ==================================================
-#   car
-# ==================================================
-# import car box corners and create line set
-car_corners_list = np.load(rf"G:\我的云端硬盘\THESIS_dataset\mmw\MyDataset_rsu1\car_box\{index}.npy")
-
+# load car box file
+car_corners_list_path = os.path.join(MYDATASET_CAR_BOX_PATH, index + ".npy")
+car_corners_list = np.load(car_corners_list_path)
 # delete boxes that are out of sight
 car_box_centers_ls = car_corners_list.mean(axis=1)
 mask = (car_box_centers_ls[:,0] < 0) & (car_box_centers_ls[:,1] < 0)
 car_corners_list = car_corners_list[mask]
+num_car = car_corners_list.shape[0]
 
 #%%
-one_car_points = []
-one_car_corners = car_corners_list[1]
-one_car_corners = np.array([one_car_corners])
+counter_car = 1
+for i_car in range(num_car):
+    ps = []
+    corners = car_corners_list[i_car]
+    corners = np.array([corners])
 
-for i, point in enumerate(xyz_ls):
-    if is_car(point, one_car_corners):
-        one_car_points.append(xyz_ls[i])
+    for i, point in enumerate(xyz_ls):
+        if is_car(point, corners):
+            ps.append(xyzv_ls[i])
 
-one_car_points = np.array(one_car_points)
-centroid = np.mean(one_car_points[:, :3], axis=0)
-one_car_points[:, 0:3] = one_car_points[:, 0:3] - centroid
+    ps = np.array(ps)
+    centroid = np.mean(ps[:, :3], axis=0)
+    ps[:, 0:3] = ps[:, 0:3] - centroid
+
+    car_save_pth = os.path.join(MYMODELNET_CAR_PATH, f"car_{counter_car:04d}.txt")
+    np.savetxt(car_save_pth, ps, fmt='%.6f', delimiter=',')
+    counter_car += 1
