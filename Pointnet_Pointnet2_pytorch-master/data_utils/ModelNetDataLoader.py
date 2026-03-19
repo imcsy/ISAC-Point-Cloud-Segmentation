@@ -52,11 +52,13 @@ class ModelNetDataLoader(Dataset):
         self.npoints = args.num_point
         self.process_data = process_data
         self.uniform = args.use_uniform_sample
-        self.use_normals = args.use_normals
+        self.num_channel = args.num_channel
         self.num_category = args.num_category
 
         if self.num_category == 10:
             self.catfile = os.path.join(self.root, 'modelnet10_shape_names.txt')
+        elif self.num_category == 2:
+            self.catfile = os.path.join(self.root, 'modelnet2_shape_names.txt')
         else:
             self.catfile = os.path.join(self.root, 'modelnet40_shape_names.txt')
 
@@ -67,6 +69,9 @@ class ModelNetDataLoader(Dataset):
         if self.num_category == 10:
             shape_ids['train'] = [line.rstrip() for line in open(os.path.join(self.root, 'modelnet10_train.txt'))]
             shape_ids['test'] = [line.rstrip() for line in open(os.path.join(self.root, 'modelnet10_test.txt'))]
+        elif self.num_category == 2:
+            shape_ids['train'] = [line.rstrip() for line in open(os.path.join(self.root, 'modelnet2_train.txt'))]
+            shape_ids['test'] = [line.rstrip() for line in open(os.path.join(self.root, 'modelnet2_test.txt'))]
         else:
             shape_ids['train'] = [line.rstrip() for line in open(os.path.join(self.root, 'modelnet40_train.txt'))]
             shape_ids['test'] = [line.rstrip() for line in open(os.path.join(self.root, 'modelnet40_test.txt'))]
@@ -127,8 +132,7 @@ class ModelNetDataLoader(Dataset):
                 point_set = point_set[0:self.npoints, :]
                 
         point_set[:, 0:3] = pc_normalize(point_set[:, 0:3])
-        if not self.use_normals:
-            point_set = point_set[:, 0:3]
+        point_set = point_set[:, 0:self.num_channel]
 
         return point_set, label[0]
 

@@ -30,14 +30,15 @@ def parse_args():
     parser.add_argument('--gpu', type=str, default='0', help='specify gpu device')
     parser.add_argument('--batch_size', type=int, default=24, help='batch size in training')
     parser.add_argument('--model', default='pointnet_cls', help='model name [default: pointnet_cls]')
-    parser.add_argument('--num_category', default=40, type=int, choices=[10, 40],  help='training on ModelNet10/40')
+    parser.add_argument('--num_category', default=40, type=int, choices=[2, 10, 40],  help='training on ModelNet10/40')
     parser.add_argument('--epoch', default=200, type=int, help='number of epoch in training')
     parser.add_argument('--learning_rate', default=0.001, type=float, help='learning rate in training')
     parser.add_argument('--num_point', type=int, default=1024, help='Point Number')
     parser.add_argument('--optimizer', type=str, default='Adam', help='optimizer for training')
     parser.add_argument('--log_dir', type=str, default=None, help='experiment root')
     parser.add_argument('--decay_rate', type=float, default=1e-4, help='decay rate')
-    parser.add_argument('--use_normals', action='store_true', default=False, help='use normals')
+    # parser.add_argument('--use_normals', action='store_true', default=False, help='use normals')
+    parser.add_argument('--num_channel', type=int, default=3, help='Input Channel Number')   #############
     parser.add_argument('--process_data', action='store_true', default=False, help='save data offline')
     parser.add_argument('--use_uniform_sample', action='store_true', default=False, help='use uniform sampiling')
     return parser.parse_args()
@@ -116,7 +117,7 @@ def main(args):
 
     '''DATA LOADING'''
     log_string('Load dataset ...')
-    data_path = '/content/drive/MyDrive/THESIS/modelnet40_normal_resampled/'
+    data_path = '/content/drive/MyDrive/THESIS_dataset/modelnet40_normal_resampled/'
 
     train_dataset = ModelNetDataLoader(root=data_path, args=args, split='train', process_data=args.process_data)
     test_dataset = ModelNetDataLoader(root=data_path, args=args, split='test', process_data=args.process_data)
@@ -130,7 +131,7 @@ def main(args):
     shutil.copy('models/pointnet2_utils.py', str(exp_dir))
     shutil.copy('./train_classification.py', str(exp_dir))
 
-    classifier = model.get_model(num_class, normal_channel=args.use_normals)
+    classifier = model.get_model(num_class, num_channel=args.num_channel)
     criterion = model.get_loss()
     classifier.apply(inplace_relu)
 
@@ -138,14 +139,15 @@ def main(args):
         classifier = classifier.cuda()
         criterion = criterion.cuda()
 
-    try:
-        checkpoint = torch.load(str(exp_dir) + '/checkpoints/best_model.pth')
-        start_epoch = checkpoint['epoch']
-        classifier.load_state_dict(checkpoint['model_state_dict'])
-        log_string('Use pretrain model')
-    except:
-        log_string('No existing model, starting training from scratch...')
-        start_epoch = 0
+    # try:
+    #     checkpoint = torch.load(str(exp_dir) + '/checkpoints/best_model.pth')
+    #     start_epoch = checkpoint['epoch']
+    #     classifier.load_state_dict(checkpoint['model_state_dict'])
+    #     log_string('Use pretrain model')
+    # except:
+    #     log_string('No existing model, starting training from scratch...')
+    #     start_epoch = 0
+    start_epoch = 0
 
     if args.optimizer == 'Adam':
         optimizer = torch.optim.Adam(
