@@ -118,6 +118,8 @@ def main(args):
     '''DATA LOADING'''
     log_string('Load dataset ...')
     data_path = '/content/drive/MyDrive/THESIS_dataset/modelnet40_normal_resampled/'
+    #'/content/drive/MyDrive/THESIS_dataset/mmw/MyModelNet_cls'
+    
 
     train_dataset = ModelNetDataLoader(root=data_path, args=args, split='train', process_data=args.process_data)
     test_dataset = ModelNetDataLoader(root=data_path, args=args, split='test', process_data=args.process_data)
@@ -147,6 +149,7 @@ def main(args):
     # except:
     #     log_string('No existing model, starting training from scratch...')
     #     start_epoch = 0
+
     start_epoch = 0
 
     if args.optimizer == 'Adam':

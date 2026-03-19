@@ -41,6 +41,9 @@ def parse_args():
     parser.add_argument('--num_channel', type=int, default=3, help='Input Channel Number')   #############
     parser.add_argument('--process_data', action='store_true', default=False, help='save data offline')
     parser.add_argument('--use_uniform_sample', action='store_true', default=False, help='use uniform sampiling')
+    # add dropout, shift or not
+    parser.add_argument('--dropout', action='store_true', default=False, help='use dropout when training')
+    parser.add_argument('--shift', action='store_true', default=False, help='use shift when training')
     return parser.parse_args()
 
 
@@ -97,6 +100,14 @@ def main(args):
         exp_dir = exp_dir.joinpath(timestr)
     else:
         exp_dir = exp_dir.joinpath(args.log_dir)
+        
+    param_name = f"epoch_{args.epoch}_npoint_{args.num_point}"
+    if args.dropout:
+        param_name = param_name + "_dropout"
+    if args.shift:
+        param_name = param_name + "_shift"
+    exp_dir = exp_dir.joinpath(param_name)
+
     exp_dir.mkdir(exist_ok=True)
     checkpoints_dir = exp_dir.joinpath('checkpoints/')
     checkpoints_dir.mkdir(exist_ok=True)
@@ -118,6 +129,9 @@ def main(args):
     '''DATA LOADING'''
     log_string('Load dataset ...')
     data_path = '/content/drive/MyDrive/THESIS_dataset/mmw/MyModelNet_cls'
+    # '/content/drive/MyDrive/THESIS_dataset/modelnet40_normal_resampled/'
+    # '/content/drive/MyDrive/THESIS_dataset/mmw/MyModelNet_cls'
+    
 
     train_dataset = ModelNetDataLoader(root=data_path, args=args, split='train', process_data=args.process_data)
     test_dataset = ModelNetDataLoader(root=data_path, args=args, split='test', process_data=args.process_data)
@@ -147,6 +161,7 @@ def main(args):
     # except:
     #     log_string('No existing model, starting training from scratch...')
     #     start_epoch = 0
+
     start_epoch = 0
 
     if args.optimizer == 'Adam':
@@ -168,6 +183,9 @@ def main(args):
 
     '''TRANING'''
     logger.info('Start training...')
+    test_ins_acc_log = np.zeros(args.epoch, dtype=float)
+    test_class_acc_log = np.zeros(args.epoch, dtype=float)
+    train_ins_acc_log = np.zeros(args.epoch, dtype=float)
     for epoch in range(start_epoch, args.epoch):
         log_string('Epoch %d (%d/%s):' % (global_epoch + 1, epoch + 1, args.epoch))
         mean_correct = []
@@ -178,9 +196,13 @@ def main(args):
             optimizer.zero_grad()
 
             points = points.data.numpy()
-            points = provider.random_point_dropout(points)
-            points[:, :, 0:3] = provider.random_scale_point_cloud(points[:, :, 0:3])
-            points[:, :, 0:3] = provider.shift_point_cloud(points[:, :, 0:3])
+
+            if args.dropout:
+                points = provider.random_point_dropout(points)
+            if args.shift:
+                points[:, :, 0:3] = provider.shift_point_cloud(points[:, :, 0:3])
+            # points[:, :, 0:3] = provider.random_scale_point_cloud(points[:, :, 0:3])
+            
             points = torch.Tensor(points)
             points = points.transpose(2, 1)
 
@@ -198,10 +220,13 @@ def main(args):
             global_step += 1
 
         train_instance_acc = np.mean(mean_correct)
+        train_ins_acc_log[epoch] = train_instance_acc
         log_string('Train Instance Accuracy: %f' % train_instance_acc)
 
         with torch.no_grad():
             instance_acc, class_acc = test(classifier.eval(), testDataLoader, num_class=num_class)
+            test_ins_acc_log[epoch] = instance_acc
+            test_class_acc_log[epoch] = class_acc
 
             if (instance_acc >= best_instance_acc):
                 best_instance_acc = instance_acc
@@ -226,6 +251,9 @@ def main(args):
                 torch.save(state, savepath)
             global_epoch += 1
 
+    np.save(str(exp_dir) + '/logs/train_ins_acc_log.npy', train_ins_acc_log)
+    np.save(str(exp_dir) + '/logs/test_ins_acc_log.npy', test_ins_acc_log)
+    np.save(str(exp_dir) + '/logs/test_class_acc_log.npy', test_class_acc_log)
     logger.info('End of training...')
 
 

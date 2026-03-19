@@ -22,11 +22,12 @@ def pc_normalize(pc):
     return pc
 
 
-def farthest_point_sample(point, npoint):
+def farthest_point_downsample(point, npoint):
     """
     Input:
         xyz: pointcloud data, [N, D]
         npoint: number of samples
+        ------ N > npoint---------
     Return:
         centroids: sampled pointcloud index, [npoint, D]
     """
@@ -45,6 +46,25 @@ def farthest_point_sample(point, npoint):
     point = point[centroids.astype(np.int32)]
     return point
 
+def repeat_point_upsample(point, npoint):
+    """
+    Input:
+        xyz: pointcloud data, [N, D]
+        npoint: number of samples
+        ------ N < npoint---------
+    Return:
+        centroids: sampled pointcloud index, [npoint, D]
+    """
+    num_old_point = point.shape[0]
+    num_repeat = npoint // num_old_point
+    remainder = npoint % num_old_point
+
+    new_points = np.tile(point, (num_repeat, 1))
+    if remainder > 0:
+        extra = point[:remainder, :]
+        new_points = np.vstack((new_points, extra))
+
+    return new_points
 
 class ModelNetDataLoader(Dataset):
     def __init__(self, root, args, split='train', process_data=False):
@@ -98,11 +118,17 @@ class ModelNetDataLoader(Dataset):
                     cls = self.classes[self.datapath[index][0]]
                     cls = np.array([cls]).astype(np.int32)
                     point_set = np.loadtxt(fn[1], delimiter=',').astype(np.float32)
+                    point_set = np.atleast_2d(point_set)
 
-                    if self.uniform:
-                        point_set = farthest_point_sample(point_set, self.npoints)
-                    else:
-                        point_set = point_set[0:self.npoints, :]
+                    if point_set.shape[0] < self.npoints:
+                        point_set = repeat_point_upsample(point_set, self.npoints)
+                    elif point_set.shape[0] > self.npoints:
+                        point_set = farthest_point_downsample(point_set, self.npoints)
+
+                    # if self.uniform:
+                    #     point_set = farthest_point_downsample(point_set, self.npoints)
+                    # else:
+                    #     point_set = point_set[0:self.npoints, :]
 
                     self.list_of_points[index] = point_set
                     self.list_of_labels[index] = cls
@@ -125,13 +151,19 @@ class ModelNetDataLoader(Dataset):
             cls = self.classes[self.datapath[index][0]]
             label = np.array([cls]).astype(np.int32)
             point_set = np.loadtxt(fn[1], delimiter=',').astype(np.float32)
+            point_set = np.atleast_2d(point_set)
 
-            if self.uniform:
-                point_set = farthest_point_sample(point_set, self.npoints)
-            else:
-                point_set = point_set[0:self.npoints, :]
+            if point_set.shape[0] < self.npoints:
+                point_set = repeat_point_upsample(point_set, self.npoints)
+            elif point_set.shape[0] > self.npoints:
+                point_set = farthest_point_downsample(point_set, self.npoints)
+
+            # if self.uniform:
+            #     point_set = farthest_point_sample(point_set, self.npoints)
+            # else:
+            #     point_set = point_set[0:self.npoints, :]
                 
-        point_set[:, 0:3] = pc_normalize(point_set[:, 0:3])
+        # point_set[:, 0:3] = pc_normalize(point_set[:, 0:3])
         point_set = point_set[:, 0:self.num_channel]
 
         return point_set, label[0]
