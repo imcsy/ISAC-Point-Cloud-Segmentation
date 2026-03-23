@@ -53,7 +53,7 @@ def collect_point_label(anno_path, out_filename, file_format='txt'):
 
         points = np.loadtxt(f)
         labels = np.ones((points.shape[0],1)) * g_class2label[cls]
-        points_list.append(np.concatenate([points, labels], 1)) # Nx7
+        points_list.append(np.concatenate([points, labels], 1)) # (N, 7)
     
     data_label = np.concatenate(points_list, 0)
     xyz_min = np.amin(data_label, axis=0)[0:3]
