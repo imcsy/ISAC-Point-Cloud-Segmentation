@@ -149,4 +149,3 @@ radar_points_labels = np.hstack((xyz_ls, v_ls, label_ls))
 
 radar_txt_path = os.path.join(MYDATASET_RADAR_PATH, index + ".txt")
 np.savetxt(radar_txt_path, radar_points_labels, fmt='%.6f', delimiter=',')
-

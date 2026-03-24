@@ -88,3 +88,100 @@ class clutter       , IoU: 0.416
 2021-03-23 22:45:35,271 - Model - INFO - eval point avg class IoU: 0.535313
 2021-03-23 22:45:35,271 - Model - INFO - eval whole scene point avg class acc: 0.620289
 2021-03-23 22:45:35,271 - Model - INFO - eval whole scene point accuracy: 0.829893
+2026-03-24 10:52:23,826 - Model - INFO - PARAMETER ...
+2026-03-24 10:52:24,636 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=True, num_votes=3)
+2026-03-24 10:52:58,670 - Model - INFO - PARAMETER ...
+2026-03-24 10:52:58,671 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=True, num_votes=3)
+2026-03-24 10:54:19,752 - Model - INFO - PARAMETER ...
+2026-03-24 10:54:19,753 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=True, num_votes=3, samples_per_frame=4)
+2026-03-24 10:54:26,865 - Model - INFO - The number of test data is: 1472
+2026-03-24 10:57:09,233 - Model - INFO - PARAMETER ...
+2026-03-24 10:57:09,234 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=True, num_votes=3, samples_per_frame=4)
+2026-03-24 10:57:15,625 - Model - INFO - The number of test data is: 1472
+2026-03-24 10:57:16,123 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-03-24 10:57:36,771 - Model - INFO - eval point avg class IoU: 0.757344
+2026-03-24 10:57:36,771 - Model - INFO - eval point accuracy: 0.920017
+2026-03-24 10:57:36,771 - Model - INFO - eval point avg class acc: 0.916401
+2026-03-24 11:04:11,062 - Model - INFO - PARAMETER ...
+2026-03-24 11:04:11,063 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=True, num_votes=3, samples_per_frame=4)
+2026-03-24 11:04:18,206 - Model - INFO - The number of test data is: 1472
+2026-03-24 11:04:18,706 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-03-24 11:04:38,569 - Model - INFO - eval point avg class IoU: 0.747799
+2026-03-24 11:04:38,569 - Model - INFO - eval point accuracy: 0.918017
+2026-03-24 11:04:38,569 - Model - INFO - eval point avg class acc: 0.915160
+2026-03-24 11:04:38,569 - Model - INFO - ------- IoU --------
+class car           , IoU: 0.571 
+class building      , IoU: 0.894 
+class pole          , IoU: 0.721 
+class clutter       , IoU: 0.806 
+
+2026-03-24 11:04:38,569 - Model - INFO - eval point avg class IoU: 0.747799
+2026-03-24 11:04:38,569 - Model - INFO - eval whole scene point avg class acc: 0.915160
+2026-03-24 11:04:38,570 - Model - INFO - eval whole scene point accuracy: 0.918017
+2026-03-24 11:54:08,459 - Model - INFO - PARAMETER ...
+2026-03-24 11:54:08,460 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=True, num_votes=3, samples_per_frame=4)
+2026-03-24 11:54:14,556 - Model - INFO - The number of test data is: 1472
+2026-03-24 11:56:43,147 - Model - INFO - PARAMETER ...
+2026-03-24 11:56:43,148 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=True, num_votes=3, samples_per_frame=4)
+2026-03-24 11:56:50,377 - Model - INFO - The number of test data is: 1472
+2026-03-24 11:56:50,875 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-03-24 12:02:40,706 - Model - INFO - PARAMETER ...
+2026-03-24 12:02:40,707 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=True, num_votes=3, samples_per_frame=4)
+2026-03-24 12:02:46,500 - Model - INFO - The number of test data is: 1472
+2026-03-24 12:02:47,005 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-03-24 12:06:15,927 - Model - INFO - PARAMETER ...
+2026-03-24 12:06:15,927 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=True, num_votes=3, samples_per_frame=4)
+2026-03-24 12:06:23,299 - Model - INFO - The number of test data is: 1472
+2026-03-24 12:06:23,806 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-03-24 12:06:44,052 - Model - INFO - eval point avg class IoU: 0.743426
+2026-03-24 12:06:44,052 - Model - INFO - eval point accuracy: 0.917107
+2026-03-24 12:06:44,052 - Model - INFO - eval point avg class acc: 0.913345
+2026-03-24 12:06:44,053 - Model - INFO - ------- IoU --------
+class car           , IoU: 0.560 
+class building      , IoU: 0.893 
+class pole          , IoU: 0.716 
+class clutter       , IoU: 0.805 
+
+2026-03-24 12:06:44,053 - Model - INFO - eval point avg class IoU: 0.743426
+2026-03-24 12:06:44,053 - Model - INFO - eval whole scene point avg class acc: 0.913345
+2026-03-24 12:06:44,053 - Model - INFO - eval whole scene point accuracy: 0.917107
+2026-03-24 12:16:54,782 - Model - INFO - PARAMETER ...
+2026-03-24 12:16:54,782 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=True, num_votes=3, samples_per_frame=4)
+2026-03-24 12:17:01,780 - Model - INFO - The number of test data is: 1472
+2026-03-24 12:17:02,288 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-03-24 12:19:54,597 - Model - INFO - PARAMETER ...
+2026-03-24 12:19:54,598 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=True, num_votes=3, samples_per_frame=4)
+2026-03-24 12:20:01,310 - Model - INFO - The number of test data is: 1472
+2026-03-24 12:20:01,815 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-03-24 12:20:23,290 - Model - INFO - PARAMETER ...
+2026-03-24 12:20:23,291 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=True, num_votes=3, samples_per_frame=4)
+2026-03-24 12:20:24,174 - Model - INFO - The number of test data is: 1472
+2026-03-24 12:20:24,680 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-03-24 12:20:44,447 - Model - INFO - eval point avg class IoU: 0.753519
+2026-03-24 12:20:44,447 - Model - INFO - eval point accuracy: 0.919679
+2026-03-24 12:20:44,447 - Model - INFO - eval point avg class acc: 0.915742
+2026-03-24 12:20:44,447 - Model - INFO - ------- IoU --------
+class car           , IoU: 0.577 
+class building      , IoU: 0.896 
+class pole          , IoU: 0.734 
+class clutter       , IoU: 0.807 
+
+2026-03-24 12:20:44,448 - Model - INFO - eval point avg class IoU: 0.753519
+2026-03-24 12:20:44,448 - Model - INFO - eval whole scene point avg class acc: 0.915742
+2026-03-24 12:20:44,448 - Model - INFO - eval whole scene point accuracy: 0.919679
+2026-03-24 14:04:50,087 - Model - INFO - PARAMETER ...
+2026-03-24 14:04:50,088 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=True, num_votes=3, samples_per_frame=4)
+2026-03-24 14:04:56,176 - Model - INFO - The number of test data is: 1472
+2026-03-24 14:04:56,690 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-03-24 14:05:17,069 - Model - INFO - eval point avg class IoU: 0.797605
+2026-03-24 14:05:17,069 - Model - INFO - eval point accuracy: 0.928230
+2026-03-24 14:05:17,069 - Model - INFO - eval point avg class acc: 0.904961
+2026-03-24 14:05:17,069 - Model - INFO - ------- IoU --------
+class car           , IoU: 0.686 
+class building      , IoU: 0.903 
+class pole          , IoU: 0.780 
+class clutter       , IoU: 0.822 
+
+2026-03-24 14:05:17,070 - Model - INFO - eval point avg class IoU: 0.797605
+2026-03-24 14:05:17,070 - Model - INFO - eval whole scene point avg class acc: 0.904961
+2026-03-24 14:05:17,070 - Model - INFO - eval whole scene point accuracy: 0.928230

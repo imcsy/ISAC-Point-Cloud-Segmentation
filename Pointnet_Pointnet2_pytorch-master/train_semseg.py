@@ -21,8 +21,9 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = BASE_DIR
 sys.path.append(os.path.join(ROOT_DIR, 'models'))
 
-classes = ['ceiling', 'floor', 'wall', 'beam', 'column', 'window', 'door', 'table', 'chair', 'sofa', 'bookcase',
-           'board', 'clutter']
+# classes = ['ceiling', 'floor', 'wall', 'beam', 'column', 'window', 'door', 'table', 'chair', 'sofa', 'bookcase',
+#            'board', 'clutter']
+classes = ['car', 'building', 'pole', 'clutter']
 class2label = {cls: i for i, cls in enumerate(classes)}
 seg_classes = class2label
 seg_label_to_cat = {}
@@ -44,10 +45,11 @@ def parse_args():
     parser.add_argument('--optimizer', type=str, default='Adam', help='Adam or SGD [default: Adam]')
     parser.add_argument('--log_dir', type=str, default=None, help='Log path [default: None]')
     parser.add_argument('--decay_rate', type=float, default=1e-4, help='weight decay [default: 1e-4]')
-    parser.add_argument('--npoint', type=int, default=4096, help='Point Number [default: 4096]')
+    parser.add_argument('--npoint', type=int, default=1024, help='Point Number [default: 4096]')
     parser.add_argument('--step_size', type=int, default=10, help='Decay step for lr decay [default: every 10 epochs]')
     parser.add_argument('--lr_decay', type=float, default=0.7, help='Decay rate for lr decay [default: 0.7]')
-    parser.add_argument('--test_area', type=int, default=5, help='Which area to use for test, option: 1-6 [default: 5]')
+    # parser.add_argument('--test_area', type=int, default=5, help='Which area to use for test, option: 1-6 [default: 5]')
+    parser.add_argument('--samples_per_frame', type=int, default=4, help='Number of samples obtained from each frame')
 
     return parser.parse_args()
 
@@ -88,16 +90,16 @@ def main(args):
     log_string('PARAMETER ...')
     log_string(args)
 
-    root = '/content/drive/MyDrive/THESIS_dataset/S3DIS/stanford_indoor3d'
-    #'data/stanford_indoor3d/'
-    NUM_CLASSES = 13
+    root = '/content/drive/MyDrive/THESIS_dataset/mmw/MyS3DIS_seg'
+    # '/content/drive/MyDrive/THESIS_dataset/S3DIS/stanford_indoor3d'
+    NUM_CLASSES = 4
     NUM_POINT = args.npoint
     BATCH_SIZE = args.batch_size
 
     print("start loading training data ...")
-    TRAIN_DATASET = S3DISDataset(split='train', data_root=root, num_point=NUM_POINT, test_area=args.test_area, block_size=1.0, sample_rate=1.0, transform=None)
+    TRAIN_DATASET = S3DISDataset(split='train', data_root=root, num_point=NUM_POINT, block_size=1.0, sample_rate=1.0, transform=None, samples_per_frame=args.samples_per_frame, num_classes=NUM_CLASSES)
     print("start loading test data ...")
-    TEST_DATASET = S3DISDataset(split='test', data_root=root, num_point=NUM_POINT, test_area=args.test_area, block_size=1.0, sample_rate=1.0, transform=None)
+    TEST_DATASET = S3DISDataset(split='test', data_root=root, num_point=NUM_POINT, block_size=1.0, sample_rate=1.0, transform=None, samples_per_frame=args.samples_per_frame, num_classes=NUM_CLASSES)
 
     trainDataLoader = torch.utils.data.DataLoader(TRAIN_DATASET, batch_size=BATCH_SIZE, shuffle=True, num_workers=10,
                                                   pin_memory=True, drop_last=True,
@@ -161,7 +163,7 @@ def main(args):
     best_iou = 0
 
     for epoch in range(start_epoch, args.epoch):
-        '''Train on chopped scenes'''
+        '''Train on UNchopped scenes'''
         log_string('**** Epoch %d (%d/%s) ****' % (global_epoch + 1, epoch + 1, args.epoch))
         lr = max(args.learning_rate * (args.lr_decay ** (epoch // args.step_size)), LEARNING_RATE_CLIP)
         log_string('Learning rate:%f' % lr)
@@ -182,7 +184,7 @@ def main(args):
             optimizer.zero_grad()
 
             points = points.data.numpy()
-            points[:, :, :3] = provider.rotate_point_cloud_z(points[:, :, :3])
+            # points[:, :, :3] = provider.rotate_point_cloud_z(points[:, :, :3])
             points = torch.Tensor(points)
             points, target = points.float().cuda(), target.long().cuda()
             points = points.transpose(2, 1)
@@ -216,7 +218,7 @@ def main(args):
             torch.save(state, savepath)
             log_string('Saving model....')
 
-        '''Evaluate on chopped scenes'''
+        '''Evaluate on UNchopped scenes'''
         with torch.no_grad():
             num_batches = len(testDataLoader)
             total_correct = 0
@@ -251,15 +253,15 @@ def main(args):
                 labelweights += tmp
 
                 for l in range(NUM_CLASSES):
-                    total_seen_class[l] += np.sum((batch_label == l))
-                    total_correct_class[l] += np.sum((pred_val == l) & (batch_label == l))
-                    total_iou_deno_class[l] += np.sum(((pred_val == l) | (batch_label == l)))
+                    total_seen_class[l] += np.sum((batch_label == l))           # calculate the no. of points each class (ground truth)
+                    total_correct_class[l] += np.sum((pred_val == l) & (batch_label == l))      # intersection
+                    total_iou_deno_class[l] += np.sum(((pred_val == l) | (batch_label == l)))   # union
 
             labelweights = labelweights.astype(np.float32) / np.sum(labelweights.astype(np.float32))
-            mIoU = np.mean(np.array(total_correct_class) / (np.array(total_iou_deno_class, dtype=np.float64) + 1e-6))
+            mIoU = np.mean(np.array(total_correct_class) / (np.array(total_iou_deno_class, dtype=np.float64) + 1e-6)) # mean IoU over all classes
             log_string('eval mean loss: %f' % (loss_sum / float(num_batches)))
             log_string('eval point avg class IoU: %f' % (mIoU))
-            log_string('eval point accuracy: %f' % (total_correct / float(total_seen)))
+            log_string('eval point accuracy: %f' % (total_correct / float(total_seen)))    
             log_string('eval point avg class acc: %f' % (
                 np.mean(np.array(total_correct_class) / (np.array(total_seen_class, dtype=np.float64) + 1e-6))))
 

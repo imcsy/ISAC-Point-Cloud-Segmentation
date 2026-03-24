@@ -3,6 +3,7 @@ import numpy as np
 import os
 import open3d as o3d
 from utils.create_3d_bbox import create_3d_bbox
+import tqdm as tqdm
 
 #%%
 # path
@@ -15,6 +16,20 @@ COLOR_MAP = {
     2: (255, 102, 255),   # pink                  # pole
 }
 COLOR_MAP = {k: tuple(np.array(c)/255.0) for k, c in COLOR_MAP.items()}
+
+#%%
+num_samples = 2000
+num_ps_vec = np.zeros(num_samples, dtype=int)
+for i in tqdm(index_car):
+    path = os.path.join(MYMODELNET_CAR_PATH, f"clutter_{i:05d}.txt")
+    ps = np.loadtxt(path, delimiter=',')
+    ps = np.atleast_2d(ps)
+
+    num_ps_vec[i-1] = ps.shape[0]
+    ave_vel_vec[i-1] = ps[:,3].mean()
+
+    dist = np.linalg.norm(ps[:,:3], axis=1)
+    spread_vec[i-1] = np.mean(dist)
 
 #%%
 # Load the file
