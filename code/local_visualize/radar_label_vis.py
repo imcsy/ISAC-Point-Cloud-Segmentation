@@ -102,7 +102,7 @@ car_corners_list = np.load(rf"G:\我的云端硬盘\THESIS_dataset\mmw\MyDataset
 
 # delete boxes that are out of sight
 car_box_centers_ls = car_corners_list.mean(axis=1)
-mask = (car_box_centers_ls[:,0] < 0) & (car_box_centers_ls[:,1] < 0)
+mask = (car_box_centers_ls[:,0] < 0) & (car_box_centers_ls[:,1] < 10)
 car_corners_list = car_corners_list[mask]
 
 # generate box line set
@@ -136,16 +136,16 @@ pcd.colors = o3d.utility.Vector3dVector(point_colors_car)
 axis = o3d.geometry.TriangleMesh.create_coordinate_frame(size=5.0, origin=[0,0,0])
 o3d.visualization.draw_geometries([pcd, axis] + bbox_list,
                                   window_name="Radar Point Cloud",
-                                    zoom=0.1,
-                                    front=[0.3, 0.3, 0.3],
-                                    lookat=[-10, -10, 1],
+                                    zoom=0.2,
+                                    front=[0.25, 0.25, 0.2],
+                                    lookat=[-20, -20, 1],
                                     up=[0, 0, 1])
 
-#%%
-# save it to txt file
-# (x, y, z, v, label)   xyz after transform
-label_ls = label_ls.reshape(-1,1)
-radar_points_labels = np.hstack((xyz_ls, v_ls, label_ls))
+# #%%
+# # save it to txt file
+# # (x, y, z, v, label)   xyz after transform
+# label_ls = label_ls.reshape(-1,1)
+# radar_points_labels = np.hstack((xyz_ls, v_ls, label_ls))
 
-radar_txt_path = os.path.join(MYDATASET_RADAR_PATH, index + ".txt")
-np.savetxt(radar_txt_path, radar_points_labels, fmt='%.6f', delimiter=',')
+# radar_txt_path = os.path.join(MYDATASET_RADAR_PATH, index + ".txt")
+# np.savetxt(radar_txt_path, radar_points_labels, fmt='%.6f', delimiter=',')
