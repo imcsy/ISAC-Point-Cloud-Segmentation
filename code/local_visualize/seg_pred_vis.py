@@ -35,7 +35,7 @@ for i in range(npoints):
 #%%
 colors = np.array([COLOR_MAP[l] for l in label_compare])
 pcd = o3d.geometry.PointCloud()
-pcd.points = o3d.utility.Vector3dVector(points)
+pcd.points = o3d.utility.Vector3dVector(points) 
 pcd.colors = o3d.utility.Vector3dVector(colors)
 
 axis = o3d.geometry.TriangleMesh.create_coordinate_frame(size=5.0, origin=[0,0,0])

@@ -5,25 +5,33 @@ import open3d as o3d
 from utils.create_3d_bbox import create_3d_bbox
 from sklearn.cluster import DBSCAN
 import matplotlib.pyplot as plt
+from pathlib import Path
+from tqdm import tqdm
 
 #%%
 # path
-MYDATASET_RADAR_PATH = r"G:\我的云端硬盘\THESIS_dataset\mmw\MyDataset_rsu1\radar" # (x, y, z, v, label)
+# MYDATASET_RADAR_PATH = r"G:\我的云端硬盘\THESIS_dataset\mmw\MyDataset_rsu1\radar" # (x, y, z, v, label)
+MYS3DIS_RADAR_PATH = r"G:\我的云端硬盘\THESIS_dataset\mmw\MyS3DIS_seg" # (x, y, z, v, label)
 
 COLOR_MAP = {
-    -1: (192, 192, 192),  # gray                  # unlabeled
     0: (255, 128, 0),     # orange                # car
     1: (0, 128, 255),     # blue                  # buildings
     2: (255, 102, 255),   # pink                  # pole
+    3: (192, 192, 192)    # gray                  # clutter
 }
 COLOR_MAP = {k: tuple(np.array(c)/255.0) for k, c in COLOR_MAP.items()}
 
 #%%
 # Load the file
-index = "016888"
-radar_txt_path = os.path.join(MYDATASET_RADAR_PATH, index + ".txt")
-radar_points_labels = np.loadtxt(radar_txt_path, delimiter=',')
-unlabeled_points = radar_points_labels[radar_points_labels[:,-1] == -1]
+file_list = [os.path.join(MYS3DIS_RADAR_PATH, f) for f in os.listdir(MYS3DIS_RADAR_PATH) if f.endswith('.npy')]
+f = file_list[99]
+data = np.load(f)
+# index = Path(f).stem.split('_')[1]
+
+unlabeled_points = data[data[:,-1] == 3]
+
+#%%
+print(data.shape[0], unlabeled_points.shape[0])
 
 #%%
 # cluster using DBSCAN
@@ -33,7 +41,7 @@ max_label = dbscan_labels.max()
 
 #%%
 clutter_ls = []
-prob = 0.15
+prob = 0.2
 for i in range(max_label):
     ps = unlabeled_points[dbscan_labels == i]
 
@@ -46,4 +54,5 @@ for i in range(max_label):
 print(len(clutter_ls))
 
 #%%
-print(clutter_ls[1])
+print(clutter_ls[2])
+

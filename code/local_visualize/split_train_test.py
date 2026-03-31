@@ -6,7 +6,7 @@ import os
 MYMODELNET_PATH = r"G:\我的云端硬盘\THESIS_dataset\mmw\MyModelNet_cls"
 
 #%%
-N = 4640 # 3552
+N = 7116 # 6268
 name = "clutter" # car
 training_percent = 0.7
 

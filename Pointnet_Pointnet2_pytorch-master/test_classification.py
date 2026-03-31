@@ -108,7 +108,9 @@ def main(args):
 
     '''MODEL LOADING'''
     num_class = args.num_category
-    model_name = os.listdir(experiment_dir + '/logs')[0].split('.')[0]
+    path = os.listdir(experiment_dir + '/logs')
+    txt_files = [f for f in path if f.endswith('.txt')]
+    model_name = txt_files[0].split('.')[0]
     model = importlib.import_module(model_name)
 
     classifier = model.get_model(num_class, num_channel=args.num_channel)

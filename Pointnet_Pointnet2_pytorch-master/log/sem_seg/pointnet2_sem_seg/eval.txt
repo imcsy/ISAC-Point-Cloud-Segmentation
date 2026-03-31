@@ -185,3 +185,19 @@ class clutter       , IoU: 0.822
 2026-03-24 14:05:17,070 - Model - INFO - eval point avg class IoU: 0.797605
 2026-03-24 14:05:17,070 - Model - INFO - eval whole scene point avg class acc: 0.904961
 2026-03-24 14:05:17,070 - Model - INFO - eval whole scene point accuracy: 0.928230
+2026-03-29 20:51:38,097 - Model - INFO - PARAMETER ...
+2026-03-29 20:51:38,300 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=True, num_votes=3, samples_per_frame=4)
+2026-03-29 20:51:44,364 - Model - INFO - The number of test data is: 1472
+2026-03-29 20:51:44,865 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-03-29 20:52:20,952 - Model - INFO - eval point avg class IoU: 0.837334
+2026-03-29 20:52:20,953 - Model - INFO - eval point accuracy: 0.928761
+2026-03-29 20:52:20,953 - Model - INFO - eval point avg class acc: 0.922797
+2026-03-29 20:52:20,953 - Model - INFO - ------- IoU --------
+class car           , IoU: 0.871 
+class building      , IoU: 0.901 
+class pole          , IoU: 0.756 
+class clutter       , IoU: 0.822 
+
+2026-03-29 20:52:20,953 - Model - INFO - eval point avg class IoU: 0.837334
+2026-03-29 20:52:20,953 - Model - INFO - eval whole scene point avg class acc: 0.922797
+2026-03-29 20:52:20,953 - Model - INFO - eval whole scene point accuracy: 0.928761

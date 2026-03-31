@@ -14,7 +14,7 @@ MYMODELNET_CAR_PATH = r"G:\我的云端硬盘\THESIS_dataset\mmw\MyModelNet_cls\
 
 #%%
 # Load the file
-index = "016653"
+index = "017753"
 radar_txt_path = os.path.join(MYDATASET_RADAR_PATH, index + ".txt")
 radar_points_labels = np.loadtxt(radar_txt_path, delimiter=',')
 xyz_ls = radar_points_labels[:,0:3]
@@ -26,7 +26,7 @@ car_corners_list_path = os.path.join(MYDATASET_CAR_BOX_PATH, index + ".npy")
 car_corners_list = np.load(car_corners_list_path)
 # delete boxes that are out of sight
 car_box_centers_ls = car_corners_list.mean(axis=1)
-mask = (car_box_centers_ls[:,0] < 0) & (car_box_centers_ls[:,1] < 0)
+mask = (car_box_centers_ls[:,0] < 0) & (car_box_centers_ls[:,1] < 5)
 car_corners_list = car_corners_list[mask]
 num_car = car_corners_list.shape[0]
 
@@ -41,10 +41,11 @@ for i_car in range(num_car):
         if is_car(point, corners):
             ps.append(xyzv_ls[i])
 
-    ps = np.array(ps)
-    centroid = np.mean(ps[:, :3], axis=0)
-    ps[:, 0:3] = ps[:, 0:3] - centroid
+    if ps:
+        ps = np.array(ps)
+        centroid = np.mean(ps[:, :3], axis=0)
+        ps[:, 0:3] = ps[:, 0:3] - centroid
 
-    car_save_pth = os.path.join(MYMODELNET_CAR_PATH, f"car_{counter_car:05d}.txt")
-    np.savetxt(car_save_pth, ps, fmt='%.6f', delimiter=',')
-    counter_car += 1
+        car_save_pth = os.path.join(MYMODELNET_CAR_PATH, f"car_{counter_car:05d}.txt")
+        np.savetxt(car_save_pth, ps, fmt='%.6f', delimiter=',')
+        counter_car += 1

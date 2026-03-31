@@ -62,7 +62,7 @@ file_list = [os.path.join(MYS3DIS_RADAR_PATH, f) for f in os.listdir(MYS3DIS_RAD
 #%%
 #   visualize for checking
 # ==================================================
-f = file_list[1143]
+f = file_list[0]
 data = np.load(f)
 index = Path(f).stem.split('_')[1]
 

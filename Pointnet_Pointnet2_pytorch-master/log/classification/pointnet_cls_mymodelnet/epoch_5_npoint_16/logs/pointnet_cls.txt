@@ -1,0 +1,29 @@
+2026-03-31 08:47:20,933 - Model - INFO - PARAMETER ...
+2026-03-31 08:47:20,934 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=24, model='pointnet_cls', num_category=2, epoch=5, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointnet_cls_mymodelnet', decay_rate=0.0001, num_channel=4, process_data=False, use_uniform_sample=False, dropout=False, shift=False)
+2026-03-31 08:47:20,935 - Model - INFO - Load dataset ...
+2026-03-31 08:47:34,062 - Model - INFO - Start training...
+2026-03-31 08:47:34,062 - Model - INFO - Epoch 1 (1/5):
+2026-03-31 09:01:06,194 - Model - INFO - Train Instance Accuracy: 0.920406
+2026-03-31 09:06:53,531 - Model - INFO - Test Instance Accuracy: 0.959573, Class Accuracy: 0.960647
+2026-03-31 09:06:53,532 - Model - INFO - Best Instance Accuracy: 0.959573, Class Accuracy: 0.960647
+2026-03-31 09:06:53,532 - Model - INFO - Save model...
+2026-03-31 09:06:53,532 - Model - INFO - Saving at log/classification/pointnet_cls_mymodelnet/epoch_5_npoint_16/checkpoints/best_model.pth
+2026-03-31 09:06:53,657 - Model - INFO - Epoch 2 (2/5):
+2026-03-31 09:07:09,078 - Model - INFO - Train Instance Accuracy: 0.938248
+2026-03-31 09:07:14,025 - Model - INFO - Test Instance Accuracy: 0.949157, Class Accuracy: 0.950925
+2026-03-31 09:07:14,025 - Model - INFO - Best Instance Accuracy: 0.959573, Class Accuracy: 0.960647
+2026-03-31 09:07:14,025 - Model - INFO - Epoch 3 (3/5):
+2026-03-31 09:07:25,704 - Model - INFO - Train Instance Accuracy: 0.944338
+2026-03-31 09:07:30,646 - Model - INFO - Test Instance Accuracy: 0.960813, Class Accuracy: 0.961708
+2026-03-31 09:07:30,647 - Model - INFO - Best Instance Accuracy: 0.960813, Class Accuracy: 0.961708
+2026-03-31 09:07:30,647 - Model - INFO - Save model...
+2026-03-31 09:07:30,648 - Model - INFO - Saving at log/classification/pointnet_cls_mymodelnet/epoch_5_npoint_16/checkpoints/best_model.pth
+2026-03-31 09:07:30,940 - Model - INFO - Epoch 4 (4/5):
+2026-03-31 09:07:43,986 - Model - INFO - Train Instance Accuracy: 0.951816
+2026-03-31 09:07:49,008 - Model - INFO - Test Instance Accuracy: 0.950397, Class Accuracy: 0.952856
+2026-03-31 09:07:49,009 - Model - INFO - Best Instance Accuracy: 0.960813, Class Accuracy: 0.961708
+2026-03-31 09:07:49,009 - Model - INFO - Epoch 5 (5/5):
+2026-03-31 09:08:00,761 - Model - INFO - Train Instance Accuracy: 0.954060
+2026-03-31 09:08:05,859 - Model - INFO - Test Instance Accuracy: 0.952381, Class Accuracy: 0.954740
+2026-03-31 09:08:05,859 - Model - INFO - Best Instance Accuracy: 0.960813, Class Accuracy: 0.961708
+2026-03-31 09:08:05,882 - Model - INFO - End of training...

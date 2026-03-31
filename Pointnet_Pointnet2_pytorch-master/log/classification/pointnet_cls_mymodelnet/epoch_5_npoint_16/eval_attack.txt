@@ -1,0 +1,249 @@
+2026-03-31 09:28:19,787 - Model - INFO - PARAMETER ...
+2026-03-31 09:28:19,788 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=64, num_category=2, log_dir='pointnet_cls_mymodelnet', num_channel=4, use_uniform_sample=False, num_votes=3, dropout=False, shift=False, epoch=5, num_point=16)
+2026-03-31 09:28:19,789 - Model - INFO - Load dataset ...
+2026-03-31 09:28:25,479 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 0.000000
+2026-03-31 09:28:25,480 - Model - INFO - Test Instance Accuracy: 0.960648, Class Accuracy: 0.960933
+2026-03-31 09:28:30,686 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 0.000000
+2026-03-31 09:28:30,687 - Model - INFO - Test Instance Accuracy: 0.960648, Class Accuracy: 0.960933
+2026-03-31 09:28:35,898 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 0.000000
+2026-03-31 09:28:35,898 - Model - INFO - Test Instance Accuracy: 0.960648, Class Accuracy: 0.960933
+2026-03-31 09:28:40,897 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 0.100000
+2026-03-31 09:28:40,897 - Model - INFO - Test Instance Accuracy: 0.957920, Class Accuracy: 0.958595
+2026-03-31 09:28:45,974 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 0.100000
+2026-03-31 09:28:45,975 - Model - INFO - Test Instance Accuracy: 0.955936, Class Accuracy: 0.954990
+2026-03-31 09:28:51,037 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 0.100000
+2026-03-31 09:28:51,038 - Model - INFO - Test Instance Accuracy: 0.948743, Class Accuracy: 0.947946
+2026-03-31 09:28:56,250 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 0.200000
+2026-03-31 09:28:56,251 - Model - INFO - Test Instance Accuracy: 0.945023, Class Accuracy: 0.947368
+2026-03-31 09:29:01,429 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 0.200000
+2026-03-31 09:29:01,430 - Model - INFO - Test Instance Accuracy: 0.816799, Class Accuracy: 0.824672
+2026-03-31 09:29:06,411 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 0.200000
+2026-03-31 09:29:06,411 - Model - INFO - Test Instance Accuracy: 0.759094, Class Accuracy: 0.771210
+2026-03-31 09:29:11,409 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 0.300000
+2026-03-31 09:29:11,410 - Model - INFO - Test Instance Accuracy: 0.931713, Class Accuracy: 0.934538
+2026-03-31 09:29:16,561 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 0.300000
+2026-03-31 09:29:16,562 - Model - INFO - Test Instance Accuracy: 0.665179, Class Accuracy: 0.684201
+2026-03-31 09:29:21,502 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 0.300000
+2026-03-31 09:29:21,502 - Model - INFO - Test Instance Accuracy: 0.624339, Class Accuracy: 0.646364
+2026-03-31 09:29:26,679 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 0.400000
+2026-03-31 09:29:26,679 - Model - INFO - Test Instance Accuracy: 0.924438, Class Accuracy: 0.926651
+2026-03-31 09:29:31,703 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 0.400000
+2026-03-31 09:29:31,704 - Model - INFO - Test Instance Accuracy: 0.595651, Class Accuracy: 0.619786
+2026-03-31 09:29:36,839 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 0.400000
+2026-03-31 09:29:36,856 - Model - INFO - Test Instance Accuracy: 0.582672, Class Accuracy: 0.608055
+2026-03-31 09:29:42,029 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 0.500000
+2026-03-31 09:29:42,029 - Model - INFO - Test Instance Accuracy: 0.929481, Class Accuracy: 0.930452
+2026-03-31 09:29:47,335 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 0.500000
+2026-03-31 09:29:47,336 - Model - INFO - Test Instance Accuracy: 0.568700, Class Accuracy: 0.594816
+2026-03-31 09:29:52,459 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 0.500000
+2026-03-31 09:29:52,459 - Model - INFO - Test Instance Accuracy: 0.564401, Class Accuracy: 0.590834
+2026-03-31 09:29:57,373 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 0.600000
+2026-03-31 09:29:57,374 - Model - INFO - Test Instance Accuracy: 0.934358, Class Accuracy: 0.935618
+2026-03-31 09:30:02,508 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 0.600000
+2026-03-31 09:30:02,508 - Model - INFO - Test Instance Accuracy: 0.549521, Class Accuracy: 0.577047
+2026-03-31 09:30:07,826 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 0.600000
+2026-03-31 09:30:07,827 - Model - INFO - Test Instance Accuracy: 0.559524, Class Accuracy: 0.586315
+2026-03-31 09:30:12,821 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 0.700000
+2026-03-31 09:30:12,822 - Model - INFO - Test Instance Accuracy: 0.937417, Class Accuracy: 0.937008
+2026-03-31 09:30:18,138 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 0.700000
+2026-03-31 09:30:18,139 - Model - INFO - Test Instance Accuracy: 0.537120, Class Accuracy: 0.565558
+2026-03-31 09:30:23,166 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 0.700000
+2026-03-31 09:30:23,167 - Model - INFO - Test Instance Accuracy: 0.559937, Class Accuracy: 0.586575
+2026-03-31 09:30:28,276 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 0.800000
+2026-03-31 09:30:28,277 - Model - INFO - Test Instance Accuracy: 0.939567, Class Accuracy: 0.939694
+2026-03-31 09:30:33,334 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 0.800000
+2026-03-31 09:30:33,334 - Model - INFO - Test Instance Accuracy: 0.533234, Class Accuracy: 0.561958
+2026-03-31 09:30:38,301 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 0.800000
+2026-03-31 09:30:38,301 - Model - INFO - Test Instance Accuracy: 0.567295, Class Accuracy: 0.593503
+2026-03-31 09:30:43,513 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 0.900000
+2026-03-31 09:30:43,514 - Model - INFO - Test Instance Accuracy: 0.934276, Class Accuracy: 0.933375
+2026-03-31 09:30:48,500 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 0.900000
+2026-03-31 09:30:48,501 - Model - INFO - Test Instance Accuracy: 0.529762, Class Accuracy: 0.558741
+2026-03-31 09:30:53,578 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 0.900000
+2026-03-31 09:30:53,579 - Model - INFO - Test Instance Accuracy: 0.571346, Class Accuracy: 0.595975
+2026-03-31 09:30:58,707 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 1.000000
+2026-03-31 09:30:58,707 - Model - INFO - Test Instance Accuracy: 0.934854, Class Accuracy: 0.933358
+2026-03-31 09:31:03,770 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 1.000000
+2026-03-31 09:31:03,771 - Model - INFO - Test Instance Accuracy: 0.525215, Class Accuracy: 0.554528
+2026-03-31 09:31:08,801 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 1.000000
+2026-03-31 09:31:08,802 - Model - INFO - Test Instance Accuracy: 0.589286, Class Accuracy: 0.611423
+2026-03-31 09:31:13,775 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 1.100000
+2026-03-31 09:31:13,775 - Model - INFO - Test Instance Accuracy: 0.924355, Class Accuracy: 0.922290
+2026-03-31 09:31:18,655 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 1.100000
+2026-03-31 09:31:18,655 - Model - INFO - Test Instance Accuracy: 0.524471, Class Accuracy: 0.553839
+2026-03-31 09:31:23,902 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 1.100000
+2026-03-31 09:31:23,903 - Model - INFO - Test Instance Accuracy: 0.597305, Class Accuracy: 0.616972
+2026-03-31 09:31:28,875 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 1.200000
+2026-03-31 09:31:28,895 - Model - INFO - Test Instance Accuracy: 0.915013, Class Accuracy: 0.911032
+2026-03-31 09:31:33,725 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 1.200000
+2026-03-31 09:31:33,725 - Model - INFO - Test Instance Accuracy: 0.522321, Class Accuracy: 0.551848
+2026-03-31 09:31:38,996 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 1.200000
+2026-03-31 09:31:39,014 - Model - INFO - Test Instance Accuracy: 0.612103, Class Accuracy: 0.625804
+2026-03-31 09:31:44,012 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 1.300000
+2026-03-31 09:31:44,013 - Model - INFO - Test Instance Accuracy: 0.885747, Class Accuracy: 0.880893
+2026-03-31 09:31:49,200 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 1.300000
+2026-03-31 09:31:49,200 - Model - INFO - Test Instance Accuracy: 0.519676, Class Accuracy: 0.549397
+2026-03-31 09:31:54,213 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 1.300000
+2026-03-31 09:31:54,214 - Model - INFO - Test Instance Accuracy: 0.625579, Class Accuracy: 0.635970
+2026-03-31 09:31:59,292 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 1.400000
+2026-03-31 09:31:59,293 - Model - INFO - Test Instance Accuracy: 0.861276, Class Accuracy: 0.852951
+2026-03-31 09:32:04,430 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 1.400000
+2026-03-31 09:32:04,431 - Model - INFO - Test Instance Accuracy: 0.518271, Class Accuracy: 0.548095
+2026-03-31 09:32:09,567 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 1.400000
+2026-03-31 09:32:09,568 - Model - INFO - Test Instance Accuracy: 0.626571, Class Accuracy: 0.629801
+2026-03-31 09:32:14,934 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 1.500000
+2026-03-31 09:32:14,934 - Model - INFO - Test Instance Accuracy: 0.836475, Class Accuracy: 0.826572
+2026-03-31 09:32:19,719 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 1.500000
+2026-03-31 09:32:19,736 - Model - INFO - Test Instance Accuracy: 0.516782, Class Accuracy: 0.546685
+2026-03-31 09:32:24,665 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 1.500000
+2026-03-31 09:32:24,666 - Model - INFO - Test Instance Accuracy: 0.648479, Class Accuracy: 0.647426
+2026-03-31 09:32:29,803 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 1.600000
+2026-03-31 09:32:29,803 - Model - INFO - Test Instance Accuracy: 0.801257, Class Accuracy: 0.788006
+2026-03-31 09:32:35,027 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 1.600000
+2026-03-31 09:32:35,028 - Model - INFO - Test Instance Accuracy: 0.516204, Class Accuracy: 0.546149
+2026-03-31 09:32:40,179 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 1.600000
+2026-03-31 09:32:40,180 - Model - INFO - Test Instance Accuracy: 0.649306, Class Accuracy: 0.643199
+2026-03-31 09:32:45,079 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 1.700000
+2026-03-31 09:32:45,079 - Model - INFO - Test Instance Accuracy: 0.771412, Class Accuracy: 0.755806
+2026-03-31 09:32:50,117 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 1.700000
+2026-03-31 09:32:50,118 - Model - INFO - Test Instance Accuracy: 0.515542, Class Accuracy: 0.545567
+2026-03-31 09:32:55,352 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 1.700000
+2026-03-31 09:32:55,353 - Model - INFO - Test Instance Accuracy: 0.670056, Class Accuracy: 0.662119
+2026-03-31 09:33:00,226 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 1.800000
+2026-03-31 09:33:00,226 - Model - INFO - Test Instance Accuracy: 0.745453, Class Accuracy: 0.728257
+2026-03-31 09:33:05,399 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 1.800000
+2026-03-31 09:33:05,399 - Model - INFO - Test Instance Accuracy: 0.515046, Class Accuracy: 0.545046
+2026-03-31 09:33:10,688 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 1.800000
+2026-03-31 09:33:10,688 - Model - INFO - Test Instance Accuracy: 0.659309, Class Accuracy: 0.645561
+2026-03-31 09:33:15,807 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 1.900000
+2026-03-31 09:33:15,808 - Model - INFO - Test Instance Accuracy: 0.709491, Class Accuracy: 0.687961
+2026-03-31 09:33:21,013 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 1.900000
+2026-03-31 09:33:21,015 - Model - INFO - Test Instance Accuracy: 0.514550, Class Accuracy: 0.544587
+2026-03-31 09:33:26,050 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 1.900000
+2026-03-31 09:33:26,063 - Model - INFO - Test Instance Accuracy: 0.670883, Class Accuracy: 0.654016
+2026-03-31 09:33:31,060 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 2.000000
+2026-03-31 09:33:31,081 - Model - INFO - Test Instance Accuracy: 0.681465, Class Accuracy: 0.659943
+2026-03-31 09:33:36,111 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 2.000000
+2026-03-31 09:33:36,111 - Model - INFO - Test Instance Accuracy: 0.513724, Class Accuracy: 0.543851
+2026-03-31 09:33:41,153 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 2.000000
+2026-03-31 09:33:41,154 - Model - INFO - Test Instance Accuracy: 0.668981, Class Accuracy: 0.649627
+2026-03-31 09:33:46,317 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 2.100000
+2026-03-31 09:33:46,318 - Model - INFO - Test Instance Accuracy: 0.674603, Class Accuracy: 0.650821
+2026-03-31 09:33:51,255 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 2.100000
+2026-03-31 09:33:51,255 - Model - INFO - Test Instance Accuracy: 0.514550, Class Accuracy: 0.544525
+2026-03-31 09:33:56,256 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 2.100000
+2026-03-31 09:33:56,257 - Model - INFO - Test Instance Accuracy: 0.654183, Class Accuracy: 0.633702
+2026-03-31 09:34:01,418 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 2.200000
+2026-03-31 09:34:01,419 - Model - INFO - Test Instance Accuracy: 0.639385, Class Accuracy: 0.613141
+2026-03-31 09:34:06,290 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 2.200000
+2026-03-31 09:34:06,290 - Model - INFO - Test Instance Accuracy: 0.514220, Class Accuracy: 0.544219
+2026-03-31 09:34:11,395 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 2.200000
+2026-03-31 09:34:11,396 - Model - INFO - Test Instance Accuracy: 0.658399, Class Accuracy: 0.634856
+2026-03-31 09:34:16,489 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 2.300000
+2026-03-31 09:34:16,490 - Model - INFO - Test Instance Accuracy: 0.625248, Class Accuracy: 0.598600
+2026-03-31 09:34:21,457 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 2.300000
+2026-03-31 09:34:21,457 - Model - INFO - Test Instance Accuracy: 0.513228, Class Accuracy: 0.543331
+2026-03-31 09:34:26,431 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 2.300000
+2026-03-31 09:34:26,432 - Model - INFO - Test Instance Accuracy: 0.647156, Class Accuracy: 0.622706
+2026-03-31 09:34:31,446 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 2.400000
+2026-03-31 09:34:31,446 - Model - INFO - Test Instance Accuracy: 0.602927, Class Accuracy: 0.574472
+2026-03-31 09:34:36,347 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 2.400000
+2026-03-31 09:34:36,347 - Model - INFO - Test Instance Accuracy: 0.514054, Class Accuracy: 0.544035
+2026-03-31 09:34:41,301 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 2.400000
+2026-03-31 09:34:41,302 - Model - INFO - Test Instance Accuracy: 0.659061, Class Accuracy: 0.636457
+2026-03-31 09:34:46,299 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 2.500000
+2026-03-31 09:34:46,300 - Model - INFO - Test Instance Accuracy: 0.599702, Class Accuracy: 0.570842
+2026-03-31 09:34:51,232 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 2.500000
+2026-03-31 09:34:51,233 - Model - INFO - Test Instance Accuracy: 0.512979, Class Accuracy: 0.542953
+2026-03-31 09:34:56,263 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 2.500000
+2026-03-31 09:34:56,264 - Model - INFO - Test Instance Accuracy: 0.650463, Class Accuracy: 0.626295
+2026-03-31 09:35:01,311 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 2.600000
+2026-03-31 09:35:01,312 - Model - INFO - Test Instance Accuracy: 0.589782, Class Accuracy: 0.560893
+2026-03-31 09:35:06,540 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 2.600000
+2026-03-31 09:35:06,541 - Model - INFO - Test Instance Accuracy: 0.515046, Class Accuracy: 0.545016
+2026-03-31 09:35:11,637 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 2.600000
+2026-03-31 09:35:11,638 - Model - INFO - Test Instance Accuracy: 0.650050, Class Accuracy: 0.624713
+2026-03-31 09:35:16,679 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 2.700000
+2026-03-31 09:35:16,680 - Model - INFO - Test Instance Accuracy: 0.575645, Class Accuracy: 0.545643
+2026-03-31 09:35:21,417 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 2.700000
+2026-03-31 09:35:21,417 - Model - INFO - Test Instance Accuracy: 0.514220, Class Accuracy: 0.544072
+2026-03-31 09:35:26,143 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 2.700000
+2026-03-31 09:35:26,143 - Model - INFO - Test Instance Accuracy: 0.648727, Class Accuracy: 0.621631
+2026-03-31 09:35:31,301 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 2.800000
+2026-03-31 09:35:31,301 - Model - INFO - Test Instance Accuracy: 0.568452, Class Accuracy: 0.537593
+2026-03-31 09:35:36,181 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 2.800000
+2026-03-31 09:35:36,182 - Model - INFO - Test Instance Accuracy: 0.513228, Class Accuracy: 0.543122
+2026-03-31 09:35:41,197 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 2.800000
+2026-03-31 09:35:41,198 - Model - INFO - Test Instance Accuracy: 0.639302, Class Accuracy: 0.611576
+2026-03-31 09:35:46,187 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 2.900000
+2026-03-31 09:35:46,188 - Model - INFO - Test Instance Accuracy: 0.561508, Class Accuracy: 0.529488
+2026-03-31 09:35:51,204 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 2.900000
+2026-03-31 09:35:51,205 - Model - INFO - Test Instance Accuracy: 0.512235, Class Accuracy: 0.542050
+2026-03-31 09:35:56,388 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 2.900000
+2026-03-31 09:35:56,399 - Model - INFO - Test Instance Accuracy: 0.640873, Class Accuracy: 0.614027
+2026-03-31 09:36:01,397 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 3.000000
+2026-03-31 09:36:01,398 - Model - INFO - Test Instance Accuracy: 0.556796, Class Accuracy: 0.524916
+2026-03-31 09:36:06,321 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 3.000000
+2026-03-31 09:36:06,322 - Model - INFO - Test Instance Accuracy: 0.512483, Class Accuracy: 0.542279
+2026-03-31 09:36:11,381 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 3.000000
+2026-03-31 09:36:11,381 - Model - INFO - Test Instance Accuracy: 0.643105, Class Accuracy: 0.616772
+2026-03-31 09:36:16,190 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 3.100000
+2026-03-31 09:36:16,191 - Model - INFO - Test Instance Accuracy: 0.554563, Class Accuracy: 0.522166
+2026-03-31 09:36:21,154 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 3.100000
+2026-03-31 09:36:21,155 - Model - INFO - Test Instance Accuracy: 0.514716, Class Accuracy: 0.544587
+2026-03-31 09:36:26,125 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 3.100000
+2026-03-31 09:36:26,125 - Model - INFO - Test Instance Accuracy: 0.632358, Class Accuracy: 0.605116
+2026-03-31 09:36:31,011 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 3.200000
+2026-03-31 09:36:31,012 - Model - INFO - Test Instance Accuracy: 0.548115, Class Accuracy: 0.515395
+2026-03-31 09:36:36,242 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 3.200000
+2026-03-31 09:36:36,242 - Model - INFO - Test Instance Accuracy: 0.513972, Class Accuracy: 0.543775
+2026-03-31 09:36:41,278 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 3.200000
+2026-03-31 09:36:41,279 - Model - INFO - Test Instance Accuracy: 0.638641, Class Accuracy: 0.612023
+2026-03-31 09:36:46,248 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 3.300000
+2026-03-31 09:36:46,249 - Model - INFO - Test Instance Accuracy: 0.546627, Class Accuracy: 0.514645
+2026-03-31 09:36:51,119 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 3.300000
+2026-03-31 09:36:51,120 - Model - INFO - Test Instance Accuracy: 0.514468, Class Accuracy: 0.544240
+2026-03-31 09:36:56,293 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 3.300000
+2026-03-31 09:36:56,293 - Model - INFO - Test Instance Accuracy: 0.652530, Class Accuracy: 0.625904
+2026-03-31 09:37:01,392 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 3.400000
+2026-03-31 09:37:01,392 - Model - INFO - Test Instance Accuracy: 0.543651, Class Accuracy: 0.511520
+2026-03-31 09:37:06,291 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 3.400000
+2026-03-31 09:37:06,292 - Model - INFO - Test Instance Accuracy: 0.511491, Class Accuracy: 0.541299
+2026-03-31 09:37:11,467 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 3.400000
+2026-03-31 09:37:11,467 - Model - INFO - Test Instance Accuracy: 0.635913, Class Accuracy: 0.608401
+2026-03-31 09:37:16,659 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 3.500000
+2026-03-31 09:37:16,659 - Model - INFO - Test Instance Accuracy: 0.543403, Class Accuracy: 0.510417
+2026-03-31 09:37:21,632 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 3.500000
+2026-03-31 09:37:21,632 - Model - INFO - Test Instance Accuracy: 0.514550, Class Accuracy: 0.544433
+2026-03-31 09:37:26,731 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 3.500000
+2026-03-31 09:37:26,732 - Model - INFO - Test Instance Accuracy: 0.639054, Class Accuracy: 0.612320
+2026-03-31 09:37:31,524 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 3.600000
+2026-03-31 09:37:31,524 - Model - INFO - Test Instance Accuracy: 0.541915, Class Accuracy: 0.509291
+2026-03-31 09:37:36,376 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 3.600000
+2026-03-31 09:37:36,377 - Model - INFO - Test Instance Accuracy: 0.514220, Class Accuracy: 0.543827
+2026-03-31 09:37:41,443 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 3.600000
+2026-03-31 09:37:41,444 - Model - INFO - Test Instance Accuracy: 0.639137, Class Accuracy: 0.611898
+2026-03-31 09:37:46,373 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 3.700000
+2026-03-31 09:37:46,373 - Model - INFO - Test Instance Accuracy: 0.539683, Class Accuracy: 0.506510
+2026-03-31 09:37:51,419 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 3.700000
+2026-03-31 09:37:51,420 - Model - INFO - Test Instance Accuracy: 0.514964, Class Accuracy: 0.544608
+2026-03-31 09:37:56,290 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 3.700000
+2026-03-31 09:37:56,290 - Model - INFO - Test Instance Accuracy: 0.643601, Class Accuracy: 0.616906
+2026-03-31 09:38:01,119 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 3.800000
+2026-03-31 09:38:01,119 - Model - INFO - Test Instance Accuracy: 0.537946, Class Accuracy: 0.504718
+2026-03-31 09:38:06,179 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 3.800000
+2026-03-31 09:38:06,179 - Model - INFO - Test Instance Accuracy: 0.515212, Class Accuracy: 0.544776
+2026-03-31 09:38:11,135 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 3.800000
+2026-03-31 09:38:11,136 - Model - INFO - Test Instance Accuracy: 0.643849, Class Accuracy: 0.616410
+2026-03-31 09:38:16,060 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 3.900000
+2026-03-31 09:38:16,060 - Model - INFO - Test Instance Accuracy: 0.538194, Class Accuracy: 0.504831
+2026-03-31 09:38:20,956 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 3.900000
+2026-03-31 09:38:20,957 - Model - INFO - Test Instance Accuracy: 0.514716, Class Accuracy: 0.544433
+2026-03-31 09:38:25,942 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 3.900000
+2026-03-31 09:38:25,942 - Model - INFO - Test Instance Accuracy: 0.635665, Class Accuracy: 0.607820
+2026-03-31 09:38:31,063 - Model - INFO - Perturbation channels: [0, 1, 2], Perturbation epsilon: 4.000000
+2026-03-31 09:38:31,063 - Model - INFO - Test Instance Accuracy: 0.539187, Class Accuracy: 0.505990
+2026-03-31 09:38:36,046 - Model - INFO - Perturbation channels: [3], Perturbation epsilon: 4.000000
+2026-03-31 09:38:36,046 - Model - INFO - Test Instance Accuracy: 0.514220, Class Accuracy: 0.544005
+2026-03-31 09:38:41,149 - Model - INFO - Perturbation channels: [0, 1, 2, 3], Perturbation epsilon: 4.000000
+2026-03-31 09:38:41,150 - Model - INFO - Test Instance Accuracy: 0.640873, Class Accuracy: 0.613579
