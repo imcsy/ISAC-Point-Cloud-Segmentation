@@ -3,7 +3,7 @@ test classification using 5-channel models
 generate AD channel directly without NN
 """
 from data_utils.ModelNetDataLoader import ModelNetDataLoader
-from defense_utils.generative_adversarial_network import perturbation_attack, weighted_dist_per, generative_network
+from defense_utils.generative_adversarial_network import perturbation_attack, weighted_dist_per, add_ADchannel
 import argparse
 import numpy as np
 import os
@@ -38,29 +38,6 @@ def parse_args():
     parser.add_argument('--num_point', type=int, default=16, help='Point Number')
     return parser.parse_args()
 
-# def perturbation_attack(points, channels, eps):
-#     """
-#     Adds Gaussian jitter to specified channels of a point cloud tensor.
-    
-#     Args:
-#         points: Input tensor of shape (batch_size, npoints, dim_input)
-#         channels: List of indices to perturb, e.g., [0, 1, 2] for XYZ
-#         delta: The standard deviation of the Gaussian noise
-        
-#     Returns:
-#         perturbed_points: A new tensor with noise added
-#     """
-#     perturbed_points = points.clone()
-#     target_data = points[:, :, channels].reshape(-1, len(channels)) 
-
-#     sigma = torch.std(target_data, dim=0)
-
-#     noise_shape = (points.shape[0], points.shape[1], len(channels))
-#     jitter = torch.randn(noise_shape, device=points.device) * eps * sigma
-    
-#     perturbed_points[:, :, channels] += jitter
-#     return perturbed_points
-
 
 def test(model, loader, num_class=40, vote_num=1, perturb_channels=[0,1,2], perturb_eps=0):
     mean_correct = []
@@ -73,10 +50,10 @@ def test(model, loader, num_class=40, vote_num=1, perturb_channels=[0,1,2], pert
 
         # add perturbated attack
         if perturb_eps != 0:
-            points = generative_network(points, is_perturbed=True,
+            points = add_ADchannel(points, is_perturbed=True,
                                 channels=[0, 1, 2, 3], eps=1)  # (B, N, 5)
         else:
-            points = generative_network(points, is_perturbed=False)
+            points = add_ADchannel(points, is_perturbed=False)
 
         points = points.transpose(2, 1)
         vote_pool = torch.zeros(target.size()[0], num_class).cuda()

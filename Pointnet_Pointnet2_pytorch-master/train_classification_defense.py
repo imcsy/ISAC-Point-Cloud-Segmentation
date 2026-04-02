@@ -1,5 +1,6 @@
 """
-Add SentryNet section
+generate AD channel directly and feed into PointNet for training (to test AD metric)
+NOT using PointGuard network yet
 """
 
 import os
@@ -17,6 +18,7 @@ import argparse
 from pathlib import Path
 from tqdm import tqdm
 from data_utils.ModelNetDataLoader import ModelNetDataLoader
+from defense_utils.generative_adversarial_network import perturbation_attack, weighted_dist_per, add_ADchannel
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = BASE_DIR
@@ -32,7 +34,7 @@ def parse_args():
     parser.add_argument('--num_category', default=40, type=int, choices=[2, 10, 40],  help='training on ModelNet10/40')
     parser.add_argument('--epoch', default=200, type=int, help='number of epoch in training')
     parser.add_argument('--learning_rate', default=0.001, type=float, help='learning rate in training')
-    parser.add_argument('--num_point', type=int, default=1024, help='Point Number')
+    parser.add_argument('--num_point', type=int, default=16, help='Point Number')
     parser.add_argument('--optimizer', type=str, default='Adam', help='optimizer for training')
     parser.add_argument('--log_dir', type=str, default=None, help='experiment root')
     parser.add_argument('--decay_rate', type=float, default=1e-4, help='decay rate')
@@ -45,101 +47,76 @@ def parse_args():
     # parser.add_argument('--shift', action='store_true', default=False, help='use shift when training')
     return parser.parse_args()
 
-def perturbation_attack(points, channels, eps):
-    """
-    Adds Gaussian jitter to specified channels of a point cloud tensor.
+# def perturbation_attack(points, channels, eps):
+#     """
+#     Adds Gaussian jitter to specified channels of a point cloud tensor.
     
-    Args:
-        points: Input tensor of shape (batch_size, npoints, dim_input)
-        channels: List of indices to perturb, e.g., [0, 1, 2] for XYZ
-        eps: The standard deviation of the Gaussian noise
+#     Args:
+#         points: Input tensor of shape (batch_size, npoints, dim_input)
+#         channels: List of indices to perturb, e.g., [0, 1, 2] for XYZ
+#         eps: The standard deviation of the Gaussian noise
         
-    Returns:
-        perturbed_points: A new tensor with noise added
-    """
-    perturbed_points = points.clone()
-    target_data = points[:, :, channels].reshape(-1, len(channels)) 
+#     Returns:
+#         perturbed_points: A new tensor with noise added
+#     """
+#     perturbed_points = points.clone()
+#     target_data = points[:, :, channels].reshape(-1, len(channels)) 
 
-    sigma = torch.std(target_data, axis=0).to(points.device)
+#     sigma = torch.std(target_data, axis=0).to(points.device)
 
-    noise_shape = (points.shape[0], points.shape[1], len(channels))
-    jitter = torch.randn(noise_shape, device=points.device) * eps * sigma
+#     noise_shape = (points.shape[0], points.shape[1], len(channels))
+#     jitter = torch.randn(noise_shape, device=points.device) * eps * sigma
     
-    perturbed_points[:, :, channels] += jitter
-    return perturbed_points, sigma
+#     perturbed_points[:, :, channels] += jitter
+#     return perturbed_points, sigma
 
-def weighted_dist_per(clean_points, per_points, weights):
-    '''
-    calculate the Weighted Euclidean Distance between clean_points and per_points
-    input: clean_points / per_points # (batch_size, npoints, 4)
-           weights # (4)
-    output: weighted distance between clean_point and per_points # ((batch_size, npoints, 1)
-    '''
-    # ps_ref, ps_att = ps_ref[0], ps_att[0]       # add loop for batch
-    ps_ref = clean_points.reshape(-1,4)
-    ps_att = per_points.reshape(-1,4)
-    dist_vec = torch.zeros(ps_ref.shape[0], dtype=torch.float32)
-    for i, p_ref in enumerate(ps_ref):
-        p_att = ps_att[i] 
-        diff = (p_ref - p_att) ** 2
-        dist_vec[i] = torch.dot(diff, weights)
+# def weighted_dist_per(clean_points, per_points, weights):
+#     '''
+#     calculate the Weighted Euclidean Distance between clean_points and per_points
+#     input: clean_points / per_points # (batch_size, npoints, 4)
+#            weights # (4)
+#     output: weighted distance between clean_point and per_points # ((batch_size, npoints, 1)
+#     '''
+#     # ps_ref, ps_att = ps_ref[0], ps_att[0]       # add loop for batch
+#     ps_ref = clean_points.reshape(-1,4)
+#     ps_att = per_points.reshape(-1,4)
+#     dist_vec = torch.zeros(ps_ref.shape[0], dtype=torch.float32)
+#     for i, p_ref in enumerate(ps_ref):
+#         p_att = ps_att[i] 
+#         diff = (p_ref - p_att) ** 2
+#         dist_vec[i] = torch.dot(diff, weights)
 
-    dist_vec = dist_vec.reshape(clean_points.shape[0], clean_points.shape[1], 1)
-    dist_vec = torch.tensor(dist_vec)
-    return dist_vec
+#     dist_vec = dist_vec.reshape(clean_points.shape[0], clean_points.shape[1], 1)
+#     dist_vec = torch.tensor(dist_vec)
+#     return dist_vec
 
-def generative_network(clean_points, is_perturbed, channels=[0,1,2,3], eps=0):
-    '''
-    Add 5-th channel (abnormal detector) to the points data using generative model
+# def generative_network(clean_points, is_perturbed, channels=[0,1,2,3], eps=0):
+#     '''
+#     Add 5-th channel (abnormal detector) to the points data using generative model
 
-    Input: clean points # (batch_size, npoints, 4)
-    Return: clean/perturbed points + abnormal detetcor # (batch_size, npoints, 5)
-    '''
-    if is_perturbed:
-        per_points, sigma = perturbation_attack(clean_points, channels, eps)
-        weights = torch.zeros(4, dtype=torch.float32, device=clean_points.device)
-        weights[channels] = 1 / (sigma**2)  # **2 or not
-        weights[-1] = weights[-1] * 3
-        dist = weighted_dist_per(clean_points, per_points, weights)
-        lam = 1
-        ad_channel = torch.exp(-lam*dist).to(clean_points.device)
-        out = torch.cat([per_points, ad_channel], dim=2)
-    else:
-        ad_channel = torch.ones(clean_points.shape[0], clean_points.shape[1], 1, device=clean_points.device)
-        out = out = torch.cat([clean_points, ad_channel], dim=2)
+#     Input: clean points # (batch_size, npoints, 4)
+#     Return: clean/perturbed points + abnormal detetcor # (batch_size, npoints, 5)
+#     '''
+#     if is_perturbed:
+#         per_points, sigma = perturbation_attack(clean_points, channels, eps)
+#         weights = torch.zeros(4, dtype=torch.float32, device=clean_points.device)
+#         weights[channels] = 1 / (sigma**2)  # **2 or not
+#         weights[-1] = weights[-1] * 3
+#         dist = weighted_dist_per(clean_points, per_points, weights)
+#         lam = 1
+#         ad_channel = torch.exp(-lam*dist).to(clean_points.device)
+#         out = torch.cat([per_points, ad_channel], dim=2)
+#     else:
+#         ad_channel = torch.ones(clean_points.shape[0], clean_points.shape[1], 1, device=clean_points.device)
+#         out = out = torch.cat([clean_points, ad_channel], dim=2)
         
-    return out
+#     return out
 
 def inplace_relu(m):
     classname = m.__class__.__name__
     if classname.find('ReLU') != -1:
         m.inplace=True
 
-
-'''
-
-            # clean
-            clean_points = generative_network(points, is_perturbed=False)  # (B, N, 5)
-            clean_points = clean_points.transpose(2, 1)                    # (B, 5, N)
-            pred_clean, trans_feat_clean = classifier(clean_points)
-            loss_clean = criterion(pred_clean, target.long(), trans_feat_clean)
-
-            pred_choice_clean = pred_clean.data.max(1)[1]
-            correct_clean = pred_choice_clean.eq(target.long().data).cpu().sum()
-            mean_correct_clean.append(correct_clean.item() / float(points.size()[0]))
-
-            # perturbed
-            per_points = generative_network(points, is_perturbed=True,
-                                    channels=[0, 1, 2, 3], eps=1)  # (B, N, 5)
-            per_points = per_points.transpose(2, 1)                               # (B, 5, N)
-            pred_per, trans_feat_per = classifier(per_points)
-            loss_per = criterion(pred_per, target.long(), trans_feat_per)
-
-            pred_choice_per = pred_per.data.max(1)[1]
-            correct_per = pred_choice_per.eq(target.long().data).cpu().sum()
-            mean_correct_per.append(correct_per.item() / float(points.size()[0]))
-
-'''
 
 def test(model, loader, num_class=40):
     mean_correct_clean = []
@@ -154,13 +131,13 @@ def test(model, loader, num_class=40):
             points, target = points.cuda(), target.cuda()
 
         # clean data
-        clean_points = generative_network(points, is_perturbed=False)  # (B, N, 5)
+        clean_points = add_ADchannel(points, is_perturbed=False)  # (B, N, 5)
         clean_points = clean_points.transpose(2, 1)                    # (B, 5, N)
         pred_clean, _ = classifier(clean_points)
         pred_choice_clean = pred_clean.data.max(1)[1]
 
         # perturbed
-        per_points = generative_network(points, is_perturbed=True,
+        per_points = add_ADchannel(points, is_perturbed=True,
                                 channels=[0, 1, 2, 3], eps=1)  # (B, N, 5)
         per_points = per_points.transpose(2, 1)                               # (B, 5, N)
         pred_per, _ = classifier(per_points)
@@ -266,15 +243,6 @@ def main(args):
         classifier = classifier.cuda()
         criterion = criterion.cuda()
 
-    # try:
-    #     checkpoint = torch.load(str(exp_dir) + '/checkpoints/best_model.pth')
-    #     start_epoch = checkpoint['epoch']
-    #     classifier.load_state_dict(checkpoint['model_state_dict'])
-    #     log_string('Use pretrain model')
-    # except:
-    #     log_string('No existing model, starting training from scratch...')
-    #     start_epoch = 0
-
     start_epoch = 0
 
     if args.optimizer == 'Adam':
@@ -316,7 +284,7 @@ def main(args):
                 points, target = points.cuda(), target.cuda()
 
             # clean
-            clean_points = generative_network(points, is_perturbed=False)  # (B, N, 5)
+            clean_points = add_ADchannel(points, is_perturbed=False)  # (B, N, 5)
             clean_points = clean_points.transpose(2, 1)                    # (B, 5, N)
             pred_clean, trans_feat_clean = classifier(clean_points)
             loss_clean = criterion(pred_clean, target.long(), trans_feat_clean)
@@ -326,7 +294,7 @@ def main(args):
             mean_correct_clean.append(correct_clean.item() / float(points.size()[0]))
 
             # perturbed
-            per_points = generative_network(points, is_perturbed=True,
+            per_points = add_ADchannel(points, is_perturbed=True,
                                     channels=[0, 1, 2, 3], eps=1)  # (B, N, 5)
             per_points = per_points.transpose(2, 1)                               # (B, 5, N)
             pred_per, trans_feat_per = classifier(per_points)
@@ -365,7 +333,7 @@ def main(args):
             log_string('Test Instance Accuracy for pertuebed data: %f, Class Accuracy for pertuebed data: %f' % (instance_acc_per, class_acc_per))
             log_string('Best Instance Accuracy for pertuebed data: %f, Class Accuracy for pertuebed data: %f' % (best_instance_acc_per, best_class_acc_per))
 
-            if (instance_acc_per >= best_instance_acc_per):
+            if (instance_acc_per >= best_instance_acc_clean):
                 logger.info('Save model...')
                 savepath = str(checkpoints_dir) + '/best_model.pth'
                 log_string('Saving at %s' % savepath)
