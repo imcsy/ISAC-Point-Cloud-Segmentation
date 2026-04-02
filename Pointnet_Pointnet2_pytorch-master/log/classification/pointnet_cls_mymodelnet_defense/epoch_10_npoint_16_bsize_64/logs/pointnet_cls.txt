@@ -1,0 +1,188 @@
+2026-04-02 08:18:43,179 - Model - INFO - PARAMETER ...
+2026-04-02 08:18:43,182 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=64, model='pointnet_cls', num_category=2, epoch=10, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointnet_cls_mymodelnet_defense', decay_rate=0.0001, num_channel=4, process_data=False, use_uniform_sample=False)
+2026-04-02 08:18:43,183 - Model - INFO - Load dataset ...
+2026-04-02 08:32:12,278 - Model - INFO - PARAMETER ...
+2026-04-02 08:32:12,685 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=64, model='pointnet_cls', num_category=2, epoch=10, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointnet_cls_mymodelnet_defense', decay_rate=0.0001, num_channel=4, process_data=False, use_uniform_sample=False)
+2026-04-02 08:32:12,687 - Model - INFO - Load dataset ...
+2026-04-02 08:32:23,706 - Model - INFO - Start training...
+2026-04-02 08:32:23,792 - Model - INFO - Epoch 1 (1/10):
+2026-04-02 08:49:13,083 - Model - INFO - PARAMETER ...
+2026-04-02 08:49:13,083 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=64, model='pointnet_cls', num_category=2, epoch=10, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointnet_cls_mymodelnet_defense', decay_rate=0.0001, num_channel=4, process_data=False, use_uniform_sample=False)
+2026-04-02 08:49:13,084 - Model - INFO - Load dataset ...
+2026-04-02 08:49:14,743 - Model - INFO - Start training...
+2026-04-02 08:49:14,743 - Model - INFO - Epoch 1 (1/10):
+2026-04-02 08:52:38,586 - Model - INFO - PARAMETER ...
+2026-04-02 08:52:38,587 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=64, model='pointnet_cls', num_category=2, epoch=10, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointnet_cls_mymodelnet_defense', decay_rate=0.0001, num_channel=4, process_data=False, use_uniform_sample=False)
+2026-04-02 08:52:38,588 - Model - INFO - Load dataset ...
+2026-04-02 08:52:40,008 - Model - INFO - Start training...
+2026-04-02 08:52:40,008 - Model - INFO - Epoch 1 (1/10):
+2026-04-02 08:52:59,566 - Model - INFO - PARAMETER ...
+2026-04-02 08:52:59,568 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=64, model='pointnet_cls', num_category=2, epoch=10, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointnet_cls_mymodelnet_defense', decay_rate=0.0001, num_channel=4, process_data=False, use_uniform_sample=False)
+2026-04-02 08:52:59,569 - Model - INFO - Load dataset ...
+2026-04-02 08:53:00,991 - Model - INFO - Start training...
+2026-04-02 08:53:00,992 - Model - INFO - Epoch 1 (1/10):
+2026-04-02 08:54:50,653 - Model - INFO - PARAMETER ...
+2026-04-02 08:54:50,655 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=64, model='pointnet_cls', num_category=2, epoch=10, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointnet_cls_mymodelnet_defense', decay_rate=0.0001, num_channel=4, process_data=False, use_uniform_sample=False)
+2026-04-02 08:54:50,655 - Model - INFO - Load dataset ...
+2026-04-02 08:54:52,138 - Model - INFO - Start training...
+2026-04-02 08:54:52,138 - Model - INFO - Epoch 1 (1/10):
+2026-04-02 08:55:12,279 - Model - INFO - PARAMETER ...
+2026-04-02 08:55:12,280 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=64, model='pointnet_cls', num_category=2, epoch=10, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointnet_cls_mymodelnet_defense', decay_rate=0.0001, num_channel=4, process_data=False, use_uniform_sample=False)
+2026-04-02 08:55:12,281 - Model - INFO - Load dataset ...
+2026-04-02 08:55:14,187 - Model - INFO - Start training...
+2026-04-02 08:55:14,187 - Model - INFO - Epoch 1 (1/10):
+2026-04-02 08:55:51,161 - Model - INFO - Train Instance Accuracy for clean data: 0.933968
+2026-04-02 08:55:51,163 - Model - INFO - Train Instance Accuracy for pertuebed data: 0.851241
+2026-04-02 09:09:45,869 - Model - INFO - PARAMETER ...
+2026-04-02 09:09:45,871 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=64, model='pointnet_cls', num_category=2, epoch=10, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointnet_cls_mymodelnet_defense', decay_rate=0.0001, num_channel=4, process_data=False, use_uniform_sample=False)
+2026-04-02 09:09:45,873 - Model - INFO - Load dataset ...
+2026-04-02 09:09:47,323 - Model - INFO - Start training...
+2026-04-02 09:09:47,323 - Model - INFO - Epoch 1 (1/10):
+2026-04-02 09:10:24,480 - Model - INFO - Train Instance Accuracy for clean data: 0.931828
+2026-04-02 09:10:24,481 - Model - INFO - Train Instance Accuracy for pertuebed data: 0.847817
+2026-04-02 09:10:24,482 - Model - INFO - Epoch 2 (2/10):
+2026-04-02 09:11:03,580 - Model - INFO - Train Instance Accuracy for clean data: 0.952055
+2026-04-02 09:11:03,583 - Model - INFO - Train Instance Accuracy for pertuebed data: 0.877783
+2026-04-02 09:11:03,584 - Model - INFO - Epoch 3 (3/10):
+2026-04-02 09:11:40,854 - Model - INFO - Train Instance Accuracy for clean data: 0.951199
+2026-04-02 09:11:40,855 - Model - INFO - Train Instance Accuracy for pertuebed data: 0.886237
+2026-04-02 09:11:40,856 - Model - INFO - Epoch 4 (4/10):
+2026-04-02 09:12:18,445 - Model - INFO - Train Instance Accuracy for clean data: 0.961794
+2026-04-02 09:12:18,446 - Model - INFO - Train Instance Accuracy for pertuebed data: 0.893086
+2026-04-02 09:12:18,447 - Model - INFO - Epoch 5 (5/10):
+2026-04-02 09:12:56,261 - Model - INFO - Train Instance Accuracy for clean data: 0.957513
+2026-04-02 09:12:56,262 - Model - INFO - Train Instance Accuracy for pertuebed data: 0.892230
+2026-04-02 09:12:56,263 - Model - INFO - Epoch 6 (6/10):
+2026-04-02 09:13:33,733 - Model - INFO - Train Instance Accuracy for clean data: 0.958690
+2026-04-02 09:13:33,736 - Model - INFO - Train Instance Accuracy for pertuebed data: 0.897153
+2026-04-02 09:13:33,739 - Model - INFO - Epoch 7 (7/10):
+2026-04-02 09:14:11,450 - Model - INFO - Train Instance Accuracy for clean data: 0.960509
+2026-04-02 09:14:11,453 - Model - INFO - Train Instance Accuracy for pertuebed data: 0.902290
+2026-04-02 09:14:11,453 - Model - INFO - Epoch 8 (8/10):
+2026-04-02 09:14:48,324 - Model - INFO - Train Instance Accuracy for clean data: 0.961259
+2026-04-02 09:14:48,325 - Model - INFO - Train Instance Accuracy for pertuebed data: 0.899508
+2026-04-02 09:14:48,326 - Model - INFO - Epoch 9 (9/10):
+2026-04-02 09:15:26,799 - Model - INFO - Train Instance Accuracy for clean data: 0.962757
+2026-04-02 09:15:26,800 - Model - INFO - Train Instance Accuracy for pertuebed data: 0.905715
+2026-04-02 09:15:26,801 - Model - INFO - Epoch 10 (10/10):
+2026-04-02 09:16:04,051 - Model - INFO - Train Instance Accuracy for clean data: 0.961794
+2026-04-02 09:16:04,052 - Model - INFO - Train Instance Accuracy for pertuebed data: 0.904003
+2026-04-02 09:16:04,053 - Model - INFO - End of training...
+2026-04-02 09:36:43,923 - Model - INFO - PARAMETER ...
+2026-04-02 09:36:43,925 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=64, model='pointnet_cls', num_category=2, epoch=10, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointnet_cls_mymodelnet_defense', decay_rate=0.0001, num_channel=4, process_data=False, use_uniform_sample=False)
+2026-04-02 09:36:43,926 - Model - INFO - Load dataset ...
+2026-04-02 09:36:45,323 - Model - INFO - Start training...
+2026-04-02 09:36:45,324 - Model - INFO - Epoch 1 (1/10):
+2026-04-02 09:37:22,233 - Model - INFO - Train Instance Accuracy for clean data: 0.927547
+2026-04-02 09:37:22,234 - Model - INFO - Train Instance Accuracy for pertuebed data: 0.846211
+2026-04-02 09:37:31,785 - Model - INFO - Test Instance Accuracy for clean data: 0.930886, Class Accuracy for clean data: 0.929865
+2026-04-02 09:37:31,786 - Model - INFO - Best Instance Accuracy for clean data: 0.930886, Class Accuracy for clean data: 0.929865
+2026-04-02 09:37:31,787 - Model - INFO - Save model...
+2026-04-02 09:37:31,788 - Model - INFO - Saving at log/classification/pointnet_cls_mymodelnet_defense/epoch_10_npoint_16_bsize_64/checkpoints/best_model.pth
+2026-04-02 09:37:32,116 - Model - INFO - Epoch 2 (2/10):
+2026-04-02 09:38:10,197 - Model - INFO - Train Instance Accuracy for clean data: 0.951520
+2026-04-02 09:38:10,199 - Model - INFO - Train Instance Accuracy for pertuebed data: 0.877247
+2026-04-02 09:38:19,650 - Model - INFO - Test Instance Accuracy for clean data: 0.937913, Class Accuracy for clean data: 0.936180
+2026-04-02 09:38:19,653 - Model - INFO - Best Instance Accuracy for clean data: 0.937913, Class Accuracy for clean data: 0.936180
+2026-04-02 09:38:19,653 - Model - INFO - Save model...
+2026-04-02 09:38:19,654 - Model - INFO - Saving at log/classification/pointnet_cls_mymodelnet_defense/epoch_10_npoint_16_bsize_64/checkpoints/best_model.pth
+2026-04-02 09:38:19,994 - Model - INFO - Epoch 3 (3/10):
+2026-04-02 09:38:58,084 - Model - INFO - Train Instance Accuracy for clean data: 0.952269
+2026-04-02 09:38:58,087 - Model - INFO - Train Instance Accuracy for pertuebed data: 0.885809
+2026-04-02 09:39:06,841 - Model - INFO - Test Instance Accuracy for clean data: 0.920056, Class Accuracy for clean data: 0.917032
+2026-04-02 09:39:06,842 - Model - INFO - Best Instance Accuracy for clean data: 0.937913, Class Accuracy for clean data: 0.936180
+2026-04-02 09:39:06,843 - Model - INFO - Epoch 4 (4/10):
+2026-04-02 09:39:44,917 - Model - INFO - Train Instance Accuracy for clean data: 0.955158
+2026-04-02 09:39:44,918 - Model - INFO - Train Instance Accuracy for pertuebed data: 0.889234
+2026-04-02 09:39:53,401 - Model - INFO - Test Instance Accuracy for clean data: 0.930721, Class Accuracy for clean data: 0.928505
+2026-04-02 09:39:53,403 - Model - INFO - Best Instance Accuracy for clean data: 0.937913, Class Accuracy for clean data: 0.936180
+2026-04-02 09:39:53,404 - Model - INFO - Epoch 5 (5/10):
+2026-04-02 09:40:31,732 - Model - INFO - Train Instance Accuracy for clean data: 0.958262
+2026-04-02 09:40:31,733 - Model - INFO - Train Instance Accuracy for pertuebed data: 0.893301
+2026-04-02 09:40:40,079 - Model - INFO - Test Instance Accuracy for clean data: 0.931713, Class Accuracy for clean data: 0.929614
+2026-04-02 09:40:40,080 - Model - INFO - Best Instance Accuracy for clean data: 0.937913, Class Accuracy for clean data: 0.936180
+2026-04-02 09:40:40,080 - Model - INFO - Epoch 6 (6/10):
+2026-04-02 09:41:17,610 - Model - INFO - Train Instance Accuracy for clean data: 0.960081
+2026-04-02 09:41:17,612 - Model - INFO - Train Instance Accuracy for pertuebed data: 0.899294
+2026-04-02 09:41:26,225 - Model - INFO - Test Instance Accuracy for clean data: 0.931713, Class Accuracy for clean data: 0.929831
+2026-04-02 09:41:26,227 - Model - INFO - Best Instance Accuracy for clean data: 0.937913, Class Accuracy for clean data: 0.936180
+2026-04-02 09:41:26,228 - Model - INFO - Epoch 7 (7/10):
+2026-04-02 09:42:03,326 - Model - INFO - Train Instance Accuracy for clean data: 0.960830
+2026-04-02 09:42:03,327 - Model - INFO - Train Instance Accuracy for pertuebed data: 0.900257
+2026-04-02 09:42:11,872 - Model - INFO - Test Instance Accuracy for clean data: 0.923528, Class Accuracy for clean data: 0.920953
+2026-04-02 09:42:11,875 - Model - INFO - Best Instance Accuracy for clean data: 0.937913, Class Accuracy for clean data: 0.936180
+2026-04-02 09:42:11,876 - Model - INFO - Epoch 8 (8/10):
+2026-04-02 09:42:48,843 - Model - INFO - Train Instance Accuracy for clean data: 0.963827
+2026-04-02 09:42:48,844 - Model - INFO - Train Instance Accuracy for pertuebed data: 0.899829
+2026-04-02 09:42:58,035 - Model - INFO - Test Instance Accuracy for clean data: 0.925017, Class Accuracy for clean data: 0.922769
+2026-04-02 09:42:58,039 - Model - INFO - Best Instance Accuracy for clean data: 0.937913, Class Accuracy for clean data: 0.936180
+2026-04-02 09:42:58,040 - Model - INFO - Epoch 9 (9/10):
+2026-04-02 09:43:34,846 - Model - INFO - Train Instance Accuracy for clean data: 0.962008
+2026-04-02 09:43:34,847 - Model - INFO - Train Instance Accuracy for pertuebed data: 0.904859
+2026-04-02 09:43:43,854 - Model - INFO - Test Instance Accuracy for clean data: 0.933862, Class Accuracy for clean data: 0.932563
+2026-04-02 09:43:43,855 - Model - INFO - Best Instance Accuracy for clean data: 0.937913, Class Accuracy for clean data: 0.936180
+2026-04-02 09:43:43,856 - Model - INFO - Epoch 10 (10/10):
+2026-04-02 09:44:20,903 - Model - INFO - Train Instance Accuracy for clean data: 0.963185
+2026-04-02 09:44:20,904 - Model - INFO - Train Instance Accuracy for pertuebed data: 0.907427
+2026-04-02 09:44:30,271 - Model - INFO - Test Instance Accuracy for clean data: 0.933449, Class Accuracy for clean data: 0.931996
+2026-04-02 09:44:30,272 - Model - INFO - Best Instance Accuracy for clean data: 0.937913, Class Accuracy for clean data: 0.936180
+2026-04-02 09:44:30,273 - Model - INFO - End of training...
+2026-04-02 11:25:58,916 - Model - INFO - PARAMETER ...
+2026-04-02 11:25:59,757 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=64, model='pointnet_cls', num_category=2, epoch=10, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointnet_cls_mymodelnet_defense', decay_rate=0.0001, num_channel=4, process_data=False, use_uniform_sample=False)
+2026-04-02 11:25:59,763 - Model - INFO - Load dataset ...
+2026-04-02 11:26:21,653 - Model - INFO - Start training...
+2026-04-02 11:26:21,654 - Model - INFO - Epoch 1 (1/10):
+2026-04-02 11:39:56,230 - Model - INFO - Train Instance Accuracy for clean data: 0.930651
+2026-04-02 11:39:56,230 - Model - INFO - Train Instance Accuracy for pertuebed data: 0.844499
+2026-04-02 11:46:16,161 - Model - INFO - Test Instance Accuracy for clean data: 0.942874, Class Accuracy for clean data: 0.941455
+2026-04-02 11:46:16,162 - Model - INFO - Best Instance Accuracy for clean data: 0.942874, Class Accuracy for clean data: 0.941455
+2026-04-02 11:46:16,162 - Model - INFO - Save model...
+2026-04-02 11:46:16,162 - Model - INFO - Saving at log/classification/pointnet_cls_mymodelnet_defense/epoch_10_npoint_16_bsize_64/checkpoints/best_model.pth
+2026-04-02 11:46:20,213 - Model - INFO - Epoch 2 (2/10):
+2026-04-02 11:46:57,795 - Model - INFO - Train Instance Accuracy for clean data: 0.950235
+2026-04-02 11:46:57,795 - Model - INFO - Train Instance Accuracy for pertuebed data: 0.880886
+2026-04-02 11:47:07,246 - Model - INFO - Test Instance Accuracy for clean data: 0.942130, Class Accuracy for clean data: 0.940921
+2026-04-02 11:47:07,246 - Model - INFO - Best Instance Accuracy for clean data: 0.942874, Class Accuracy for clean data: 0.941455
+2026-04-02 11:47:07,247 - Model - INFO - Epoch 3 (3/10):
+2026-04-02 11:47:44,645 - Model - INFO - Train Instance Accuracy for clean data: 0.949165
+2026-04-02 11:47:44,647 - Model - INFO - Train Instance Accuracy for pertuebed data: 0.884204
+2026-04-02 11:47:53,989 - Model - INFO - Test Instance Accuracy for clean data: 0.920966, Class Accuracy for clean data: 0.919504
+2026-04-02 11:47:53,989 - Model - INFO - Best Instance Accuracy for clean data: 0.942874, Class Accuracy for clean data: 0.941455
+2026-04-02 11:47:53,990 - Model - INFO - Epoch 4 (4/10):
+2026-04-02 11:48:33,389 - Model - INFO - Train Instance Accuracy for clean data: 0.954516
+2026-04-02 11:48:33,391 - Model - INFO - Train Instance Accuracy for pertuebed data: 0.888806
+2026-04-02 11:48:42,256 - Model - INFO - Test Instance Accuracy for clean data: 0.935433, Class Accuracy for clean data: 0.933927
+2026-04-02 11:48:42,256 - Model - INFO - Best Instance Accuracy for clean data: 0.942874, Class Accuracy for clean data: 0.941455
+2026-04-02 11:48:42,257 - Model - INFO - Epoch 5 (5/10):
+2026-04-02 11:49:21,135 - Model - INFO - Train Instance Accuracy for clean data: 0.957834
+2026-04-02 11:49:21,136 - Model - INFO - Train Instance Accuracy for pertuebed data: 0.901220
+2026-04-02 11:49:29,729 - Model - INFO - Test Instance Accuracy for clean data: 0.930886, Class Accuracy for clean data: 0.929438
+2026-04-02 11:49:29,730 - Model - INFO - Best Instance Accuracy for clean data: 0.942874, Class Accuracy for clean data: 0.941455
+2026-04-02 11:49:29,731 - Model - INFO - Epoch 6 (6/10):
+2026-04-02 11:50:08,186 - Model - INFO - Train Instance Accuracy for clean data: 0.958369
+2026-04-02 11:50:08,189 - Model - INFO - Train Instance Accuracy for pertuebed data: 0.898438
+2026-04-02 11:50:17,074 - Model - INFO - Test Instance Accuracy for clean data: 0.931217, Class Accuracy for clean data: 0.929653
+2026-04-02 11:50:17,078 - Model - INFO - Best Instance Accuracy for clean data: 0.942874, Class Accuracy for clean data: 0.941455
+2026-04-02 11:50:17,080 - Model - INFO - Epoch 7 (7/10):
+2026-04-02 11:50:55,481 - Model - INFO - Train Instance Accuracy for clean data: 0.961366
+2026-04-02 11:50:55,482 - Model - INFO - Train Instance Accuracy for pertuebed data: 0.903253
+2026-04-02 11:51:04,534 - Model - INFO - Test Instance Accuracy for clean data: 0.937665, Class Accuracy for clean data: 0.936362
+2026-04-02 11:51:04,535 - Model - INFO - Best Instance Accuracy for clean data: 0.942874, Class Accuracy for clean data: 0.941455
+2026-04-02 11:51:04,537 - Model - INFO - Epoch 8 (8/10):
+2026-04-02 11:51:42,549 - Model - INFO - Train Instance Accuracy for clean data: 0.962329
+2026-04-02 11:51:42,550 - Model - INFO - Train Instance Accuracy for pertuebed data: 0.904752
+2026-04-02 11:51:52,135 - Model - INFO - Test Instance Accuracy for clean data: 0.910797, Class Accuracy for clean data: 0.913804
+2026-04-02 11:51:52,136 - Model - INFO - Best Instance Accuracy for clean data: 0.942874, Class Accuracy for clean data: 0.941455
+2026-04-02 11:51:52,138 - Model - INFO - Epoch 9 (9/10):
+2026-04-02 11:52:30,185 - Model - INFO - Train Instance Accuracy for clean data: 0.963934
+2026-04-02 11:52:30,187 - Model - INFO - Train Instance Accuracy for pertuebed data: 0.906892
+2026-04-02 11:52:39,820 - Model - INFO - Test Instance Accuracy for clean data: 0.919312, Class Accuracy for clean data: 0.916593
+2026-04-02 11:52:39,821 - Model - INFO - Best Instance Accuracy for clean data: 0.942874, Class Accuracy for clean data: 0.941455
+2026-04-02 11:52:39,822 - Model - INFO - Epoch 10 (10/10):
+2026-04-02 11:53:17,049 - Model - INFO - Train Instance Accuracy for clean data: 0.959974
+2026-04-02 11:53:17,049 - Model - INFO - Train Instance Accuracy for pertuebed data: 0.903146
+2026-04-02 11:53:26,682 - Model - INFO - Test Instance Accuracy for clean data: 0.950314, Class Accuracy for clean data: 0.949950
+2026-04-02 11:53:26,687 - Model - INFO - Best Instance Accuracy for clean data: 0.950314, Class Accuracy for clean data: 0.949950
+2026-04-02 11:53:26,689 - Model - INFO - Save model...
+2026-04-02 11:53:26,690 - Model - INFO - Saving at log/classification/pointnet_cls_mymodelnet_defense/epoch_10_npoint_16_bsize_64/checkpoints/best_model.pth
+2026-04-02 11:53:27,042 - Model - INFO - End of training...

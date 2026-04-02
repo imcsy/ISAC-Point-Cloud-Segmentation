@@ -34,7 +34,7 @@ def parse_args():
     parser.add_argument('--shift', action='store_true', default=False, help='use shift when training')
     # add epoch and npoint for tracking
     parser.add_argument('--epoch', default=5, type=int, help='number of epoch in training')
-    parser.add_argument('--num_point', type=int, default=8, help='Point Number')
+    parser.add_argument('--num_point', type=int, default=16, help='Point Number')
     return parser.parse_args()
 
 def perturbation_attack(points, channels, eps):
@@ -106,7 +106,7 @@ def main(args):
 
     '''CREATE DIR'''
     experiment_dir = 'log/classification/' + args.log_dir
-    param_name = f"/epoch_{args.epoch}_npoint_{args.num_point}"
+    param_name = f"/epoch_{args.epoch}_npoint_{args.num_point}_bsize_{args.batch_size}"
     if args.dropout:
         param_name = param_name + "_dropout"
     if args.shift:
@@ -184,6 +184,11 @@ def main(args):
                 'accuracy_perturb_vel': acc_perturb_vel,
                 'accuracy_perturb_pos_vel': acc_perturb_pos_vel
             })
+        # filename =  f"/attack_comparison_epoch_{args.epoch}_npoint_{args.num_point}_bsize_{args.batch_size}"
+        # if args.dropout:
+        #     param_name = param_name + "_dropout"
+        # if args.shift:
+        #     param_name = param_name + "_shift"
         df.to_csv(experiment_dir + "/attack_comparison.csv", index=False)
 
 if __name__ == '__main__':

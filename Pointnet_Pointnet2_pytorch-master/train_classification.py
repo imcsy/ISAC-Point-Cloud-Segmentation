@@ -28,7 +28,7 @@ def parse_args():
     parser = argparse.ArgumentParser('training')
     parser.add_argument('--use_cpu', action='store_true', default=False, help='use cpu mode')
     parser.add_argument('--gpu', type=str, default='0', help='specify gpu device')
-    parser.add_argument('--batch_size', type=int, default=24, help='batch size in training')
+    parser.add_argument('--batch_size', type=int, default=64, help='batch size in training')
     parser.add_argument('--model', default='pointnet_cls', help='model name [default: pointnet_cls]')
     parser.add_argument('--num_category', default=40, type=int, choices=[2, 10, 40],  help='training on ModelNet10/40')
     parser.add_argument('--epoch', default=200, type=int, help='number of epoch in training')
@@ -101,7 +101,7 @@ def main(args):
     else:
         exp_dir = exp_dir.joinpath(args.log_dir)
         
-    param_name = f"epoch_{args.epoch}_npoint_{args.num_point}"
+    param_name = f"epoch_{args.epoch}_npoint_{args.num_point}_bsize_{args.batch_size}"
     if args.dropout:
         param_name = param_name + "_dropout"
     if args.shift:
