@@ -58,3 +58,28 @@
 2026-04-11 11:41:51,926 - Model - INFO - Epoch 1 (5/5):
 2026-04-11 11:42:17,566 - Model - INFO - Train Instance Accuracy: 0.052977
 2026-04-11 11:42:17,567 - Model - INFO - End of training..., NO test yet
+2026-04-13 10:18:01,565 - Model - INFO - PARAMETER ...
+2026-04-13 10:18:02,456 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=64, model='pointnet_pointguard', epoch=5, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointguard_classification_shift_attack', decay_rate=0.0001, num_channel=4)
+2026-04-13 10:18:02,458 - Model - INFO - Load dataset ...
+2026-04-13 10:18:21,028 - Model - INFO - Start training...
+2026-04-13 10:18:21,029 - Model - INFO - Epoch 1 (1/5):
+2026-04-13 10:32:26,978 - Model - INFO - Train MSE loss: 0.102420
+2026-04-13 10:39:02,564 - Model - INFO - Test MSE loss: nan
+2026-04-13 10:39:02,564 - Model - INFO - Best test MSE loss: 100.000000
+2026-04-13 10:39:02,565 - Model - INFO - Epoch 2 (2/5):
+2026-04-13 10:39:28,599 - Model - INFO - Train MSE loss: 0.070842
+2026-04-13 10:39:38,045 - Model - INFO - Test MSE loss: nan
+2026-04-13 10:39:38,046 - Model - INFO - Best test MSE loss: 100.000000
+2026-04-13 10:39:38,046 - Model - INFO - Epoch 3 (3/5):
+2026-04-13 10:40:03,130 - Model - INFO - Train MSE loss: 0.061171
+2026-04-13 10:40:13,582 - Model - INFO - Test MSE loss: nan
+2026-04-13 10:40:13,584 - Model - INFO - Best test MSE loss: 100.000000
+2026-04-13 10:40:13,585 - Model - INFO - Epoch 4 (4/5):
+2026-04-13 10:40:40,083 - Model - INFO - Train MSE loss: 0.056979
+2026-04-13 10:40:51,018 - Model - INFO - Test MSE loss: nan
+2026-04-13 10:40:51,019 - Model - INFO - Best test MSE loss: 100.000000
+2026-04-13 10:40:51,020 - Model - INFO - Epoch 5 (5/5):
+2026-04-13 10:41:15,714 - Model - INFO - Train MSE loss: 0.051639
+2026-04-13 10:41:24,943 - Model - INFO - Test MSE loss: nan
+2026-04-13 10:41:24,944 - Model - INFO - Best test MSE loss: 100.000000
+2026-04-13 10:41:24,946 - Model - INFO - End of training...

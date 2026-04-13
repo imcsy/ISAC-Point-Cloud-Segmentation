@@ -47,9 +47,40 @@ def inplace_relu(m):
     if classname.find('ReLU') != -1:
         m.inplace=True
 
+def test(model, loader):
+    mse_ls = []
+    scorer = model.eval()
+
+    for j, (points, _) in tqdm(enumerate(loader), total=len(loader)):
+
+        # generate data (include points and the AD channel)
+        clean_data = add_ADchannel(points, is_perturbed=False)  # (B, N, 5)
+        clean_points, clean_target = torch.split(clean_data, [4,1], dim=2)  # (B, N, 4)  (B, N, 1) 
+        # generate perturbed data 
+        channels = [0,1,2,3]
+        eps = 1
+        perturbed_data = add_ADchannel(points, is_perturbed=True, channels=channels, eps=eps)   # (B,N,5)
+        per_points, per_target = torch.split(perturbed_data, [4,1], dim=2)
+
+        # concatenate
+        com_points = torch.cat([clean_points, per_points], dim=1)   # (B, 2N, 4)
+        com_target = torch.cat([clean_target, per_target], dim=1).squeeze(-1)   # (B, 2N)
+        if not args.use_cpu:
+            com_points, com_target = com_points.cuda(), com_target.cuda()
+
+        # predict and compute the loss
+        com_points = com_points.transpose(2, 1)     # (B, 4, 2N)
+        pred, _ = scorer(com_points)       # pred: (B,2N)   trans_feat: (B,64,64)
+        mse = F.mse_loss(pred, com_target.float()).item()
+        mse_ls.append(mse)
+
+    test_mse_mean = np.mean(mse_ls)
+    return test_mse_mean
+
+
 def main(args):
     def log_string(str):
-        logger.info(str)  #######################################
+        logger.info(str) 
         print(str)
 
     '''HYPER PARAMETER'''
@@ -126,8 +157,8 @@ def main(args):
     scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=20, gamma=0.7)
     global_epoch = 0
     global_step = 0
-    best_loss = 0.0
-    best_mse_loss = 0.0
+    # best_loss = 0.0
+    best_mse = 100.0
 
     '''TRANING'''
     logger.info('Start training...')
@@ -168,9 +199,31 @@ def main(args):
             global_step += 1
 
         train_mse_mean = np.mean([t.detach().cpu().numpy() for t in mse_ls])
-        log_string('Train Instance Accuracy: %f' % train_mse_mean)
+        log_string('Train MSE loss: %f' % train_mse_mean)
 
-        logger.info('End of training..., NO test yet')
+        with torch.no_grad():
+            test_mse_mean = test(scorer.eval(), testDataLoader)
+            
+            if (test_mse_mean <= best_mse):
+                best_mse = test_mse_mean
+                best_epoch = epoch + 1
+            log_string('Test MSE loss: %f' % test_mse_mean)
+            log_string('Best test MSE loss: %f' % best_mse)
+
+            if (test_mse_mean <= best_mse):
+                logger.info('Save model...')
+                savepath = str(checkpoints_dir) + '/best_model.pth'
+                log_string('Saving at %s' % savepath)
+                state = {
+                    'epoch': best_epoch,
+                    'mse': test_mse_mean,
+                    'model_state_dict': scorer.state_dict(),
+                    'optimizer_state_dict': optimizer.state_dict(),
+                }
+                torch.save(state, savepath)
+            global_epoch += 1
+
+    logger.info('End of training...')
 
 
 if __name__ == '__main__':
