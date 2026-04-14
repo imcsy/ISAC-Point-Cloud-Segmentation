@@ -162,3 +162,55 @@
 2026-04-14 10:50:32,961 - Model - INFO - PARAMETER ...
 2026-04-14 10:50:33,276 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=64, model='pointnet_pointguard', epoch=10, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointguard_classification_shift_attack', decay_rate=0.0001, num_channel=4)
 2026-04-14 10:50:33,277 - Model - INFO - Load dataset ...
+2026-04-14 10:50:45,318 - Model - INFO - Start training...
+2026-04-14 10:50:45,319 - Model - INFO - Epoch 1 (1/10):
+2026-04-14 10:56:27,326 - Model - INFO - Train MSE loss: 0.100581
+2026-04-14 10:58:38,056 - Model - INFO - Test MSE loss: 0.208187
+2026-04-14 10:58:38,057 - Model - INFO - Best test MSE loss: 0.208187
+2026-04-14 10:58:38,057 - Model - INFO - Save model...
+2026-04-14 10:58:38,057 - Model - INFO - Saving at log/pointguard/pointguard_classification_shift_attack/epoch_10_npoint_16_bsize_64/checkpoints/best_model.pth
+2026-04-14 10:58:40,264 - Model - INFO - Epoch 2 (2/10):
+2026-04-14 10:59:10,509 - Model - INFO - Train MSE loss: 0.069830
+2026-04-14 10:59:21,805 - Model - INFO - Test MSE loss: 0.201136
+2026-04-14 10:59:21,806 - Model - INFO - Best test MSE loss: 0.201136
+2026-04-14 10:59:21,806 - Model - INFO - Save model...
+2026-04-14 10:59:21,806 - Model - INFO - Saving at log/pointguard/pointguard_classification_shift_attack/epoch_10_npoint_16_bsize_64/checkpoints/best_model.pth
+2026-04-14 10:59:22,179 - Model - INFO - Epoch 3 (3/10):
+2026-04-14 10:59:52,357 - Model - INFO - Train MSE loss: 0.064551
+2026-04-14 11:00:03,408 - Model - INFO - Test MSE loss: 0.185874
+2026-04-14 11:00:03,410 - Model - INFO - Best test MSE loss: 0.185874
+2026-04-14 11:00:03,411 - Model - INFO - Save model...
+2026-04-14 11:00:03,413 - Model - INFO - Saving at log/pointguard/pointguard_classification_shift_attack/epoch_10_npoint_16_bsize_64/checkpoints/best_model.pth
+2026-04-14 11:00:03,843 - Model - INFO - Epoch 4 (4/10):
+2026-04-14 11:00:33,876 - Model - INFO - Train MSE loss: 0.059055
+2026-04-14 11:00:43,916 - Model - INFO - Test MSE loss: 0.210478
+2026-04-14 11:00:43,916 - Model - INFO - Best test MSE loss: 0.185874
+2026-04-14 11:00:43,916 - Model - INFO - Epoch 5 (5/10):
+2026-04-14 11:01:13,131 - Model - INFO - Train MSE loss: 0.052836
+2026-04-14 11:01:24,759 - Model - INFO - Test MSE loss: 0.139888
+2026-04-14 11:01:24,759 - Model - INFO - Best test MSE loss: 0.139888
+2026-04-14 11:01:24,760 - Model - INFO - Save model...
+2026-04-14 11:01:24,761 - Model - INFO - Saving at log/pointguard/pointguard_classification_shift_attack/epoch_10_npoint_16_bsize_64/checkpoints/best_model.pth
+2026-04-14 11:01:25,165 - Model - INFO - Epoch 6 (6/10):
+2026-04-14 11:01:56,601 - Model - INFO - Train MSE loss: 0.048497
+2026-04-14 11:02:08,012 - Model - INFO - Test MSE loss: 0.187526
+2026-04-14 11:02:08,013 - Model - INFO - Best test MSE loss: 0.139888
+2026-04-14 11:02:08,014 - Model - INFO - Epoch 7 (7/10):
+2026-04-14 11:02:40,355 - Model - INFO - Train MSE loss: 0.047028
+2026-04-14 11:02:51,391 - Model - INFO - Test MSE loss: 0.134031
+2026-04-14 11:02:51,392 - Model - INFO - Best test MSE loss: 0.134031
+2026-04-14 11:02:51,393 - Model - INFO - Save model...
+2026-04-14 11:02:51,394 - Model - INFO - Saving at log/pointguard/pointguard_classification_shift_attack/epoch_10_npoint_16_bsize_64/checkpoints/best_model.pth
+2026-04-14 11:02:52,039 - Model - INFO - Epoch 8 (8/10):
+2026-04-14 11:03:24,037 - Model - INFO - Train MSE loss: 0.043784
+2026-04-14 11:03:35,542 - Model - INFO - Test MSE loss: 0.157371
+2026-04-14 11:03:35,543 - Model - INFO - Best test MSE loss: 0.134031
+2026-04-14 11:03:35,544 - Model - INFO - Epoch 9 (9/10):
+2026-04-14 11:04:06,415 - Model - INFO - Train MSE loss: 0.041326
+2026-04-14 11:04:18,487 - Model - INFO - Test MSE loss: 0.170960
+2026-04-14 11:04:18,503 - Model - INFO - Best test MSE loss: 0.134031
+2026-04-14 11:04:18,505 - Model - INFO - Epoch 10 (10/10):
+2026-04-14 11:04:48,679 - Model - INFO - Train MSE loss: 0.039698
+2026-04-14 11:04:58,295 - Model - INFO - Test MSE loss: 0.169634
+2026-04-14 11:04:58,295 - Model - INFO - Best test MSE loss: 0.134031
+2026-04-14 11:04:58,296 - Model - INFO - End of training...
