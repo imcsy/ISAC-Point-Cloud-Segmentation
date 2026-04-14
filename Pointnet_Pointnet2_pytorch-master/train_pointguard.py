@@ -175,15 +175,22 @@ def main(args):
             clean_data = add_ADchannel(points, is_perturbed=False)  # (B, N, 5)
             clean_points, clean_target = torch.split(clean_data, [4,1], dim=2)  # (B, N, 4)  (B, N, 1) 
 
-            channels = [0,1,2,3]
-            eps = 1
-            perturbed_data = add_ADchannel(points, is_perturbed=True, channels=channels, eps=eps)   # (B,N,5)
-            per_points, per_target = torch.split(perturbed_data, [4,1], dim=2)
+            channels = [[0,1,2,3], [0,1,2,3]]
+            eps = [1, 2]
+            per_points_ls = []
+            per_target_ls = []
+            for i in range(len(channels)):
+                perturbed_data = add_ADchannel(points, is_perturbed=True, channels=channels[i], eps=eps[i])   # (B,N,5)
+                p, t = torch.split(perturbed_data, [4,1], dim=2)
+                per_points_ls.append(p)
+                per_target_ls.append(t)
+            # perturbed_data = add_ADchannel(points, is_perturbed=True, channels=channels, eps=eps)   # (B,N,5)
+            # per_points, per_target = torch.split(perturbed_data, [4,1], dim=2)
             
             # concatenate
-            com_points = torch.cat([clean_points, per_points], dim=1)   # (B, 2N, 4)
-            com_target = torch.cat([clean_target, per_target], dim=1).squeeze(-1)   # (B, 2N)
-            if not args.use_cpu:
+            com_points = torch.cat([clean_points] + per_points_ls, dim=1)   # (B, 2N, 4)
+            com_target = torch.cat([clean_target] + per_target_ls, dim=1).squeeze(-1)   # (B, 2N)
+            if not args.use_cpu:   
                 com_points, com_target = com_points.cuda(), com_target.cuda()
 
             # predict and compute the loss

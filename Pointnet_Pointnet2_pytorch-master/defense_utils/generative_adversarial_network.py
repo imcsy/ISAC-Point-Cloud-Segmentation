@@ -22,7 +22,7 @@ def perturbation_attack(points, channels, eps):
     jitter = torch.randn(noise_shape, device=points.device) * eps * sigma
     
     perturbed_points[:, :, channels] += jitter
-    return perturbed_points, sigma
+    return perturbed_points, sigma      # (B,N,4)
 
 def weighted_dist_per(clean_points, per_points, weights):
     '''
@@ -42,17 +42,17 @@ def weighted_dist_per(clean_points, per_points, weights):
 
     dist_vec = dist_vec.reshape(clean_points.shape[0], clean_points.shape[1], 1)
     dist_vec = torch.tensor(dist_vec)
-    return dist_vec
+    return dist_vec     # (B,N,1)
 
 def add_ADchannel(clean_points, is_perturbed, channels=[0,1,2,3], eps=0):
     '''
     Add 5-th channel (abnormal detector) to the points data using generative model
 
     Input: clean points # (batch_size, npoints, 4)
-    Return: clean/perturbed points + abnormal detetcor # (batch_size, npoints, 5)
+    Return: clean/perturbed points + abnormal detetcor # (2*batch_size, npoints, 5)
     '''
     if is_perturbed:
-        per_points, sigma = perturbation_attack(clean_points, channels, eps)
+        per_points, sigma = perturbation_attack(clean_points, channels, eps)    
         weights = torch.zeros(4, dtype=torch.float32, device=clean_points.device)
         weights[channels] = 1 / (sigma**2)  # **2 or not
         weights[-1] = weights[-1] * 3
@@ -64,4 +64,24 @@ def add_ADchannel(clean_points, is_perturbed, channels=[0,1,2,3], eps=0):
         ad_channel = torch.ones(clean_points.shape[0], clean_points.shape[1], 1, device=clean_points.device)
         out = out = torch.cat([clean_points, ad_channel], dim=2)
         
+    return out
+
+def pred_ADchannel(scorer, clean_points, is_perturbed, channels=[0,1,2], eps=0):
+    '''
+    Add 5-th channel using the trained PointGuard model
+
+    Input: clean points # (batch_size, npoints, 4)
+    Return: clean/perturbed points + abnormal detetcor # (batch_size, npoints, 5)
+    '''
+    scorer = scorer.eval()
+    if is_perturbed:
+        points, _ = perturbation_attack(clean_points, channels, eps)        # points (B,N,4)
+    else:
+        points = clean_points.clone()
+    # use pointguard model to generate 5-th channel
+    points = points.cuda()
+    ad_channel, _ = scorer(points.transpose(2, 1))      # scores (B,N)
+    ad_channel = ad_channel.unsqueeze(-1)
+    out = torch.cat([points, ad_channel], dim=2)                    # (B,N,5)
+
     return out
