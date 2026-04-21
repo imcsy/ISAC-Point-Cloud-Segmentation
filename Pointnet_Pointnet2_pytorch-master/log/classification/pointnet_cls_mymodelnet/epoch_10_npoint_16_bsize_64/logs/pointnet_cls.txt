@@ -1,0 +1,61 @@
+2026-04-20 07:32:44,953 - Model - INFO - PARAMETER ...
+2026-04-20 07:32:44,954 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=64, model='pointnet_cls', num_category=2, epoch=10, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointnet_cls_mymodelnet', decay_rate=0.0001, num_channel=4, process_data=False, use_uniform_sample=False, dropout=False, shift=False)
+2026-04-20 07:32:44,955 - Model - INFO - Load dataset ...
+2026-04-20 07:32:55,277 - Model - INFO - Start training...
+2026-04-20 07:32:55,279 - Model - INFO - Epoch 1 (1/10):
+2026-04-20 07:39:03,128 - Model - INFO - Train Instance Accuracy: 0.928189
+2026-04-20 07:41:45,498 - Model - INFO - Test Instance Accuracy: 0.952960, Class Accuracy: 0.953841
+2026-04-20 07:41:45,499 - Model - INFO - Best Instance Accuracy: 0.952960, Class Accuracy: 0.953841
+2026-04-20 07:41:45,499 - Model - INFO - Save model...
+2026-04-20 07:41:45,499 - Model - INFO - Saving at log/classification/pointnet_cls_mymodelnet/epoch_10_npoint_16_bsize_64/checkpoints/best_model.pth
+2026-04-20 07:41:45,649 - Model - INFO - Epoch 2 (2/10):
+2026-04-20 07:42:08,162 - Model - INFO - Train Instance Accuracy: 0.948951
+2026-04-20 07:42:16,721 - Model - INFO - Test Instance Accuracy: 0.953290, Class Accuracy: 0.952952
+2026-04-20 07:42:16,728 - Model - INFO - Best Instance Accuracy: 0.953290, Class Accuracy: 0.953841
+2026-04-20 07:42:16,730 - Model - INFO - Save model...
+2026-04-20 07:42:16,731 - Model - INFO - Saving at log/classification/pointnet_cls_mymodelnet/epoch_10_npoint_16_bsize_64/checkpoints/best_model.pth
+2026-04-20 07:42:17,241 - Model - INFO - Epoch 3 (3/10):
+2026-04-20 07:42:40,223 - Model - INFO - Train Instance Accuracy: 0.952697
+2026-04-20 07:42:49,432 - Model - INFO - Test Instance Accuracy: 0.958664, Class Accuracy: 0.959563
+2026-04-20 07:42:49,433 - Model - INFO - Best Instance Accuracy: 0.958664, Class Accuracy: 0.959563
+2026-04-20 07:42:49,434 - Model - INFO - Save model...
+2026-04-20 07:42:49,435 - Model - INFO - Saving at log/classification/pointnet_cls_mymodelnet/epoch_10_npoint_16_bsize_64/checkpoints/best_model.pth
+2026-04-20 07:42:49,908 - Model - INFO - Epoch 4 (4/10):
+2026-04-20 07:43:12,064 - Model - INFO - Train Instance Accuracy: 0.957299
+2026-04-20 07:43:21,464 - Model - INFO - Test Instance Accuracy: 0.959656, Class Accuracy: 0.959738
+2026-04-20 07:43:21,465 - Model - INFO - Best Instance Accuracy: 0.959656, Class Accuracy: 0.959738
+2026-04-20 07:43:21,465 - Model - INFO - Save model...
+2026-04-20 07:43:21,465 - Model - INFO - Saving at log/classification/pointnet_cls_mymodelnet/epoch_10_npoint_16_bsize_64/checkpoints/best_model.pth
+2026-04-20 07:43:21,819 - Model - INFO - Epoch 5 (5/10):
+2026-04-20 07:43:43,469 - Model - INFO - Train Instance Accuracy: 0.959760
+2026-04-20 07:43:53,212 - Model - INFO - Test Instance Accuracy: 0.961640, Class Accuracy: 0.961540
+2026-04-20 07:43:53,213 - Model - INFO - Best Instance Accuracy: 0.961640, Class Accuracy: 0.961540
+2026-04-20 07:43:53,214 - Model - INFO - Save model...
+2026-04-20 07:43:53,214 - Model - INFO - Saving at log/classification/pointnet_cls_mymodelnet/epoch_10_npoint_16_bsize_64/checkpoints/best_model.pth
+2026-04-20 07:43:53,544 - Model - INFO - Epoch 6 (6/10):
+2026-04-20 07:44:15,526 - Model - INFO - Train Instance Accuracy: 0.955158
+2026-04-20 07:44:25,350 - Model - INFO - Test Instance Accuracy: 0.961144, Class Accuracy: 0.961301
+2026-04-20 07:44:25,352 - Model - INFO - Best Instance Accuracy: 0.961640, Class Accuracy: 0.961540
+2026-04-20 07:44:25,353 - Model - INFO - Epoch 7 (7/10):
+2026-04-20 07:44:45,828 - Model - INFO - Train Instance Accuracy: 0.959974
+2026-04-20 07:44:55,409 - Model - INFO - Test Instance Accuracy: 0.964616, Class Accuracy: 0.965635
+2026-04-20 07:44:55,410 - Model - INFO - Best Instance Accuracy: 0.964616, Class Accuracy: 0.965635
+2026-04-20 07:44:55,411 - Model - INFO - Save model...
+2026-04-20 07:44:55,412 - Model - INFO - Saving at log/classification/pointnet_cls_mymodelnet/epoch_10_npoint_16_bsize_64/checkpoints/best_model.pth
+2026-04-20 07:44:55,758 - Model - INFO - Epoch 8 (8/10):
+2026-04-20 07:45:18,111 - Model - INFO - Train Instance Accuracy: 0.962008
+2026-04-20 07:45:27,291 - Model - INFO - Test Instance Accuracy: 0.966353, Class Accuracy: 0.967735
+2026-04-20 07:45:27,291 - Model - INFO - Best Instance Accuracy: 0.966353, Class Accuracy: 0.967735
+2026-04-20 07:45:27,292 - Model - INFO - Save model...
+2026-04-20 07:45:27,293 - Model - INFO - Saving at log/classification/pointnet_cls_mymodelnet/epoch_10_npoint_16_bsize_64/checkpoints/best_model.pth
+2026-04-20 07:45:27,623 - Model - INFO - Epoch 9 (9/10):
+2026-04-20 07:45:50,481 - Model - INFO - Train Instance Accuracy: 0.962971
+2026-04-20 07:45:59,188 - Model - INFO - Test Instance Accuracy: 0.969081, Class Accuracy: 0.970257
+2026-04-20 07:45:59,189 - Model - INFO - Best Instance Accuracy: 0.969081, Class Accuracy: 0.970257
+2026-04-20 07:45:59,190 - Model - INFO - Save model...
+2026-04-20 07:45:59,191 - Model - INFO - Saving at log/classification/pointnet_cls_mymodelnet/epoch_10_npoint_16_bsize_64/checkpoints/best_model.pth
+2026-04-20 07:45:59,506 - Model - INFO - Epoch 10 (10/10):
+2026-04-20 07:46:21,999 - Model - INFO - Train Instance Accuracy: 0.962650
+2026-04-20 07:46:30,402 - Model - INFO - Test Instance Accuracy: 0.967345, Class Accuracy: 0.967997
+2026-04-20 07:46:30,403 - Model - INFO - Best Instance Accuracy: 0.969081, Class Accuracy: 0.970257
+2026-04-20 07:46:30,432 - Model - INFO - End of training...

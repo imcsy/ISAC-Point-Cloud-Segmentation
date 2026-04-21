@@ -4,11 +4,12 @@ import matplotlib.pyplot as plt
 import os
 
 #%%
+# INI_MODEL = r"G:\我的云端硬盘\THESIS\Pointnet_Pointnet2_pytorch-master\log\classification\pointnet_cls_mymodelnet\epoch_10_npoint_16_bsize_64\attack_comparison.csv"
 INI_MODEL = r"G:\我的云端硬盘\THESIS\Pointnet_Pointnet2_pytorch-master\log\classification\pointnet_cls_mymodelnet\epoch_5_npoint_16\attack_comparison.csv"
 ini_df = pd.read_csv(INI_MODEL)
-DROP_SHIFT_MODEL = r"G:\我的云端硬盘\THESIS\Pointnet_Pointnet2_pytorch-master\log\classification\pointnet_cls_mymodelnet\epoch_10_npoint_16_bsize_64_dropout_shift\attack_comparison.csv"
+DROP_SHIFT_MODEL = r"G:\我的云端硬盘\THESIS\Pointnet_Pointnet2_pytorch-master\log\classification\pointnet_cls_mymodelnet\epoch_10_npoint_16_bsize_64_dropout_shift\attack_comparison_perturb_eps0-4.csv"
 drop_shift_df = pd.read_csv(DROP_SHIFT_MODEL)
-MYMODEL = r"G:\我的云端硬盘\THESIS\Pointnet_Pointnet2_pytorch-master\log\classification\pointnet_cls_mymodelnet_defense\epoch_10_npoint_16_bsize_64\attack_comparison.csv"
+MYMODEL = r"G:\我的云端硬盘\THESIS\Pointnet_Pointnet2_pytorch-master\log\classification\pointnet_cls_mymodelnet_defense\epoch_10_npoint_16_bsize_64\attack_comparison_pointguard_eps1n3_channel0123.csv"
 my_df = pd.read_csv(MYMODEL)
 
 #%%
@@ -63,6 +64,6 @@ plt.legend()
 plt.grid()
 
 #%%
-index = 0
+index = 30
 print(my_df['epsilon'][index], ini_df['accuracy_perturb_vel'][index], 
       drop_shift_df['accuracy_perturb_vel'][index], my_df['accuracy_perturb_vel'][index])
