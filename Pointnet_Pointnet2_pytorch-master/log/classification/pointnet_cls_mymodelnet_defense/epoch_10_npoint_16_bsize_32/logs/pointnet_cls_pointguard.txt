@@ -1,0 +1,409 @@
+2026-04-22 08:23:29,473 - Model - INFO - PARAMETER ...
+2026-04-22 08:23:29,474 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=32, model='pointnet_cls_pointguard', num_category=2, epoch=10, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointnet_cls_mymodelnet_defense', decay_rate=0.0001, num_channel=4, process_data=False, use_uniform_sample=False, npoints_inj=4, clutter_size_inj=2, channels_per=[0, 1, 2, 3], eps_per=1)
+2026-04-22 08:23:29,474 - Model - INFO - Load dataset ...
+2026-04-22 08:25:40,708 - Model - INFO - PARAMETER ...
+2026-04-22 08:25:40,710 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=32, model='pointnet_cls_pointguard', num_category=2, epoch=10, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointnet_cls_mymodelnet_defense', decay_rate=0.0001, num_channel=4, process_data=False, use_uniform_sample=False, npoints_inj=4, clutter_size_inj=2, channels_per=[0, 1, 2, 3], eps_per=1)
+2026-04-22 08:25:40,711 - Model - INFO - Load dataset ...
+2026-04-22 08:25:42,712 - Model - INFO - Start training...
+2026-04-22 08:25:42,713 - Model - INFO - Epoch 1 (1/10):
+2026-04-22 08:26:08,625 - Model - INFO - Train Instance Accuracy for mixed data: 0.754816
+2026-04-22 08:26:08,625 - Model - INFO - Epoch 1 (2/10):
+2026-04-22 08:26:33,726 - Model - INFO - Train Instance Accuracy for mixed data: 0.771725
+2026-04-22 08:26:33,727 - Model - INFO - Epoch 1 (3/10):
+2026-04-22 08:26:59,284 - Model - INFO - Train Instance Accuracy for mixed data: 0.784675
+2026-04-22 08:26:59,285 - Model - INFO - Epoch 1 (4/10):
+2026-04-22 08:27:25,075 - Model - INFO - Train Instance Accuracy for mixed data: 0.797303
+2026-04-22 08:27:25,076 - Model - INFO - Epoch 1 (5/10):
+2026-04-22 08:27:49,789 - Model - INFO - Train Instance Accuracy for mixed data: 0.791524
+2026-04-22 08:27:49,791 - Model - INFO - Epoch 1 (6/10):
+2026-04-22 08:28:15,366 - Model - INFO - Train Instance Accuracy for mixed data: 0.799765
+2026-04-22 08:28:15,367 - Model - INFO - Epoch 1 (7/10):
+2026-04-22 08:28:41,320 - Model - INFO - Train Instance Accuracy for mixed data: 0.808219
+2026-04-22 08:28:41,320 - Model - INFO - Epoch 1 (8/10):
+2026-04-22 08:29:06,585 - Model - INFO - Train Instance Accuracy for mixed data: 0.807363
+2026-04-22 08:29:06,586 - Model - INFO - Epoch 1 (9/10):
+2026-04-22 08:29:32,040 - Model - INFO - Train Instance Accuracy for mixed data: 0.802119
+2026-04-22 08:29:32,044 - Model - INFO - Epoch 1 (10/10):
+2026-04-22 08:29:57,770 - Model - INFO - Train Instance Accuracy for mixed data: 0.804366
+2026-04-22 08:29:57,771 - Model - INFO - End of training...
+2026-04-22 08:34:28,343 - Model - INFO - PARAMETER ...
+2026-04-22 08:34:28,344 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=32, model='pointnet_cls_pointguard', num_category=2, epoch=10, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointnet_cls_mymodelnet_defense', decay_rate=0.0001, num_channel=4, process_data=False, use_uniform_sample=False, npoints_inj=4, clutter_size_inj=2, channels_per=[0, 1, 2, 3], eps_per=1)
+2026-04-22 08:34:28,345 - Model - INFO - Load dataset ...
+2026-04-22 08:34:30,662 - Model - INFO - Start training...
+2026-04-22 08:34:30,662 - Model - INFO - Epoch 1 (1/10):
+2026-04-22 08:34:56,879 - Model - INFO - Train Instance Accuracy for mixed data: 0.744756
+2026-04-22 08:34:56,880 - Model - INFO - Epoch 1 (2/10):
+2026-04-22 08:35:22,601 - Model - INFO - Train Instance Accuracy for mixed data: 0.777718
+2026-04-22 08:35:22,602 - Model - INFO - Epoch 1 (3/10):
+2026-04-22 08:35:47,557 - Model - INFO - Train Instance Accuracy for mixed data: 0.783176
+2026-04-22 08:35:47,561 - Model - INFO - Epoch 1 (4/10):
+2026-04-22 08:36:12,457 - Model - INFO - Train Instance Accuracy for mixed data: 0.786173
+2026-04-22 08:36:12,458 - Model - INFO - Epoch 1 (5/10):
+2026-04-22 08:36:29,514 - Model - INFO - PARAMETER ...
+2026-04-22 08:36:29,516 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=32, model='pointnet_cls_pointguard', num_category=2, epoch=10, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointnet_cls_mymodelnet_defense', decay_rate=0.0001, num_channel=4, process_data=False, use_uniform_sample=False, npoints_inj=4, clutter_size_inj=2, channels_per=[0, 1, 2, 3], eps_per=1)
+2026-04-22 08:36:29,518 - Model - INFO - Load dataset ...
+2026-04-22 08:36:33,327 - Model - INFO - Start training...
+2026-04-22 08:36:33,329 - Model - INFO - Epoch 1 (1/10):
+2026-04-22 08:37:00,615 - Model - INFO - Train Instance Accuracy for mixed data: 0.753425
+2026-04-22 08:37:00,616 - Model - INFO - Epoch 1 (2/10):
+2026-04-22 08:42:26,197 - Model - INFO - PARAMETER ...
+2026-04-22 08:42:26,198 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=32, model='pointnet_cls_pointguard', num_category=2, epoch=10, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointnet_cls_mymodelnet_defense', decay_rate=0.0001, num_channel=4, process_data=False, use_uniform_sample=False, per_prob=0.0, inject_prob=0.0, npoints_inj=4, clutter_size_inj=2, channels_per=[0, 1, 2, 3], eps_per=1)
+2026-04-22 08:42:26,199 - Model - INFO - Load dataset ...
+2026-04-22 08:42:27,636 - Model - INFO - Start training...
+2026-04-22 08:42:27,637 - Model - INFO - Epoch 1 (1/10):
+2026-04-22 08:42:54,719 - Model - INFO - Train Instance Accuracy for mixed data: 0.756314
+2026-04-22 08:42:54,720 - Model - INFO - Epoch 1 (2/10):
+2026-04-22 08:43:21,129 - Model - INFO - Train Instance Accuracy for mixed data: 0.773973
+2026-04-22 08:43:21,132 - Model - INFO - Epoch 1 (3/10):
+2026-04-22 08:43:48,230 - Model - INFO - Train Instance Accuracy for mixed data: 0.790240
+2026-04-22 08:43:48,230 - Model - INFO - Epoch 1 (4/10):
+2026-04-22 08:44:16,423 - Model - INFO - Train Instance Accuracy for mixed data: 0.789598
+2026-04-22 08:44:16,424 - Model - INFO - Epoch 1 (5/10):
+2026-04-22 08:44:44,680 - Model - INFO - Train Instance Accuracy for mixed data: 0.793022
+2026-04-22 08:44:44,681 - Model - INFO - Epoch 1 (6/10):
+2026-04-22 08:45:45,338 - Model - INFO - PARAMETER ...
+2026-04-22 08:45:45,341 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=32, model='pointnet_cls_pointguard', num_category=2, epoch=10, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointnet_cls_mymodelnet_defense', decay_rate=0.0001, num_channel=4, process_data=False, use_uniform_sample=False, per_prob=0.0, inject_prob=0.0, npoints_inj=4, clutter_size_inj=2, channels_per=[0, 1, 2, 3], eps_per=1)
+2026-04-22 08:45:45,342 - Model - INFO - Load dataset ...
+2026-04-22 08:45:46,935 - Model - INFO - Start training...
+2026-04-22 08:45:46,935 - Model - INFO - Epoch 1 (1/10):
+2026-04-22 08:46:14,218 - Model - INFO - PARAMETER ...
+2026-04-22 08:46:14,219 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=32, model='pointnet_cls_pointguard', num_category=2, epoch=10, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointnet_cls_mymodelnet_defense', decay_rate=0.0001, num_channel=4, process_data=False, use_uniform_sample=False, per_prob=0.0, inject_prob=0.0, npoints_inj=4, clutter_size_inj=2, channels_per=[0, 1, 2, 3], eps_per=1)
+2026-04-22 08:46:14,220 - Model - INFO - Load dataset ...
+2026-04-22 08:46:16,271 - Model - INFO - Start training...
+2026-04-22 08:46:16,271 - Model - INFO - Epoch 1 (1/10):
+2026-04-22 08:46:42,970 - Model - INFO - PARAMETER ...
+2026-04-22 08:46:42,972 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=32, model='pointnet_cls_pointguard', num_category=2, epoch=10, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointnet_cls_mymodelnet_defense', decay_rate=0.0001, num_channel=4, process_data=False, use_uniform_sample=False, per_prob=0.0, inject_prob=0.0, npoints_inj=4, clutter_size_inj=2, channels_per=[0, 1, 2, 3], eps_per=1)
+2026-04-22 08:46:42,973 - Model - INFO - Load dataset ...
+2026-04-22 08:46:44,757 - Model - INFO - Start training...
+2026-04-22 08:46:44,757 - Model - INFO - Epoch 1 (1/10):
+2026-04-22 08:47:02,698 - Model - INFO - PARAMETER ...
+2026-04-22 08:47:02,700 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=32, model='pointnet_cls_pointguard', num_category=2, epoch=10, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointnet_cls_mymodelnet_defense', decay_rate=0.0001, num_channel=4, process_data=False, use_uniform_sample=False, per_prob=0.0, inject_prob=0.0, npoints_inj=4, clutter_size_inj=2, channels_per=[0, 1, 2, 3], eps_per=1)
+2026-04-22 08:47:02,701 - Model - INFO - Load dataset ...
+2026-04-22 08:47:04,126 - Model - INFO - Start training...
+2026-04-22 08:47:04,126 - Model - INFO - Epoch 1 (1/10):
+2026-04-22 08:47:26,496 - Model - INFO - Train Instance Accuracy for mixed data: 0.926691
+2026-04-22 08:47:26,498 - Model - INFO - Epoch 1 (2/10):
+2026-04-22 08:47:50,131 - Model - INFO - Train Instance Accuracy for mixed data: 0.942316
+2026-04-22 08:47:50,132 - Model - INFO - Epoch 1 (3/10):
+2026-04-22 08:48:12,145 - Model - INFO - Train Instance Accuracy for mixed data: 0.942316
+2026-04-22 08:48:12,146 - Model - INFO - Epoch 1 (4/10):
+2026-04-22 08:48:35,681 - Model - INFO - Train Instance Accuracy for mixed data: 0.952804
+2026-04-22 08:48:35,682 - Model - INFO - Epoch 1 (5/10):
+2026-04-22 08:48:58,045 - Model - INFO - Train Instance Accuracy for mixed data: 0.955479
+2026-04-22 08:48:58,046 - Model - INFO - Epoch 1 (6/10):
+2026-04-22 08:49:21,901 - Model - INFO - Train Instance Accuracy for mixed data: 0.955265
+2026-04-22 08:49:21,901 - Model - INFO - Epoch 1 (7/10):
+2026-04-22 08:49:45,767 - Model - INFO - Train Instance Accuracy for mixed data: 0.956871
+2026-04-22 08:49:45,768 - Model - INFO - Epoch 1 (8/10):
+2026-04-22 08:50:10,675 - Model - INFO - Train Instance Accuracy for mixed data: 0.951841
+2026-04-22 08:50:10,676 - Model - INFO - Epoch 1 (9/10):
+2026-04-22 08:50:33,594 - Model - INFO - Train Instance Accuracy for mixed data: 0.957192
+2026-04-22 08:50:33,613 - Model - INFO - Epoch 1 (10/10):
+2026-04-22 08:50:57,526 - Model - INFO - Train Instance Accuracy for mixed data: 0.958904
+2026-04-22 08:50:57,527 - Model - INFO - End of training...
+2026-04-22 08:52:50,798 - Model - INFO - PARAMETER ...
+2026-04-22 08:52:50,799 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=32, model='pointnet_cls_pointguard', num_category=2, epoch=10, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointnet_cls_mymodelnet_defense', decay_rate=0.0001, num_channel=4, process_data=False, use_uniform_sample=False, per_prob=0.0, inject_prob=0.3, npoints_inj=4, clutter_size_inj=2, channels_per=[0, 1, 2, 3], eps_per=1)
+2026-04-22 08:52:50,801 - Model - INFO - Load dataset ...
+2026-04-22 08:52:52,246 - Model - INFO - Start training...
+2026-04-22 08:52:52,246 - Model - INFO - Epoch 1 (1/10):
+2026-04-22 08:53:14,861 - Model - INFO - PARAMETER ...
+2026-04-22 08:53:14,863 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=32, model='pointnet_cls_pointguard', num_category=2, epoch=10, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointnet_cls_mymodelnet_defense', decay_rate=0.0001, num_channel=4, process_data=False, use_uniform_sample=False, per_prob=0.0, inject_prob=0.3, npoints_inj=4, clutter_size_inj=2, channels_per=[0, 1, 2, 3], eps_per=1)
+2026-04-22 08:53:14,866 - Model - INFO - Load dataset ...
+2026-04-22 08:53:16,883 - Model - INFO - Start training...
+2026-04-22 08:53:16,884 - Model - INFO - Epoch 1 (1/10):
+2026-04-22 08:53:41,238 - Model - INFO - Train Instance Accuracy for mixed data: 0.906357
+2026-04-22 08:53:41,239 - Model - INFO - Epoch 1 (2/10):
+2026-04-22 08:54:06,461 - Model - INFO - Train Instance Accuracy for mixed data: 0.932684
+2026-04-22 08:54:06,462 - Model - INFO - Epoch 1 (3/10):
+2026-04-22 08:54:30,477 - Model - INFO - Train Instance Accuracy for mixed data: 0.942102
+2026-04-22 08:54:30,479 - Model - INFO - Epoch 1 (4/10):
+2026-04-22 08:54:54,991 - Model - INFO - Train Instance Accuracy for mixed data: 0.944563
+2026-04-22 08:54:55,003 - Model - INFO - Epoch 1 (5/10):
+2026-04-22 08:55:19,785 - Model - INFO - Train Instance Accuracy for mixed data: 0.953446
+2026-04-22 08:55:19,786 - Model - INFO - Epoch 1 (6/10):
+2026-04-22 08:55:35,013 - Model - INFO - PARAMETER ...
+2026-04-22 08:55:35,016 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=32, model='pointnet_cls_pointguard', num_category=2, epoch=10, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointnet_cls_mymodelnet_defense', decay_rate=0.0001, num_channel=4, process_data=False, use_uniform_sample=False, per_prob=0.3, inject_prob=0.0, npoints_inj=4, clutter_size_inj=2, channels_per=[0, 1, 2, 3], eps_per=1)
+2026-04-22 08:55:35,018 - Model - INFO - Load dataset ...
+2026-04-22 08:55:37,230 - Model - INFO - Start training...
+2026-04-22 08:55:37,230 - Model - INFO - Epoch 1 (1/10):
+2026-04-22 08:56:01,213 - Model - INFO - Train Instance Accuracy for mixed data: 0.808647
+2026-04-22 08:56:01,217 - Model - INFO - Epoch 1 (2/10):
+2026-04-22 08:56:25,033 - Model - INFO - Train Instance Accuracy for mixed data: 0.822025
+2026-04-22 08:56:25,034 - Model - INFO - Epoch 1 (3/10):
+2026-04-22 08:56:49,215 - Model - INFO - Train Instance Accuracy for mixed data: 0.836580
+2026-04-22 08:56:49,216 - Model - INFO - Epoch 1 (4/10):
+2026-04-22 08:57:12,370 - Model - INFO - Train Instance Accuracy for mixed data: 0.841824
+2026-04-22 08:57:12,388 - Model - INFO - Epoch 1 (5/10):
+2026-04-22 08:57:36,699 - Model - INFO - Train Instance Accuracy for mixed data: 0.844927
+2026-04-22 08:57:36,700 - Model - INFO - Epoch 1 (6/10):
+2026-04-22 08:57:59,593 - Model - INFO - Train Instance Accuracy for mixed data: 0.848031
+2026-04-22 08:57:59,594 - Model - INFO - Epoch 1 (7/10):
+2026-04-22 08:58:23,795 - Model - INFO - Train Instance Accuracy for mixed data: 0.840218
+2026-04-22 08:58:23,795 - Model - INFO - Epoch 1 (8/10):
+2026-04-22 08:58:46,585 - Model - INFO - Train Instance Accuracy for mixed data: 0.841717
+2026-04-22 08:58:46,586 - Model - INFO - Epoch 1 (9/10):
+2026-04-22 08:59:10,981 - Model - INFO - Train Instance Accuracy for mixed data: 0.848780
+2026-04-22 08:59:10,982 - Model - INFO - Epoch 1 (10/10):
+2026-04-22 08:59:34,317 - Model - INFO - Train Instance Accuracy for mixed data: 0.851027
+2026-04-22 08:59:34,319 - Model - INFO - End of training...
+2026-04-22 09:06:52,016 - Model - INFO - PARAMETER ...
+2026-04-22 09:06:52,018 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=32, model='pointnet_cls_pointguard', num_category=2, epoch=10, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointnet_cls_mymodelnet_defense', decay_rate=0.0001, num_channel=4, process_data=False, use_uniform_sample=False, per_prob=0.3, inject_prob=0.0, npoints_inj=4, clutter_size_inj=2, channels_per=[0, 1, 2, 3], eps_per=1)
+2026-04-22 09:06:52,019 - Model - INFO - Load dataset ...
+2026-04-22 09:06:54,028 - Model - INFO - Start training...
+2026-04-22 09:06:54,029 - Model - INFO - Epoch 1 (1/10):
+2026-04-22 09:07:18,169 - Model - INFO - Train Instance Accuracy for mixed data: 0.803510
+2026-04-22 09:07:18,170 - Model - INFO - Epoch 1 (2/10):
+2026-04-22 09:07:41,160 - Model - INFO - Train Instance Accuracy for mixed data: 0.832085
+2026-04-22 09:07:41,161 - Model - INFO - Epoch 1 (3/10):
+2026-04-22 09:08:05,452 - Model - INFO - Train Instance Accuracy for mixed data: 0.823416
+2026-04-22 09:08:05,453 - Model - INFO - Epoch 1 (4/10):
+2026-04-22 09:08:28,482 - Model - INFO - Train Instance Accuracy for mixed data: 0.840753
+2026-04-22 09:08:28,483 - Model - INFO - Epoch 1 (5/10):
+2026-04-22 09:08:53,021 - Model - INFO - Train Instance Accuracy for mixed data: 0.835188
+2026-04-22 09:08:53,021 - Model - INFO - Epoch 1 (6/10):
+2026-04-22 09:09:17,036 - Model - INFO - Train Instance Accuracy for mixed data: 0.847068
+2026-04-22 09:09:17,037 - Model - INFO - Epoch 1 (7/10):
+2026-04-22 09:09:43,105 - Model - INFO - Train Instance Accuracy for mixed data: 0.844178
+2026-04-22 09:09:43,105 - Model - INFO - Epoch 1 (8/10):
+2026-04-22 09:10:08,783 - Model - INFO - Train Instance Accuracy for mixed data: 0.846318
+2026-04-22 09:10:08,783 - Model - INFO - Epoch 1 (9/10):
+2026-04-22 09:10:33,074 - Model - INFO - Train Instance Accuracy for mixed data: 0.839683
+2026-04-22 09:10:33,076 - Model - INFO - Epoch 1 (10/10):
+2026-04-22 09:10:57,738 - Model - INFO - Train Instance Accuracy for mixed data: 0.852633
+2026-04-22 09:10:57,738 - Model - INFO - End of training...
+2026-04-22 09:22:38,834 - Model - INFO - PARAMETER ...
+2026-04-22 09:22:38,835 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=32, model='pointnet_cls_pointguard', num_category=2, epoch=10, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointnet_cls_mymodelnet_defense', decay_rate=0.0001, num_channel=4, process_data=False, use_uniform_sample=False, per_prob=0.3, inject_prob=0.0, npoints_inj=4, clutter_size_inj=2, channels_per=[0, 1, 2, 3], eps_per=1)
+2026-04-22 09:22:38,836 - Model - INFO - Load dataset ...
+2026-04-22 09:22:40,334 - Model - INFO - Start training...
+2026-04-22 09:22:40,335 - Model - INFO - Epoch 1 (1/10):
+2026-04-22 09:23:05,955 - Model - INFO - Train Instance Accuracy for mixed data: 0.894050
+2026-04-22 09:23:05,956 - Model - INFO - Epoch 1 (2/10):
+2026-04-22 09:23:30,491 - Model - INFO - Train Instance Accuracy for mixed data: 0.918771
+2026-04-22 09:23:30,492 - Model - INFO - Epoch 1 (3/10):
+2026-04-22 09:23:54,896 - Model - INFO - Train Instance Accuracy for mixed data: 0.925300
+2026-04-22 09:23:54,897 - Model - INFO - Epoch 1 (4/10):
+2026-04-22 09:24:20,144 - Model - INFO - Train Instance Accuracy for mixed data: 0.923373
+2026-04-22 09:24:20,145 - Model - INFO - Epoch 1 (5/10):
+2026-04-22 09:24:44,367 - Model - INFO - Train Instance Accuracy for mixed data: 0.929259
+2026-04-22 09:24:44,370 - Model - INFO - Epoch 1 (6/10):
+2026-04-22 09:25:09,652 - Model - INFO - Train Instance Accuracy for mixed data: 0.926584
+2026-04-22 09:25:09,653 - Model - INFO - Epoch 1 (7/10):
+2026-04-22 09:25:34,666 - Model - INFO - Train Instance Accuracy for mixed data: 0.928403
+2026-04-22 09:25:34,668 - Model - INFO - Epoch 1 (8/10):
+2026-04-22 09:25:58,908 - Model - INFO - Train Instance Accuracy for mixed data: 0.929259
+2026-04-22 09:25:58,908 - Model - INFO - Epoch 1 (9/10):
+2026-04-22 09:26:16,520 - Model - INFO - PARAMETER ...
+2026-04-22 09:26:16,525 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=32, model='pointnet_cls_pointguard', num_category=2, epoch=10, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointnet_cls_mymodelnet_defense', decay_rate=0.0001, num_channel=4, process_data=False, use_uniform_sample=False, per_prob=0.4, inject_prob=0.0, npoints_inj=4, clutter_size_inj=2, channels_per=[0, 1, 2, 3], eps_per=1)
+2026-04-22 09:26:16,526 - Model - INFO - Load dataset ...
+2026-04-22 09:26:20,514 - Model - INFO - Start training...
+2026-04-22 09:26:20,515 - Model - INFO - Epoch 1 (1/10):
+2026-04-22 09:26:45,297 - Model - INFO - Train Instance Accuracy for mixed data: 0.893408
+2026-04-22 09:26:45,321 - Model - INFO - Epoch 1 (2/10):
+2026-04-22 09:27:10,503 - Model - INFO - Train Instance Accuracy for mixed data: 0.915133
+2026-04-22 09:27:10,508 - Model - INFO - Epoch 1 (3/10):
+2026-04-22 09:27:34,449 - Model - INFO - Train Instance Accuracy for mixed data: 0.914277
+2026-04-22 09:27:34,450 - Model - INFO - Epoch 1 (4/10):
+2026-04-22 09:27:59,615 - Model - INFO - Train Instance Accuracy for mixed data: 0.921768
+2026-04-22 09:27:59,617 - Model - INFO - Epoch 1 (5/10):
+2026-04-22 09:28:24,856 - Model - INFO - Train Instance Accuracy for mixed data: 0.923052
+2026-04-22 09:28:24,858 - Model - INFO - Epoch 1 (6/10):
+2026-04-22 09:28:48,814 - Model - INFO - Train Instance Accuracy for mixed data: 0.923266
+2026-04-22 09:28:48,815 - Model - INFO - Epoch 1 (7/10):
+2026-04-22 09:29:14,457 - Model - INFO - Train Instance Accuracy for mixed data: 0.929259
+2026-04-22 09:29:14,457 - Model - INFO - Epoch 1 (8/10):
+2026-04-22 09:29:39,287 - Model - INFO - Train Instance Accuracy for mixed data: 0.926049
+2026-04-22 09:29:39,289 - Model - INFO - Epoch 1 (9/10):
+2026-04-22 09:30:03,850 - Model - INFO - Train Instance Accuracy for mixed data: 0.930651
+2026-04-22 09:30:03,851 - Model - INFO - Epoch 1 (10/10):
+2026-04-22 09:30:29,077 - Model - INFO - Train Instance Accuracy for mixed data: 0.928831
+2026-04-22 09:30:29,077 - Model - INFO - End of training...
+2026-04-22 09:30:49,094 - Model - INFO - PARAMETER ...
+2026-04-22 09:30:49,096 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=32, model='pointnet_cls_pointguard', num_category=2, epoch=10, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointnet_cls_mymodelnet_defense', decay_rate=0.0001, num_channel=4, process_data=False, use_uniform_sample=False, per_prob=0.4, inject_prob=0.4, npoints_inj=4, clutter_size_inj=2, channels_per=[0, 1, 2, 3], eps_per=1)
+2026-04-22 09:30:49,098 - Model - INFO - Load dataset ...
+2026-04-22 09:30:50,531 - Model - INFO - Start training...
+2026-04-22 09:30:50,531 - Model - INFO - Epoch 1 (1/10):
+2026-04-22 09:31:17,865 - Model - INFO - Train Instance Accuracy for mixed data: 0.873930
+2026-04-22 09:31:17,866 - Model - INFO - Epoch 1 (2/10):
+2026-04-22 09:31:44,180 - Model - INFO - Train Instance Accuracy for mixed data: 0.903467
+2026-04-22 09:31:44,181 - Model - INFO - Epoch 1 (3/10):
+2026-04-22 09:32:09,760 - Model - INFO - Train Instance Accuracy for mixed data: 0.907427
+2026-04-22 09:32:09,761 - Model - INFO - Epoch 1 (4/10):
+2026-04-22 09:32:36,410 - Model - INFO - Train Instance Accuracy for mixed data: 0.914919
+2026-04-22 09:32:36,411 - Model - INFO - Epoch 1 (5/10):
+2026-04-22 09:33:02,874 - Model - INFO - Train Instance Accuracy for mixed data: 0.914384
+2026-04-22 09:33:02,875 - Model - INFO - Epoch 1 (6/10):
+2026-04-22 09:33:29,027 - Model - INFO - Train Instance Accuracy for mixed data: 0.922303
+2026-04-22 09:33:29,027 - Model - INFO - Epoch 1 (7/10):
+2026-04-22 09:33:54,635 - Model - INFO - Train Instance Accuracy for mixed data: 0.923694
+2026-04-22 09:33:54,636 - Model - INFO - Epoch 1 (8/10):
+2026-04-22 09:34:20,981 - Model - INFO - Train Instance Accuracy for mixed data: 0.925514
+2026-04-22 09:34:20,982 - Model - INFO - Epoch 1 (9/10):
+2026-04-22 09:34:46,083 - Model - INFO - Train Instance Accuracy for mixed data: 0.928189
+2026-04-22 09:34:46,085 - Model - INFO - Epoch 1 (10/10):
+2026-04-22 09:35:10,752 - Model - INFO - Train Instance Accuracy for mixed data: 0.929152
+2026-04-22 09:35:10,754 - Model - INFO - End of training...
+2026-04-22 09:47:52,508 - Model - INFO - PARAMETER ...
+2026-04-22 09:47:52,510 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=32, model='pointnet_cls_pointguard', num_category=2, epoch=10, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointnet_cls_mymodelnet_defense', decay_rate=0.0001, num_channel=4, process_data=False, use_uniform_sample=False, per_prob=0.4, inject_prob=0.4, npoints_inj=4, clutter_size_inj=2, channels_per=[0, 1, 2, 3], eps_per=1)
+2026-04-22 09:47:52,511 - Model - INFO - Load dataset ...
+2026-04-22 09:47:54,575 - Model - INFO - Start training...
+2026-04-22 09:47:54,575 - Model - INFO - Epoch 1 (1/10):
+2026-04-22 09:48:20,699 - Model - INFO - Train Instance Accuracy for mixed data: 0.884418
+2026-04-22 09:54:08,311 - Model - INFO - PARAMETER ...
+2026-04-22 09:54:08,312 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=32, model='pointnet_cls_pointguard', num_category=2, epoch=10, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointnet_cls_mymodelnet_defense', decay_rate=0.0001, num_channel=4, process_data=False, use_uniform_sample=False, per_prob=0.4, inject_prob=0.4, npoints_inj=4, clutter_size_inj=2, channels_per=[0, 1, 2, 3], eps_per=1)
+2026-04-22 09:54:08,313 - Model - INFO - Load dataset ...
+2026-04-22 09:54:09,736 - Model - INFO - Start training...
+2026-04-22 09:54:09,736 - Model - INFO - Epoch 1 (1/10):
+2026-04-22 09:54:35,177 - Model - INFO - Train Instance Accuracy for mixed data: 0.886344
+2026-04-22 09:54:45,405 - Model - INFO - Test Instance Accuracy: 0.897817, Class Accuracy: 0.894535
+2026-04-22 09:54:45,405 - Model - INFO - Best Instance Accuracy: 0.897817, Class Accuracy: 0.894535
+2026-04-22 09:54:45,406 - Model - INFO - Save model...
+2026-04-22 09:54:45,406 - Model - INFO - Saving at log/classification/pointnet_cls_mymodelnet_defense/epoch_10_npoint_16_bsize_32/checkpoints/best_model.pth
+2026-04-22 09:54:45,736 - Model - INFO - Epoch 2 (2/10):
+2026-04-22 09:55:11,334 - Model - INFO - Train Instance Accuracy for mixed data: 0.898652
+2026-04-22 09:55:21,053 - Model - INFO - Test Instance Accuracy: 0.913938, Class Accuracy: 0.910176
+2026-04-22 09:55:21,057 - Model - INFO - Best Instance Accuracy: 0.913938, Class Accuracy: 0.910176
+2026-04-22 09:55:21,057 - Model - INFO - Save model...
+2026-04-22 09:55:21,058 - Model - INFO - Saving at log/classification/pointnet_cls_mymodelnet_defense/epoch_10_npoint_16_bsize_32/checkpoints/best_model.pth
+2026-04-22 09:55:21,559 - Model - INFO - Epoch 3 (3/10):
+2026-04-22 09:55:47,233 - Model - INFO - Train Instance Accuracy for mixed data: 0.903789
+2026-04-22 09:55:57,895 - Model - INFO - Test Instance Accuracy: 0.920139, Class Accuracy: 0.917218
+2026-04-22 09:55:57,901 - Model - INFO - Best Instance Accuracy: 0.920139, Class Accuracy: 0.917218
+2026-04-22 09:55:57,904 - Model - INFO - Save model...
+2026-04-22 09:55:57,905 - Model - INFO - Saving at log/classification/pointnet_cls_mymodelnet_defense/epoch_10_npoint_16_bsize_32/checkpoints/best_model.pth
+2026-04-22 09:55:58,285 - Model - INFO - Epoch 4 (4/10):
+2026-04-22 09:56:25,449 - Model - INFO - Train Instance Accuracy for mixed data: 0.910317
+2026-04-22 09:56:35,260 - Model - INFO - Test Instance Accuracy: 0.940228, Class Accuracy: 0.938848
+2026-04-22 09:56:35,271 - Model - INFO - Best Instance Accuracy: 0.940228, Class Accuracy: 0.938848
+2026-04-22 09:56:35,273 - Model - INFO - Save model...
+2026-04-22 09:56:35,274 - Model - INFO - Saving at log/classification/pointnet_cls_mymodelnet_defense/epoch_10_npoint_16_bsize_32/checkpoints/best_model.pth
+2026-04-22 09:56:35,717 - Model - INFO - Epoch 5 (5/10):
+2026-04-22 09:57:02,722 - Model - INFO - Train Instance Accuracy for mixed data: 0.915775
+2026-04-22 09:57:13,322 - Model - INFO - Test Instance Accuracy: 0.931796, Class Accuracy: 0.929634
+2026-04-22 09:57:13,323 - Model - INFO - Best Instance Accuracy: 0.940228, Class Accuracy: 0.938848
+2026-04-22 09:57:13,324 - Model - INFO - Epoch 6 (6/10):
+2026-04-22 09:57:37,624 - Model - INFO - Train Instance Accuracy for mixed data: 0.919092
+2026-04-22 09:57:48,092 - Model - INFO - Test Instance Accuracy: 0.918651, Class Accuracy: 0.917554
+2026-04-22 09:57:48,093 - Model - INFO - Best Instance Accuracy: 0.940228, Class Accuracy: 0.938848
+2026-04-22 09:57:48,094 - Model - INFO - Epoch 7 (7/10):
+2026-04-22 09:58:14,213 - Model - INFO - Train Instance Accuracy for mixed data: 0.922945
+2026-04-22 09:58:24,964 - Model - INFO - Test Instance Accuracy: 0.921379, Class Accuracy: 0.919867
+2026-04-22 09:58:24,968 - Model - INFO - Best Instance Accuracy: 0.940228, Class Accuracy: 0.938848
+2026-04-22 09:58:24,970 - Model - INFO - Epoch 8 (8/10):
+2026-04-22 09:58:49,547 - Model - INFO - Train Instance Accuracy for mixed data: 0.921340
+2026-04-22 09:59:00,301 - Model - INFO - Test Instance Accuracy: 0.938244, Class Accuracy: 0.936915
+2026-04-22 09:59:00,302 - Model - INFO - Best Instance Accuracy: 0.940228, Class Accuracy: 0.938848
+2026-04-22 09:59:00,303 - Model - INFO - Epoch 9 (9/10):
+2026-04-22 09:59:24,965 - Model - INFO - Train Instance Accuracy for mixed data: 0.924015
+2026-04-22 09:59:35,357 - Model - INFO - Test Instance Accuracy: 0.933532, Class Accuracy: 0.933634
+2026-04-22 09:59:35,358 - Model - INFO - Best Instance Accuracy: 0.940228, Class Accuracy: 0.938848
+2026-04-22 09:59:35,359 - Model - INFO - Epoch 10 (10/10):
+2026-04-22 10:00:00,720 - Model - INFO - Train Instance Accuracy for mixed data: 0.928617
+2026-04-22 10:00:11,321 - Model - INFO - Test Instance Accuracy: 0.938244, Class Accuracy: 0.936804
+2026-04-22 10:00:11,322 - Model - INFO - Best Instance Accuracy: 0.940228, Class Accuracy: 0.938848
+2026-04-22 10:00:11,323 - Model - INFO - End of training...
+2026-04-22 15:45:33,510 - Model - INFO - PARAMETER ...
+2026-04-22 15:45:33,828 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=32, model='pointnet_cls_pointguard', num_category=2, epoch=10, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointnet_cls_mymodelnet_defense', decay_rate=0.0001, num_channel=4, process_data=False, use_uniform_sample=False, per_prob=0.4, inject_prob=0.4, npoints_inj=4, clutter_size_inj=2, channels_per=[0, 1, 2, 3], eps_per=1)
+2026-04-22 15:45:33,831 - Model - INFO - Load dataset ...
+2026-04-22 15:45:42,593 - Model - INFO - Start training...
+2026-04-22 15:45:42,593 - Model - INFO - Epoch 1 (1/10):
+2026-04-22 16:00:50,245 - Model - INFO - PARAMETER ...
+2026-04-22 16:00:50,247 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=32, model='pointnet_cls_pointguard', num_category=2, epoch=10, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointnet_cls_mymodelnet_defense', decay_rate=0.0001, num_channel=4, process_data=False, use_uniform_sample=False, per_prob=0.4, inject_prob=0.4, npoints_inj=4, clutter_size_inj=2, channels_per=[0, 1, 2, 3], eps_per=1)
+2026-04-22 16:00:50,248 - Model - INFO - Load dataset ...
+2026-04-22 16:00:52,546 - Model - INFO - Start training...
+2026-04-22 16:00:52,547 - Model - INFO - Epoch 1 (1/10):
+2026-04-22 16:02:37,535 - Model - INFO - PARAMETER ...
+2026-04-22 16:02:37,536 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=32, model='pointnet_cls_pointguard', num_category=2, epoch=10, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointnet_cls_mymodelnet_defense', decay_rate=0.0001, num_channel=5, process_data=False, use_uniform_sample=False, per_prob=0.4, inject_prob=0.4, npoints_inj=4, clutter_size_inj=2, channels_per=[0, 1, 2, 3], eps_per=1)
+2026-04-22 16:02:37,536 - Model - INFO - Load dataset ...
+2026-04-22 16:02:39,536 - Model - INFO - Start training...
+2026-04-22 16:02:39,536 - Model - INFO - Epoch 1 (1/10):
+2026-04-22 16:06:30,151 - Model - INFO - PARAMETER ...
+2026-04-22 16:06:30,153 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=32, model='pointnet_cls_pointguard', num_category=2, epoch=10, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointnet_cls_mymodelnet_defense', decay_rate=0.0001, num_channel=5, process_data=False, use_uniform_sample=False, per_prob=0.4, inject_prob=0.4, npoints_inj=4, clutter_size_inj=2, channels_per=[0, 1, 2, 3], eps_per=1)
+2026-04-22 16:06:30,154 - Model - INFO - Load dataset ...
+2026-04-22 16:06:32,071 - Model - INFO - Start training...
+2026-04-22 16:06:32,072 - Model - INFO - Epoch 1 (1/10):
+2026-04-22 16:08:09,306 - Model - INFO - PARAMETER ...
+2026-04-22 16:08:09,307 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=32, model='pointnet_cls_pointguard', num_category=2, epoch=10, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointnet_cls_mymodelnet_defense', decay_rate=0.0001, num_channel=5, process_data=False, use_uniform_sample=False, per_prob=0.4, inject_prob=0.4, npoints_inj=4, clutter_size_inj=2, channels_per=[0, 1, 2, 3], eps_per=1)
+2026-04-22 16:08:09,308 - Model - INFO - Load dataset ...
+2026-04-22 16:08:11,329 - Model - INFO - Start training...
+2026-04-22 16:08:11,330 - Model - INFO - Epoch 1 (1/10):
+2026-04-22 16:09:32,237 - Model - INFO - PARAMETER ...
+2026-04-22 16:09:32,238 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=32, model='pointnet_cls_pointguard', num_category=2, epoch=10, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointnet_cls_mymodelnet_defense', decay_rate=0.0001, num_channel=5, process_data=False, use_uniform_sample=False, per_prob=0.4, inject_prob=0.4, npoints_inj=4, clutter_size_inj=2, channels_per=[0, 1, 2, 3], eps_per=1)
+2026-04-22 16:09:32,239 - Model - INFO - Load dataset ...
+2026-04-22 16:09:34,337 - Model - INFO - Start training...
+2026-04-22 16:09:34,337 - Model - INFO - Epoch 1 (1/10):
+2026-04-22 16:10:33,003 - Model - INFO - PARAMETER ...
+2026-04-22 16:10:33,006 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=32, model='pointnet_cls_pointguard', num_category=2, epoch=10, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointnet_cls_mymodelnet_defense', decay_rate=0.0001, num_channel=5, process_data=False, use_uniform_sample=False, per_prob=0.4, inject_prob=0.4, npoints_inj=4, clutter_size_inj=2, channels_per=[0, 1, 2, 3], eps_per=1)
+2026-04-22 16:10:33,006 - Model - INFO - Load dataset ...
+2026-04-22 16:10:35,688 - Model - INFO - Start training...
+2026-04-22 16:10:35,688 - Model - INFO - Epoch 1 (1/10):
+2026-04-22 16:10:51,820 - Model - INFO - PARAMETER ...
+2026-04-22 16:10:51,821 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=32, model='pointnet_cls_pointguard', num_category=2, epoch=10, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointnet_cls_mymodelnet_defense', decay_rate=0.0001, num_channel=5, process_data=False, use_uniform_sample=False, per_prob=0.4, inject_prob=0.4, npoints_inj=4, clutter_size_inj=2, channels_per=[0, 1, 2, 3], eps_per=1)
+2026-04-22 16:10:51,823 - Model - INFO - Load dataset ...
+2026-04-22 16:10:53,310 - Model - INFO - Start training...
+2026-04-22 16:10:53,310 - Model - INFO - Epoch 1 (1/10):
+2026-04-22 16:13:13,945 - Model - INFO - PARAMETER ...
+2026-04-22 16:13:13,946 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=32, model='pointnet_cls_pointguard', num_category=2, epoch=10, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointnet_cls_mymodelnet_defense', decay_rate=0.0001, num_channel=4, process_data=False, use_uniform_sample=False, per_prob=0.4, inject_prob=0.4, npoints_inj=4, clutter_size_inj=2, channels_per=[0, 1, 2, 3], eps_per=1)
+2026-04-22 16:13:13,947 - Model - INFO - Load dataset ...
+2026-04-22 16:13:16,273 - Model - INFO - Start training...
+2026-04-22 16:13:16,273 - Model - INFO - Epoch 1 (1/10):
+2026-04-22 16:14:01,248 - Model - INFO - PARAMETER ...
+2026-04-22 16:14:01,250 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=32, model='pointnet_cls_pointguard', num_category=2, epoch=10, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointnet_cls_mymodelnet_defense', decay_rate=0.0001, num_channel=4, process_data=False, use_uniform_sample=False, per_prob=0.4, inject_prob=0.4, npoints_inj=4, clutter_size_inj=2, channels_per=[0, 1, 2, 3], eps_per=1)
+2026-04-22 16:14:01,251 - Model - INFO - Load dataset ...
+2026-04-22 16:14:03,013 - Model - INFO - Start training...
+2026-04-22 16:14:03,013 - Model - INFO - Epoch 1 (1/10):
+2026-04-22 16:14:43,337 - Model - INFO - Train Instance Accuracy for mixed data: 0.876605
+2026-04-22 16:16:52,256 - Model - INFO - Test Instance Accuracy: 0.880952, Class Accuracy: 0.880663
+2026-04-22 16:16:52,258 - Model - INFO - Best Instance Accuracy: 0.880952, Class Accuracy: 0.880663
+2026-04-22 16:16:52,258 - Model - INFO - Save model...
+2026-04-22 16:16:52,258 - Model - INFO - Saving at log/classification/pointnet_cls_mymodelnet_defense/epoch_10_npoint_16_bsize_32/checkpoints/best_model.pth
+2026-04-22 16:16:52,459 - Model - INFO - Epoch 2 (2/10):
+2026-04-22 16:17:19,089 - Model - INFO - Train Instance Accuracy for mixed data: 0.899829
+2026-04-22 16:17:30,103 - Model - INFO - Test Instance Accuracy: 0.922619, Class Accuracy: 0.919538
+2026-04-22 16:17:30,104 - Model - INFO - Best Instance Accuracy: 0.922619, Class Accuracy: 0.919538
+2026-04-22 16:17:30,104 - Model - INFO - Save model...
+2026-04-22 16:17:30,105 - Model - INFO - Saving at log/classification/pointnet_cls_mymodelnet_defense/epoch_10_npoint_16_bsize_32/checkpoints/best_model.pth
+2026-04-22 16:17:30,500 - Model - INFO - Epoch 3 (3/10):
+2026-04-22 16:17:58,415 - Model - INFO - Train Instance Accuracy for mixed data: 0.905501
+2026-04-22 16:18:08,987 - Model - INFO - Test Instance Accuracy: 0.927579, Class Accuracy: 0.925602
+2026-04-22 16:18:08,993 - Model - INFO - Best Instance Accuracy: 0.927579, Class Accuracy: 0.925602
+2026-04-22 16:18:08,993 - Model - INFO - Save model...
+2026-04-22 16:18:08,994 - Model - INFO - Saving at log/classification/pointnet_cls_mymodelnet_defense/epoch_10_npoint_16_bsize_32/checkpoints/best_model.pth
+2026-04-22 16:18:09,570 - Model - INFO - Epoch 4 (4/10):
+2026-04-22 16:18:36,323 - Model - INFO - Train Instance Accuracy for mixed data: 0.914170
+2026-04-22 16:18:46,987 - Model - INFO - Test Instance Accuracy: 0.925099, Class Accuracy: 0.922172
+2026-04-22 16:18:46,988 - Model - INFO - Best Instance Accuracy: 0.927579, Class Accuracy: 0.925602
+2026-04-22 16:18:46,990 - Model - INFO - Epoch 5 (5/10):
+2026-04-22 16:19:12,542 - Model - INFO - Train Instance Accuracy for mixed data: 0.915775
+2026-04-22 16:19:22,676 - Model - INFO - Test Instance Accuracy: 0.930804, Class Accuracy: 0.928119
+2026-04-22 16:19:22,677 - Model - INFO - Best Instance Accuracy: 0.930804, Class Accuracy: 0.928119
+2026-04-22 16:19:22,678 - Model - INFO - Save model...
+2026-04-22 16:19:22,679 - Model - INFO - Saving at log/classification/pointnet_cls_mymodelnet_defense/epoch_10_npoint_16_bsize_32/checkpoints/best_model.pth
+2026-04-22 16:19:23,208 - Model - INFO - Epoch 6 (6/10):
+2026-04-22 16:19:50,459 - Model - INFO - Train Instance Accuracy for mixed data: 0.922089
+2026-04-22 16:20:01,477 - Model - INFO - Test Instance Accuracy: 0.932540, Class Accuracy: 0.930323
+2026-04-22 16:20:01,478 - Model - INFO - Best Instance Accuracy: 0.932540, Class Accuracy: 0.930323
+2026-04-22 16:20:01,479 - Model - INFO - Save model...
+2026-04-22 16:20:01,480 - Model - INFO - Saving at log/classification/pointnet_cls_mymodelnet_defense/epoch_10_npoint_16_bsize_32/checkpoints/best_model.pth
+2026-04-22 16:20:01,854 - Model - INFO - Epoch 7 (7/10):
+2026-04-22 16:20:28,666 - Model - INFO - Train Instance Accuracy for mixed data: 0.920056
+2026-04-22 16:20:38,748 - Model - INFO - Test Instance Accuracy: 0.933532, Class Accuracy: 0.931729
+2026-04-22 16:20:38,750 - Model - INFO - Best Instance Accuracy: 0.933532, Class Accuracy: 0.931729
+2026-04-22 16:20:38,751 - Model - INFO - Save model...
+2026-04-22 16:20:38,752 - Model - INFO - Saving at log/classification/pointnet_cls_mymodelnet_defense/epoch_10_npoint_16_bsize_32/checkpoints/best_model.pth
+2026-04-22 16:20:39,258 - Model - INFO - Epoch 8 (8/10):
+2026-04-22 16:21:05,618 - Model - INFO - Train Instance Accuracy for mixed data: 0.923587
+2026-04-22 16:21:16,384 - Model - INFO - Test Instance Accuracy: 0.938492, Class Accuracy: 0.937069
+2026-04-22 16:21:16,384 - Model - INFO - Best Instance Accuracy: 0.938492, Class Accuracy: 0.937069
+2026-04-22 16:21:16,386 - Model - INFO - Save model...
+2026-04-22 16:21:16,387 - Model - INFO - Saving at log/classification/pointnet_cls_mymodelnet_defense/epoch_10_npoint_16_bsize_32/checkpoints/best_model.pth
+2026-04-22 16:21:16,728 - Model - INFO - Epoch 9 (9/10):
+2026-04-22 16:21:44,454 - Model - INFO - Train Instance Accuracy for mixed data: 0.927333
+2026-04-22 16:21:54,294 - Model - INFO - Test Instance Accuracy: 0.934524, Class Accuracy: 0.932421
+2026-04-22 16:21:54,296 - Model - INFO - Best Instance Accuracy: 0.938492, Class Accuracy: 0.937069
+2026-04-22 16:21:54,297 - Model - INFO - Epoch 10 (10/10):
+2026-04-22 16:22:19,723 - Model - INFO - Train Instance Accuracy for mixed data: 0.922410
+2026-04-22 16:22:30,358 - Model - INFO - Test Instance Accuracy: 0.942708, Class Accuracy: 0.941430
+2026-04-22 16:22:30,358 - Model - INFO - Best Instance Accuracy: 0.942708, Class Accuracy: 0.941430
+2026-04-22 16:22:30,359 - Model - INFO - Save model...
+2026-04-22 16:22:30,359 - Model - INFO - Saving at log/classification/pointnet_cls_mymodelnet_defense/epoch_10_npoint_16_bsize_32/checkpoints/best_model.pth
+2026-04-22 16:22:30,721 - Model - INFO - End of training...

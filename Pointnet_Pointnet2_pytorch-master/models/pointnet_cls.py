@@ -3,13 +3,12 @@ import torch.utils.data
 import torch.nn.functional as F
 from pointnet_utils import PointNetEncoder, feature_transform_reguliarzer
 
+'''
+classifier
+'''
 class get_model(nn.Module):
     def __init__(self, k=40, num_channel=3):
         super(get_model, self).__init__()
-        # if normal_channel:
-        #     channel = 6
-        # else:
-        #     channel = 3
         self.feat = PointNetEncoder(global_feat=True, feature_transform=True, channel=num_channel)
         self.fc1 = nn.Linear(1024, 512)
         self.fc2 = nn.Linear(512, 256)
@@ -20,6 +19,7 @@ class get_model(nn.Module):
         self.relu = nn.ReLU()
 
     def forward(self, x):
+        print(x.shape)
         x, trans, trans_feat = self.feat(x)
         x = F.relu(self.bn1(self.fc1(x)))
         x = F.relu(self.bn2(self.dropout(self.fc2(x))))

@@ -1,5 +1,5 @@
 '''
-adopt the Daa=taLoader to pointguard
+adopt the DataLoader to pointguard
 '''
 import os
 import numpy as np

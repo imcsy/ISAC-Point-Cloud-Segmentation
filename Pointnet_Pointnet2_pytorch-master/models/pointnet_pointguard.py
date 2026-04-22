@@ -5,7 +5,9 @@ import torch.utils.data
 import torch.nn.functional as F
 from pointnet_utils import PointNetEncoder, feature_transform_reguliarzer
 
-
+'''
+scorer
+'''
 class get_model(nn.Module):
     def __init__(self, num_channels=4):
         super(get_model, self).__init__()

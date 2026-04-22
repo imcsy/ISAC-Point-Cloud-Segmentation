@@ -1,5 +1,5 @@
 """
-train pointguard to provide 5th channel data
+train pointguard to predict 5th channel -- reliability score
 generate AD channel using NN
 """
 import os
@@ -16,7 +16,7 @@ import argparse
 
 from pathlib import Path
 from tqdm import tqdm
-from data_utils.ModelNetDataLoader_pointguard import ModelNetDataLoader_pointguard
+from data_utils.ModelNetDataLoader_clean_per_inj import ModelNetDataLoader_clean_per_inj
 from defense_utils.generative_adversarial_network import perturbation_attack, weighted_dist_per, add_ADchannel
 import torch.nn.functional as F
 
@@ -39,7 +39,17 @@ def parse_args():
     parser.add_argument('--log_dir', type=str, default=None, help='experiment root')
     parser.add_argument('--decay_rate', type=float, default=1e-4, help='decay rate')
     parser.add_argument('--num_channel', type=int, default=4, help='Input Channel Number')  
+    # probability of two attacks
+    parser.add_argument('--per_prob', type=float, default=0.4, help='Data proportion of Perturbation')
+    parser.add_argument('--inject_prob', type=float, default=0.4, help='Data Proportion of Injection')
+    # add parameters for injection attack
+    parser.add_argument('--npoints_inj', type=int, default=4, help='Number of Points Injected')
+    parser.add_argument('--clutter_size_inj', type=int, default=2, help='The approximate number od points for the injected clutter')
+    # add parameters for perturbation attack
+    parser.add_argument('--channels_per', type=int, nargs='+', default=[0, 1, 2, 3], help='Channels of Perturbation')
+    parser.add_argument('--eps_per', type=float, default=1, help='Eps of Perturbation')
     # keep some parameters just to pass to ModelLoader
+    parser.add_argument('--num_category', default=2, type=int, choices=[2, 10, 40],  help='training on ModelNet10/40')
     return parser.parse_args()
 
 def inplace_relu(m):
@@ -51,27 +61,18 @@ def test(model, loader):
     mse_ls = []
     scorer = model.eval()
 
-    for j, (points, _) in tqdm(enumerate(loader), total=len(loader)):
+    for j, (points_aug, _, _) in tqdm(enumerate(loader), total=len(loader)):   
+        points_aug = points_aug.float()
 
-        # generate data (include points and the AD channel)
-        clean_data = add_ADchannel(points, is_perturbed=False)  # (B, N, 5)
-        clean_points, clean_target = torch.split(clean_data, [4,1], dim=2)  # (B, N, 4)  (B, N, 1) 
-        # generate perturbed data 
-        channels = [0,1,2,3]
-        eps = 1
-        perturbed_data = add_ADchannel(points, is_perturbed=True, channels=channels, eps=eps)   # (B,N,5)
-        per_points, per_target = torch.split(perturbed_data, [4,1], dim=2)
-
-        # concatenate
-        com_points = torch.cat([clean_points, per_points], dim=1)   # (B, 2N, 4)
-        com_target = torch.cat([clean_target, per_target], dim=1).squeeze(-1)   # (B, 2N)
         if not args.use_cpu:
-            com_points, com_target = com_points.cuda(), com_target.cuda()
+                points_aug = points_aug.cuda()                      # points_aug (B, N, 5)
+        points, target = torch.split(points_aug, [4,1], dim=2)      # (B,N,4) and (B,N,1)
+        target = target.squeeze(2)
 
-        # predict and compute the loss
-        com_points = com_points.transpose(2, 1)     # (B, 4, 2N)
-        pred, _ = scorer(com_points)       # pred: (B,2N)   trans_feat: (B,64,64)
-        mse = F.mse_loss(pred, com_target.float()).item()
+        points = points.transpose(2,1)
+        pred, _ = scorer(points)
+        
+        mse = F.mse_loss(pred, target.float()).item()
         mse_ls.append(mse)
 
     test_mse_mean = np.mean(mse_ls)
@@ -122,8 +123,8 @@ def main(args):
     log_string('Load dataset ...')
     data_path = '/content/drive/MyDrive/THESIS_dataset/mmw/MyModelNet_cls'
 
-    train_dataset = ModelNetDataLoader_pointguard(root=data_path, args=args, split='train', process_data=False)
-    test_dataset = ModelNetDataLoader_pointguard(root=data_path, args=args, split='test', process_data=False)
+    train_dataset = ModelNetDataLoader_clean_per_inj(root=data_path, args=args, split='train', process_data=False, per_prob=args.per_prob, inject_prob=args.inject_prob)
+    test_dataset = ModelNetDataLoader_clean_per_inj(root=data_path, args=args, split='test', process_data=False, per_prob=args.per_prob, inject_prob=args.inject_prob)
     trainDataLoader = torch.utils.data.DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=10, drop_last=True)
     testDataLoader = torch.utils.data.DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False, num_workers=10)
 
@@ -131,7 +132,7 @@ def main(args):
     model = importlib.import_module(args.model)
     shutil.copy('./models/%s.py' % args.model, str(exp_dir))
     shutil.copy('models/pointnet2_utils.py', str(exp_dir))
-    shutil.copy('./train_classification.py', str(exp_dir))
+    shutil.copy('./train_pointguard.py', str(exp_dir))
 
     scorer = model.get_model(num_channels=args.num_channel)
     criterion = model.get_loss()
@@ -168,38 +169,20 @@ def main(args):
         scorer = scorer.train()
 
         scheduler.step()
-        for batch_id, (points, _) in tqdm(enumerate(trainDataLoader, 0), total=len(trainDataLoader), smoothing=0.9):
+        for batch_id, (points_aug, _, _) in tqdm(enumerate(trainDataLoader, 0), total=len(trainDataLoader), smoothing=0.9):
+            points_aug = points_aug.float()     # (B, N, 5)
             optimizer.zero_grad()
-            
-            # generate data (include points and the AD channel)
-            clean_data = add_ADchannel(points, is_perturbed=False)  # (B, N, 5)
-            clean_points, clean_target = torch.split(clean_data, [4,1], dim=2)  # (B, N, 4)  (B, N, 1) 
 
-            channels = [[0,1,2,3], [0,1,2,3]]
-            eps = [1, 2]
-            per_points_ls = []
-            per_target_ls = []
-            for i in range(len(channels)):
-                perturbed_data = add_ADchannel(points, is_perturbed=True, channels=channels[i], eps=eps[i])   # (B,N,5)
-                p, t = torch.split(perturbed_data, [4,1], dim=2)
-                per_points_ls.append(p)
-                per_target_ls.append(t)
-            # perturbed_data = add_ADchannel(points, is_perturbed=True, channels=channels, eps=eps)   # (B,N,5)
-            # per_points, per_target = torch.split(perturbed_data, [4,1], dim=2)
-            
-            # concatenate
-            com_points = torch.cat([clean_points] + per_points_ls, dim=1)   # (B, 2N, 4)
-            com_target = torch.cat([clean_target] + per_target_ls, dim=1).squeeze(-1)   # (B, 2N)
-            if not args.use_cpu:   
-                com_points, com_target = com_points.cuda(), com_target.cuda()
+            if not args.use_cpu:
+                points_aug = points_aug.cuda()  # points_aug (B, N, 5)
+            points, target = torch.split(points_aug, [4,1], dim=2)      # (B,N,4) and (B,N,1)
+            target = target.squeeze(2)
 
-            # predict and compute the loss
-            com_points = com_points.transpose(2, 1)     # (B, 4, 2N)
-            pred, trans_feat = scorer(com_points)       # pred: (B,2N)   trans_feat: (B,64,64)
-            loss = criterion(pred, com_target.float(), trans_feat)
+            points = points.transpose(2,1)
+            pred, trans_feat = scorer(points)
+            loss = criterion(pred, target, trans_feat)
 
-            # calculate mse loss
-            mse_ls.append(F.mse_loss(pred, com_target))
+            mse_ls.append(F.mse_loss(pred, target))
 
             loss.backward()
             optimizer.step()
@@ -209,7 +192,7 @@ def main(args):
         log_string('Train MSE loss: %f' % train_mse_mean)
 
         with torch.no_grad():
-            test_mse_mean = test(scorer.eval(), testDataLoader)
+            test_mse_mean = test(scorer, testDataLoader)
             
             if (test_mse_mean <= best_mse):
                 best_mse = test_mse_mean

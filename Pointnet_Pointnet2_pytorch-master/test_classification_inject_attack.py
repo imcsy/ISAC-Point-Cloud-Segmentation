@@ -2,7 +2,7 @@
 Test vanilla PointNet (cls)
 under adversarial injection attack
 """
-from data_utils.ModelNetDataLoader_injection import ModelNetDataLoader_Injection
+from data_utils.ModelNetDataLoader_clean_per_inj import ModelNetDataLoader_clean_per_inj
 import argparse
 import numpy as np
 import os
@@ -26,7 +26,7 @@ def parse_args():
     parser.add_argument('--batch_size', type=int, default=64, help='batch size in training')
     parser.add_argument('--num_category', default=2, type=int, choices=[2, 10, 40],  help='training on ModelNet10/40')
     parser.add_argument('--log_dir', type=str, required=True, help='Experiment root')
-    parser.add_argument('--num_channel', type=int, default=3, help='Input Channel Number')
+    parser.add_argument('--num_channel', type=int, default=4, help='Input Channel Number')
     parser.add_argument('--use_uniform_sample', action='store_true', default=False, help='use uniform sampiling')
     parser.add_argument('--num_votes', type=int, default=3, help='Aggregate classification scores with voting')
     # add dropout, shift or not
@@ -37,33 +37,17 @@ def parse_args():
     parser.add_argument('--num_point', type=int, default=16, help='Point Number')
     # add parameters for injection attack
     parser.add_argument('--npoints_inj', type=int, default=4, help='Number of Points Injected')
-    parser.add_argument('--clutter_size_inj', type=int, default=4, help='The approximate number od points for the injected clutter')
+    parser.add_argument('--clutter_size_inj', type=int, default=2, help='The approximate number od points for the injected clutter')
+    # add parameters for perturbation attack
+    parser.add_argument('--channels_per', type=int, nargs='+', default=[0, 1, 2, 3], help='Channels of Perturbation')
+    parser.add_argument('--eps_per', type=float, default=0, help='Eps of Perturbation')
+    # add number of testing runs
+    parser.add_argument('--num_runs', type=int, default=10, help='Number of Testing Runs')
+    # FLAG of whether test using PointGuard
+    parser.add_argument('--is_PointGuard', action='store_true', required=False, help='Whether use PointGuard')
     return parser.parse_args()
 
-def perturbation_attack(points, channels, eps):
-    """
-    Adds Gaussian jitter to specified channels of a point cloud tensor.
-    
-    Args:
-        points: Input tensor of shape (batch_size, npoints, dim_input)
-        channels: List of indices to perturb, e.g., [0, 1, 2] for XYZ
-        delta: The standard deviation of the Gaussian noise
-        
-    Returns:
-        perturbed_points: A new tensor with noise added
-    """
-    perturbed_points = points.clone()
-    target_data = points[:, :, channels].reshape(-1, len(channels)) 
-
-    sigma = torch.std(target_data, dim=0)
-
-    noise_shape = (points.shape[0], points.shape[1], len(channels))
-    jitter = torch.randn(noise_shape, device=points.device) * eps * sigma
-    
-    perturbed_points[:, :, channels] += jitter
-    return perturbed_points
-
-def test_return_raw_data_ls(model, loader, num_class=2, vote_num=1):
+def test(model, loader, num_class=2, vote_num=1):
     classifier = model.eval()
     cd_ls = []
     target_ls = []
@@ -76,7 +60,6 @@ def test_return_raw_data_ls(model, loader, num_class=2, vote_num=1):
     
         points = points.transpose(2, 1)
         vote_pool = torch.zeros(target.size()[0], num_class).cuda()
-
         for _ in range(vote_num):
             pred, _ = classifier(points)
             vote_pool += pred
@@ -89,6 +72,40 @@ def test_return_raw_data_ls(model, loader, num_class=2, vote_num=1):
 
     return cd_ls, target_ls, pred_ls
 
+def test_PointGuard(cls_model, scorer_model, loader, num_class=2, vote_num=1):
+    classifier = cls_model.eval()
+    scorer = scorer_model.eval()
+    cd_ls = []
+    target_ls = []
+    pred_ls = []
+
+    for j, (p, target, cd) in tqdm(enumerate(loader), total=len(loader)):
+        points = p[:,:,:4].float()
+        if not args.use_cpu:
+            points, target = points.cuda(), target.cuda()   # points (B,N,4)
+        
+        # use scorer to predict scores
+        scores, _ = scorer(points.transpose(2,1))        # scores (B,N)
+        scores = scores.unsqueeze(-1)       # scores (B,N,1)
+
+        points_aug = torch.cat([points, scores], dim=2) 
+
+        # use classifier to redict labels
+        if not args.use_cpu:
+            points_aug = points_aug.cuda()
+        points_aug = points_aug.transpose(2, 1)
+        vote_pool = torch.zeros(target.size()[0], num_class).cuda()
+        for _ in range(vote_num):
+            pred, _ = classifier(points_aug)
+            vote_pool += pred
+        pred = vote_pool / vote_num
+        pred_choice = pred.data.max(1)[1]
+
+        cd_ls.extend(cd.cpu().numpy())
+        target_ls.extend(target.cpu().numpy())
+        pred_ls.extend(pred_choice.cpu().numpy())
+
+    return cd_ls, target_ls, pred_ls
 
 def main(args):
     def log_string(str):
@@ -123,30 +140,48 @@ def main(args):
     log_string('Load dataset ...')
     data_path = '/content/drive/MyDrive/THESIS_dataset/mmw/MyModelNet_cls'
 
-    test_dataset = ModelNetDataLoader_Injection(root=data_path, args=args, split='test', process_data=False)
+    test_dataset = ModelNetDataLoader_clean_per_inj(root=data_path, args=args, split='test', process_data=False, per_prob=0, inject_prob=1)
     testDataLoader = torch.utils.data.DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False, num_workers=10)
 
     '''MODEL LOADING'''
     num_class = args.num_category
     path = os.listdir(experiment_dir + '/logs')
     txt_files = [f for f in path if f.endswith('.txt')]
-    model_name = txt_files[0].split('.')[0]
+    model_name = "pointnet_cls_pointguard" if args.is_PointGuard else "pointnet_cls"
     model = importlib.import_module(model_name)
 
-    classifier = model.get_model(num_class, num_channel=args.num_channel)
+    if args.is_PointGuard:
+        classifier = model.get_model(num_class, num_channel=args.num_channel+1)      # (num_channel=5)
+    else:
+        classifier = model.get_model(num_class, num_channel=args.num_channel)
     if not args.use_cpu:
         classifier = classifier.cuda()
 
     checkpoint = torch.load(str(experiment_dir) + '/checkpoints/best_model.pth', weights_only=False)
     classifier.load_state_dict(checkpoint['model_state_dict'])
 
+    '''PointGuard (scorer) MODEL LOADING'''
+    if args.is_PointGuard:
+        model_pointguard = importlib.import_module("pointnet_pointguard")
+        scorer = model_pointguard.get_model(num_channels=args.num_channel)
+        if not args.use_cpu:
+            scorer = scorer.cuda()
+        path_pointguard_weights = "/content/drive/MyDrive/THESIS/Pointnet_Pointnet2_pytorch-master/log/pointguard/pointguard_classification_mix/epoch_10_npoint_16_bsize_64/checkpoints/best_model.pth"
+        checkpoint_pointguard = torch.load(path_pointguard_weights, weights_only=False)
+        scorer.load_state_dict(checkpoint_pointguard['model_state_dict'])
+
+
     with torch.no_grad():
         bins = list(np.arange(0, 5.0, 0.1)) + [float('inf')]
         all_runs_acc = []
-        num_runs = 30
+        num_runs = args.num_runs
         print(num_runs, " runs in total")
-        for _ in range(30):
-            cd_ls, target_ls, pred_ls = test_return_raw_data_ls(classifier, testDataLoader,  vote_num=args.num_votes, num_class=num_class)
+        for _ in range(num_runs ):
+            if args.is_PointGuard:
+                cd_ls, target_ls, pred_ls = test_PointGuard(classifier, scorer, testDataLoader, vote_num=args.num_votes, num_class=num_class)
+            else:
+                cd_ls, target_ls, pred_ls = test(classifier, testDataLoader, vote_num=args.num_votes, num_class=num_class)
+
 
             df = pd.DataFrame({
                 'cd': cd_ls,
@@ -175,7 +210,7 @@ def main(args):
         filename =  f"/inj_attack_comparison_npointsinj_{args.npoints_inj}_cluttersizeinj_{args.clutter_size_inj}"
         filename = filename + ".csv"
         out_df.to_csv(experiment_dir + filename, index=False)
-        print("Data saved...")
+        print(f"Data saved to {experiment_dir + filename}")
 
 
 if __name__ == '__main__':

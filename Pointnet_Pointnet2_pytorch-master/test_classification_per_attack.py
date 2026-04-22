@@ -53,6 +53,7 @@ def perturbation_attack(points, channels, eps):
     target_data = points[:, :, channels].reshape(-1, len(channels)) 
 
     sigma = torch.std(target_data, dim=0)
+    print(sigma)
 
     noise_shape = (points.shape[0], points.shape[1], len(channels))
     jitter = torch.randn(noise_shape, device=points.device) * eps * sigma
