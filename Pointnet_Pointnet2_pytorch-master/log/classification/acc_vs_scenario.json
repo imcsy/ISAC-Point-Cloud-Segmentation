@@ -1,0 +1,98 @@
+[
+    {
+        "model": "Vanilla",
+        "attack_scenario": "no_attack",
+        "class_acc": 0.970257117269985,
+        "instance_acc": 0.9690806878306879,
+        "confidence_avg": 0.9290456771850586,
+        "confidence_std": 0.10498276352882385
+    },
+    {
+        "model": "NoiseTrain",
+        "attack_scenario": "no_attack",
+        "class_acc": 0.9626431466817497,
+        "instance_acc": 0.9629629629629629,
+        "confidence_avg": 0.9486880302429199,
+        "confidence_std": 0.09859883785247803
+    },
+    {
+        "model": "PointGuard",
+        "attack_scenario": "no_attack",
+        "class_acc": 0.9586835030622418,
+        "instance_acc": 0.9588293650793651,
+        "confidence_avg": 0.8869324922561646,
+        "confidence_std": 0.13043774664402008
+    },
+    {
+        "model": "Vanilla",
+        "attack_scenario": "mix_attack",
+        "class_acc": 0.7926013857466063,
+        "instance_acc": 0.7816633597883598,
+        "confidence_avg": 0.8418300747871399,
+        "confidence_std": 0.15804803371429443
+    },
+    {
+        "model": "NoiseTrain",
+        "attack_scenario": "mix_attack",
+        "class_acc": 0.8440463329562594,
+        "instance_acc": 0.8368882275132276,
+        "confidence_avg": 0.8487624526023865,
+        "confidence_std": 0.1626698225736618
+    },
+    {
+        "model": "PointGuard",
+        "attack_scenario": "mix_attack",
+        "class_acc": 0.9240864905284147,
+        "instance_acc": 0.9248511904761905,
+        "confidence_avg": 0.850674033164978,
+        "confidence_std": 0.13711243867874146
+    },
+    {
+        "model": "Vanilla",
+        "attack_scenario": "extreme_perturbation",
+        "class_acc": 0.6399020079185521,
+        "instance_acc": 0.6378141534391534,
+        "confidence_avg": 0.8908824920654297,
+        "confidence_std": 0.1411423683166504
+    },
+    {
+        "model": "NoiseTrain",
+        "attack_scenario": "extreme_perturbation",
+        "class_acc": 0.688254100678733,
+        "instance_acc": 0.677744708994709,
+        "confidence_avg": 0.8572741746902466,
+        "confidence_std": 0.16157166659832
+    },
+    {
+        "model": "PointGuard",
+        "attack_scenario": "extreme_perturbation",
+        "class_acc": 0.7222641895741347,
+        "instance_acc": 0.7244543650793651,
+        "confidence_avg": 0.7589481472969055,
+        "confidence_std": 0.14669980108737946
+    },
+    {
+        "model": "Vanilla",
+        "attack_scenario": "doppler_attack",
+        "class_acc": 0.7270479826546004,
+        "instance_acc": 0.708994708994709,
+        "confidence_avg": 0.8557603359222412,
+        "confidence_std": 0.15138475596904755
+    },
+    {
+        "model": "NoiseTrain",
+        "attack_scenario": "doppler_attack",
+        "class_acc": 0.7766431938159879,
+        "instance_acc": 0.7641369047619048,
+        "confidence_avg": 0.8636584281921387,
+        "confidence_std": 0.1576414257287979
+    },
+    {
+        "model": "PointGuard",
+        "attack_scenario": "doppler_attack",
+        "class_acc": 0.8573791571713432,
+        "instance_acc": 0.8526785714285714,
+        "confidence_avg": 0.8295212388038635,
+        "confidence_std": 0.15299180150032043
+    }
+]

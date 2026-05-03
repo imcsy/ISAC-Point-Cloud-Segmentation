@@ -129,8 +129,6 @@ def main(args):
     '''DATA LOADING'''
     log_string('Load dataset ...')
     data_path = '/content/drive/MyDrive/THESIS_dataset/mmw/MyModelNet_cls'
-    # '/content/drive/MyDrive/THESIS_dataset/modelnet40_normal_resampled/'
-    # '/content/drive/MyDrive/THESIS_dataset/mmw/MyModelNet_cls'
     
 
     train_dataset = ModelNetDataLoader(root=data_path, args=args, split='train', process_data=args.process_data)
@@ -152,15 +150,6 @@ def main(args):
     if not args.use_cpu:
         classifier = classifier.cuda()
         criterion = criterion.cuda()
-
-    # try:
-    #     checkpoint = torch.load(str(exp_dir) + '/checkpoints/best_model.pth')
-    #     start_epoch = checkpoint['epoch']
-    #     classifier.load_state_dict(checkpoint['model_state_dict'])
-    #     log_string('Use pretrain model')
-    # except:
-    #     log_string('No existing model, starting training from scratch...')
-    #     start_epoch = 0
 
     start_epoch = 0
 
@@ -200,7 +189,7 @@ def main(args):
             if args.dropout:
                 points = provider.random_point_dropout(points)
             if args.shift:
-                points[:, :, 0:3] = provider.shift_point_cloud(points[:, :, 0:3])
+                points[:, :, 0:3] = provider.shift_point_cloud(points[:, :, 0:3], shift_range=0.3)
             # points[:, :, 0:3] = provider.random_scale_point_cloud(points[:, :, 0:3])
             
             points = torch.Tensor(points)
@@ -209,7 +198,7 @@ def main(args):
             if not args.use_cpu:
                 points, target = points.cuda(), target.cuda()
 
-            pred, trans_feat = classifier(points)
+            pred, trans_feat = classifier(points)           # pred: (B,N)
             loss = criterion(pred, target.long(), trans_feat)
             pred_choice = pred.data.max(1)[1]
 

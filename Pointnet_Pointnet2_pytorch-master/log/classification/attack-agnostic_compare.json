@@ -1,0 +1,92 @@
+[
+    {
+        "model": "Vanilla",
+        "attack_scenario": "no_attack",
+        "class_acc": 0.970257117269985,
+        "instance_acc": 0.9690806878306879
+    },
+    {
+        "model": "NoiseTrain",
+        "attack_scenario": "no_attack",
+        "class_acc": 0.9626431466817497,
+        "instance_acc": 0.9629629629629629
+    },
+    {
+        "model": "AdvTrain",
+        "attack_scenario": "no_attack",
+        "class_acc": 0.9561386217948719,
+        "instance_acc": 0.9564318783068784
+    },
+    {
+        "model": "PointGuard",
+        "attack_scenario": "no_attack",
+        "class_acc": 0.9586835030622418,
+        "instance_acc": 0.9588293650793651
+    },
+    {
+        "model": "Vanilla",
+        "attack_scenario": "doppler_attack",
+        "class_acc": 0.72930217760181,
+        "instance_acc": 0.7121362433862434
+    },
+    {
+        "model": "NoiseTrain",
+        "attack_scenario": "doppler_attack",
+        "class_acc": 0.7798963518099548,
+        "instance_acc": 0.7668650793650794
+    },
+    {
+        "model": "AdvTrain",
+        "attack_scenario": "doppler_attack",
+        "class_acc": 0.8340008484162896,
+        "instance_acc": 0.8258928571428571
+    },
+    {
+        "model": "PointGuard",
+        "attack_scenario": "doppler_attack",
+        "class_acc": 0.8608919001922803,
+        "instance_acc": 0.8563988095238095
+    },
+    {
+        "model": "Vanilla",
+        "attack_scenario": "extreme_perturbation",
+        "class_acc": 0.6343301282051281,
+        "instance_acc": 0.6331845238095238
+    },
+    {
+        "model": "NoiseTrain",
+        "attack_scenario": "extreme_perturbation",
+        "class_acc": 0.6925003299396683,
+        "instance_acc": 0.6821263227513228
+    },
+    {
+        "model": "AdvTrain",
+        "attack_scenario": "extreme_perturbation",
+        "class_acc": 0.6828954562594269,
+        "instance_acc": 0.6888227513227514
+    },
+    {
+        "model": "PointGuard",
+        "attack_scenario": "extreme_perturbation",
+        "class_acc": 0.7170562197336563,
+        "instance_acc": 0.7204861111111112
+    },
+    {
+        "model": "Vanilla",
+        "attack_scenario": "mix_attack",
+        "class_acc": 0.7920210218702866,
+        "instance_acc": 0.7819940476190477
+    },
+    {
+        "model": "NoiseTrain",
+        "attack_scenario": "mix_attack",
+        "class_acc": 0.8571811840120664,
+        "instance_acc": 0.8489583333333334
+    },
+    {
+        "model": "PointGuard",
+        "attack_scenario": "mix_attack",
+        "class_acc": 0.9252134444879647,
+        "instance_acc": 0.9263392857142857
+    }
+]

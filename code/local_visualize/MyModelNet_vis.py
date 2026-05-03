@@ -26,5 +26,5 @@ pcd = o3d.geometry.PointCloud()
 pcd.points = o3d.utility.Vector3dVector(xyz_ls)
 
 axis = o3d.geometry.TriangleMesh.create_coordinate_frame(size=5.0, origin=[0,0,0])
-o3d.visualization.draw_geometries([pcd, axis],
+o3d.visualization.draw_geometries([pcd],
                                   window_name="Radar Point Cloud")

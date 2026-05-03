@@ -88,10 +88,6 @@ def main(args):
     '''CREATE DIR'''
     experiment_dir = 'log/classification/' + args.log_dir
     param_name = f"/epoch_{args.epoch}_npoint_{args.num_point}_bsize_{args.batch_size}"
-    # if args.dropout:
-    #     param_name = param_name + "_dropout"
-    # if args.shift:
-    #     param_name = param_name + "_shift"
     experiment_dir = experiment_dir + param_name + '/'
 
     '''LOG'''
@@ -109,8 +105,6 @@ def main(args):
     '''DATA LOADING'''
     log_string('Load dataset ...')
     data_path = '/content/drive/MyDrive/THESIS_dataset/mmw/MyModelNet_cls'
-    # '/content/drive/MyDrive/THESIS_dataset/mmw/MyModelNet_cls'
-    # '/content/drive/MyDrive/THESIS_dataset/modelnet40_normal_resampled/'
 
     test_dataset = ModelNetDataLoader(root=data_path, args=args, split='test', process_data=False)
     testDataLoader = torch.utils.data.DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False, num_workers=10)

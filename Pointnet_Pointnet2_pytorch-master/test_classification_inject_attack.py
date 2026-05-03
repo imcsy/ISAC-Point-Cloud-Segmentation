@@ -1,6 +1,6 @@
 """
-Test vanilla PointNet (cls)
-under adversarial injection attack
+Test vanilla / baseline / PointGuard on cls
+under adversarial ONLY injection attack
 """
 from data_utils.ModelNetDataLoader_clean_per_inj import ModelNetDataLoader_clean_per_inj
 import argparse
@@ -35,16 +35,17 @@ def parse_args():
     # add epoch and npoint for tracking
     parser.add_argument('--epoch', default=5, type=int, help='number of epoch in training')
     parser.add_argument('--num_point', type=int, default=16, help='Point Number')
-    # add parameters for injection attack
+    # add parameters for injection attack (YES)
     parser.add_argument('--npoints_inj', type=int, default=4, help='Number of Points Injected')
     parser.add_argument('--clutter_size_inj', type=int, default=2, help='The approximate number od points for the injected clutter')
-    # add parameters for perturbation attack
+    # add parameters for perturbation attack (NO)
     parser.add_argument('--channels_per', type=int, nargs='+', default=[0, 1, 2, 3], help='Channels of Perturbation')
     parser.add_argument('--eps_per', type=float, default=0, help='Eps of Perturbation')
     # add number of testing runs
     parser.add_argument('--num_runs', type=int, default=10, help='Number of Testing Runs')
     # FLAG of whether test using PointGuard
     parser.add_argument('--is_PointGuard', action='store_true', required=False, help='Whether use PointGuard')
+    parser.add_argument('--AdvTrain', action='store_true', required=False, help='Whether use AdvTrain')
     return parser.parse_args()
 
 def test(model, loader, num_class=2, vote_num=1):
@@ -117,7 +118,10 @@ def main(args):
 
     '''CREATE DIR'''
     experiment_dir = 'log/classification/' + args.log_dir
-    param_name = f"/epoch_{args.epoch}_npoint_{args.num_point}_bsize_{args.batch_size}"
+    if args.AdvTrain:
+        param_name = f"/AdvTrain_epoch_{args.epoch}_npoint_{args.num_point}_bsize_{args.batch_size}"
+    else:
+        param_name = f"/epoch_{args.epoch}_npoint_{args.num_point}_bsize_{args.batch_size}"
     if args.dropout:
         param_name = param_name + "_dropout"
     if args.shift:
@@ -172,7 +176,7 @@ def main(args):
 
 
     with torch.no_grad():
-        bins = list(np.arange(0, 5.0, 0.1)) + [float('inf')]
+        bins = list(np.arange(0, 4.5, 0.5)) + [float('inf')]
         all_runs_acc = []
         num_runs = args.num_runs
         print(num_runs, " runs in total")
@@ -198,11 +202,10 @@ def main(args):
             all_runs_acc.append(current_run_avg)
 
         class_acc = pd.concat(all_runs_acc, axis=1).mean(axis=1).values
-        cd_upper = results.index.map(lambda x: x.right)
-        cd_upper = [x if x != float('inf') else 5.1 for x in cd_upper]
+        cd_lower = [x.left for x in results.index]
 
         out_df = pd.DataFrame({
-            'cd_upper': cd_upper,
+            'cd_lower': cd_lower,
             'class_acc': class_acc
         })
 

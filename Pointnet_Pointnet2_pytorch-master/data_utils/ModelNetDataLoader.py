@@ -102,44 +102,6 @@ class ModelNetDataLoader(Dataset):
                          in range(len(shape_ids[split]))]
         print('The size of %s data is %d' % (split, len(self.datapath)))
 
-        # if self.uniform:
-        #     self.save_path = os.path.join(root, 'modelnet%d_%s_%dpts_fps.dat' % (self.num_category, split, self.npoints))
-        # else:
-        #     self.save_path = os.path.join(root, 'modelnet%d_%s_%dpts.dat' % (self.num_category, split, self.npoints))
-
-        # if self.process_data:
-        #     if not os.path.exists(self.save_path):
-        #         print('Processing data %s (only running in the first time)...' % self.save_path)
-        #         self.list_of_points = [None] * len(self.datapath)
-        #         self.list_of_labels = [None] * len(self.datapath)
-
-        #         for index in tqdm(range(len(self.datapath)), total=len(self.datapath)):
-        #             fn = self.datapath[index]
-        #             cls = self.classes[self.datapath[index][0]]
-        #             cls = np.array([cls]).astype(np.int32)
-        #             point_set = np.loadtxt(fn[1], delimiter=',').astype(np.float32)
-        #             point_set = np.atleast_2d(point_set)
-
-        #             if point_set.shape[0] < self.npoints:
-        #                 point_set = repeat_point_upsample(point_set, self.npoints)
-        #             elif point_set.shape[0] > self.npoints:
-        #                 point_set = farthest_point_downsample(point_set, self.npoints)
-
-        #             # if self.uniform:
-        #             #     point_set = farthest_point_downsample(point_set, self.npoints)
-        #             # else:
-        #             #     point_set = point_set[0:self.npoints, :]
-
-        #             self.list_of_points[index] = point_set
-        #             self.list_of_labels[index] = cls
-
-        #         with open(self.save_path, 'wb') as f:
-        #             pickle.dump([self.list_of_points, self.list_of_labels], f)
-        #     else:
-        #         print('Load processed data from %s...' % self.save_path)
-        #         with open(self.save_path, 'rb') as f:
-        #             self.list_of_points, self.list_of_labels = pickle.load(f)
-
     def __len__(self):
         return len(self.datapath)
 
@@ -171,12 +133,3 @@ class ModelNetDataLoader(Dataset):
     def __getitem__(self, index):
         return self._get_item(index)
 
-
-# if __name__ == '__main__':
-#     import torch
-
-#     data = ModelNetDataLoader('/data/modelnet40_normal_resampled/', split='train')
-#     DataLoader = torch.utils.data.DataLoader(data, batch_size=12, shuffle=True)
-#     for point, label in DataLoader:
-#         print(point.shape)
-#         print(label.shape)

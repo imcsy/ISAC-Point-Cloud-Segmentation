@@ -201,3 +201,57 @@ class clutter       , IoU: 0.822
 2026-03-29 20:52:20,953 - Model - INFO - eval point avg class IoU: 0.837334
 2026-03-29 20:52:20,953 - Model - INFO - eval whole scene point avg class acc: 0.922797
 2026-03-29 20:52:20,953 - Model - INFO - eval whole scene point accuracy: 0.928761
+2026-05-03 14:21:12,710 - Model - INFO - PARAMETER ...
+2026-05-03 14:21:13,211 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, is_PointGuard=False)
+2026-05-03 14:21:44,340 - Model - INFO - PARAMETER ...
+2026-05-03 14:21:44,341 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, is_PointGuard=False)
+2026-05-03 14:22:09,688 - Model - INFO - PARAMETER ...
+2026-05-03 14:22:09,689 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, is_PointGuard=False)
+2026-05-03 14:22:32,643 - Model - INFO - PARAMETER ...
+2026-05-03 14:22:32,644 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, is_PointGuard=False)
+2026-05-03 14:25:41,900 - Model - INFO - The number of test data is: 1472
+2026-05-03 14:25:49,672 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-05-03 14:29:32,467 - Model - INFO - PARAMETER ...
+2026-05-03 14:29:32,468 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, per_prob=0, inj_prob=0, is_PointGuard=False)
+2026-05-03 14:29:33,370 - Model - INFO - The number of test data is: 1472
+2026-05-03 14:29:33,802 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-05-03 14:32:35,591 - Model - INFO - PARAMETER ...
+2026-05-03 14:32:35,592 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, per_prob=0, inj_prob=0, is_PointGuard=False)
+2026-05-03 14:32:36,512 - Model - INFO - The number of test data is: 1472
+2026-05-03 14:32:37,002 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-05-03 14:32:46,090 - Model - INFO - PARAMETER ...
+2026-05-03 14:32:46,091 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, per_prob=0, inj_prob=0, is_PointGuard=False)
+2026-05-03 14:32:46,931 - Model - INFO - The number of test data is: 1472
+2026-05-03 14:32:47,357 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-05-03 14:33:34,348 - Model - INFO - PARAMETER ...
+2026-05-03 14:33:34,349 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, per_prob=0, inj_prob=0, is_PointGuard=False)
+2026-05-03 14:33:35,255 - Model - INFO - The number of test data is: 1472
+2026-05-03 14:33:35,690 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-05-03 14:33:45,158 - Model - INFO - PARAMETER ...
+2026-05-03 14:33:45,160 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, per_prob=0, inj_prob=0, is_PointGuard=False)
+2026-05-03 14:33:46,065 - Model - INFO - The number of test data is: 1472
+2026-05-03 14:33:46,505 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-05-03 14:34:35,590 - Model - INFO - PARAMETER ...
+2026-05-03 14:34:35,591 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, per_prob=0, inj_prob=0, is_PointGuard=False)
+2026-05-03 14:34:36,469 - Model - INFO - The number of test data is: 1472
+2026-05-03 14:34:36,906 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-05-03 14:34:46,590 - Model - INFO - PARAMETER ...
+2026-05-03 14:34:46,591 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, per_prob=0, inj_prob=0, is_PointGuard=False)
+2026-05-03 14:34:47,473 - Model - INFO - The number of test data is: 1472
+2026-05-03 14:34:47,917 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-05-03 14:35:14,651 - Model - INFO - eval point avg class IoU: 0.838157
+2026-05-03 14:35:14,652 - Model - INFO - eval point accuracy: 0.929188
+2026-05-03 14:35:14,652 - Model - INFO - eval point avg class acc: 0.924362
+2026-05-03 14:35:14,652 - Model - INFO - ------- IoU --------
+class car           , IoU: 0.873 
+class building      , IoU: 0.901 
+class pole          , IoU: 0.756 
+class clutter       , IoU: 0.823 
+
+2026-05-03 14:35:14,652 - Model - INFO - eval point avg class IoU: 0.838157
+2026-05-03 14:35:14,653 - Model - INFO - eval whole scene point avg class acc: 0.924362
+2026-05-03 14:35:14,653 - Model - INFO - eval whole scene point accuracy: 0.929188
+2026-05-03 14:42:02,537 - Model - INFO - PARAMETER ...
+2026-05-03 14:42:02,537 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, per_prob=0, inj_prob=0, is_PointGuard=False)
+2026-05-03 14:42:03,364 - Model - INFO - The number of test data is: 1472
+2026-05-03 14:42:03,889 - Model - INFO - ---- EVALUATION WHOLE SCENE----

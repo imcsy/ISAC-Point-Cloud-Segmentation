@@ -8,6 +8,7 @@ import numpy as np
 import warnings
 import pickle
 import torch
+import random
 
 from tqdm import tqdm
 from torch.utils.data import Dataset
@@ -113,7 +114,7 @@ def no_attack(clean_points):
 
     return clean_points_aug, cd
 
-#   Adversarial Injection
+#  Injection
 # ==================================================
 def inject_attack(clean_points, npoints_inj, clutter_size_inj):
     '''
@@ -148,9 +149,9 @@ def inject_attack(clean_points, npoints_inj, clutter_size_inj):
     cd, _, _ = Chamfer_Dist(clean_points, inj_points_aug[:, :4])
     return inj_points_aug, cd       # inj_points_aug (N + npoints_inj, 5);  cd (1)
 
-#   Adversarial Perturbation
+#  Perturbation
 # ==================================================
-def perturb_attack(clean_points, channels=[0,1,2,3], eps=1):
+def perturb_attack(clean_points, channels=[0,1,2,3], eps_max=1):
     '''
     input: a clean point set,    # (N,4)
            channels and eps to perturb
@@ -158,6 +159,7 @@ def perturb_attack(clean_points, channels=[0,1,2,3], eps=1):
     output: an augumented perturbed point set (with reliability score),      # (N,5)
             chamfer distance
     '''
+    eps = random.uniform(0, eps_max)
     per_points = clean_points.copy()       # (N, 4)
     sigma = np.array([0.5, 0.5, 0.5, 1])          # [0.7221, 0.6430, 0.3123, 4.4498]
 
@@ -174,16 +176,54 @@ def perturb_attack(clean_points, channels=[0,1,2,3], eps=1):
 
     return per_points_aug, cd
 
+#   Removal
+# ==================================================
+def removal_attack(clean_points, max_dropout_ratio=0.6):
+    '''
+    input: a clean point set
+
+    output: remove random points
+    '''
+    # dropout_ratio =  np.random.random()*max_dropout_ratio 
+    drop_idx = np.where(np.random.random((clean_points.shape[0]))<=max_dropout_ratio)[0]
+    drop_points = clean_points.copy() 
+    if len(drop_idx)>0:
+            drop_points[drop_idx,:] = clean_points[0,:] # set to the first point
+
+    N = drop_points.shape[0]
+    drop_points_aug = np.column_stack((drop_points, np.ones(N)))
+    cd = -1 ################ wrong but anyway
+
+    return drop_points_aug, cd
+
+#   Scale attack
+# ==================================================
+def scale_attack(clean_points, scale_factor=2):
+    '''
+    return a scaled point set
+    '''
+    sca_points = clean_points.copy()
+    sca_points = sca_points * scale_factor
+
+    N = sca_points.shape[0]
+    sca_points_aug = np.column_stack((sca_points, np.ones(N)))
+    cd = -1 ################ wrong but anyway
+
+    return sca_points_aug, cd
+
 
 class ModelNetDataLoader_clean_per_inj(Dataset):
-    def __init__(self, root, args, split='train', process_data=False, per_prob=0.45, inject_prob=0.45):
+    def __init__(self, root, args, split='train', process_data=False, per_prob=0, inject_prob=0, removal_prob=0, scale_prob=0):
         self.root = root
         self.npoints = args.num_point
         self.process_data = process_data
         self.num_channel = args.num_channel
         self.num_category = args.num_category
+        # probs
         self.per_prob = per_prob
         self.inject_prob = inject_prob
+        self.removal_prob = removal_prob
+        self.scale_prob = scale_prob
         # param for injection attack
         self.npoints_inj = args.npoints_inj
         self.clutter_size_inj = args.clutter_size_inj
@@ -230,12 +270,18 @@ class ModelNetDataLoader_clean_per_inj(Dataset):
             label = np.array([cls]).astype(np.int32)
             point_set = np.loadtxt(fn[1], delimiter=',').astype(np.float32)
             point_set = np.atleast_2d(point_set)
-            
-            if np.random.rand() < self.inject_prob:
+
+            probs = [self.per_prob, self.inject_prob, self.removal_prob, self.scale_prob, 1-self.per_prob-self.inject_prob-self.removal_prob-self.scale_prob]
+            idx = np.random.choice(len(probs), p=probs)
+            if idx == 0:
+                point_set_aug, cd = perturb_attack(point_set, channels=self.channels_per, eps_max=self.eps_per)
+            elif idx == 1:
                 point_set_aug, cd = inject_attack(point_set, npoints_inj=self.npoints_inj, clutter_size_inj=self.clutter_size_inj)
-            elif np.random.rand() < self.per_prob / (1-self.inject_prob):
-                point_set_aug, cd = perturb_attack(point_set, channels=self.channels_per, eps=self.eps_per)
-            else: 
+            elif idx == 2:
+                point_set_aug, cd = removal_attack(point_set)
+            elif idx == 3:
+                point_set_aug, cd = scale_attack(point_set)
+            elif idx == 4:
                 point_set_aug, cd = no_attack(point_set)
 
             if point_set_aug.shape[0] < self.npoints:
