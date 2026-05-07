@@ -19,6 +19,42 @@ FIGURE_SAVE_PATH = r"D:\thesis\figure\Attack_vis\seg"
 MYDATASET_PATH = r"G:\我的云端硬盘\THESIS_dataset\mmw\MyS3DIS_seg\Train_017843.npy" # (x, y, z, v)
 
 #%%
+def create_boundary_box(x_range, y_range, z_range):
+    """
+    Creates a 3D bounding box (wireframe) with red lines.
+    x_range, y_range, z_range: tuples or lists (min, max)
+    """
+    x_min, x_max = x_range
+    y_min, y_max = y_range
+    z_min, z_max = z_range
+
+    # 1. Define the 8 corner points of the box
+    points = [
+        [x_min, y_min, z_min], [x_max, y_min, z_min],
+        [x_min, y_max, z_min], [x_max, y_max, z_min],
+        [x_min, y_min, z_max], [x_max, y_min, z_max],
+        [x_min, y_max, z_max], [x_max, y_max, z_max]
+    ]
+
+    # 2. Define the 12 lines connecting the corners
+    lines = [
+        [0, 1], [0, 2], [1, 3], [2, 3], # Bottom face
+        [4, 5], [4, 6], [5, 7], [6, 7], # Top face
+        [0, 4], [1, 5], [2, 6], [3, 7]  # Vertical pillars
+    ]
+
+    # 3. Create the LineSet object
+    box = o3d.geometry.LineSet()
+    box.points = o3d.utility.Vector3dVector(points)
+    box.lines = o3d.utility.Vector2iVector(lines)
+
+    # 4. Set color to Red [R, G, B]
+    colors = [[1.0, 0.0, 0.0] for _ in range(len(lines))]
+    box.colors = o3d.utility.Vector3dVector(colors)
+
+    return box
+
+#%%
 def Chamfer_Dist(S, Sp, weights=[1,1,1,5]):
     """
     S: Clean point set (N, 4) -> (x, y, z, v)
@@ -87,15 +123,16 @@ def inject_attack(clean_points, npoints_inj, clutter_size_inj):
     inj_points_aug = np.column_stack((clean_points, np.ones(N)))
 
     clutter_sizes = split_evenly(npoints_inj, clutter_size_inj)
-    xmin, ymin, zmin, vmin = clean_points.min(axis=0)
-    xmax, ymax, zmax, vmax = clean_points.max(axis=0)
-    xyzscale = ((xmax - xmin) + (ymax - ymin) + (zmax - zmin)) * 0.1 / 3
-    vscale = 1.0
+    xmin, ymin, zmin, vmin = clean_points.min(axis=0) / 3
+    xmax, ymax, zmax, vmax = clean_points.max(axis=0) / 3
+    zmax, zmin = zmax / 4, zmin / 2
+    xyzscale = ((xmax - xmin) + (ymax - ymin) + (zmax - zmin)) * 0.1 / 15
+    vscale = 0.5
     
     clutter_ls = []
     for s in clutter_sizes:
         xyz_cen = np.random.uniform(low=[xmin, ymin, zmin], high=[xmax, ymax, zmax])
-        v_cen = np.random.uniform(2, 8)
+        v_cen = np.random.uniform(vmin, vmax)
         
         xyz = np.random.normal(loc=xyz_cen, scale=xyzscale, size=(s,3))
         v = np.random.normal(loc=v_cen, scale=vscale, size=(s, 1))
@@ -127,7 +164,7 @@ points_clean = points[:,:4]
 # ==================================================
 cd = 0
 while cd < 2.95 or cd > 3.05:
-    points, cd = inject_attack(points_clean, npoints_inj=10, clutter_size_inj=5)
+    points, cd = inject_attack(points_clean, npoints_inj=200, clutter_size_inj=10)
     print(cd)
 
 xyz_ls = points[:,:3]
@@ -136,7 +173,6 @@ v_range = [-8, 8]
 v_clipped = np.clip(v, v_range[0], v_range[1])
 v_norm = (v_clipped - v_range[0]) / (v_range[1] - v_range[0])
 
-#%%
 # visualize
 pcd = o3d.geometry.PointCloud()
 pcd.points = o3d.utility.Vector3dVector(xyz_ls)
@@ -147,53 +183,56 @@ pcd.colors = o3d.utility.Vector3dVector(colors)
 
 axis = o3d.geometry.TriangleMesh.create_coordinate_frame(size=7, origin=[0,0,0])  #(size=0.55, origin=[0,0,0]) 
 
-#%%
-vis = o3d.visualization.Visualizer()
-vis.create_window(window_name="Radar Point Cloud", width=1600, height=1200)
-vis.get_render_option().point_color_option = o3d.visualization.PointColorOption.Color
-vis.add_geometry(pcd)
-vis.add_geometry(axis)
-# grid = create_3d_grid(x_range=[-2,2], y_range=[-2,2], z_range=[-1,1], step=1)
-# vis.add_geometry(grid)
+# box_geometry = create_boundary_box([-5, 5], [-5, 5], [0, 10])
 
-vis.poll_events()
-vis.update_renderer()
-
-render_option = vis.get_render_option()
-render_option.point_size = 5           # 25 cls
-render_option.light_on = False
-
-view_control = vis.get_view_control()
-view_control.set_front([0.25, 0.25, 0.2]) 
-view_control.set_lookat([-20, -20, 1])     
-view_control.set_up([0, 0, 1])         
-view_control.set_zoom(0.25)            
-
-vis.poll_events()
-vis.update_renderer()
-
-image_path = os.path.join(FIGURE_SAVE_PATH, f"seg_inj_cd3.png")
-vis.capture_screen_image(image_path)
-print(f"Screenshot saved to: {image_path}")
-
-vis.destroy_window()
-
-#%%
 o3d.visualization.draw_geometries([pcd,axis],
                                   window_name="Radar Point Cloud",
                                   zoom=0.25, front=[0.25, 0.25, 0.2], lookat=[-20, -20, 1], up=[0, 0, 1])  # seg
                                     # zoom=0.8, front=[0.25, 0.25, 0.1], lookat=[0, 0, -0.3], up=[0, 0, 1]) # cls
 #%%
-cmap = plt.get_cmap('plasma')
+# plot velocity bar
+# cmap = plt.get_cmap('plasma')
 
-fig, ax = plt.subplots(figsize=(6, 0.4))
+# fig, ax = plt.subplots(figsize=(6, 0.2))
 
-norm = mpl.colors.Normalize(vmin=v_range[0], vmax=v_range[1])
-cbar = mpl.colorbar.ColorbarBase(ax, cmap=cmap, norm=norm, orientation='horizontal' )
+# norm = mpl.colors.Normalize(vmin=v_range[0], vmax=v_range[1])
+# cbar = mpl.colorbar.ColorbarBase(ax, cmap=cmap, norm=norm, orientation='horizontal' )
 
-cbar.set_label('Velocity (m/s)')
+# cbar.set_label('Velocity (m/s)')
 
-plt.show()
+# plt.show()
+
+#%%
+# to save figures
+# vis = o3d.visualization.Visualizer()
+# vis.create_window(window_name="Radar Point Cloud", width=1600, height=1200)
+# vis.get_render_option().point_color_option = o3d.visualization.PointColorOption.Color
+# vis.add_geometry(pcd)
+# vis.add_geometry(axis)
+# # grid = create_3d_grid(x_range=[-2,2], y_range=[-2,2], z_range=[-1,1], step=1)
+# # vis.add_geometry(grid)
+
+# vis.poll_events()
+# vis.update_renderer()
+
+# render_option = vis.get_render_option()
+# render_option.point_size = 5           # 25 cls
+# render_option.light_on = False
+
+# view_control = vis.get_view_control()
+# view_control.set_front([0.25, 0.25, 0.2]) 
+# view_control.set_lookat([-20, -20, 1])     
+# view_control.set_up([0, 0, 1])         
+# view_control.set_zoom(0.25)            
+
+# vis.poll_events()
+# vis.update_renderer()
+
+# image_path = os.path.join(FIGURE_SAVE_PATH, f"seg_inj_cd3.png")
+# vis.capture_screen_image(image_path)
+# print(f"Screenshot saved to: {image_path}")
+
+# vis.destroy_window()
 
 
 # #%%

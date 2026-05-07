@@ -33,6 +33,14 @@ def Chamfer_Dist(S, Sp, weights=[1,1,1,5]):
 
     return cd, d_SSp, d_SpS
 
+def split_evenly(total, k):
+    base = total // k
+    remainder = total % k
+    sizes = np.full(k, base)
+    sizes[:remainder] += 1  # distribute leftovers
+    
+    return sizes
+
 #   Clean
 # ==================================================
 def no_attack(clean_points):
@@ -68,16 +76,65 @@ def perturb_attack(clean_points, channels=[0,1,2,3], eps_max=1):
     cd, _, d_SpS = Chamfer_Dist(clean_points, per_points)   # cd (1);  d_SpS (N)
 
     # caculate reliability score
-    lam = 1
+    lam = 0.5
     ad_channel = np.exp(-lam * d_SpS).reshape(-1, 1)        # (N)
 
     per_points_aug = np.concatenate([per_points, ad_channel], axis=1)
 
     return per_points_aug, cd
 
+#  Injection
+# ==================================================
+def inject_attack(clean_points, clean_labels, inj_npoint_max, inj_clutter_size):
+    '''
+    input: a clean point set, 
+           npoints_inj: number of points injected
+           clutter_size_inj: the approximate number od points for the injected clutter
+
+    output: an augumented injected point set (with reliability score),
+            chamfer distance
+    '''
+    N = clean_points.shape[0]
+    inj_points_aug = np.column_stack((clean_points, np.ones(N)))
+
+    # random choose inj_npoint in range [0, inj_npoint_max]
+    npoints_inj = inj_npoint_max
+
+    clutter_sizes = split_evenly(npoints_inj, inj_clutter_size)
+    xmin, ymin, zmin, vmin = clean_points.min(axis=0) / 3   
+    xmax, ymax, zmax, vmax = clean_points.max(axis=0) / 3
+    zmax, zmin = zmax / 4, zmin / 2
+    xyzscale = ((xmax - xmin) + (ymax - ymin) + (zmax - zmin)) * 0.1 / 15
+    vscale = 0.5
+    
+    clutter_ls = []
+    clutter_label_ls = []
+    for s in clutter_sizes:
+        # inject points (x,y,z,a)
+        xyz_cen = np.random.uniform(low=[xmin, ymin, zmin], high=[xmax, ymax, zmax])
+        v_cen = np.random.uniform(vmin, vmax)
+        
+        xyz = np.random.normal(loc=xyz_cen, scale=xyzscale, size=(s,3))
+        v = np.random.normal(loc=v_cen, scale=vscale, size=(s, 1))
+        a = np.zeros((s, 1))
+        clutter = np.concatenate([xyz, v, a], axis=1)      # (s, 5)
+        clutter_ls.append(clutter)
+        # corresponding labels (labeled as clutter)
+        label = np.full(s, 3)  # clutter is class 3
+        clutter_label_ls.append(label)
+    inj_points_aug = np.concatenate([inj_points_aug] + clutter_ls, axis=0).astype(np.float64)
+    inj_labels = np.concatenate([clean_labels] + clutter_label_ls, axis=0).astype(np.float64)
+        
+    cd, _, _ = Chamfer_Dist(clean_points, inj_points_aug[:, :4])
+    return inj_points_aug, inj_labels, cd       # inj_points_aug (N + npoints_inj, 5); inj_labels (N + npoints_inj,);  cd (1,)
+
+
 
 class S3DISDataset_mix(Dataset):
-    def __init__(self, split='train', data_root='trainval_fullarea', num_point=1024, sample_rate=1.0, transform=None, samples_per_frame=4, num_classes=4, dim_input=4, per_prob=0, inj_prob=0):
+    def __init__(self, split='train', data_root='trainval_fullarea', num_point=1024, sample_rate=1.0, transform=None, samples_per_frame=4, num_classes=4, dim_input=4, 
+                 per_prob=0, inj_prob=0, 
+                 per_channels=[0,1,2,3], per_eps=0,
+                 inj_npoint_max=0, inj_clutter_size=5):
         '''
         - MyS3DIS
             - Train_frame_016653.npy
@@ -87,10 +144,16 @@ class S3DISDataset_mix(Dataset):
               Test_frame_016699.npy
         '''
         super().__init__()
+        self.split=split
         self.num_point = num_point
         self.transform = transform
         self.per_prob = per_prob
         self.inj_prob = inj_prob
+        self.per_channels= per_channels
+        self.per_eps = per_eps
+        self.inj_npoint_max = inj_npoint_max
+        self.inj_clutter_size = inj_clutter_size
+
         frames = sorted(os.listdir(data_root))
         if split == 'train':
             file_list = [frame for frame in frames if 'Train' in frame]
@@ -128,35 +191,31 @@ class S3DISDataset_mix(Dataset):
         frame_idx = self.frame_idxs[idx]
         points = self.frame_points[frame_idx]   # N * 4
         labels = self.frame_labels[frame_idx]   # N
-        N_points_ini = points.shape[0]
+        # N_points_ini = points.shape[0]
 
         # generate mix of samples according to probs
         probs = [self.per_prob, self.inj_prob, 1-self.per_prob-self.inj_prob]
         idx_mix = np.random.choice(len(probs), p=probs)
         if idx_mix == 0:
-            print("perturb")
-            points_aug, cd = perturb_attack(points, channels=[0,1,2,3], eps_max=1)      # points_aug (M,5); cd (1,)
+            points_aug, cd = perturb_attack(points, channels=self.per_channels, eps_max=self.per_eps)      # points_aug (M,5); cd (1,)
         elif idx_mix == 1:
-            print("inject but perturb")
-            points_aug, cd = perturb_attack(points, channels=[0,1,2,3], eps_max=1)
+            points_aug, labels, cd = inject_attack(points, labels, inj_npoint_max=self.inj_npoint_max, inj_clutter_size=self.inj_clutter_size)
         elif idx_mix == 2:
             points_aug, cd = no_attack(points)
 
-        # random centering
-        center = points_aug[np.random.choice(N_points_ini)][:3]
-        point_idxs = np.arange(N_points_ini)
+        center = points_aug[np.random.choice(points_aug.shape[0])][:3]
         points_aug[:, 0] = points_aug[:, 0] - center[0]
         points_aug[:, 1] = points_aug[:, 1] - center[1]
 
-        if N_points_ini >= self.num_point:
+        point_idxs = np.arange(points_aug.shape[0])
+        if points_aug.shape[0] >= self.num_point:
             selected_point_idxs = np.random.choice(point_idxs, self.num_point, replace=False)
         else:
             selected_point_idxs = np.random.choice(point_idxs, self.num_point, replace=True)
-
         selected_points = points_aug[selected_point_idxs, :]  # num_point * 5
         selected_labels = labels[selected_point_idxs]
 
-        return selected_points, selected_labels, cd
+        return selected_points, selected_labels, cd, frame_idx
 
     def __len__(self):
         return len(self.frame_idxs)

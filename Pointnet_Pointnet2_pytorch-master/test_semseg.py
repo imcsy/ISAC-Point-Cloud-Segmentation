@@ -30,14 +30,18 @@ for i, cat in enumerate(seg_classes.keys()):
 def parse_args():
     '''PARAMETERS'''
     parser = argparse.ArgumentParser('Model')
-    parser.add_argument('--batch_size', type=int, default=32, help='batch size in testing [default: 32]')
+    parser.add_argument('--batch_size', type=int, default=16, help='batch size in testing [default: 32]')
+    parser.add_argument('--epoch', default=10, type=int, help='Epoch to run [default: 32]')
     parser.add_argument('--gpu', type=str, default='0', help='specify gpu device')
-    parser.add_argument('--num_point', type=int, default=1024, help='point number [default: 1024]')
+    parser.add_argument('--npoint', type=int, default=1024, help='point number [default: 1024]')
     parser.add_argument('--log_dir', type=str, required=True, help='experiment root')
     parser.add_argument('--visual', action='store_true', default=False, help='visualize result [default: False]')
     # parser.add_argument('--test_area', type=int, default=5, help='area for testing, option: 1-6 [default: 5]')
     parser.add_argument('--num_votes', type=int, default=3, help='aggregate segmentation scores with voting [default: 3]')
     parser.add_argument('--samples_per_frame', type=int, default=4, help='Number of samples obtained from each frame')
+    # add dropout, shift or not
+    parser.add_argument('--dropout', action='store_true', default=False, help='use dropout when training')
+    parser.add_argument('--shift', action='store_true', default=False, help='use shift when training')
     return parser.parse_args()
 
 
@@ -59,9 +63,17 @@ def main(args):
     '''HYPER PARAMETER'''
     os.environ["CUDA_VISIBLE_DEVICES"] = args.gpu
     experiment_dir = 'log/sem_seg/' + args.log_dir
-    visual_dir = experiment_dir + '/visual/'
-    visual_dir = Path(visual_dir)
-    visual_dir.mkdir(exist_ok=True)
+    
+    param_name = f"/epoch_{args.epoch}_npoint_{args.npoint}_bsize_{args.batch_size}"
+    if args.dropout:
+        param_name = param_name + "_dropout"
+    if args.shift:
+        param_name = param_name + "_shift"
+    experiment_dir = experiment_dir + param_name
+
+    # visual_dir = experiment_dir + '/visual/'
+    # visual_dir = Path(visual_dir)
+    # visual_dir.mkdir(exist_ok=True)
 
     '''LOG'''
     args = parse_args()
@@ -77,7 +89,7 @@ def main(args):
 
     NUM_CLASSES = 4
     BATCH_SIZE = args.batch_size
-    NUM_POINT = args.num_point
+    NUM_POINT = args.npoint
 
     root = '/content/drive/MyDrive/THESIS_dataset/mmw/MyS3DIS_seg'
 
@@ -133,22 +145,17 @@ def main(args):
                 total_correct_class[l] += np.sum((pred_label == l) & (batch_label == l))      # intersection
                 total_iou_deno_class[l] += np.sum(((pred_label == l) | (batch_label == l)))   # union
 
-            # save pred result for visualization
-            if args.visual:
-                data_n_pred = np.concatenate((
-                    points_np, 
-                    batch_label.reshape(batch_label.shape[0], batch_label.shape[1], 1), 
-                    pred_label.reshape(pred_label.shape[0], pred_label.shape[1], 1)
-                ), axis=2)
-                np.save(os.path.join(visual_dir, rf"eval_{i}.npy"), data_n_pred)
+            # # save pred result for visualization
+            # if args.visual:
+            #     data_n_pred = np.concatenate((
+            #         points_np, 
+            #         batch_label.reshape(batch_label.shape[0], batch_label.shape[1], 1), 
+            #         pred_label.reshape(pred_label.shape[0], pred_label.shape[1], 1)
+            #     ), axis=2)
+            #     np.save(os.path.join(visual_dir, rf"eval_{i}.npy"), data_n_pred)
 
         labelweights = labelweights.astype(np.float32) / np.sum(labelweights.astype(np.float32))
         mIoU = np.mean(np.array(total_correct_class) / (np.array(total_iou_deno_class, dtype=np.float64) + 1e-6)) # mean IoU over all classes
-        # log_string('eval mean loss: %f' % (loss_sum / float(num_batches)))
-        log_string('eval point avg class IoU: %f' % (mIoU))
-        log_string('eval point accuracy: %f' % (total_correct / float(total_seen)))    
-        log_string('eval point avg class acc: %f' % (
-            np.mean(np.array(total_correct_class) / (np.array(total_seen_class, dtype=np.float64) + 1e-6))))
 
         IoU = np.array(total_correct_class) / (np.array(total_iou_deno_class, dtype=np.float64) + 1e-6)
         iou_per_class_str = '------- IoU --------\n'

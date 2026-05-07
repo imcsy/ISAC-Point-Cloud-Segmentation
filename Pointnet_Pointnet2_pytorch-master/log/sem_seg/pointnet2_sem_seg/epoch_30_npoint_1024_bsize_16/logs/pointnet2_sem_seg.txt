@@ -1,0 +1,209 @@
+2026-05-06 12:01:57,764 - Model - INFO - PARAMETER ...
+2026-05-06 12:01:57,765 - Model - INFO - Namespace(model='pointnet2_sem_seg', batch_size=16, epoch=30, learning_rate=0.001, gpu='0', optimizer='Adam', log_dir='pointnet2_sem_seg', decay_rate=0.0001, npoint=1024, step_size=10, lr_decay=0.7, samples_per_frame=4, dropout=False, shift=False)
+2026-05-06 12:02:06,989 - Model - INFO - The number of training data is: 3328
+2026-05-06 12:02:06,989 - Model - INFO - The number of test data is: 1472
+2026-05-06 12:02:07,805 - Model - INFO - No existing model, starting training from scratch...
+2026-05-06 12:02:12,836 - Model - INFO - **** Epoch 1 (1/30) ****
+2026-05-06 12:02:12,837 - Model - INFO - Learning rate:0.001000
+2026-05-06 12:04:02,776 - Model - INFO - Training mean loss: 0.390185
+2026-05-06 12:04:02,776 - Model - INFO - Training accuracy: 0.877637
+2026-05-06 12:04:02,776 - Model - INFO - Save model...
+2026-05-06 12:04:02,777 - Model - INFO - Saving at log/sem_seg/pointnet2_sem_seg/epoch_30_npoint_1024_bsize_16/checkpoints/model.pth
+2026-05-06 12:04:02,877 - Model - INFO - Saving model....
+2026-05-06 12:04:02,895 - Model - INFO - ---- EPOCH 001 EVALUATION ----
+2026-05-06 12:04:46,862 - Model - INFO - eval mean loss: 0.267334
+2026-05-06 12:04:46,862 - Model - INFO - eval point avg class IoU: 0.760608
+2026-05-06 12:04:46,863 - Model - INFO - eval point accuracy: 0.908617
+2026-05-06 12:04:46,863 - Model - INFO - eval point avg class acc: 0.899868
+2026-05-06 12:04:46,863 - Model - INFO - ------- IoU --------
+class car            weight: 0.326, IoU: 0.786 
+class building       weight: 0.029, IoU: 0.882 
+class pole           weight: 0.605, IoU: 0.586 
+class clutter        weight: 0.040, IoU: 0.789 
+
+2026-05-06 12:04:46,864 - Model - INFO - Eval mean loss: 0.267334
+2026-05-06 12:04:46,864 - Model - INFO - Eval accuracy: 0.908617
+2026-05-06 12:04:46,864 - Model - INFO - Save model...
+2026-05-06 12:04:46,864 - Model - INFO - Saving at log/sem_seg/pointnet2_sem_seg/epoch_30_npoint_1024_bsize_16/checkpoints/best_model.pth
+2026-05-06 12:04:46,964 - Model - INFO - Saving model....
+2026-05-06 12:04:46,964 - Model - INFO - Best mIoU: 0.760608
+2026-05-06 12:04:46,965 - Model - INFO - **** Epoch 2 (2/30) ****
+2026-05-06 12:04:46,965 - Model - INFO - Learning rate:0.001000
+2026-05-06 12:06:36,674 - Model - INFO - Training mean loss: 0.256807
+2026-05-06 12:06:36,674 - Model - INFO - Training accuracy: 0.915471
+2026-05-06 12:06:36,692 - Model - INFO - ---- EPOCH 002 EVALUATION ----
+2026-05-06 12:07:20,537 - Model - INFO - eval mean loss: 0.250149
+2026-05-06 12:07:20,538 - Model - INFO - eval point avg class IoU: 0.799723
+2026-05-06 12:07:20,538 - Model - INFO - eval point accuracy: 0.916637
+2026-05-06 12:07:20,538 - Model - INFO - eval point avg class acc: 0.901967
+2026-05-06 12:07:20,538 - Model - INFO - ------- IoU --------
+class car            weight: 0.325, IoU: 0.836 
+class building       weight: 0.029, IoU: 0.884 
+class pole           weight: 0.606, IoU: 0.676 
+class clutter        weight: 0.040, IoU: 0.803 
+
+2026-05-06 12:07:20,539 - Model - INFO - Eval mean loss: 0.250149
+2026-05-06 12:07:20,539 - Model - INFO - Eval accuracy: 0.916637
+2026-05-06 12:07:20,539 - Model - INFO - Save model...
+2026-05-06 12:07:20,539 - Model - INFO - Saving at log/sem_seg/pointnet2_sem_seg/epoch_30_npoint_1024_bsize_16/checkpoints/best_model.pth
+2026-05-06 12:07:20,651 - Model - INFO - Saving model....
+2026-05-06 12:07:20,651 - Model - INFO - Best mIoU: 0.799723
+2026-05-06 12:07:20,652 - Model - INFO - **** Epoch 3 (3/30) ****
+2026-05-06 12:07:20,652 - Model - INFO - Learning rate:0.001000
+2026-05-06 12:09:11,174 - Model - INFO - Training mean loss: 0.246769
+2026-05-06 12:09:11,175 - Model - INFO - Training accuracy: 0.918015
+2026-05-06 12:09:11,193 - Model - INFO - ---- EPOCH 003 EVALUATION ----
+2026-05-06 12:09:55,419 - Model - INFO - eval mean loss: 0.253281
+2026-05-06 12:09:55,420 - Model - INFO - eval point avg class IoU: 0.817923
+2026-05-06 12:09:55,420 - Model - INFO - eval point accuracy: 0.920213
+2026-05-06 12:09:55,421 - Model - INFO - eval point avg class acc: 0.885029
+2026-05-06 12:09:55,421 - Model - INFO - ------- IoU --------
+class car            weight: 0.325, IoU: 0.867 
+class building       weight: 0.029, IoU: 0.890 
+class pole           weight: 0.605, IoU: 0.718 
+class clutter        weight: 0.040, IoU: 0.797 
+
+2026-05-06 12:09:55,421 - Model - INFO - Eval mean loss: 0.253281
+2026-05-06 12:09:55,422 - Model - INFO - Eval accuracy: 0.920213
+2026-05-06 12:09:55,422 - Model - INFO - Save model...
+2026-05-06 12:09:55,422 - Model - INFO - Saving at log/sem_seg/pointnet2_sem_seg/epoch_30_npoint_1024_bsize_16/checkpoints/best_model.pth
+2026-05-06 12:09:55,525 - Model - INFO - Saving model....
+2026-05-06 12:09:55,525 - Model - INFO - Best mIoU: 0.817923
+2026-05-06 12:09:55,526 - Model - INFO - **** Epoch 4 (4/30) ****
+2026-05-06 12:09:55,526 - Model - INFO - Learning rate:0.001000
+2026-05-06 12:11:45,717 - Model - INFO - Training mean loss: 0.222679
+2026-05-06 12:11:45,718 - Model - INFO - Training accuracy: 0.924166
+2026-05-06 12:11:45,735 - Model - INFO - ---- EPOCH 004 EVALUATION ----
+2026-05-06 12:12:29,818 - Model - INFO - eval mean loss: 0.258684
+2026-05-06 12:12:29,819 - Model - INFO - eval point avg class IoU: 0.810290
+2026-05-06 12:12:29,819 - Model - INFO - eval point accuracy: 0.916219
+2026-05-06 12:12:29,819 - Model - INFO - eval point avg class acc: 0.879730
+2026-05-06 12:12:29,819 - Model - INFO - ------- IoU --------
+class car            weight: 0.326, IoU: 0.849 
+class building       weight: 0.029, IoU: 0.884 
+class pole           weight: 0.605, IoU: 0.722 
+class clutter        weight: 0.040, IoU: 0.786 
+
+2026-05-06 12:12:29,820 - Model - INFO - Eval mean loss: 0.258684
+2026-05-06 12:12:29,820 - Model - INFO - Eval accuracy: 0.916219
+2026-05-06 12:12:29,820 - Model - INFO - Best mIoU: 0.817923
+2026-05-06 12:12:29,820 - Model - INFO - **** Epoch 5 (5/30) ****
+2026-05-06 12:12:29,821 - Model - INFO - Learning rate:0.001000
+2026-05-06 12:14:20,458 - Model - INFO - Training mean loss: 0.206481
+2026-05-06 12:14:20,459 - Model - INFO - Training accuracy: 0.928796
+2026-05-06 12:14:20,476 - Model - INFO - ---- EPOCH 005 EVALUATION ----
+2026-05-06 12:15:05,119 - Model - INFO - eval mean loss: 0.236890
+2026-05-06 12:15:05,120 - Model - INFO - eval point avg class IoU: 0.827891
+2026-05-06 12:15:05,120 - Model - INFO - eval point accuracy: 0.924129
+2026-05-06 12:15:05,121 - Model - INFO - eval point avg class acc: 0.897949
+2026-05-06 12:15:05,121 - Model - INFO - ------- IoU --------
+class car            weight: 0.325, IoU: 0.870 
+class building       weight: 0.029, IoU: 0.895 
+class pole           weight: 0.605, IoU: 0.739 
+class clutter        weight: 0.040, IoU: 0.807 
+
+2026-05-06 12:15:05,122 - Model - INFO - Eval mean loss: 0.236890
+2026-05-06 12:15:05,122 - Model - INFO - Eval accuracy: 0.924129
+2026-05-06 12:15:05,122 - Model - INFO - Save model...
+2026-05-06 12:15:05,122 - Model - INFO - Saving at log/sem_seg/pointnet2_sem_seg/epoch_30_npoint_1024_bsize_16/checkpoints/best_model.pth
+2026-05-06 12:15:05,224 - Model - INFO - Saving model....
+2026-05-06 12:15:05,224 - Model - INFO - Best mIoU: 0.827891
+2026-05-06 12:15:05,225 - Model - INFO - **** Epoch 6 (6/30) ****
+2026-05-06 12:15:05,225 - Model - INFO - Learning rate:0.001000
+2026-05-06 12:16:56,647 - Model - INFO - Training mean loss: 0.210623
+2026-05-06 12:16:56,647 - Model - INFO - Training accuracy: 0.927010
+2026-05-06 12:16:56,647 - Model - INFO - Save model...
+2026-05-06 12:16:56,648 - Model - INFO - Saving at log/sem_seg/pointnet2_sem_seg/epoch_30_npoint_1024_bsize_16/checkpoints/model.pth
+2026-05-06 12:16:56,748 - Model - INFO - Saving model....
+2026-05-06 12:16:56,770 - Model - INFO - ---- EPOCH 006 EVALUATION ----
+2026-05-06 12:17:41,926 - Model - INFO - eval mean loss: 0.230484
+2026-05-06 12:17:41,927 - Model - INFO - eval point avg class IoU: 0.828835
+2026-05-06 12:17:41,927 - Model - INFO - eval point accuracy: 0.925370
+2026-05-06 12:17:41,927 - Model - INFO - eval point avg class acc: 0.910539
+2026-05-06 12:17:41,927 - Model - INFO - ------- IoU --------
+class car            weight: 0.326, IoU: 0.837 
+class building       weight: 0.029, IoU: 0.896 
+class pole           weight: 0.605, IoU: 0.772 
+class clutter        weight: 0.040, IoU: 0.811 
+
+2026-05-06 12:17:41,928 - Model - INFO - Eval mean loss: 0.230484
+2026-05-06 12:17:41,928 - Model - INFO - Eval accuracy: 0.925370
+2026-05-06 12:17:41,928 - Model - INFO - Save model...
+2026-05-06 12:17:41,929 - Model - INFO - Saving at log/sem_seg/pointnet2_sem_seg/epoch_30_npoint_1024_bsize_16/checkpoints/best_model.pth
+2026-05-06 12:17:42,041 - Model - INFO - Saving model....
+2026-05-06 12:17:42,042 - Model - INFO - Best mIoU: 0.828835
+2026-05-06 12:17:42,042 - Model - INFO - **** Epoch 7 (7/30) ****
+2026-05-06 12:17:42,042 - Model - INFO - Learning rate:0.001000
+2026-05-06 12:19:33,361 - Model - INFO - Training mean loss: 0.239197
+2026-05-06 12:19:33,361 - Model - INFO - Training accuracy: 0.919885
+2026-05-06 12:19:33,378 - Model - INFO - ---- EPOCH 007 EVALUATION ----
+2026-05-06 12:20:17,796 - Model - INFO - eval mean loss: 0.284225
+2026-05-06 12:20:17,796 - Model - INFO - eval point avg class IoU: 0.765117
+2026-05-06 12:20:17,797 - Model - INFO - eval point accuracy: 0.905678
+2026-05-06 12:20:17,797 - Model - INFO - eval point avg class acc: 0.867703
+2026-05-06 12:20:17,797 - Model - INFO - ------- IoU --------
+class car            weight: 0.326, IoU: 0.838 
+class building       weight: 0.029, IoU: 0.874 
+class pole           weight: 0.605, IoU: 0.568 
+class clutter        weight: 0.040, IoU: 0.780 
+
+2026-05-06 12:20:17,797 - Model - INFO - Eval mean loss: 0.284225
+2026-05-06 12:20:17,798 - Model - INFO - Eval accuracy: 0.905678
+2026-05-06 12:20:17,798 - Model - INFO - Best mIoU: 0.828835
+2026-05-06 12:20:17,798 - Model - INFO - **** Epoch 8 (8/30) ****
+2026-05-06 12:20:17,798 - Model - INFO - Learning rate:0.001000
+2026-05-06 12:22:07,843 - Model - INFO - Training mean loss: 0.243110
+2026-05-06 12:22:07,843 - Model - INFO - Training accuracy: 0.918100
+2026-05-06 12:22:07,860 - Model - INFO - ---- EPOCH 008 EVALUATION ----
+2026-05-06 12:22:27,637 - Model - INFO - PARAMETER ...
+2026-05-06 12:22:27,638 - Model - INFO - Namespace(model='pointnet2_sem_seg', batch_size=16, epoch=30, learning_rate=0.001, gpu='0', optimizer='Adam', log_dir='pointnet2_sem_seg', decay_rate=0.0001, npoint=1024, step_size=10, lr_decay=0.7, samples_per_frame=4, dropout=False, shift=False)
+2026-05-06 12:22:37,676 - Model - INFO - The number of training data is: 3328
+2026-05-06 12:22:37,677 - Model - INFO - The number of test data is: 1472
+2026-05-06 12:22:37,736 - Model - INFO - No existing model, starting training from scratch...
+2026-05-06 12:22:39,216 - Model - INFO - **** Epoch 1 (1/30) ****
+2026-05-06 12:22:39,216 - Model - INFO - Learning rate:0.001000
+2026-05-06 12:24:26,745 - Model - INFO - Training mean loss: 0.402368
+2026-05-06 12:24:26,745 - Model - INFO - Training accuracy: 0.876266
+2026-05-06 12:24:26,745 - Model - INFO - Save model...
+2026-05-06 12:24:26,746 - Model - INFO - Saving at log/sem_seg/pointnet2_sem_seg/epoch_30_npoint_1024_bsize_16/checkpoints/model.pth
+2026-05-06 12:24:26,845 - Model - INFO - Saving model....
+2026-05-06 12:24:26,867 - Model - INFO - ---- EPOCH 001 EVALUATION ----
+2026-05-06 12:25:09,414 - Model - INFO - eval mean loss: 0.339757
+2026-05-06 12:25:09,415 - Model - INFO - eval point avg class IoU: 0.732519
+2026-05-06 12:25:09,415 - Model - INFO - eval point accuracy: 0.897449
+2026-05-06 12:25:09,415 - Model - INFO - eval point avg class acc: 0.815001
+2026-05-06 12:25:09,416 - Model - INFO - ------- IoU --------
+class car            weight: 0.326, IoU: 0.804 
+class building       weight: 0.029, IoU: 0.862 
+class pole           weight: 0.605, IoU: 0.495 
+class clutter        weight: 0.040, IoU: 0.768 
+
+2026-05-06 12:25:09,416 - Model - INFO - Eval mean loss: 0.339757
+2026-05-06 12:25:09,416 - Model - INFO - Eval accuracy: 0.897449
+2026-05-06 12:25:09,417 - Model - INFO - Save model...
+2026-05-06 12:25:09,417 - Model - INFO - Saving at log/sem_seg/pointnet2_sem_seg/epoch_30_npoint_1024_bsize_16/checkpoints/best_model.pth
+2026-05-06 12:25:09,509 - Model - INFO - Saving model....
+2026-05-06 12:25:09,509 - Model - INFO - Best mIoU: 0.732519
+2026-05-06 12:25:09,510 - Model - INFO - **** Epoch 2 (2/30) ****
+2026-05-06 12:25:09,510 - Model - INFO - Learning rate:0.001000
+2026-05-06 12:26:56,009 - Model - INFO - Training mean loss: nan
+2026-05-06 12:26:56,009 - Model - INFO - Training accuracy: 0.240019
+2026-05-06 12:26:56,030 - Model - INFO - ---- EPOCH 002 EVALUATION ----
+2026-05-06 12:27:39,856 - Model - INFO - eval mean loss: nan
+2026-05-06 12:27:39,857 - Model - INFO - eval point avg class IoU: 0.007239
+2026-05-06 12:27:39,857 - Model - INFO - eval point accuracy: 0.028958
+2026-05-06 12:27:39,858 - Model - INFO - eval point avg class acc: 0.250000
+2026-05-06 12:27:39,858 - Model - INFO - ------- IoU --------
+class car            weight: 0.325, IoU: 0.029 
+class building       weight: 0.029, IoU: 0.000 
+class pole           weight: 0.606, IoU: 0.000 
+class clutter        weight: 0.040, IoU: 0.000 
+
+2026-05-06 12:27:39,858 - Model - INFO - Eval mean loss: nan
+2026-05-06 12:27:39,858 - Model - INFO - Eval accuracy: 0.028958
+2026-05-06 12:27:39,858 - Model - INFO - Best mIoU: 0.732519
+2026-05-06 12:27:39,859 - Model - INFO - **** Epoch 3 (3/30) ****
+2026-05-06 12:27:39,859 - Model - INFO - Learning rate:0.001000
+2026-05-06 12:29:26,511 - Model - INFO - Training mean loss: nan
+2026-05-06 12:29:26,512 - Model - INFO - Training accuracy: 0.028808
+2026-05-06 12:29:26,536 - Model - INFO - ---- EPOCH 003 EVALUATION ----

@@ -1,0 +1,846 @@
+2021-03-22 13:40:15,976 - Model - INFO - PARAMETER ...
+2021-03-22 13:40:15,977 - Model - INFO - Namespace(batch_size=32, gpu='2', log_dir='pointnet2_sem_seg', num_point=4096, num_votes=3, test_area=5, visual=False)
+2021-03-22 13:45:50,923 - Model - INFO - The number of test data is: 68
+2021-03-22 13:46:06,501 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2021-03-22 13:54:10,224 - Model - INFO - Mean IoU of Area_5_office_1: 0.5885
+2021-03-22 14:01:33,975 - Model - INFO - Mean IoU of Area_5_office_10: 0.6179
+2021-03-22 14:38:11,357 - Model - INFO - Mean IoU of Area_5_conferenceRoom_3: 0.6024
+2021-03-22 14:59:34,010 - Model - INFO - Mean IoU of Area_5_office_15: 0.5891
+2021-03-22 15:24:52,909 - Model - INFO - Mean IoU of Area_5_lobby_1: 0.7761
+2021-03-22 15:30:55,276 - Model - INFO - Mean IoU of Area_5_office_27: 0.6575
+2021-03-22 16:07:05,579 - Model - INFO - Mean IoU of Area_5_hallway_13: 0.6365
+2021-03-22 16:38:57,175 - Model - INFO - Mean IoU of Area_5_office_41: 0.6261
+2021-03-22 16:57:27,187 - Model - INFO - Mean IoU of Area_5_office_18: 0.6153
+2021-03-22 17:06:25,938 - Model - INFO - Mean IoU of Area_5_office_12: 0.5852
+2021-03-22 17:13:30,382 - Model - INFO - Mean IoU of Area_5_office_28: 0.6707
+2021-03-22 17:21:46,557 - Model - INFO - Mean IoU of Area_5_office_31: 0.6153
+2021-03-22 17:26:49,769 - Model - INFO - Mean IoU of Area_5_office_26: 0.5207
+2021-03-22 17:36:58,881 - Model - INFO - Mean IoU of Area_5_office_35: 0.7640
+2021-03-22 23:59:28,625 - Model - INFO - Mean IoU of Area_5_hallway_2: 0.7175
+2021-03-23 00:14:06,973 - Model - INFO - Mean IoU of Area_5_office_39: 0.6135
+2021-03-23 00:52:12,769 - Model - INFO - Mean IoU of Area_5_office_24: 0.5573
+2021-03-23 01:08:37,853 - Model - INFO - Mean IoU of Area_5_office_14: 0.6230
+2021-03-23 01:11:29,081 - Model - INFO - Mean IoU of Area_5_storage_4: 0.6659
+2021-03-23 01:28:36,731 - Model - INFO - Mean IoU of Area_5_hallway_6: 0.6781
+2021-03-23 02:06:28,342 - Model - INFO - Mean IoU of Area_5_office_19: 0.7059
+2021-03-23 02:14:30,956 - Model - INFO - Mean IoU of Area_5_office_42: 0.6049
+2021-03-23 03:50:57,178 - Model - INFO - Mean IoU of Area_5_office_40: 0.4828
+2021-03-23 03:57:10,565 - Model - INFO - Mean IoU of Area_5_office_4: 0.7075
+2021-03-23 04:04:08,882 - Model - INFO - Mean IoU of Area_5_office_32: 0.6113
+2021-03-23 05:12:29,614 - Model - INFO - Mean IoU of Area_5_office_37: 0.4237
+2021-03-23 05:25:57,774 - Model - INFO - Mean IoU of Area_5_office_36: 0.6645
+2021-03-23 05:30:57,288 - Model - INFO - Mean IoU of Area_5_office_6: 0.6999
+2021-03-23 05:34:10,814 - Model - INFO - Mean IoU of Area_5_hallway_14: 0.7079
+2021-03-23 06:04:14,884 - Model - INFO - Mean IoU of Area_5_office_29: 0.5924
+2021-03-23 06:09:53,963 - Model - INFO - Mean IoU of Area_5_office_3: 0.7578
+2021-03-23 06:15:24,359 - Model - INFO - Mean IoU of Area_5_hallway_4: 0.4651
+2021-03-23 06:20:05,846 - Model - INFO - Mean IoU of Area_5_storage_1: 0.3533
+2021-03-23 06:26:04,559 - Model - INFO - Mean IoU of Area_5_office_11: 0.6504
+2021-03-23 06:32:53,686 - Model - INFO - Mean IoU of Area_5_office_8: 0.6385
+2021-03-23 06:38:59,374 - Model - INFO - Mean IoU of Area_5_office_34: 0.6091
+2021-03-23 07:29:16,087 - Model - INFO - Mean IoU of Area_5_office_21: 0.6285
+2021-03-23 07:36:48,993 - Model - INFO - Mean IoU of Area_5_storage_2: 0.4328
+2021-03-23 07:40:48,011 - Model - INFO - Mean IoU of Area_5_office_9: 0.7193
+2021-03-23 07:42:18,540 - Model - INFO - Mean IoU of Area_5_office_30: 0.8101
+2021-03-23 07:49:04,036 - Model - INFO - Mean IoU of Area_5_hallway_11: 0.8154
+2021-03-23 08:41:39,690 - Model - INFO - Mean IoU of Area_5_conferenceRoom_2: 0.6049
+2021-03-23 08:45:25,196 - Model - INFO - Mean IoU of Area_5_office_5: 0.8352
+2021-03-23 08:52:35,233 - Model - INFO - Mean IoU of Area_5_hallway_12: 0.6916
+2021-03-23 08:59:25,839 - Model - INFO - Mean IoU of Area_5_office_7: 0.6239
+2021-03-23 09:01:18,197 - Model - INFO - Mean IoU of Area_5_hallway_8: 0.6584
+2021-03-23 09:07:32,416 - Model - INFO - Mean IoU of Area_5_office_33: 0.6477
+2021-03-23 09:29:47,860 - Model - INFO - Mean IoU of Area_5_hallway_9: 0.5687
+2021-03-23 10:52:54,462 - Model - INFO - Mean IoU of Area_5_office_38: 0.3907
+2021-03-23 11:24:48,653 - Model - INFO - Mean IoU of Area_5_hallway_10: 0.8178
+2021-03-23 11:38:13,811 - Model - INFO - Mean IoU of Area_5_office_13: 0.6312
+2021-03-23 11:45:05,688 - Model - INFO - Mean IoU of Area_5_WC_2: 0.7661
+2021-03-23 11:53:47,220 - Model - INFO - Mean IoU of Area_5_office_23: 0.6462
+2021-03-23 11:58:07,511 - Model - INFO - Mean IoU of Area_5_pantry_1: 0.7116
+2021-03-23 12:06:09,280 - Model - INFO - Mean IoU of Area_5_office_22: 0.6502
+2021-03-23 12:17:21,391 - Model - INFO - Mean IoU of Area_5_office_17: 0.5784
+2021-03-23 12:26:08,789 - Model - INFO - Mean IoU of Area_5_WC_1: 0.7258
+2021-03-23 12:34:21,005 - Model - INFO - Mean IoU of Area_5_office_2: 0.7176
+2021-03-23 14:53:38,858 - Model - INFO - Mean IoU of Area_5_hallway_5: 0.5241
+2021-03-23 15:09:10,854 - Model - INFO - Mean IoU of Area_5_conferenceRoom_1: 0.5500
+2021-03-23 15:41:32,436 - Model - INFO - Mean IoU of Area_5_hallway_15: 0.5137
+2021-03-23 15:49:09,586 - Model - INFO - Mean IoU of Area_5_office_16: 0.6031
+2021-03-23 16:13:21,947 - Model - INFO - Mean IoU of Area_5_hallway_7: 0.7646
+2021-03-23 16:35:25,771 - Model - INFO - Mean IoU of Area_5_hallway_3: 0.7395
+2021-03-23 16:35:42,819 - Model - INFO - Mean IoU of Area_5_storage_3: 0.5660
+2021-03-23 16:41:52,716 - Model - INFO - Mean IoU of Area_5_office_25: 0.6903
+2021-03-23 16:46:08,458 - Model - INFO - Mean IoU of Area_5_office_20: 0.5930
+2021-03-23 22:45:28,676 - Model - INFO - Mean IoU of Area_5_hallway_1: 0.3561
+2021-03-23 22:45:35,270 - Model - INFO - ------- IoU --------
+class ceiling       , IoU: 0.894 
+class floor         , IoU: 0.977 
+class wall          , IoU: 0.754 
+class beam          , IoU: 0.000 
+class column        , IoU: 0.018 
+class window        , IoU: 0.583 
+class door          , IoU: 0.195 
+class table         , IoU: 0.692 
+class chair         , IoU: 0.790 
+class sofa          , IoU: 0.462 
+class bookcase      , IoU: 0.591 
+class board         , IoU: 0.587 
+class clutter       , IoU: 0.416 
+
+2021-03-23 22:45:35,271 - Model - INFO - eval point avg class IoU: 0.535313
+2021-03-23 22:45:35,271 - Model - INFO - eval whole scene point avg class acc: 0.620289
+2021-03-23 22:45:35,271 - Model - INFO - eval whole scene point accuracy: 0.829893
+2026-03-24 10:52:23,826 - Model - INFO - PARAMETER ...
+2026-03-24 10:52:24,636 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=True, num_votes=3)
+2026-03-24 10:52:58,670 - Model - INFO - PARAMETER ...
+2026-03-24 10:52:58,671 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=True, num_votes=3)
+2026-03-24 10:54:19,752 - Model - INFO - PARAMETER ...
+2026-03-24 10:54:19,753 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=True, num_votes=3, samples_per_frame=4)
+2026-03-24 10:54:26,865 - Model - INFO - The number of test data is: 1472
+2026-03-24 10:57:09,233 - Model - INFO - PARAMETER ...
+2026-03-24 10:57:09,234 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=True, num_votes=3, samples_per_frame=4)
+2026-03-24 10:57:15,625 - Model - INFO - The number of test data is: 1472
+2026-03-24 10:57:16,123 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-03-24 10:57:36,771 - Model - INFO - eval point avg class IoU: 0.757344
+2026-03-24 10:57:36,771 - Model - INFO - eval point accuracy: 0.920017
+2026-03-24 10:57:36,771 - Model - INFO - eval point avg class acc: 0.916401
+2026-03-24 11:04:11,062 - Model - INFO - PARAMETER ...
+2026-03-24 11:04:11,063 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=True, num_votes=3, samples_per_frame=4)
+2026-03-24 11:04:18,206 - Model - INFO - The number of test data is: 1472
+2026-03-24 11:04:18,706 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-03-24 11:04:38,569 - Model - INFO - eval point avg class IoU: 0.747799
+2026-03-24 11:04:38,569 - Model - INFO - eval point accuracy: 0.918017
+2026-03-24 11:04:38,569 - Model - INFO - eval point avg class acc: 0.915160
+2026-03-24 11:04:38,569 - Model - INFO - ------- IoU --------
+class car           , IoU: 0.571 
+class building      , IoU: 0.894 
+class pole          , IoU: 0.721 
+class clutter       , IoU: 0.806 
+
+2026-03-24 11:04:38,569 - Model - INFO - eval point avg class IoU: 0.747799
+2026-03-24 11:04:38,569 - Model - INFO - eval whole scene point avg class acc: 0.915160
+2026-03-24 11:04:38,570 - Model - INFO - eval whole scene point accuracy: 0.918017
+2026-03-24 11:54:08,459 - Model - INFO - PARAMETER ...
+2026-03-24 11:54:08,460 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=True, num_votes=3, samples_per_frame=4)
+2026-03-24 11:54:14,556 - Model - INFO - The number of test data is: 1472
+2026-03-24 11:56:43,147 - Model - INFO - PARAMETER ...
+2026-03-24 11:56:43,148 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=True, num_votes=3, samples_per_frame=4)
+2026-03-24 11:56:50,377 - Model - INFO - The number of test data is: 1472
+2026-03-24 11:56:50,875 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-03-24 12:02:40,706 - Model - INFO - PARAMETER ...
+2026-03-24 12:02:40,707 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=True, num_votes=3, samples_per_frame=4)
+2026-03-24 12:02:46,500 - Model - INFO - The number of test data is: 1472
+2026-03-24 12:02:47,005 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-03-24 12:06:15,927 - Model - INFO - PARAMETER ...
+2026-03-24 12:06:15,927 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=True, num_votes=3, samples_per_frame=4)
+2026-03-24 12:06:23,299 - Model - INFO - The number of test data is: 1472
+2026-03-24 12:06:23,806 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-03-24 12:06:44,052 - Model - INFO - eval point avg class IoU: 0.743426
+2026-03-24 12:06:44,052 - Model - INFO - eval point accuracy: 0.917107
+2026-03-24 12:06:44,052 - Model - INFO - eval point avg class acc: 0.913345
+2026-03-24 12:06:44,053 - Model - INFO - ------- IoU --------
+class car           , IoU: 0.560 
+class building      , IoU: 0.893 
+class pole          , IoU: 0.716 
+class clutter       , IoU: 0.805 
+
+2026-03-24 12:06:44,053 - Model - INFO - eval point avg class IoU: 0.743426
+2026-03-24 12:06:44,053 - Model - INFO - eval whole scene point avg class acc: 0.913345
+2026-03-24 12:06:44,053 - Model - INFO - eval whole scene point accuracy: 0.917107
+2026-03-24 12:16:54,782 - Model - INFO - PARAMETER ...
+2026-03-24 12:16:54,782 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=True, num_votes=3, samples_per_frame=4)
+2026-03-24 12:17:01,780 - Model - INFO - The number of test data is: 1472
+2026-03-24 12:17:02,288 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-03-24 12:19:54,597 - Model - INFO - PARAMETER ...
+2026-03-24 12:19:54,598 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=True, num_votes=3, samples_per_frame=4)
+2026-03-24 12:20:01,310 - Model - INFO - The number of test data is: 1472
+2026-03-24 12:20:01,815 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-03-24 12:20:23,290 - Model - INFO - PARAMETER ...
+2026-03-24 12:20:23,291 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=True, num_votes=3, samples_per_frame=4)
+2026-03-24 12:20:24,174 - Model - INFO - The number of test data is: 1472
+2026-03-24 12:20:24,680 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-03-24 12:20:44,447 - Model - INFO - eval point avg class IoU: 0.753519
+2026-03-24 12:20:44,447 - Model - INFO - eval point accuracy: 0.919679
+2026-03-24 12:20:44,447 - Model - INFO - eval point avg class acc: 0.915742
+2026-03-24 12:20:44,447 - Model - INFO - ------- IoU --------
+class car           , IoU: 0.577 
+class building      , IoU: 0.896 
+class pole          , IoU: 0.734 
+class clutter       , IoU: 0.807 
+
+2026-03-24 12:20:44,448 - Model - INFO - eval point avg class IoU: 0.753519
+2026-03-24 12:20:44,448 - Model - INFO - eval whole scene point avg class acc: 0.915742
+2026-03-24 12:20:44,448 - Model - INFO - eval whole scene point accuracy: 0.919679
+2026-03-24 14:04:50,087 - Model - INFO - PARAMETER ...
+2026-03-24 14:04:50,088 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=True, num_votes=3, samples_per_frame=4)
+2026-03-24 14:04:56,176 - Model - INFO - The number of test data is: 1472
+2026-03-24 14:04:56,690 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-03-24 14:05:17,069 - Model - INFO - eval point avg class IoU: 0.797605
+2026-03-24 14:05:17,069 - Model - INFO - eval point accuracy: 0.928230
+2026-03-24 14:05:17,069 - Model - INFO - eval point avg class acc: 0.904961
+2026-03-24 14:05:17,069 - Model - INFO - ------- IoU --------
+class car           , IoU: 0.686 
+class building      , IoU: 0.903 
+class pole          , IoU: 0.780 
+class clutter       , IoU: 0.822 
+
+2026-03-24 14:05:17,070 - Model - INFO - eval point avg class IoU: 0.797605
+2026-03-24 14:05:17,070 - Model - INFO - eval whole scene point avg class acc: 0.904961
+2026-03-24 14:05:17,070 - Model - INFO - eval whole scene point accuracy: 0.928230
+2026-03-29 20:51:38,097 - Model - INFO - PARAMETER ...
+2026-03-29 20:51:38,300 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=True, num_votes=3, samples_per_frame=4)
+2026-03-29 20:51:44,364 - Model - INFO - The number of test data is: 1472
+2026-03-29 20:51:44,865 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-03-29 20:52:20,952 - Model - INFO - eval point avg class IoU: 0.837334
+2026-03-29 20:52:20,953 - Model - INFO - eval point accuracy: 0.928761
+2026-03-29 20:52:20,953 - Model - INFO - eval point avg class acc: 0.922797
+2026-03-29 20:52:20,953 - Model - INFO - ------- IoU --------
+class car           , IoU: 0.871 
+class building      , IoU: 0.901 
+class pole          , IoU: 0.756 
+class clutter       , IoU: 0.822 
+
+2026-03-29 20:52:20,953 - Model - INFO - eval point avg class IoU: 0.837334
+2026-03-29 20:52:20,953 - Model - INFO - eval whole scene point avg class acc: 0.922797
+2026-03-29 20:52:20,953 - Model - INFO - eval whole scene point accuracy: 0.928761
+2026-05-03 14:21:12,710 - Model - INFO - PARAMETER ...
+2026-05-03 14:21:13,211 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, is_PointGuard=False)
+2026-05-03 14:21:44,340 - Model - INFO - PARAMETER ...
+2026-05-03 14:21:44,341 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, is_PointGuard=False)
+2026-05-03 14:22:09,688 - Model - INFO - PARAMETER ...
+2026-05-03 14:22:09,689 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, is_PointGuard=False)
+2026-05-03 14:22:32,643 - Model - INFO - PARAMETER ...
+2026-05-03 14:22:32,644 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, is_PointGuard=False)
+2026-05-03 14:25:41,900 - Model - INFO - The number of test data is: 1472
+2026-05-03 14:25:49,672 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-05-03 14:29:32,467 - Model - INFO - PARAMETER ...
+2026-05-03 14:29:32,468 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, per_prob=0, inj_prob=0, is_PointGuard=False)
+2026-05-03 14:29:33,370 - Model - INFO - The number of test data is: 1472
+2026-05-03 14:29:33,802 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-05-03 14:32:35,591 - Model - INFO - PARAMETER ...
+2026-05-03 14:32:35,592 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, per_prob=0, inj_prob=0, is_PointGuard=False)
+2026-05-03 14:32:36,512 - Model - INFO - The number of test data is: 1472
+2026-05-03 14:32:37,002 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-05-03 14:32:46,090 - Model - INFO - PARAMETER ...
+2026-05-03 14:32:46,091 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, per_prob=0, inj_prob=0, is_PointGuard=False)
+2026-05-03 14:32:46,931 - Model - INFO - The number of test data is: 1472
+2026-05-03 14:32:47,357 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-05-03 14:33:34,348 - Model - INFO - PARAMETER ...
+2026-05-03 14:33:34,349 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, per_prob=0, inj_prob=0, is_PointGuard=False)
+2026-05-03 14:33:35,255 - Model - INFO - The number of test data is: 1472
+2026-05-03 14:33:35,690 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-05-03 14:33:45,158 - Model - INFO - PARAMETER ...
+2026-05-03 14:33:45,160 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, per_prob=0, inj_prob=0, is_PointGuard=False)
+2026-05-03 14:33:46,065 - Model - INFO - The number of test data is: 1472
+2026-05-03 14:33:46,505 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-05-03 14:34:35,590 - Model - INFO - PARAMETER ...
+2026-05-03 14:34:35,591 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, per_prob=0, inj_prob=0, is_PointGuard=False)
+2026-05-03 14:34:36,469 - Model - INFO - The number of test data is: 1472
+2026-05-03 14:34:36,906 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-05-03 14:34:46,590 - Model - INFO - PARAMETER ...
+2026-05-03 14:34:46,591 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, per_prob=0, inj_prob=0, is_PointGuard=False)
+2026-05-03 14:34:47,473 - Model - INFO - The number of test data is: 1472
+2026-05-03 14:34:47,917 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-05-03 14:35:14,651 - Model - INFO - eval point avg class IoU: 0.838157
+2026-05-03 14:35:14,652 - Model - INFO - eval point accuracy: 0.929188
+2026-05-03 14:35:14,652 - Model - INFO - eval point avg class acc: 0.924362
+2026-05-03 14:35:14,652 - Model - INFO - ------- IoU --------
+class car           , IoU: 0.873 
+class building      , IoU: 0.901 
+class pole          , IoU: 0.756 
+class clutter       , IoU: 0.823 
+
+2026-05-03 14:35:14,652 - Model - INFO - eval point avg class IoU: 0.838157
+2026-05-03 14:35:14,653 - Model - INFO - eval whole scene point avg class acc: 0.924362
+2026-05-03 14:35:14,653 - Model - INFO - eval whole scene point accuracy: 0.929188
+2026-05-03 14:42:02,537 - Model - INFO - PARAMETER ...
+2026-05-03 14:42:02,537 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, per_prob=0, inj_prob=0, is_PointGuard=False)
+2026-05-03 14:42:03,364 - Model - INFO - The number of test data is: 1472
+2026-05-03 14:42:03,889 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-05-03 14:44:26,303 - Model - INFO - PARAMETER ...
+2026-05-03 14:44:26,304 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, per_prob=0, inj_prob=0, is_PointGuard=False)
+2026-05-03 14:44:27,177 - Model - INFO - The number of test data is: 1472
+2026-05-03 14:44:27,612 - Model - INFO - ---- EVALUATION----
+2026-05-03 14:44:52,863 - Model - INFO - ------- IoU --------
+class car           , IoU: 0.867 
+class building      , IoU: 0.900 
+class pole          , IoU: 0.756 
+class clutter       , IoU: 0.820 
+
+2026-05-03 14:44:52,864 - Model - INFO - eval point avg class IoU: 0.835668
+2026-05-03 14:45:10,865 - Model - INFO - PARAMETER ...
+2026-05-03 14:45:10,867 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, per_prob=0, inj_prob=0, is_PointGuard=False)
+2026-05-03 14:45:11,745 - Model - INFO - The number of test data is: 1472
+2026-05-03 14:45:12,179 - Model - INFO - ---- EVALUATION----
+2026-05-03 14:45:38,072 - Model - INFO - ------- IoU --------
+class car           , IoU: 0.867 
+class building      , IoU: 0.901 
+class pole          , IoU: 0.758 
+class clutter       , IoU: 0.822 
+
+2026-05-03 14:45:38,072 - Model - INFO - eval point avg class IoU: 0.836882
+2026-05-03 14:45:38,073 - Model - INFO - eval whole scene point avg class acc: 0.922253
+2026-05-03 14:45:38,073 - Model - INFO - eval whole scene point accuracy: 0.928790
+2026-05-03 14:47:42,887 - Model - INFO - PARAMETER ...
+2026-05-03 14:47:42,888 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, per_prob=1.0, inj_prob=0, is_PointGuard=False)
+2026-05-03 14:47:43,794 - Model - INFO - The number of test data is: 1472
+2026-05-03 14:47:44,231 - Model - INFO - ---- EVALUATION----
+2026-05-03 14:48:02,232 - Model - INFO - PARAMETER ...
+2026-05-03 14:48:02,232 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, per_prob=1.0, inj_prob=0, is_PointGuard=False)
+2026-05-03 14:48:03,184 - Model - INFO - The number of test data is: 1472
+2026-05-03 14:48:03,684 - Model - INFO - ---- EVALUATION----
+2026-05-03 14:48:18,430 - Model - INFO - PARAMETER ...
+2026-05-03 14:48:18,430 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, per_prob=1.0, inj_prob=0, is_PointGuard=False)
+2026-05-03 14:48:19,356 - Model - INFO - The number of test data is: 1472
+2026-05-03 14:48:19,795 - Model - INFO - ---- EVALUATION----
+2026-05-03 14:52:39,032 - Model - INFO - ------- IoU --------
+class car           , IoU: 0.367 
+class building      , IoU: 0.876 
+class pole          , IoU: 0.608 
+class clutter       , IoU: 0.691 
+
+2026-05-03 14:52:39,032 - Model - INFO - mIoU: 0.635497
+2026-05-03 14:52:39,033 - Model - INFO - eval whole scene point accuracy: 0.870492
+2026-05-03 14:53:15,949 - Model - INFO - PARAMETER ...
+2026-05-03 14:53:15,950 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, per_prob=1.0, inj_prob=0, is_PointGuard=False)
+2026-05-03 14:53:16,801 - Model - INFO - The number of test data is: 1472
+2026-05-03 14:53:17,311 - Model - INFO - ---- EVALUATION----
+2026-05-03 14:57:39,156 - Model - INFO - ------- IoU --------
+class car           , IoU: 0.377 
+class building      , IoU: 0.877 
+class pole          , IoU: 0.615 
+class clutter       , IoU: 0.698 
+
+2026-05-03 14:57:39,156 - Model - INFO - mIoU: 0.641794
+2026-05-03 14:57:39,156 - Model - INFO - eval whole scene point accuracy: 0.873304
+2026-05-03 15:11:39,686 - Model - INFO - PARAMETER ...
+2026-05-03 15:11:39,687 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, per_prob=0.9, inj_prob=0, is_PointGuard=False)
+2026-05-03 15:11:40,569 - Model - INFO - The number of test data is: 1472
+2026-05-03 15:11:41,005 - Model - INFO - ---- EVALUATION----
+2026-05-03 15:12:11,393 - Model - INFO - PARAMETER ...
+2026-05-03 15:12:11,395 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, per_prob=0.9, inj_prob=0, is_PointGuard=False)
+2026-05-03 15:12:12,244 - Model - INFO - The number of test data is: 1472
+2026-05-03 15:12:12,688 - Model - INFO - ---- EVALUATION----
+2026-05-03 15:22:51,213 - Model - INFO - PARAMETER ...
+2026-05-03 15:22:51,214 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, per_prob=0.9, inj_prob=0, is_PointGuard=False)
+2026-05-03 15:22:52,107 - Model - INFO - The number of test data is: 1472
+2026-05-03 15:22:52,624 - Model - INFO - ---- EVALUATION----
+2026-05-03 15:26:56,053 - Model - INFO - PARAMETER ...
+2026-05-03 15:26:56,054 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, per_prob=0.9, inj_prob=0, is_PointGuard=False)
+2026-05-03 15:26:56,932 - Model - INFO - The number of test data is: 1472
+2026-05-03 15:26:57,435 - Model - INFO - ---- EVALUATION----
+2026-05-03 15:36:00,776 - Model - INFO - PARAMETER ...
+2026-05-03 15:36:00,777 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, per_prob=0.9, inj_prob=0, is_PointGuard=False)
+2026-05-03 15:36:01,667 - Model - INFO - The number of test data is: 1472
+2026-05-03 15:36:02,118 - Model - INFO - ---- EVALUATION----
+2026-05-03 17:13:12,816 - Model - INFO - PARAMETER ...
+2026-05-03 17:13:13,802 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, per_prob=0.9, inj_prob=0, is_PointGuard=False)
+2026-05-03 17:13:58,429 - Model - INFO - The number of test data is: 1472
+2026-05-03 17:14:07,639 - Model - INFO - ---- EVALUATION----
+2026-05-04 09:00:06,479 - Model - INFO - PARAMETER ...
+2026-05-04 09:00:07,161 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, per_prob=0.9, inj_prob=0, is_PointGuard=False)
+2026-05-04 09:00:59,007 - Model - INFO - The number of test data is: 1472
+2026-05-04 09:01:07,933 - Model - INFO - ---- EVALUATION----
+2026-05-04 09:16:34,312 - Model - INFO - PARAMETER ...
+2026-05-04 09:16:34,313 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, per_prob=0.9, inj_prob=0, is_PointGuard=False)
+2026-05-04 09:16:42,255 - Model - INFO - The number of test data is: 1472
+2026-05-04 09:16:42,799 - Model - INFO - ---- EVALUATION----
+2026-05-04 09:20:16,464 - Model - INFO - PARAMETER ...
+2026-05-04 09:20:16,466 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, per_prob=0.9, inj_prob=0, is_PointGuard=False)
+2026-05-04 09:20:23,298 - Model - INFO - The number of test data is: 1472
+2026-05-04 09:20:23,809 - Model - INFO - ---- EVALUATION----
+2026-05-04 09:23:50,357 - Model - INFO - PARAMETER ...
+2026-05-04 09:23:50,359 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, per_prob=0.9, inj_prob=0, is_PointGuard=False)
+2026-05-04 09:23:57,619 - Model - INFO - The number of test data is: 1472
+2026-05-04 09:23:58,072 - Model - INFO - ---- EVALUATION----
+2026-05-04 09:45:39,606 - Model - INFO - PARAMETER ...
+2026-05-04 09:45:39,608 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, per_prob=0.9, inj_prob=0, per_channels=[0, 1, 2, 3], per_eps=1.5, is_PointGuard=False)
+2026-05-04 09:45:47,213 - Model - INFO - The number of test data is: 1472
+2026-05-04 09:45:47,657 - Model - INFO - ---- EVALUATION----
+2026-05-04 09:51:18,842 - Model - INFO - PARAMETER ...
+2026-05-04 09:51:18,843 - Model - INFO - Namespace(batch_size=32, gpu='0', num_point=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4)
+2026-05-04 09:51:25,317 - Model - INFO - The number of test data is: 1472
+2026-05-04 09:51:25,792 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-05-04 09:51:51,559 - Model - INFO - eval point avg class IoU: 0.837097
+2026-05-04 09:51:51,560 - Model - INFO - eval point accuracy: 0.928084
+2026-05-04 09:51:51,560 - Model - INFO - eval point avg class acc: 0.923380
+2026-05-04 09:51:51,560 - Model - INFO - ------- IoU --------
+class car           , IoU: 0.872 
+class building      , IoU: 0.900 
+class pole          , IoU: 0.758 
+class clutter       , IoU: 0.819 
+
+2026-05-04 09:51:51,561 - Model - INFO - eval point avg class IoU: 0.837097
+2026-05-04 09:51:51,561 - Model - INFO - eval whole scene point avg class acc: 0.923380
+2026-05-04 09:51:51,561 - Model - INFO - eval whole scene point accuracy: 0.928084
+2026-05-05 09:47:05,750 - Model - INFO - PARAMETER ...
+2026-05-05 09:47:06,425 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=0.9, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=30, inj_clutter_size=5, is_PointGuard=False)
+2026-05-05 09:47:44,793 - Model - INFO - The number of test data is: 1472
+2026-05-05 09:47:51,372 - Model - INFO - ---- EVALUATION----
+2026-05-05 09:50:09,027 - Model - INFO - PARAMETER ...
+2026-05-05 09:50:09,028 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=0.9, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=30, inj_clutter_size=5, is_PointGuard=False)
+2026-05-05 09:50:15,313 - Model - INFO - The number of test data is: 1472
+2026-05-05 09:50:15,760 - Model - INFO - ---- EVALUATION----
+2026-05-05 09:54:14,349 - Model - INFO - PARAMETER ...
+2026-05-05 09:54:14,352 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=0, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=0, inj_clutter_size=5, is_PointGuard=False)
+2026-05-05 09:54:20,600 - Model - INFO - The number of test data is: 1472
+2026-05-05 09:54:21,107 - Model - INFO - ---- EVALUATION----
+2026-05-05 09:54:38,481 - Model - INFO - PARAMETER ...
+2026-05-05 09:54:38,482 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=0, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=0, inj_clutter_size=5, is_PointGuard=False)
+2026-05-05 09:54:39,756 - Model - INFO - The number of test data is: 1472
+2026-05-05 09:54:40,209 - Model - INFO - ---- EVALUATION----
+2026-05-05 09:55:54,046 - Model - INFO - PARAMETER ...
+2026-05-05 09:55:54,047 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=0.9, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=30, inj_clutter_size=5, is_PointGuard=False)
+2026-05-05 09:55:55,285 - Model - INFO - The number of test data is: 1472
+2026-05-05 09:55:55,727 - Model - INFO - ---- EVALUATION----
+2026-05-05 10:06:57,722 - Model - INFO - PARAMETER ...
+2026-05-05 10:06:57,724 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=0.9, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=30, inj_clutter_size=10, is_PointGuard=False)
+2026-05-05 10:07:06,026 - Model - INFO - The number of test data is: 1472
+2026-05-05 10:07:06,484 - Model - INFO - ---- EVALUATION----
+2026-05-05 10:15:24,462 - Model - INFO - PARAMETER ...
+2026-05-05 10:15:24,464 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=0.9, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=30, inj_clutter_size=10, is_PointGuard=False)
+2026-05-05 10:15:33,391 - Model - INFO - The number of test data is: 1472
+2026-05-05 10:15:33,841 - Model - INFO - ---- EVALUATION----
+2026-05-05 10:25:25,237 - Model - INFO - PARAMETER ...
+2026-05-05 10:25:25,238 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=0.9, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=30, inj_clutter_size=10, is_PointGuard=False)
+2026-05-05 10:25:34,146 - Model - INFO - The number of test data is: 1472
+2026-05-05 10:25:34,597 - Model - INFO - ---- EVALUATION----
+2026-05-05 10:34:08,916 - Model - INFO - PARAMETER ...
+2026-05-05 10:34:08,918 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=0.9, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=100, inj_clutter_size=10, is_PointGuard=False)
+2026-05-05 10:34:16,151 - Model - INFO - The number of test data is: 1472
+2026-05-05 10:34:16,667 - Model - INFO - ---- EVALUATION----
+2026-05-05 10:34:41,375 - Model - INFO - PARAMETER ...
+2026-05-05 10:34:41,377 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=0.9, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=100, inj_clutter_size=10, is_PointGuard=False)
+2026-05-05 10:34:42,650 - Model - INFO - The number of test data is: 1472
+2026-05-05 10:34:43,158 - Model - INFO - ---- EVALUATION----
+2026-05-05 10:40:04,433 - Model - INFO - PARAMETER ...
+2026-05-05 10:40:04,434 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=0.9, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=200, inj_clutter_size=10, is_PointGuard=False)
+2026-05-05 10:40:11,568 - Model - INFO - The number of test data is: 1472
+2026-05-05 10:40:12,080 - Model - INFO - ---- EVALUATION----
+2026-05-05 14:30:08,337 - Model - INFO - PARAMETER ...
+2026-05-05 14:30:08,339 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=0.9, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=200, inj_clutter_size=20, is_PointGuard=False)
+2026-05-05 14:30:14,887 - Model - INFO - The number of test data is: 1472
+2026-05-05 14:30:15,350 - Model - INFO - ---- EVALUATION----
+2026-05-05 14:39:12,737 - Model - INFO - PARAMETER ...
+2026-05-05 14:39:12,738 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=0.9, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=200, inj_clutter_size=20, is_PointGuard=False)
+2026-05-05 14:39:20,039 - Model - INFO - The number of test data is: 1472
+2026-05-05 14:39:20,490 - Model - INFO - ---- EVALUATION----
+2026-05-05 14:40:16,784 - Model - INFO - PARAMETER ...
+2026-05-05 14:40:16,786 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=0.9, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=200, inj_clutter_size=20, is_PointGuard=False)
+2026-05-05 14:40:18,118 - Model - INFO - The number of test data is: 1472
+2026-05-05 14:40:18,575 - Model - INFO - ---- EVALUATION----
+2026-05-06 09:40:29,209 - Model - INFO - PARAMETER ...
+2026-05-06 09:40:29,913 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=0.9, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=200, inj_clutter_size=10, is_PointGuard=False)
+2026-05-06 09:41:10,582 - Model - INFO - The number of test data is: 1472
+2026-05-06 09:41:19,050 - Model - INFO - ---- EVALUATION----
+2026-05-06 09:50:46,461 - Model - INFO - PARAMETER ...
+2026-05-06 09:50:46,462 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=0.9, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=200, inj_clutter_size=10, is_PointGuard=False)
+2026-05-06 09:50:59,281 - Model - INFO - PARAMETER ...
+2026-05-06 09:50:59,282 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=0.9, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=200, inj_clutter_size=10, is_PointGuard=False)
+2026-05-06 09:51:00,564 - Model - INFO - The number of test data is: 1472
+2026-05-06 09:51:01,004 - Model - INFO - ---- EVALUATION----
+2026-05-06 10:04:36,729 - Model - INFO - PARAMETER ...
+2026-05-06 10:04:36,731 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=0.9, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=200, inj_clutter_size=10, is_PointGuard=False)
+2026-05-06 10:04:45,450 - Model - INFO - The number of test data is: 1472
+2026-05-06 10:04:45,910 - Model - INFO - ---- EVALUATION----
+2026-05-06 10:16:33,907 - Model - INFO - PARAMETER ...
+2026-05-06 10:16:33,909 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=0.9, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=200, inj_clutter_size=10, is_PointGuard=False)
+2026-05-06 10:16:40,563 - Model - INFO - The number of test data is: 1472
+2026-05-06 10:16:41,117 - Model - INFO - ---- EVALUATION----
+2026-05-06 10:30:54,484 - Model - INFO - PARAMETER ...
+2026-05-06 10:30:54,485 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=0.9, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=200, inj_clutter_size=10, is_PointGuard=False)
+2026-05-06 10:31:01,924 - Model - INFO - The number of test data is: 1472
+2026-05-06 10:31:02,367 - Model - INFO - ---- EVALUATION----
+2026-05-06 10:31:43,293 - Model - INFO - Saved visualization sample 2 to G:\我的云端硬盘\THESIS\code\local_visualize\data\segmentation_injection_point_cloud\inj_sample.npy
+2026-05-06 10:38:30,710 - Model - INFO - PARAMETER ...
+2026-05-06 10:38:30,711 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=0.9, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=200, inj_clutter_size=10, is_PointGuard=False)
+2026-05-06 10:38:37,658 - Model - INFO - The number of test data is: 1472
+2026-05-06 10:38:38,106 - Model - INFO - ---- EVALUATION----
+2026-05-06 10:39:17,139 - Model - INFO - Saved visualization sample 2 to G:\我的云端硬盘\THESIS\code\local_visualize\data\segmentation_injection_point_cloud\inj_sample.npy
+2026-05-06 10:41:01,726 - Model - INFO - PARAMETER ...
+2026-05-06 10:41:01,727 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=0.9, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=200, inj_clutter_size=10, is_PointGuard=False)
+2026-05-06 10:41:07,274 - Model - INFO - The number of test data is: 1472
+2026-05-06 10:41:07,711 - Model - INFO - ---- EVALUATION----
+2026-05-06 10:41:50,282 - Model - INFO - Saved visualization sample 2 to G:\我的云端硬盘\THESIS\code\local_visualize\data\segmentation_injection_point_cloud\inj_sample.npy
+2026-05-06 10:42:32,620 - Model - INFO - PARAMETER ...
+2026-05-06 10:42:32,622 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=0.9, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=200, inj_clutter_size=10, is_PointGuard=False)
+2026-05-06 10:42:33,852 - Model - INFO - The number of test data is: 1472
+2026-05-06 10:42:34,299 - Model - INFO - ---- EVALUATION----
+2026-05-06 10:43:14,222 - Model - INFO - Saved visualization sample 2 to G:\我的云端硬盘\THESIS\code\local_visualize\data\segmentation_injection_point_cloud\inj_sample.npy
+2026-05-06 10:45:54,654 - Model - INFO - PARAMETER ...
+2026-05-06 10:45:54,656 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=0.9, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=200, inj_clutter_size=10, is_PointGuard=False)
+2026-05-06 10:46:00,765 - Model - INFO - The number of test data is: 1472
+2026-05-06 10:46:01,269 - Model - INFO - ---- EVALUATION----
+2026-05-06 10:46:20,783 - Model - INFO - PARAMETER ...
+2026-05-06 10:46:20,784 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=0.9, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=200, inj_clutter_size=10, is_PointGuard=False)
+2026-05-06 10:46:21,982 - Model - INFO - The number of test data is: 1472
+2026-05-06 10:46:22,419 - Model - INFO - ---- EVALUATION----
+2026-05-06 10:47:05,938 - Model - INFO - Saved visualization sample 2 to \content\drive\MyDrive\THESIS\code\local_visualize\data\segmentation_injection_point_cloud\inj_sample.npy\code\local_visualize\data\segmentation_injection_point_cloud\inj_sample.npy
+2026-05-06 10:49:50,754 - Model - INFO - PARAMETER ...
+2026-05-06 10:49:50,756 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=0.9, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=200, inj_clutter_size=10, is_PointGuard=False)
+2026-05-06 10:49:56,591 - Model - INFO - The number of test data is: 1472
+2026-05-06 10:49:57,032 - Model - INFO - ---- EVALUATION----
+2026-05-06 10:50:32,665 - Model - INFO - Saved visualization sample 2 to /content/drive/MyDrive/THESIS/code/local_visualize/data/segmentation_injection_point_cloud/inj_sample.npy
+2026-05-06 10:58:34,895 - Model - INFO - PARAMETER ...
+2026-05-06 10:58:34,896 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=0.9, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=200, inj_clutter_size=10, is_PointGuard=False)
+2026-05-06 10:58:42,107 - Model - INFO - The number of test data is: 1472
+2026-05-06 10:58:42,563 - Model - INFO - ---- EVALUATION----
+2026-05-06 10:59:14,592 - Model - INFO - Saved visualization sample 2 to /content/drive/MyDrive/THESIS/code/local_visualize/data/segmentation_injection_point_cloud/inj_sample_{idx}.npy
+2026-05-06 11:00:13,998 - Model - INFO - PARAMETER ...
+2026-05-06 11:00:14,000 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=0.9, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=200, inj_clutter_size=10, is_PointGuard=False)
+2026-05-06 11:00:15,246 - Model - INFO - The number of test data is: 1472
+2026-05-06 11:00:15,691 - Model - INFO - ---- EVALUATION----
+2026-05-06 11:00:53,245 - Model - INFO - Saved visualization sample 2 to /content/drive/MyDrive/THESIS/code/local_visualize/data/segmentation_injection_point_cloud/inj_sample_0.npy
+2026-05-06 11:11:37,212 - Model - INFO - PARAMETER ...
+2026-05-06 11:11:37,214 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=0.9, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=200, inj_clutter_size=10, is_PointGuard=False)
+2026-05-06 11:11:43,675 - Model - INFO - The number of test data is: 1472
+2026-05-06 11:11:44,118 - Model - INFO - ---- EVALUATION----
+2026-05-06 11:12:20,643 - Model - INFO - Saved visualization sample 2 to /content/drive/MyDrive/THESIS/code/local_visualize/data/segmentation_injection_point_cloud/inj_sample_0.npy
+2026-05-06 11:59:05,036 - Model - INFO - PARAMETER ...
+2026-05-06 11:59:05,444 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=0, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=0, inj_clutter_size=5, is_PointGuard=False)
+2026-05-06 11:59:42,899 - Model - INFO - The number of test data is: 1472
+2026-05-06 11:59:47,367 - Model - INFO - ---- EVALUATION----
+2026-05-06 11:59:50,470 - Model - INFO - Saved visualization sample 2 to /content/drive/MyDrive/THESIS/code/local_visualize/data/segmentation_injection_point_cloud/clean_sample_0.npy
+2026-05-06 12:30:07,264 - Model - INFO - PARAMETER ...
+2026-05-06 12:30:07,266 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=0, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=0, inj_clutter_size=5, is_PointGuard=False)
+2026-05-06 12:30:14,852 - Model - INFO - The number of test data is: 1472
+2026-05-06 12:30:15,334 - Model - INFO - ---- EVALUATION----
+2026-05-06 12:30:16,497 - Model - INFO - Saved visualization sample 2 to /content/drive/MyDrive/THESIS/code/local_visualize/data/segmentation_injection_point_cloud/clean_sample_0.npy
+2026-05-06 12:31:01,672 - Model - INFO - PARAMETER ...
+2026-05-06 12:31:01,674 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=0, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=0, inj_clutter_size=5, is_PointGuard=False)
+2026-05-06 12:31:03,049 - Model - INFO - The number of test data is: 1472
+2026-05-06 12:31:03,578 - Model - INFO - ---- EVALUATION----
+2026-05-06 12:31:05,268 - Model - INFO - Saved visualization sample 2 to /content/drive/MyDrive/THESIS/code/local_visualize/data/segmentation_injection_point_cloud/clean_sample_0.npy
+2026-05-06 12:31:12,851 - Model - INFO - PARAMETER ...
+2026-05-06 12:31:12,853 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=0, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=0, inj_clutter_size=5, is_PointGuard=False)
+2026-05-06 12:31:14,174 - Model - INFO - The number of test data is: 1472
+2026-05-06 12:31:14,743 - Model - INFO - ---- EVALUATION----
+2026-05-06 12:31:16,452 - Model - INFO - Saved visualization sample 2 to /content/drive/MyDrive/THESIS/code/local_visualize/data/segmentation_injection_point_cloud/clean_sample_0.npy
+2026-05-06 12:31:32,655 - Model - INFO - PARAMETER ...
+2026-05-06 12:31:32,657 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=0, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=0, inj_clutter_size=5, is_PointGuard=False)
+2026-05-06 12:31:34,002 - Model - INFO - The number of test data is: 1472
+2026-05-06 12:31:34,452 - Model - INFO - ---- EVALUATION----
+2026-05-06 12:31:35,659 - Model - INFO - Saved visualization sample 2 to /content/drive/MyDrive/THESIS/code/local_visualize/data/segmentation_injection_point_cloud/clean_sample_0.npy
+2026-05-06 12:35:42,459 - Model - INFO - PARAMETER ...
+2026-05-06 12:35:42,460 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=0, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=0, inj_clutter_size=5, is_PointGuard=False)
+2026-05-06 12:35:50,115 - Model - INFO - The number of test data is: 1472
+2026-05-06 12:35:50,579 - Model - INFO - Model Path: log/sem_seg/pointnet2_sem_seg/epoch_10_npoint_1024_bsize_16/checkpoints/best_model.pth
+2026-05-06 12:35:50,584 - Model - INFO - ---- EVALUATION----
+2026-05-06 12:35:51,793 - Model - INFO - Saved visualization sample 2 to /content/drive/MyDrive/THESIS/code/local_visualize/data/segmentation_injection_point_cloud/clean_sample_0.npy
+2026-05-06 12:36:05,726 - Model - INFO - PARAMETER ...
+2026-05-06 12:36:05,727 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=0, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=0, inj_clutter_size=5, is_PointGuard=False)
+2026-05-06 12:36:07,033 - Model - INFO - The number of test data is: 1472
+2026-05-06 12:36:07,465 - Model - INFO - Model Path: log/sem_seg/pointnet2_sem_seg/epoch_10_npoint_1024_bsize_16/checkpoints/best_model.pth
+2026-05-06 12:36:07,470 - Model - INFO - ---- EVALUATION----
+2026-05-06 12:36:08,640 - Model - INFO - Saved visualization sample 2 to /content/drive/MyDrive/THESIS/code/local_visualize/data/segmentation_injection_point_cloud/clean_sample_0.npy
+2026-05-06 12:37:34,120 - Model - INFO - PARAMETER ...
+2026-05-06 12:37:34,122 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=0.9, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=200, inj_clutter_size=10, is_PointGuard=False)
+2026-05-06 12:37:35,388 - Model - INFO - The number of test data is: 1472
+2026-05-06 12:37:35,894 - Model - INFO - Model Path: log/sem_seg/pointnet2_sem_seg/epoch_10_npoint_1024_bsize_16/checkpoints/best_model.pth
+2026-05-06 12:37:35,900 - Model - INFO - ---- EVALUATION----
+2026-05-06 12:38:10,484 - Model - INFO - Saved visualization sample 2 to /content/drive/MyDrive/THESIS/code/local_visualize/data/segmentation_injection_point_cloud/clean_sample_0.npy
+2026-05-06 12:57:11,521 - Model - INFO - PARAMETER ...
+2026-05-06 12:57:11,522 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0.0, inj_prob=0.0, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=0, inj_clutter_size=5, is_PointGuard=False)
+2026-05-06 12:57:18,159 - Model - INFO - The number of test data is: 1472
+2026-05-06 12:57:18,665 - Model - INFO - Model Path: log/sem_seg/pointnet2_sem_seg/epoch_10_npoint_1024_bsize_16/checkpoints/best_model.pth
+2026-05-06 12:57:18,672 - Model - INFO - ---- EVALUATION----
+2026-05-06 12:57:20,336 - Model - INFO - Saved visualization sample 2 to /content/drive/MyDrive/THESIS/code/local_visualize/data/segmentation_injection_point_cloud/clean_sample_0.npy
+2026-05-06 13:30:12,429 - Model - INFO - PARAMETER ...
+2026-05-06 13:30:12,430 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False)
+2026-05-06 13:30:20,376 - Model - INFO - The number of test data is: 1472
+2026-05-06 13:30:20,834 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-05-06 13:31:05,930 - Model - INFO - ------- IoU --------
+class car           , IoU: 0.887 
+class building      , IoU: 0.902 
+class pole          , IoU: 0.783 
+class clutter       , IoU: 0.826 
+
+2026-05-06 13:31:05,930 - Model - INFO - eval point avg class IoU: 0.849697
+2026-05-06 13:31:05,931 - Model - INFO - eval whole scene point avg class acc: 0.931794
+2026-05-06 13:31:05,931 - Model - INFO - eval whole scene point accuracy: 0.931050
+2026-05-06 13:31:28,430 - Model - INFO - PARAMETER ...
+2026-05-06 13:31:28,431 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0.0, inj_prob=0.0, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=0, inj_clutter_size=5, is_PointGuard=False)
+2026-05-06 13:31:29,694 - Model - INFO - The number of test data is: 1472
+2026-05-06 13:31:30,140 - Model - INFO - Model Path: log/sem_seg/pointnet2_sem_seg/epoch_10_npoint_1024_bsize_16/checkpoints/best_model.pth
+2026-05-06 13:31:30,144 - Model - INFO - ---- EVALUATION----
+2026-05-06 13:31:31,288 - Model - INFO - Saved visualization sample 2 to /content/drive/MyDrive/THESIS/code/local_visualize/data/segmentation_injection_point_cloud/clean_sample_0.npy
+2026-05-06 13:42:00,957 - Model - INFO - PARAMETER ...
+2026-05-06 13:42:00,958 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0.0, inj_prob=0.0, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=0, inj_clutter_size=5, is_PointGuard=False)
+2026-05-06 13:42:07,709 - Model - INFO - The number of test data is: 1472
+2026-05-06 13:42:08,158 - Model - INFO - Model Path: log/sem_seg/pointnet2_sem_seg/epoch_10_npoint_1024_bsize_16/checkpoints/best_model.pth
+2026-05-06 13:42:08,165 - Model - INFO - ---- EVALUATION----
+2026-05-06 13:42:51,889 - Model - INFO - ------- IoU --------
+class car           , IoU: 0.816 
+class building      , IoU: 0.868 
+class pole          , IoU: 0.318 
+class clutter       , IoU: 0.794 
+
+2026-05-06 13:42:51,889 - Model - INFO - eval point avg class IoU: 0.699095
+2026-05-06 13:42:51,889 - Model - INFO - eval whole scene point avg class acc: 0.747068
+2026-05-06 13:42:51,890 - Model - INFO - eval whole scene point accuracy: 0.902120
+2026-05-06 13:48:08,012 - Model - INFO - PARAMETER ...
+2026-05-06 13:48:08,014 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0.0, inj_prob=0.0, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=0, inj_clutter_size=5, is_PointGuard=False)
+2026-05-06 13:48:14,603 - Model - INFO - The number of test data is: 1472
+2026-05-06 13:48:15,106 - Model - INFO - Model Path: log/sem_seg/pointnet2_sem_seg/epoch_10_npoint_1024_bsize_16/checkpoints/best_model.pth
+2026-05-06 13:48:15,113 - Model - INFO - ---- EVALUATION----
+2026-05-06 13:48:44,171 - Model - INFO - PARAMETER ...
+2026-05-06 13:48:44,173 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0.0, inj_prob=0.0, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=0, inj_clutter_size=5, is_PointGuard=False)
+2026-05-06 13:48:45,485 - Model - INFO - The number of test data is: 1472
+2026-05-06 13:48:45,918 - Model - INFO - Model Path: log/sem_seg/pointnet2_sem_seg/epoch_10_npoint_1024_bsize_16/checkpoints/best_model.pth
+2026-05-06 13:48:45,923 - Model - INFO - ---- EVALUATION----
+2026-05-06 13:49:32,615 - Model - INFO - ------- IoU --------
+class car           , IoU: 0.812 
+class building      , IoU: 0.868 
+class pole          , IoU: 0.324 
+class clutter       , IoU: 0.796 
+
+2026-05-06 13:49:32,616 - Model - INFO - eval point avg class IoU: 0.700233
+2026-05-06 13:49:32,616 - Model - INFO - eval whole scene point avg class acc: 0.747949
+2026-05-06 13:49:32,616 - Model - INFO - eval whole scene point accuracy: 0.902528
+2026-05-06 13:54:15,421 - Model - INFO - PARAMETER ...
+2026-05-06 13:54:15,422 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0.0, inj_prob=0.0, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=0, inj_clutter_size=5, is_PointGuard=False)
+2026-05-06 13:54:21,624 - Model - INFO - The number of test data is: 1472
+2026-05-06 13:54:22,068 - Model - INFO - Model Path: log/sem_seg/pointnet2_sem_seg/epoch_10_npoint_1024_bsize_16/checkpoints/best_model.pth
+2026-05-06 13:54:22,072 - Model - INFO - ---- EVALUATION----
+2026-05-06 13:55:05,415 - Model - INFO - ------- IoU --------
+class car           , IoU: 0.813 
+class building      , IoU: 0.868 
+class pole          , IoU: 0.326 
+class clutter       , IoU: 0.795 
+
+2026-05-06 13:55:05,416 - Model - INFO - eval point avg class IoU: 0.700393
+2026-05-06 13:55:05,416 - Model - INFO - eval whole scene point avg class acc: 0.748162
+2026-05-06 13:55:05,416 - Model - INFO - eval whole scene point accuracy: 0.902220
+2026-05-06 13:57:19,854 - Model - INFO - PARAMETER ...
+2026-05-06 13:57:19,856 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0.0, inj_prob=0.0, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=0, inj_clutter_size=5, is_PointGuard=False)
+2026-05-06 13:57:26,715 - Model - INFO - The number of test data is: 1472
+2026-05-06 13:57:27,160 - Model - INFO - Model Path: log/sem_seg/pointnet2_sem_seg/epoch_10_npoint_1024_bsize_16/checkpoints/best_model.pth
+2026-05-06 13:57:27,164 - Model - INFO - ---- EVALUATION----
+2026-05-06 13:58:49,920 - Model - INFO - PARAMETER ...
+2026-05-06 13:58:49,921 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0.0, inj_prob=0.0, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=0, inj_clutter_size=5, is_PointGuard=False)
+2026-05-06 13:58:51,124 - Model - INFO - The number of test data is: 1472
+2026-05-06 13:58:51,626 - Model - INFO - Model Path: log/sem_seg/pointnet2_sem_seg/epoch_10_npoint_1024_bsize_16/checkpoints/best_model.pth
+2026-05-06 13:58:51,632 - Model - INFO - ---- EVALUATION----
+2026-05-06 14:01:27,280 - Model - INFO - PARAMETER ...
+2026-05-06 14:01:27,282 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0.0, inj_prob=0.0, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=0, inj_clutter_size=5, is_PointGuard=False)
+2026-05-06 14:01:33,569 - Model - INFO - The number of test data is: 1472
+2026-05-06 14:01:34,078 - Model - INFO - Model Path: log/sem_seg/pointnet2_sem_seg/epoch_10_npoint_1024_bsize_16/checkpoints/best_model.pth
+2026-05-06 14:01:34,084 - Model - INFO - ---- EVALUATION----
+2026-05-06 14:03:01,950 - Model - INFO - PARAMETER ...
+2026-05-06 14:03:01,951 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0.0, inj_prob=0.0, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=0, inj_clutter_size=5, is_PointGuard=False)
+2026-05-06 14:03:03,308 - Model - INFO - The number of test data is: 1472
+2026-05-06 14:03:03,751 - Model - INFO - Model Path: log/sem_seg/pointnet2_sem_seg/epoch_10_npoint_1024_bsize_16/checkpoints/best_model.pth
+2026-05-06 14:03:03,755 - Model - INFO - ---- EVALUATION----
+2026-05-06 14:03:28,917 - Model - INFO - PARAMETER ...
+2026-05-06 14:03:28,920 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0.0, inj_prob=0.0, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=0, inj_clutter_size=5, is_PointGuard=False)
+2026-05-06 14:03:35,650 - Model - INFO - The number of test data is: 1472
+2026-05-06 14:03:36,088 - Model - INFO - Model Path: log/sem_seg/pointnet2_sem_seg/epoch_10_npoint_1024_bsize_16/checkpoints/best_model.pth
+2026-05-06 14:03:36,092 - Model - INFO - ---- EVALUATION----
+2026-05-06 14:03:45,001 - Model - INFO - PARAMETER ...
+2026-05-06 14:03:45,002 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0.0, inj_prob=0.0, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=0, inj_clutter_size=5, is_PointGuard=False)
+2026-05-06 14:03:46,254 - Model - INFO - The number of test data is: 1472
+2026-05-06 14:03:46,761 - Model - INFO - Model Path: log/sem_seg/pointnet2_sem_seg/epoch_10_npoint_1024_bsize_16/checkpoints/best_model.pth
+2026-05-06 14:03:46,767 - Model - INFO - ---- EVALUATION----
+2026-05-06 14:03:48,405 - Model - INFO - Saved visualization sample 2 to /content/drive/MyDrive/THESIS/code/local_visualize/data/segmentation_injection_point_cloud/clean_sample_0.npy
+2026-05-06 14:04:31,366 - Model - INFO - ------- IoU --------
+class car           , IoU: 0.812 
+class building      , IoU: 0.869 
+class pole          , IoU: 0.320 
+class clutter       , IoU: 0.795 
+
+2026-05-06 14:04:31,366 - Model - INFO - eval point avg class IoU: 0.699151
+2026-05-06 14:04:31,367 - Model - INFO - eval whole scene point avg class acc: 0.746880
+2026-05-06 14:04:31,367 - Model - INFO - eval whole scene point accuracy: 0.902495
+2026-05-06 19:16:49,268 - Model - INFO - PARAMETER ...
+2026-05-06 19:16:49,813 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0.0, inj_prob=0.0, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=0, inj_clutter_size=5, is_PointGuard=False)
+2026-05-06 19:17:17,980 - Model - INFO - The number of test data is: 1472
+2026-05-06 19:17:22,850 - Model - INFO - Model Path: log/sem_seg/pointnet2_sem_seg/epoch_10_npoint_1024_bsize_16/checkpoints/best_model.pth
+2026-05-06 19:17:22,859 - Model - INFO - ---- EVALUATION----
+2026-05-06 19:17:25,984 - Model - INFO - Saved visualization sample 2 to /content/drive/MyDrive/THESIS/code/local_visualize/data/segmentation_injection_point_cloud/clean_sample.npy
+2026-05-06 19:18:13,541 - Model - INFO - ------- IoU --------
+class car           , IoU: 0.883 
+class building      , IoU: 0.903 
+class pole          , IoU: 0.788 
+class clutter       , IoU: 0.827 
+
+2026-05-06 19:18:13,542 - Model - INFO - eval point avg class IoU: 0.850188
+2026-05-06 19:18:13,542 - Model - INFO - eval whole scene point avg class acc: 0.932239
+2026-05-06 19:18:13,542 - Model - INFO - eval whole scene point accuracy: 0.931384
+2026-05-06 19:20:08,641 - Model - INFO - PARAMETER ...
+2026-05-06 19:20:08,643 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0.0, inj_prob=0.0, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=0, inj_clutter_size=5, is_PointGuard=False)
+2026-05-06 19:20:16,024 - Model - INFO - The number of test data is: 1472
+2026-05-06 19:20:16,462 - Model - INFO - Model Path: log/sem_seg/pointnet2_sem_seg/epoch_10_npoint_1024_bsize_16/checkpoints/best_model.pth
+2026-05-06 19:20:16,466 - Model - INFO - ---- EVALUATION----
+2026-05-06 19:20:17,541 - Model - INFO - Saved visualization sample 2 to /content/drive/MyDrive/THESIS/code/local_visualize/data/segmentation_injection_point_cloud/clean_sample.npy
+2026-05-06 19:21:00,260 - Model - INFO - ------- IoU --------
+class car           , IoU: 0.814 
+class building      , IoU: 0.868 
+class pole          , IoU: 0.321 
+class clutter       , IoU: 0.796 
+
+2026-05-06 19:21:00,260 - Model - INFO - eval point avg class IoU: 0.699777
+2026-05-06 19:21:00,260 - Model - INFO - eval whole scene point avg class acc: 0.747521
+2026-05-06 19:21:00,261 - Model - INFO - eval whole scene point accuracy: 0.902610
+2026-05-06 19:22:14,219 - Model - INFO - PARAMETER ...
+2026-05-06 19:22:14,222 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False)
+2026-05-06 19:22:20,119 - Model - INFO - The number of test data is: 1472
+2026-05-06 19:22:20,557 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-05-06 19:23:04,228 - Model - INFO - ------- IoU --------
+class car           , IoU: 0.815 
+class building      , IoU: 0.869 
+class pole          , IoU: 0.334 
+class clutter       , IoU: 0.796 
+
+2026-05-06 19:23:04,229 - Model - INFO - eval point avg class IoU: 0.703429
+2026-05-06 19:23:04,229 - Model - INFO - eval whole scene point avg class acc: 0.751121
+2026-05-06 19:23:04,229 - Model - INFO - eval whole scene point accuracy: 0.903193
+2026-05-06 19:24:56,292 - Model - INFO - PARAMETER ...
+2026-05-06 19:24:56,293 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False)
+2026-05-06 19:25:03,924 - Model - INFO - The number of test data is: 1472
+2026-05-06 19:25:04,378 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-05-06 19:25:46,634 - Model - INFO - PARAMETER ...
+2026-05-06 19:25:46,635 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False)
+2026-05-06 19:25:47,871 - Model - INFO - The number of test data is: 1472
+2026-05-06 19:25:48,307 - Model - INFO - ---- EVALUATION WHOLE SCENE----
+2026-05-06 19:26:32,721 - Model - INFO - ------- IoU --------
+class car           , IoU: 0.883 
+class building      , IoU: 0.902 
+class pole          , IoU: 0.788 
+class clutter       , IoU: 0.826 
+
+2026-05-06 19:26:32,722 - Model - INFO - eval point avg class IoU: 0.849665
+2026-05-06 19:26:32,723 - Model - INFO - eval whole scene point avg class acc: 0.930824
+2026-05-06 19:26:32,723 - Model - INFO - eval whole scene point accuracy: 0.931087
+2026-05-06 19:29:17,278 - Model - INFO - PARAMETER ...
+2026-05-06 19:29:17,280 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0.0, inj_prob=0.0, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=0, inj_clutter_size=5, is_PointGuard=False)
+2026-05-06 19:29:23,425 - Model - INFO - The number of test data is: 1472
+2026-05-06 19:29:23,853 - Model - INFO - Model Path: log/sem_seg/pointnet2_sem_seg/epoch_10_npoint_1024_bsize_16/checkpoints/best_model.pth
+2026-05-06 19:29:23,858 - Model - INFO - ---- EVALUATION----
+2026-05-06 19:29:24,939 - Model - INFO - Saved visualization sample 2 to /content/drive/MyDrive/THESIS/code/local_visualize/data/segmentation_injection_point_cloud/clean_sample.npy
+2026-05-06 19:30:07,877 - Model - INFO - ------- IoU --------
+class car           , IoU: 0.886 
+class building      , IoU: 0.904 
+class pole          , IoU: 0.802 
+class clutter       , IoU: 0.828 
+
+2026-05-06 19:30:07,877 - Model - INFO - eval point avg class IoU: 0.854769
+2026-05-06 19:30:07,878 - Model - INFO - eval whole scene point avg class acc: 0.933169
+2026-05-06 19:30:07,878 - Model - INFO - eval whole scene point accuracy: 0.932451
+2026-05-06 19:39:31,509 - Model - INFO - PARAMETER ...
+2026-05-06 19:39:31,511 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0.0, inj_prob=0.0, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=0, inj_clutter_size=5, is_PointGuard=False)
+2026-05-06 19:39:38,441 - Model - INFO - The number of test data is: 1472
+2026-05-06 19:39:38,876 - Model - INFO - Model Path: log/sem_seg/pointnet2_sem_seg/epoch_10_npoint_1024_bsize_16/checkpoints/best_model.pth
+2026-05-06 19:39:38,881 - Model - INFO - ---- EVALUATION----
+2026-05-06 19:39:40,224 - Model - INFO - Saved visualization sample 10 to /content/drive/MyDrive/THESIS/code/local_visualize/data/segmentation_injection_point_cloud/clean_sample_10.npy
+2026-05-06 19:40:22,595 - Model - INFO - ------- IoU --------
+class car           , IoU: 0.884 
+class building      , IoU: 0.905 
+class pole          , IoU: 0.799 
+class clutter       , IoU: 0.829 
+
+2026-05-06 19:40:22,595 - Model - INFO - eval point avg class IoU: 0.854054
+2026-05-06 19:40:22,596 - Model - INFO - eval whole scene point avg class acc: 0.932119
+2026-05-06 19:40:22,596 - Model - INFO - eval whole scene point accuracy: 0.932838
+2026-05-06 19:45:35,078 - Model - INFO - PARAMETER ...
+2026-05-06 19:45:35,078 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0.0, inj_prob=0.0, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=0, inj_clutter_size=5, is_PointGuard=False)
+2026-05-06 19:45:43,292 - Model - INFO - The number of test data is: 1472
+2026-05-06 19:45:43,732 - Model - INFO - Model Path: log/sem_seg/pointnet2_sem_seg/epoch_10_npoint_1024_bsize_16/checkpoints/best_model.pth
+2026-05-06 19:45:43,736 - Model - INFO - ---- EVALUATION----
+2026-05-06 19:45:45,358 - Model - INFO - Saved visualization sample 10 to /content/drive/MyDrive/THESIS/code/local_visualize/data/segmentation_injection_point_cloud/clean_sample_10_mixloader.npy
+2026-05-06 19:46:30,128 - Model - INFO - ------- IoU --------
+class car           , IoU: 0.885 
+class building      , IoU: 0.905 
+class pole          , IoU: 0.801 
+class clutter       , IoU: 0.828 
+
+2026-05-06 19:46:30,128 - Model - INFO - eval point avg class IoU: 0.854714
+2026-05-06 19:46:30,129 - Model - INFO - eval whole scene point avg class acc: 0.932314
+2026-05-06 19:46:30,129 - Model - INFO - eval whole scene point accuracy: 0.932655
+2026-05-06 20:00:08,515 - Model - INFO - PARAMETER ...
+2026-05-06 20:00:08,516 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0.0, inj_prob=0.0, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=0, inj_clutter_size=5, is_PointGuard=False)
+2026-05-06 20:00:15,306 - Model - INFO - The number of test data is: 1472
+2026-05-06 20:00:15,745 - Model - INFO - Model Path: log/sem_seg/pointnet2_sem_seg/epoch_10_npoint_1024_bsize_16/checkpoints/best_model.pth
+2026-05-06 20:00:15,749 - Model - INFO - ---- EVALUATION----
+2026-05-06 20:00:16,900 - Model - INFO - Saved visualization sample 10 to /content/drive/MyDrive/THESIS/code/local_visualize/data/segmentation_injection_point_cloud/per_sample_10_mixloader.npy
+2026-05-06 20:01:01,832 - Model - INFO - ------- IoU --------
+class car           , IoU: 0.884 
+class building      , IoU: 0.902 
+class pole          , IoU: 0.781 
+class clutter       , IoU: 0.826 
+
+2026-05-06 20:01:01,832 - Model - INFO - eval point avg class IoU: 0.848492
+2026-05-06 20:01:01,833 - Model - INFO - eval whole scene point avg class acc: 0.930533
+2026-05-06 20:01:01,833 - Model - INFO - eval whole scene point accuracy: 0.930914
+2026-05-06 20:01:39,973 - Model - INFO - PARAMETER ...
+2026-05-06 20:01:39,975 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=1.0, inj_prob=0.0, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=0, inj_clutter_size=5, is_PointGuard=False)
+2026-05-06 20:01:41,247 - Model - INFO - The number of test data is: 1472
+2026-05-06 20:01:41,686 - Model - INFO - Model Path: log/sem_seg/pointnet2_sem_seg/epoch_10_npoint_1024_bsize_16/checkpoints/best_model.pth
+2026-05-06 20:01:41,691 - Model - INFO - ---- EVALUATION----
+2026-05-06 20:02:16,723 - Model - INFO - Saved visualization sample 10 to /content/drive/MyDrive/THESIS/code/local_visualize/data/segmentation_injection_point_cloud/per_sample_10_mixloader.npy
+2026-05-06 20:06:16,223 - Model - INFO - ------- IoU --------
+class car           , IoU: 0.349 
+class building      , IoU: 0.869 
+class pole          , IoU: 0.585 
+class clutter       , IoU: 0.691 
+
+2026-05-06 20:06:16,224 - Model - INFO - eval point avg class IoU: 0.623382
+2026-05-06 20:06:16,224 - Model - INFO - eval whole scene point avg class acc: 0.874676
+2026-05-06 20:06:16,224 - Model - INFO - eval whole scene point accuracy: 0.864532
+2026-05-06 20:09:26,016 - Model - INFO - PARAMETER ...
+2026-05-06 20:09:26,026 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=1.0, inj_prob=0.0, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=100, inj_clutter_size=10, is_PointGuard=False)
+2026-05-06 20:09:34,732 - Model - INFO - The number of test data is: 1472
+2026-05-06 20:09:35,188 - Model - INFO - Model Path: log/sem_seg/pointnet2_sem_seg/epoch_10_npoint_1024_bsize_16/checkpoints/best_model.pth
+2026-05-06 20:09:35,193 - Model - INFO - ---- EVALUATION----
+2026-05-06 20:10:09,462 - Model - INFO - Saved visualization sample 10 to /content/drive/MyDrive/THESIS/code/local_visualize/data/segmentation_injection_point_cloud/per_sample_10_mixloader.npy
+2026-05-06 20:14:10,097 - Model - INFO - ------- IoU --------
+class car           , IoU: 0.355 
+class building      , IoU: 0.868 
+class pole          , IoU: 0.588 
+class clutter       , IoU: 0.694 
+
+2026-05-06 20:14:10,097 - Model - INFO - eval point avg class IoU: 0.626215
+2026-05-06 20:14:10,097 - Model - INFO - eval whole scene point avg class acc: 0.876975
+2026-05-06 20:14:10,097 - Model - INFO - eval whole scene point accuracy: 0.865641
+2026-05-06 20:15:10,671 - Model - INFO - PARAMETER ...
+2026-05-06 20:15:11,113 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0.0, inj_prob=1.0, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=100, inj_clutter_size=10, is_PointGuard=False)
+2026-05-06 20:15:18,373 - Model - INFO - The number of test data is: 1472
+2026-05-06 20:15:18,816 - Model - INFO - Model Path: log/sem_seg/pointnet2_sem_seg/epoch_10_npoint_1024_bsize_16/checkpoints/best_model.pth
+2026-05-06 20:15:18,820 - Model - INFO - ---- EVALUATION----
+2026-05-06 20:15:55,449 - Model - INFO - Saved visualization sample 10 to /content/drive/MyDrive/THESIS/code/local_visualize/data/segmentation_injection_point_cloud/inj_sample_10_mixloader.npy
+2026-05-06 20:20:09,054 - Model - INFO - ------- IoU --------
+class car           , IoU: 0.521 
+class building      , IoU: 0.874 
+class pole          , IoU: 0.597 
+class clutter       , IoU: 0.755 
+
+2026-05-06 20:20:09,055 - Model - INFO - eval point avg class IoU: 0.687019
+2026-05-06 20:20:09,056 - Model - INFO - eval whole scene point avg class acc: 0.868088
+2026-05-06 20:20:09,056 - Model - INFO - eval whole scene point accuracy: 0.891146
+2026-05-07 08:47:50,545 - Model - INFO - PARAMETER ...
+2026-05-07 08:47:50,989 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0.0, inj_prob=1.0, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=10, inj_clutter_size=10, is_PointGuard=False)
+2026-05-07 08:48:22,495 - Model - INFO - The number of test data is: 1472
+2026-05-07 08:48:27,705 - Model - INFO - Model Path: log/sem_seg/pointnet2_sem_seg/epoch_10_npoint_1024_bsize_16/checkpoints/best_model.pth
+2026-05-07 08:48:27,712 - Model - INFO - ---- EVALUATION----
+2026-05-07 08:49:08,467 - Model - INFO - Saved visualization sample 10 to /content/drive/MyDrive/THESIS/code/local_visualize/data/segmentation_injection_point_cloud/inj_sample_10_mixloader_injnpoint_10_injsize_10.npy
+2026-05-07 08:53:12,709 - Model - INFO - ------- IoU --------
+class car           , IoU: 0.822 
+class building      , IoU: 0.896 
+class pole          , IoU: 0.722 
+class clutter       , IoU: 0.817 
+
+2026-05-07 08:53:12,710 - Model - INFO - eval point avg class IoU: 0.814250
+2026-05-07 08:53:12,710 - Model - INFO - eval whole scene point avg class acc: 0.908029
+2026-05-07 08:53:12,710 - Model - INFO - eval whole scene point accuracy: 0.924296
+2026-05-07 08:54:38,531 - Model - INFO - PARAMETER ...
+2026-05-07 08:54:38,533 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0.0, inj_prob=1.0, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=30, inj_clutter_size=10, is_PointGuard=False)
+2026-05-07 08:54:44,442 - Model - INFO - The number of test data is: 1472
+2026-05-07 08:54:44,889 - Model - INFO - Model Path: log/sem_seg/pointnet2_sem_seg/epoch_10_npoint_1024_bsize_16/checkpoints/best_model.pth
+2026-05-07 08:54:44,893 - Model - INFO - ---- EVALUATION----
+2026-05-07 08:55:22,139 - Model - INFO - Saved visualization sample 10 to /content/drive/MyDrive/THESIS/code/local_visualize/data/segmentation_injection_point_cloud/inj_sample_10_mixloader_injnpoint_30_injsize_10.npy
+2026-05-07 08:59:28,196 - Model - INFO - ------- IoU --------
+class car           , IoU: 0.731 
+class building      , IoU: 0.888 
+class pole          , IoU: 0.659 
+class clutter       , IoU: 0.800 
+
+2026-05-07 08:59:28,197 - Model - INFO - eval point avg class IoU: 0.769452
+2026-05-07 08:59:28,197 - Model - INFO - eval whole scene point avg class acc: 0.886883
+2026-05-07 08:59:28,197 - Model - INFO - eval whole scene point accuracy: 0.914471

@@ -51,7 +51,8 @@ def parse_args():
     # add number of testing runs
     parser.add_argument('--num_runs', type=int, default=5, help='Number of Testing Runs')
     # FLAG of whether test using PointGuard / AdvTrain
-    parser.add_argument('--is_PointGuard', action='store_true', required=False, help='Whether use PointGuard')
+    parser.add_argument('--is_PointGuard', action='store_true', required=False, help='Whether use PointGuard')# FLAG of whether test using PointGuard / AdvTrain
+    parser.add_argument('--is_PointGuard_ideal', action='store_true', required=False, help='Whether use ground-truth reliability scores')
     parser.add_argument('--AdvTrain', action='store_true', required=False, help='Whether use AdvTrain')
     # name to write in json file
     parser.add_argument('--model_json', type=str, required=True, help='model name in json file')
@@ -96,7 +97,7 @@ def test(model, loader, num_class=2, vote_num=1):
 
     return instance_acc, class_acc, conf_mean, conf_std
 
-def test_PointGuard(cls_model, scorer_model, loader, num_class=2, vote_num=1):
+def test_PointGuard(cls_model, scorer_model, loader, num_class=2, vote_num=1, is_PointGuard_ideal=False):
     classifier = cls_model.eval()
     scorer = scorer_model.eval()
     mean_correct = []
@@ -107,16 +108,19 @@ def test_PointGuard(cls_model, scorer_model, loader, num_class=2, vote_num=1):
         points = p[:,:,:4].float()
         if not args.use_cpu:
             points, target = points.cuda(), target.cuda()   # points (B,N,4)
-        
-        # use scorer to predict scores
-        scores, _ = scorer(points.transpose(2,1))        # scores (B,N)
-        scores = scores.unsqueeze(-1)       # scores (B,N,1)
 
-        points_aug = torch.cat([points, scores], dim=2) 
+        # use ideal scores or not
+        if is_PointGuard_ideal == False:        
+            # use scorer to predict scores
+            scores, _ = scorer(points.transpose(2,1))        # scores (B,N)
+            scores = scores.unsqueeze(-1)       # scores (B,N,1)
+            points_aug = torch.cat([points, scores], dim=2) 
+        else:
+            points_aug = p.float()
 
         # use classifier to redict labels
         if not args.use_cpu:
-            points_aug = points_aug.cuda()
+            points_aug, target = points_aug.cuda(), target.cuda()
         points_aug = points_aug.transpose(2, 1)
         vote_pool = torch.zeros(target.size()[0], num_class).cuda()
         for _ in range(vote_num):
@@ -218,7 +222,11 @@ def main(args):
         print(num_runs, " runs in total")
         for _ in range(num_runs ):
             if args.is_PointGuard:
-                instance_acc, class_acc, conf_mean, conf_std = test_PointGuard(classifier, scorer, testDataLoader, vote_num=args.num_votes, num_class=num_class)
+                if args.is_PointGuard_ideal:
+                    instance_acc, class_acc, conf_mean, conf_std = test_PointGuard(classifier, scorer, testDataLoader, vote_num=args.num_votes, num_class=num_class,
+                                                                                   is_PointGuard_ideal=True)
+                else:
+                    instance_acc, class_acc, conf_mean, conf_std = test_PointGuard(classifier, scorer, testDataLoader, vote_num=args.num_votes, num_class=num_class)
             else:
                 instance_acc, class_acc, conf_mean, conf_std = test(classifier, testDataLoader, vote_num=args.num_votes, num_class=num_class)
 

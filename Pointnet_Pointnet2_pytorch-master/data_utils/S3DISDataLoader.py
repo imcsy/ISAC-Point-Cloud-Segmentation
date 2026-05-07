@@ -19,6 +19,7 @@ class S3DISDataset(Dataset):
         self.num_point = num_point
         self.block_size = block_size
         self.transform = transform
+        self.split = split
         frames = sorted(os.listdir(data_root))
         # frames = [room for room in frames if 'Area_' in room]
         if split == 'train':
@@ -44,7 +45,6 @@ class S3DISDataset(Dataset):
         labelweights = labelweights.astype(np.float32)
         labelweights = labelweights / np.sum(labelweights)
         self.labelweights = np.power(np.amax(labelweights) / labelweights, 1 / 3.0)
-        print(self.labelweights)
 
         # sample_prob = num_point_all / np.sum(num_point_all)
         # num_iter = int(np.sum(num_point_all) * sample_rate / num_point)
@@ -82,17 +82,14 @@ class S3DISDataset(Dataset):
 
         # normalize
         selected_points = points[selected_point_idxs, :]  # num_point * 4
-        # current_points = np.zeros((self.num_point, 9))  # num_point * 9
-        # current_points[:, 6] = selected_points[:, 0] / self.room_coord_max[room_idx][0]
-        # current_points[:, 7] = selected_points[:, 1] / self.room_coord_max[room_idx][1]
-        # current_points[:, 8] = selected_points[:, 2] / self.room_coord_max[room_idx][2]
+
+        # random centering during training
+        # if self.split == "train":
         selected_points[:, 0] = selected_points[:, 0] - center[0]       # x, y randomly normalize
-        selected_points[:, 1] = selected_points[:, 1] - center[1]       
-        # selected_points[:, 3:6] /= 255.0
-        # current_points[:, 0:6] = selected_points
+        selected_points[:, 1] = selected_points[:, 1] - center[1]      
+
         selected_labels = labels[selected_point_idxs]
-        # if self.transform is not None:
-        #     current_points, current_labels = self.transform(current_points, current_labels)
+
         return selected_points, selected_labels
 
     def __len__(self):

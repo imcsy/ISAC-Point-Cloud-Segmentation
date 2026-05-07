@@ -1,0 +1,16 @@
+2026-05-04 15:55:16,087 - Model - INFO - PARAMETER ...
+2026-05-04 15:55:16,089 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg_pointguard', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=0, per_channels=[0, 1, 2, 3], per_eps=1.5, is_PointGuard=True)
+2026-05-04 15:55:16,950 - Model - INFO - The number of test data is: 1472
+2026-05-04 15:55:17,491 - Model - INFO - ---- EVALUATION----
+2026-05-04 15:57:52,886 - Model - INFO - PARAMETER ...
+2026-05-04 15:57:52,887 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg_pointguard', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0.9, inj_prob=0, per_channels=[0, 1, 2, 3], per_eps=1.5, is_PointGuard=True)
+2026-05-04 15:57:53,733 - Model - INFO - The number of test data is: 1472
+2026-05-04 15:57:54,171 - Model - INFO - ---- EVALUATION----
+2026-05-04 17:24:48,943 - Model - INFO - PARAMETER ...
+2026-05-04 17:24:48,944 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg_pointguard', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0.9, inj_prob=0, per_channels=[0, 1, 2, 3], per_eps=1.5, is_PointGuard=True)
+2026-05-04 17:24:49,864 - Model - INFO - The number of test data is: 1472
+2026-05-04 17:24:50,320 - Model - INFO - ---- EVALUATION----
+2026-05-05 14:23:36,551 - Model - INFO - PARAMETER ...
+2026-05-05 14:23:37,188 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg_pointguard', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=0.9, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=200, inj_clutter_size=10, is_PointGuard=True)
+2026-05-05 14:23:43,454 - Model - INFO - The number of test data is: 1472
+2026-05-05 14:23:43,983 - Model - INFO - ---- EVALUATION----

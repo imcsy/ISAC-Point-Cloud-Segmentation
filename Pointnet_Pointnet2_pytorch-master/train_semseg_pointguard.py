@@ -1,10 +1,9 @@
 """
-Author: Benny
-Date: Nov 2019
+train PointNet++ for segmentation with PointGuard (x,y,z,v,a)
 """
 import argparse
 import os
-from data_utils.S3DISDataLoader import S3DISDataset
+from data_utils.S3DISDataLoader_mix import S3DISDataset_mix
 import torch
 import datetime
 import logging
@@ -21,8 +20,6 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = BASE_DIR
 sys.path.append(os.path.join(ROOT_DIR, 'models'))
 
-# classes = ['ceiling', 'floor', 'wall', 'beam', 'column', 'window', 'door', 'table', 'chair', 'sofa', 'bookcase',
-#            'board', 'clutter']
 classes = ['car', 'building', 'pole', 'clutter']
 class2label = {cls: i for i, cls in enumerate(classes)}
 seg_classes = class2label
@@ -37,7 +34,7 @@ def inplace_relu(m):
 
 def parse_args():
     parser = argparse.ArgumentParser('Model')
-    parser.add_argument('--model', type=str, default='pointnet2_sem_seg', help='model name [default: pointnet_sem_seg]')
+    parser.add_argument('--model', type=str, default='pointnet2_sem_seg_pointguard', help='model name [default: pointnet_sem_seg]')
     parser.add_argument('--batch_size', type=int, default=16, help='Batch Size during training [default: 16]')
     parser.add_argument('--epoch', default=10, type=int, help='Epoch to run [default: 32]')
     parser.add_argument('--learning_rate', default=0.001, type=float, help='Initial learning rate [default: 0.001]')
@@ -50,9 +47,6 @@ def parse_args():
     parser.add_argument('--lr_decay', type=float, default=0.7, help='Decay rate for lr decay [default: 0.7]')
     # parser.add_argument('--test_area', type=int, default=5, help='Which area to use for test, option: 1-6 [default: 5]')
     parser.add_argument('--samples_per_frame', type=int, default=4, help='Number of samples obtained from each frame')
-    # add dropout, shift or not
-    parser.add_argument('--dropout', action='store_true', default=False, help='use dropout when training')
-    parser.add_argument('--shift', action='store_true', default=False, help='use shift when training')
 
     return parser.parse_args()
 
@@ -77,10 +71,6 @@ def main(args):
         experiment_dir = experiment_dir.joinpath(args.log_dir)
 
     param_name = f"epoch_{args.epoch}_npoint_{args.npoint}_bsize_{args.batch_size}"
-    if args.dropout:
-        param_name = param_name + "_dropout"
-    if args.shift:
-        param_name = param_name + "_shift"
     experiment_dir = experiment_dir.joinpath(param_name)
 
     experiment_dir.mkdir(exist_ok=True)
@@ -108,9 +98,15 @@ def main(args):
     BATCH_SIZE = args.batch_size
 
     print("start loading training data ...")
-    TRAIN_DATASET = S3DISDataset(split='train', data_root=root, num_point=NUM_POINT, block_size=1.0, sample_rate=1.0, transform=None, samples_per_frame=args.samples_per_frame, num_classes=NUM_CLASSES)
+    TRAIN_DATASET = S3DISDataset_mix(split='train', data_root=root, num_point=NUM_POINT, sample_rate=1.0, transform=None, samples_per_frame=args.samples_per_frame, num_classes=NUM_CLASSES,
+                                     per_prob=0.4, inj_prob=0.4,
+                                     per_channels=[0,1,2,3], per_eps=2,
+                                     inj_npoint_max=200, inj_clutter_size=10)
     print("start loading test data ...")
-    TEST_DATASET = S3DISDataset(split='test', data_root=root, num_point=NUM_POINT, block_size=1.0, sample_rate=1.0, transform=None, samples_per_frame=args.samples_per_frame, num_classes=NUM_CLASSES)
+    TEST_DATASET = S3DISDataset_mix(split='test', data_root=root, num_point=NUM_POINT, sample_rate=1.0, transform=None, samples_per_frame=args.samples_per_frame, num_classes=NUM_CLASSES,
+                                    per_prob=0.4, inj_prob=0.4,
+                                    per_channels=[0,1,2,3], per_eps=2, 
+                                    inj_npoint_max=200, inj_clutter_size=10)
 
     trainDataLoader = torch.utils.data.DataLoader(TRAIN_DATASET, batch_size=BATCH_SIZE, shuffle=True, num_workers=10,
                                                   pin_memory=True, drop_last=True,
@@ -191,21 +187,18 @@ def main(args):
         loss_sum = 0
         classifier = classifier.train()
 
-        for i, (points, target) in tqdm(enumerate(trainDataLoader), total=len(trainDataLoader), smoothing=0.9):
+        for i, (points_aug, target, _) in tqdm(enumerate(trainDataLoader), total=len(trainDataLoader), smoothing=0.9):
             optimizer.zero_grad()
 
-            points = points.data.numpy()
+            points_aug = points_aug.data.numpy()
+            if np.random.rand() < 0.001:
+                print(points_aug)
 
-            if args.dropout:
-                points = provider.random_point_dropout(points)
-            if args.shift:
-                points[:, :, 0:3] = provider.shift_point_cloud(points[:, :, 0:3], shift_range=0.7)
+            points_aug = torch.Tensor(points_aug)
+            points_aug, target = points_aug.float().cuda(), target.long().cuda()
+            points_aug = points_aug.transpose(2, 1)
 
-            points = torch.Tensor(points)
-            points, target = points.float().cuda(), target.long().cuda()
-            points = points.transpose(2, 1)
-
-            seg_pred, trans_feat = classifier(points)
+            seg_pred, trans_feat = classifier(points_aug)
             seg_pred = seg_pred.contiguous().view(-1, NUM_CLASSES)
 
             batch_label = target.view(-1, 1)[:, 0].cpu().data.numpy()
@@ -247,13 +240,13 @@ def main(args):
             classifier = classifier.eval()
 
             log_string('---- EPOCH %03d EVALUATION ----' % (global_epoch + 1))
-            for i, (points, target) in tqdm(enumerate(testDataLoader), total=len(testDataLoader), smoothing=0.9):
-                points = points.data.numpy()
-                points = torch.Tensor(points)
-                points, target = points.float().cuda(), target.long().cuda()
-                points = points.transpose(2, 1)
+            for i, (points_aug, target, _) in tqdm(enumerate(testDataLoader), total=len(testDataLoader), smoothing=0.9):
+                points_aug = points_aug.data.numpy()
+                points_aug = torch.Tensor(points_aug)
+                points_aug, target = points_aug.float().cuda(), target.long().cuda()
+                points_aug = points_aug.transpose(2, 1)
 
-                seg_pred, trans_feat = classifier(points)
+                seg_pred, trans_feat = classifier(points_aug)
                 pred_val = seg_pred.contiguous().cpu().data.numpy()
                 seg_pred = seg_pred.contiguous().view(-1, NUM_CLASSES)
 

@@ -94,5 +94,37 @@
         "instance_acc": 0.8526785714285714,
         "confidence_avg": 0.8295212388038635,
         "confidence_std": 0.15299180150032043
+    },
+    {
+        "model": "PointGuard_ideal",
+        "attack_scenario": "no_attack",
+        "class_acc": 0.9621964018658311,
+        "instance_acc": 0.9620535714285714,
+        "confidence_avg": 0.8892481923103333,
+        "confidence_std": 0.13084250688552856
+    },
+    {
+        "model": "PointGuard_ideal",
+        "attack_scenario": "mix_attack",
+        "class_acc": 0.9268100608887624,
+        "instance_acc": 0.9293154761904762,
+        "confidence_avg": 0.8611882925033569,
+        "confidence_std": 0.1344134658575058
+    },
+    {
+        "model": "PointGuard_ideal",
+        "attack_scenario": "extreme_perturbation",
+        "class_acc": 0.7519812660233585,
+        "instance_acc": 0.7683531746031746,
+        "confidence_avg": 0.7756548523902893,
+        "confidence_std": 0.12422922253608704
+    },
+    {
+        "model": "PointGuard_ideal",
+        "attack_scenario": "doppler_attack",
+        "class_acc": 0.9100163794331292,
+        "instance_acc": 0.9141865079365079,
+        "confidence_avg": 0.8334110975265503,
+        "confidence_std": 0.1383606195449829
     }
 ]
