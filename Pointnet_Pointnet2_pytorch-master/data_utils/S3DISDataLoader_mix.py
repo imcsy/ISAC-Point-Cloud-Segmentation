@@ -41,6 +41,21 @@ def split_evenly(total, k):
     
     return sizes
 
+road_box = [
+    [-10, 0, -40, 0, 0, 3],   # xmin, xmax, ymin, ymax, zmin, zmax
+    [-40, 0, -10, 5, 0, 3]
+]
+
+def random_p_on_road():
+    xmin, xmax, ymin, ymax, zmin, zmax = road_box[random.randint(0, 1)]
+
+    x = random.uniform(min(xmin, xmax), max(xmin, xmax))
+    y = random.uniform(min(ymin, ymax), max(ymin, ymax))
+    z = random.uniform(min(zmin, zmax), max(zmin, zmax))
+
+    return np.array([x, y, z])
+
+
 #   Clean
 # ==================================================
 def no_attack(clean_points):
@@ -85,7 +100,7 @@ def perturb_attack(clean_points, channels=[0,1,2,3], eps_max=1):
 
 #  Injection
 # ==================================================
-def inject_attack(clean_points, clean_labels, inj_npoint_max, inj_clutter_size):
+def inject_attack(clean_points, clean_labels, inj_npoint, inj_clutter_size):
     '''
     input: a clean point set, 
            npoints_inj: number of points injected
@@ -97,21 +112,18 @@ def inject_attack(clean_points, clean_labels, inj_npoint_max, inj_clutter_size):
     N = clean_points.shape[0]
     inj_points_aug = np.column_stack((clean_points, np.ones(N)))
 
-    # random choose inj_npoint in range [0, inj_npoint_max]
-    npoints_inj = inj_npoint_max
-
-    clutter_sizes = split_evenly(npoints_inj, inj_clutter_size)
-    xmin, ymin, zmin, vmin = clean_points.min(axis=0) / 3   
-    xmax, ymax, zmax, vmax = clean_points.max(axis=0) / 3
-    zmax, zmin = zmax / 4, zmin / 2
-    xyzscale = ((xmax - xmin) + (ymax - ymin) + (zmax - zmin)) * 0.1 / 15
+    clutter_sizes = split_evenly(inj_npoint, inj_clutter_size)
+    xmin, ymin, zmin, vmin = clean_points.min(axis=0)
+    xmax, ymax, zmax, vmax = clean_points.max(axis=0) 
+    # zmax, zmin = zmax / 4, zmin / 2
+    xyzscale = ((xmax - xmin) + (ymax - ymin) + (zmax - zmin)) * 0.1 / 100
     vscale = 0.5
     
     clutter_ls = []
     clutter_label_ls = []
     for s in clutter_sizes:
         # inject points (x,y,z,a)
-        xyz_cen = np.random.uniform(low=[xmin, ymin, zmin], high=[xmax, ymax, zmax])
+        xyz_cen = random_p_on_road()
         v_cen = np.random.uniform(vmin, vmax)
         
         xyz = np.random.normal(loc=xyz_cen, scale=xyzscale, size=(s,3))
@@ -134,7 +146,7 @@ class S3DISDataset_mix(Dataset):
     def __init__(self, split='train', data_root='trainval_fullarea', num_point=1024, sample_rate=1.0, transform=None, samples_per_frame=4, num_classes=4, dim_input=4, 
                  per_prob=0, inj_prob=0, 
                  per_channels=[0,1,2,3], per_eps=0,
-                 inj_npoint_max=0, inj_clutter_size=5):
+                 inj_npoint=0, inj_clutter_size=5):
         '''
         - MyS3DIS
             - Train_frame_016653.npy
@@ -151,7 +163,7 @@ class S3DISDataset_mix(Dataset):
         self.inj_prob = inj_prob
         self.per_channels= per_channels
         self.per_eps = per_eps
-        self.inj_npoint_max = inj_npoint_max
+        self.inj_npoint = inj_npoint
         self.inj_clutter_size = inj_clutter_size
 
         frames = sorted(os.listdir(data_root))
@@ -199,7 +211,8 @@ class S3DISDataset_mix(Dataset):
         if idx_mix == 0:
             points_aug, cd = perturb_attack(points, channels=self.per_channels, eps_max=self.per_eps)      # points_aug (M,5); cd (1,)
         elif idx_mix == 1:
-            points_aug, labels, cd = inject_attack(points, labels, inj_npoint_max=self.inj_npoint_max, inj_clutter_size=self.inj_clutter_size)
+            points_aug, labels, cd = inject_attack(points, labels, 
+                                                   inj_npoint=self.inj_npoint, inj_clutter_size=self.inj_clutter_size)
         elif idx_mix == 2:
             points_aug, cd = no_attack(points)
 

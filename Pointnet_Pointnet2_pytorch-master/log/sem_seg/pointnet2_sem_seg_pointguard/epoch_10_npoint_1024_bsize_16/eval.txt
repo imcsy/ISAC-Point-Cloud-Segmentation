@@ -14,3 +14,29 @@
 2026-05-05 14:23:37,188 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg_pointguard', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=0.9, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_npoint_max=200, inj_clutter_size=10, is_PointGuard=True)
 2026-05-05 14:23:43,454 - Model - INFO - The number of test data is: 1472
 2026-05-05 14:23:43,983 - Model - INFO - ---- EVALUATION----
+2026-05-07 15:38:04,116 - Model - INFO - PARAMETER ...
+2026-05-07 15:38:04,470 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg_pointguard', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=1, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_clutter_size=20, is_PointGuard=True)
+2026-05-07 15:38:06,499 - Model - INFO - Model Path: log/sem_seg/pointnet2_sem_seg_pointguard/epoch_10_npoint_1024_bsize_16/checkpoints/best_model.pth
+2026-05-07 15:38:07,740 - Model - INFO - The number of test data is: 1472
+2026-05-07 15:38:07,741 - Model - INFO - ---- EVALUATION----
+2026-05-07 15:40:53,541 - Model - INFO - PARAMETER ...
+2026-05-07 15:40:53,542 - Model - INFO - Namespace(batch_size=16, epoch=10, gpu='0', npoint=1024, log_dir='pointnet2_sem_seg_pointguard', visual=False, num_votes=3, samples_per_frame=4, dropout=False, shift=False, per_prob=0, inj_prob=1, per_channels=[0, 1, 2, 3], per_eps=1.5, inj_clutter_size=20, is_PointGuard=True)
+2026-05-07 15:40:53,983 - Model - INFO - Model Path: log/sem_seg/pointnet2_sem_seg_pointguard/epoch_10_npoint_1024_bsize_16/checkpoints/best_model.pth
+2026-05-07 15:41:01,522 - Model - INFO - The number of test data is: 1472
+2026-05-07 15:41:01,523 - Model - INFO - ---- EVALUATION----
+2026-05-07 15:45:46,925 - Model - INFO - The number of test data is: 1472
+2026-05-07 15:45:46,927 - Model - INFO - ---- EVALUATION----
+2026-05-07 15:50:35,469 - Model - INFO - The number of test data is: 1472
+2026-05-07 15:50:35,469 - Model - INFO - ---- EVALUATION----
+2026-05-07 15:55:41,717 - Model - INFO - The number of test data is: 1472
+2026-05-07 15:55:41,718 - Model - INFO - ---- EVALUATION----
+2026-05-07 16:00:46,135 - Model - INFO - The number of test data is: 1472
+2026-05-07 16:00:46,136 - Model - INFO - ---- EVALUATION----
+2026-05-07 16:05:47,645 - Model - INFO - The number of test data is: 1472
+2026-05-07 16:05:47,646 - Model - INFO - ---- EVALUATION----
+2026-05-07 16:10:54,785 - Model - INFO - The number of test data is: 1472
+2026-05-07 16:10:54,786 - Model - INFO - ---- EVALUATION----
+2026-05-07 16:16:13,621 - Model - INFO - The number of test data is: 1472
+2026-05-07 16:16:13,622 - Model - INFO - ---- EVALUATION----
+2026-05-07 16:21:31,583 - Model - INFO - The number of test data is: 1472
+2026-05-07 16:21:31,584 - Model - INFO - ---- EVALUATION----

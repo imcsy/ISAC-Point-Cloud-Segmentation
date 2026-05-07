@@ -101,12 +101,12 @@ def main(args):
     TRAIN_DATASET = S3DISDataset_mix(split='train', data_root=root, num_point=NUM_POINT, sample_rate=1.0, transform=None, samples_per_frame=args.samples_per_frame, num_classes=NUM_CLASSES,
                                      per_prob=0.4, inj_prob=0.4,
                                      per_channels=[0,1,2,3], per_eps=2,
-                                     inj_npoint_max=200, inj_clutter_size=10)
+                                     inj_npoint=160, inj_clutter_size=20)
     print("start loading test data ...")
     TEST_DATASET = S3DISDataset_mix(split='test', data_root=root, num_point=NUM_POINT, sample_rate=1.0, transform=None, samples_per_frame=args.samples_per_frame, num_classes=NUM_CLASSES,
                                     per_prob=0.4, inj_prob=0.4,
                                     per_channels=[0,1,2,3], per_eps=2, 
-                                    inj_npoint_max=200, inj_clutter_size=10)
+                                    inj_npoint=200, inj_clutter_size=10)
 
     trainDataLoader = torch.utils.data.DataLoader(TRAIN_DATASET, batch_size=BATCH_SIZE, shuffle=True, num_workers=10,
                                                   pin_memory=True, drop_last=True,
@@ -187,12 +187,10 @@ def main(args):
         loss_sum = 0
         classifier = classifier.train()
 
-        for i, (points_aug, target, _) in tqdm(enumerate(trainDataLoader), total=len(trainDataLoader), smoothing=0.9):
+        for i, (points_aug, target, _, _) in tqdm(enumerate(trainDataLoader), total=len(trainDataLoader), smoothing=0.9):
             optimizer.zero_grad()
 
             points_aug = points_aug.data.numpy()
-            if np.random.rand() < 0.001:
-                print(points_aug)
 
             points_aug = torch.Tensor(points_aug)
             points_aug, target = points_aug.float().cuda(), target.long().cuda()
@@ -240,7 +238,7 @@ def main(args):
             classifier = classifier.eval()
 
             log_string('---- EPOCH %03d EVALUATION ----' % (global_epoch + 1))
-            for i, (points_aug, target, _) in tqdm(enumerate(testDataLoader), total=len(testDataLoader), smoothing=0.9):
+            for i, (points_aug, target, _, _) in tqdm(enumerate(testDataLoader), total=len(testDataLoader), smoothing=0.9):
                 points_aug = points_aug.data.numpy()
                 points_aug = torch.Tensor(points_aug)
                 points_aug, target = points_aug.float().cuda(), target.long().cuda()

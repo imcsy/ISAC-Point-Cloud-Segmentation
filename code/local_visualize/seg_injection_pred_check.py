@@ -13,7 +13,7 @@ from pathlib import Path
 # path
 MYS3DIS_RADAR_PATH = r"G:\我的云端硬盘\THESIS_dataset\mmw\MyS3DIS_seg" # (x, y, z, v, label)
 MYDATASET_CAR_BOX_PATH = r"G:\我的云端硬盘\THESIS_dataset\mmw\MyDataset_rsu1\car_box"
-MYS3DIS_VIS_PATH = r"G:\我的云端硬盘\THESIS\code\local_visualize\data\segmentation_injection_point_cloud\inj_sample_10_mixloader_injnpoint_10_injsize_10.npy"
+MYS3DIS_VIS_PATH = r"G:\我的云端硬盘\THESIS\code\local_visualize\data\segmentation_injection_point_cloud\per_sample_10_mixloader.npy"
 
 COLOR_MAP = {
     0: (255, 128, 0),     # orange                # car
@@ -28,28 +28,39 @@ COLOR_MAP = {k: tuple(np.array(c)/255.0) for k, c in COLOR_MAP.items()}
 #   visualize for checking
 # ==================================================
 data = np.load(MYS3DIS_VIS_PATH)
-print(data.shape)
+print(data[0])
 
 
 #%%
 # load old labels
 xyz_ls = data[:,0:3]
+score_ls = data[:,4]
 label_target_ls = data[:, -2]
 label_pred_ls = data[:, -1]
 
+# label_target_ls[score_ls==0] = 4
 
 # clean_sample_10_mixloader
 # xyz_ls[:,0] = xyz_ls[:,0] - 23
 # xyz_ls[:,1] = xyz_ls[:,1] - 19
 # per_sample_10_mixloader
-# xyz_ls[:,0] = xyz_ls[:,0] - 40.5
-# xyz_ls[:,1] = xyz_ls[:,1] - 17
+xyz_ls[:,0] = xyz_ls[:,0] - 40.5
+xyz_ls[:,1] = xyz_ls[:,1] - 17
 # inj_sample_10_mixloader
 # xyz_ls[:,0] = xyz_ls[:,0] - 27.5
 # xyz_ls[:,1] = xyz_ls[:,1] + 7.5
 # inj_sample_10_mixloader_injnpoint_10_injsize_10
-xyz_ls[:,0] = xyz_ls[:,0] - 17
-xyz_ls[:,1] = xyz_ls[:,1] - 18.5
+# xyz_ls[:,0] = xyz_ls[:,0] - 17
+# xyz_ls[:,1] = xyz_ls[:,1] - 18.5
+# inj_sample_10_mixloader_injnpoint_50_injsize_10
+# xyz_ls[:,0] = xyz_ls[:,0] - 5.4
+# xyz_ls[:,1] = xyz_ls[:,1] - 14.2
+# inj_sample_10_mixloader_injnpoint_80_injsize_20
+# xyz_ls[:,0] = xyz_ls[:,0] - 16
+# xyz_ls[:,1] = xyz_ls[:,1] - 19
+# inj_sample_10_mixloader_injnpoint_200_injsize_20
+# xyz_ls[:,0] = xyz_ls[:,0] - 35.5
+# xyz_ls[:,1] = xyz_ls[:,1] - 22
 
 #%%
 # car IoU
@@ -67,6 +78,45 @@ union = np.sum(gt_car | pred_car)
 iou = intersection / union if union != 0 else 0
 
 print("Car IoU:", iou)
+
+#%%
+def create_boundary_box(x_range, y_range, z_range):
+    """
+    Creates a 3D bounding box (wireframe) with red lines.
+    x_range, y_range, z_range: tuples or lists (min, max)
+    """
+    x_min, x_max = x_range
+    y_min, y_max = y_range
+    z_min, z_max = z_range
+
+    # 1. Define the 8 corner points of the box
+    points = [
+        [x_min, y_min, z_min], [x_max, y_min, z_min],
+        [x_min, y_max, z_min], [x_max, y_max, z_min],
+        [x_min, y_min, z_max], [x_max, y_min, z_max],
+        [x_min, y_max, z_max], [x_max, y_max, z_max]
+    ]
+
+    # 2. Define the 12 lines connecting the corners
+    lines = [
+        [0, 1], [0, 2], [1, 3], [2, 3], # Bottom face
+        [4, 5], [4, 6], [5, 7], [6, 7], # Top face
+        [0, 4], [1, 5], [2, 6], [3, 7]  # Vertical pillars
+    ]
+
+    # 3. Create the LineSet object
+    box = o3d.geometry.LineSet()
+    box.points = o3d.utility.Vector3dVector(points)
+    box.lines = o3d.utility.Vector2iVector(lines)
+
+    # 4. Set color to Red [R, G, B]
+    colors = [[0.0, 1.0, 0.0] for _ in range(len(lines))]
+    box.colors = o3d.utility.Vector3dVector(colors)
+
+    return box
+
+road_box1 = box_geometry = create_boundary_box([-10, 0], [-60, 0], [0, 5])
+road_box2 = box_geometry = create_boundary_box([-60, 0], [-10, 5], [0, 5])
 
 #%%
 # get car box
