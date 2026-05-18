@@ -19,7 +19,8 @@ COLOR_MAP = {
     0: (255, 128, 0),     # orange                # car
     1: (0, 128, 255),     # blue                  # buildings
     2: (255, 102, 255),   # pink                  # pole
-    3: (192, 192, 192)    # gray                  # unlabeled
+    3: (192, 192, 192),    # gray                  # unlabeled
+    4: (255, 0, 0)          # red               # injection
 }
 COLOR_MAP = {k: tuple(np.array(c)/255.0) for k, c in COLOR_MAP.items()}
 
@@ -119,3 +120,41 @@ vis.capture_screen_image(image_path)
 print(f"Screenshot saved to: {image_path}")
 
 vis.destroy_window()
+
+#%%
+import matplotlib.pyplot as plt
+from matplotlib.patches import Rectangle
+
+# Labels
+LABELS = {
+    0: "Car",
+    1: "Building",
+    2: "Pole",
+    3: "Clutter",
+    4: "Injection"
+}
+fig, ax = plt.subplots(figsize=(1.5, 3))
+
+# Draw color boxes and labels
+for i, key in enumerate(LABELS):
+    y = len(LABELS) - i - 1
+    # Color square
+    ax.add_patch(
+        Rectangle((0, y), 1, 1, color=COLOR_MAP[key])
+    )
+
+    # Text label
+    ax.text(
+        1.2, y + 0.5,
+        LABELS[key],
+        va='center',
+        fontsize=18
+    )
+
+# Formatting
+ax.set_xlim(0, 4)
+ax.set_ylim(0, len(LABELS))
+ax.axis('off')
+
+plt.tight_layout()
+plt.show()

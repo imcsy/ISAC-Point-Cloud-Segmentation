@@ -10,9 +10,9 @@ import numpy as np
 # True Negatives (Predicted Clutter, is Clutter)
 
 # vanilla
-tp, fn, fp, tn = 9110, 286, 2555, 8120
+# tp, fn, fp, tn = 9110, 286, 2555, 8120
 # NoiseTrain
-# tp, fn, fp, tn =  8983, 422, 1301, 9374
+tp, fn, fp, tn =  8983, 422, 1301, 9374
 # PointGuard
 # tp, fn, fp, tn = 8503, 842, 497, 10178
 
@@ -43,9 +43,9 @@ ax = sns.heatmap(cm_normalized,
                  vmin=0, 
                  vmax=1)
 
-plt.xlabel('Predicted Class', fontsize=16, labelpad=10)
-plt.ylabel('True Class', fontsize=16, labelpad=10)
-ax.tick_params(axis='both', labelsize=16)
+plt.xlabel('Predicted Class', fontsize=20, labelpad=10)
+plt.ylabel('True Class', fontsize=20, labelpad=10)
+ax.tick_params(axis='both', labelsize=20)
 
 # Consistency: Add the frame to match your bar chart
 for _, spine in ax.spines.items():

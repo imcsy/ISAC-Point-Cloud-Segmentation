@@ -44,12 +44,12 @@ plt.bar(x-width, acc["Vanilla"], width, color=vanilla_color[0], label="Vanilla")
 plt.bar(x, acc["NoiseTrain"], width, color=noitrain_color[0], label="NoiseTrain")
 plt.bar(x+width, acc["PointGuard"], width, color=pointnet_color[0], label="PointGuard")
 
-plt.xticks(x, scenario_names, fontsize=16)
-plt.yticks(fontsize=14)
-plt.ylabel("Class Accuracy", fontsize=18)
+plt.xticks(x, scenario_names, fontsize=22)
+plt.yticks(fontsize=18)
+plt.ylabel("Class Accuracy", fontsize=24)
 plt.ylim(0.6,1)
 # plt.title("Attack-Agnostic Robustness Comparison")
-plt.legend(fontsize=14)
+plt.legend(fontsize=20)
 
 plt.gca().set_axisbelow(True)
 plt.grid(axis='y', linestyle='-', alpha=0.5)
@@ -80,11 +80,11 @@ plt.bar(x-width, conf["Vanilla"], width, color=vanilla_color[0], label="Vanilla"
 plt.bar(x, conf["NoiseTrain"], width, color=noitrain_color[0], label="NoiseTrain")
 plt.bar(x+width, conf["PointGuard"], width, color=pointnet_color[0], label="PointGuard")
 
-plt.xticks(x, scenario_names, fontsize=16)
-plt.yticks(fontsize=14)
-plt.ylabel("Prediction Confidence", fontsize=18)
+plt.xticks(x, scenario_names, fontsize=22)
+plt.yticks(fontsize=18)
+plt.ylabel("Prediction Confidence", fontsize=24)
 plt.ylim(0.6,1)
-plt.legend(fontsize=14)
+plt.legend(fontsize=20)
 
 plt.gca().set_axisbelow(True)
 plt.grid(axis='y', linestyle='-', alpha=0.5)
@@ -94,30 +94,30 @@ plt.show()
 
 
 #%%
-# Plotting
-x = np.arange(len(scenarios))
-width = 0.25
-colors = ['#9b8e8e', '#4472c4', '#ed7d31'] # Matching your figure colors
+# # Plotting
+# x = np.arange(len(scenarios))
+# width = 0.25
+# colors = ['#9b8e8e', '#4472c4', '#ed7d31'] # Matching your figure colors
 
-fig, ax = plt.subplots(figsize=(10, 6), dpi=150)
+# fig, ax = plt.subplots(figsize=(10, 6), dpi=150)
 
-for i, m in enumerate(models):
-    ax.bar(x + (i - 1) * width, 
-           conf[m], 
-           width, 
-           label=m, 
-           color=colors[i],
-           yerr=conf_std[m],    # <--- THIS ADDS THE STD
-           capsize=5,            # Adds the horizontal 'cap' on the error bar
-           error_kw={'elinewidth': 1.5, 'ecolor': '#333333'}) # Styling the line
+# for i, m in enumerate(models):
+#     ax.bar(x + (i - 1) * width, 
+#            conf[m], 
+#            width, 
+#            label=m, 
+#            color=colors[i],
+#            yerr=conf_std[m],    # <--- THIS ADDS THE STD
+#            capsize=5,            # Adds the horizontal 'cap' on the error bar
+#            error_kw={'elinewidth': 1.5, 'ecolor': '#333333'}) # Styling the line
 
-# Aesthetics
-ax.set_ylabel('Prediction Confidence', fontsize=14)
-ax.set_xticks(x)
-ax.set_xticklabels(scenarios, fontsize=12)
-ax.set_ylim(0.6, 1.0)
-ax.legend()
-ax.grid(axis='y', linestyle='--', alpha=0.5)
+# # Aesthetics
+# ax.set_ylabel('Prediction Confidence', fontsize=14)
+# ax.set_xticks(x)
+# ax.set_xticklabels(scenarios, fontsize=12)
+# ax.set_ylim(0.6, 1.0)
+# ax.legend()
+# ax.grid(axis='y', linestyle='--', alpha=0.5)
 
-plt.tight_layout()
-plt.show()
+# plt.tight_layout()
+# plt.show()

@@ -138,7 +138,7 @@ def plot_velocity_class_composition(class_v_dist, class_names, bin_size=2, max_v
 
     percentages = (hist_data / bin_totals) * 100
     
-    plt.figure(figsize=(8, 6))
+    plt.figure(figsize=(10, 6))
     bottom_val = np.zeros(len(bin_centers))
     colors = ["#e6793e", '#0080ff', '#ff66ff', '#c0c0c0'] # Standard distinct colors
 
@@ -147,11 +147,11 @@ def plot_velocity_class_composition(class_v_dist, class_names, bin_size=2, max_v
                 bottom=bottom_val, label=class_names[i], color=colors[i])
         bottom_val += percentages[i]
 
-    plt.title('Velocity Composition', fontsize=14)
-    plt.xlabel('Velocity (m/s)', fontsize=12)
-    plt.ylabel('Percentage (%)', fontsize=12)
+    # plt.title('Velocity Composition', fontsize=14)
+    plt.xlabel('Velocity (m/s)', fontsize=16)
+    plt.ylabel('Percentage (%)', fontsize=16)
     plt.xticks(bins[::2]) # Show every second bin label for clarity
-    plt.legend(loc='upper right', bbox_to_anchor=(1.15, 1))
+    plt.legend(loc='upper right', bbox_to_anchor=(1.15, 1), fontsize=14)
     plt.grid(axis='y', linestyle='--', alpha=0.7)
     plt.tight_layout()
     plt.show()
