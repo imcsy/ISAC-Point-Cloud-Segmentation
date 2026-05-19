@@ -11,9 +11,10 @@ from sklearn.metrics import (
 )
 
 #%%
-baseline_ls = ["PointGuard", "SOR"]
-path_inj_ls = ["pointguard_targets_preds_inj.npz", "sor_targets_preds_inj.npz"]
-# path_per_ls = ["pointguard_targets_preds_per.npz", "sor_targets_preds_per.npz"]
+baseline_ls = ["PointGuard", "SOR", "SPR"]
+name_length_ls = [len(name) for name in baseline_ls]
+path_inj_ls = ["pointguard_targets_preds_inj.npz", "sor_targets_preds_inj.npz", "spr_targets_pred_per0.0_inj1.0.npz"]
+path_per_ls = ["pointguard_targets_preds_per.npz", "sor_targets_preds_per.npz", "spr_targets_pred_per1.0_inj0.0.npz"]
 N_baselines = len(baseline_ls)
 
 plt.figure(figsize=(12,8))
@@ -29,7 +30,8 @@ for i in range(N_baselines):
     all_preds = data['all_preds']
     all_targets[all_targets < 1] = 0
 
-    print(all_preds)
+    print(all_targets.shape)
+    print(all_preds.shape)
 
     # =========================================================
     # ROC CURVE
@@ -44,45 +46,22 @@ for i in range(N_baselines):
     print(f"{baseline_ls[i]} best_threshold: {best_threshold:.4f}")
 
     # Plot ROC
-    plt.plot(fpr, tpr, linewidth=2, label=f'{baseline_ls[i]}  AUC = {roc_auc:.4f}')
+    plt.plot(fpr, tpr, linewidth=2, label=f'{baseline_ls[i]} AUC = {roc_auc:.4f}')
 
     # Mark best point
     plt.scatter(fpr[best_idx], tpr[best_idx], s=150, marker='^')
 
 # Random classifier line
 plt.plot([0,1], [0,1], linestyle='--', linewidth=2)
-
 plt.xlabel("False Positive Rate", fontsize=20)
 plt.ylabel("True Positive Rate", fontsize=20)
-
 plt.xticks(fontsize=20)
 plt.yticks(fontsize=20)
-
 plt.legend(loc="lower right", fontsize=20)
 
 plt.grid(True)
-
 plt.tight_layout()
-
 plt.show()
-
-    # plt.plot(fpr, tpr, label= baseline_ls[i] + f' AUC = {roc_auc:.4f}')
-    # plt.plot([0,1], [0,1], linestyle='--')
-
-    # plt.xlabel("False Positive Rate", fontsize=18)
-    # plt.ylabel("True Positive Rate", fontsize=18)
-    # plt.xticks(fontsize=16)
-    # plt.yticks(fontsize=16)
-    # plt.legend(loc="lower right", fontsize=18)
-
-    # plt.axvline(
-    #     x=fpr[best_idx],
-    #     color='red',
-    #     linestyle='--'
-    # )
-
-    # plt.grid(True)
-    # plt.show()
 
 #%%
 # =========================================================

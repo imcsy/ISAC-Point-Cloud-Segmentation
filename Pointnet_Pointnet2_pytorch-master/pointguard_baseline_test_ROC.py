@@ -30,8 +30,8 @@ def parse_args():
     parser.add_argument('--epoch', default=10, type=int, help='number of epoch in training')
     parser.add_argument('--num_point', type=int, default=16, help='Point Number')
     # probability of two attacks
-    parser.add_argument('--per_prob', type=float, default=1, help='Data proportion of Perturbation')
-    parser.add_argument('--inject_prob', type=float, default=0, help='Data Proportion of Injection')
+    parser.add_argument('--per_prob', type=float, default=0, help='Data proportion of Perturbation')
+    parser.add_argument('--inject_prob', type=float, default=1, help='Data Proportion of Injection')
     # add parameters for injection attack
     parser.add_argument('--npoints_inj', type=int, default=4, help='Number of Points Injected')
     parser.add_argument('--clutter_size_inj', type=int, default=2, help='The approximate number od points for the injected clutter')
@@ -40,6 +40,8 @@ def parse_args():
     parser.add_argument('--eps_per', type=float, default=1, help='Eps of Perturbation')
     # keep some parameters just to pass to ModelLoader
     parser.add_argument('--num_category', default=2, type=int, choices=[2, 10, 40],  help='training on ModelNet10/40')
+    # choose test baseline model
+    parser.add_argument("--baseline", type=str, required=True, help='baseline model')
 
     return parser.parse_args()
 
@@ -71,7 +73,7 @@ def test_pointguard(scorer, loader):
     return all_targets, all_preds
 
 
-#   SOR
+#   SOR (Statistical Outlier Removal)
 # ==================================================
 def SOR_detector(S, k, weights=[1,1,1,5]):
     '''
@@ -102,7 +104,7 @@ def SOR_detector(S, k, weights=[1,1,1,5]):
     return SOR_norm
 
 
-def test_inj_SOR(loader, k=5):
+def test_SOR(loader, k=5):
     all_preds = []
     all_targets = []
 
@@ -120,6 +122,55 @@ def test_inj_SOR(loader, k=5):
     all_targets = torch.cat(all_targets)
 
     return all_targets, all_preds
+
+#   SPR (Salient Point Removal)  (use PointNet cls model)
+# ==================================================
+def test_SPR(loader):
+    # load cls model
+    cls_model = importlib.import_module("pointnet_cls")
+    classifier = cls_model.get_model(2, num_channel=args.num_channel)
+    checkpoint_path = '/content/drive/MyDrive/THESIS/Pointnet_Pointnet2_pytorch-master/log/classification/pointnet_cls_mymodelnet/epoch_10_npoint_16_bsize_64/checkpoints/best_model.pth'
+    checkpoint = torch.load(checkpoint_path, weights_only=False)
+    classifier.load_state_dict(checkpoint['model_state_dict'])
+    if not args.use_cpu:
+        classifier = classifier.cuda()
+    classifier.eval()
+
+    all_targets = []
+    all_saliency = []
+
+    for j, (points_aug, _, _) in tqdm(enumerate(loader), total=len(loader)):
+        points_aug = points_aug.float()
+        points, target = torch.split(points_aug, [4,1], dim=2)    # points (B, N, 4); target (B,N,1)
+        if not args.use_cpu:
+            points, target = points.cuda(), target.cuda()
+        
+        points.requires_grad_(True)
+        points_input = points.permute(0, 2, 1)
+        pred, _ = classifier(points_input)    # pred: (B, 2)  (either car or clutter)
+        pred_choice = pred.max(dim=1)[1]      # (B,)
+
+        selected_logits = pred[torch.arange(pred.shape[0]), pred_choice]    # (B,) (prediction confidence)
+        classifier.zero_grad()
+        selected_logits.sum().backward()
+        grads = points.grad                    # grads (B, N, 4)
+        saliency = torch.norm(grads, dim=2)     # (B, N)
+        
+        all_targets.append(target.reshape(-1))
+        all_saliency.append(saliency.detach().cpu().reshape(-1))
+            
+    all_saliency = torch.cat(all_saliency)
+    all_targets = torch.cat(all_targets)
+    
+    saliency_log = torch.log1p(all_saliency ** 0.5)
+    saliency_norm = (
+        saliency_log - saliency_log.min()
+    ) / (
+        saliency_log.max() - saliency_log.min() + 1e-8
+    )
+    saliency_norm = 1 - saliency_norm
+
+    return all_targets, saliency_norm
 
 def main(args):
     def log_string(str):
@@ -166,21 +217,29 @@ def main(args):
     checkpoint = torch.load(str(experiment_dir) + '/checkpoints/best_model.pth', weights_only=False)
     scorer.load_state_dict(checkpoint['model_state_dict'])
 
-    with torch.no_grad():
-        all_targets, all_preds = test_pointguard(scorer, testDataLoader)
+    if args.baseline == "pointguard":
+        with torch.no_grad():
+            all_targets, all_preds = test_pointguard(scorer, testDataLoader)
+            np.savez(
+                experiment_dir + f'/numerical result/pointguard_targets_preds_per{args.per_prob}_inj{args.inject_prob}.npz',
+                all_targets=all_targets.numpy(),
+                all_preds=all_preds.numpy()
+            )
+    elif args.baseline == "sor":
+        with torch.no_grad():
+            all_targets, all_preds = test_SOR(testDataLoader, k=7)
+            np.savez(
+                experiment_dir + f'/numerical result/sor_targets_preds_per{args.per_prob}_inj{args.inject_prob}.npz',
+                all_targets=all_targets.numpy(),
+                all_preds=all_preds.numpy()
+            )
+    elif args.baseline == "spr":
+        all_targets, all_preds = test_SPR(testDataLoader)
         np.savez(
-            experiment_dir + '/numerical result/pointguard_targets_preds_per.npz',
-            all_targets=all_targets.numpy(),
-            all_preds=all_preds.numpy()
-        )
-
-        # all_targets, all_preds = test_inj_SOR(testDataLoader, k=7)
-        # np.savez(
-        #     experiment_dir + '/numerical result/sor_targets_preds_per.npz',
-        #     all_targets=all_targets.numpy(),
-        #     all_preds=all_preds.numpy()
-        # )
-
+                experiment_dir + f'/numerical result/spr_targets_pred_per{args.per_prob}_inj{args.inject_prob}.npz',
+                all_targets=all_targets.cpu().numpy(),
+                all_preds=all_preds.cpu().numpy()
+            )
 
 if __name__ == '__main__':
     args = parse_args() 
