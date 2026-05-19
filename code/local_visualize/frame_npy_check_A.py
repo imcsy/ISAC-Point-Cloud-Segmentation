@@ -133,7 +133,7 @@ LABELS = {
     3: "Clutter",
     4: "Injection"
 }
-fig, ax = plt.subplots(figsize=(1.5, 3))
+fig, ax = plt.subplots(figsize=(1.5, 3.75))
 
 # Draw color boxes and labels
 for i, key in enumerate(LABELS):

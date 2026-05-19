@@ -176,6 +176,35 @@ def perturb_attack(clean_points, channels=[0,1,2,3], eps_max=1):
 
     return per_points_aug, cd
 
+def perturb_partial_attack(clean_points, channels=[0,1,2,3], eps_max=1.5):
+    '''
+    input: a clean point set,    # (N,4)
+           channels and eps to perturb
+
+    output: an augumented perturbed point set (with reliability score),      # (N,5)
+            chamfer distance
+    '''
+    # eps = random.uniform(0, eps_max)
+    eps = eps_max
+    per_points = clean_points.copy()       # (N, 4)
+    sigma = np.array([0.5, 0.5, 0.5, 1])          # [0.7221, 0.6430, 0.3123, 4.4498]
+
+    noise = np.random.randn(clean_points.shape[0], len(channels)) 
+    jitter = noise * sigma[channels] * eps
+    N = clean_points.shape[0]
+    mask = (np.random.rand(N, 1) < 0.2).astype(np.float32)
+    per_points[:, channels] += jitter * mask                # (N, 4)
+
+    cd, _, d_SpS = Chamfer_Dist(clean_points, per_points)   # cd (1);  d_SpS (N)
+
+    # caculate reliability score
+    lam = 1
+    ad_channel = np.exp(-lam * d_SpS).reshape(-1, 1)        # (N)
+
+    per_points_aug = np.concatenate([per_points, ad_channel], axis=1)
+
+    return per_points_aug, cd
+
 #   Removal
 # ==================================================
 def removal_attack(clean_points, max_dropout_ratio=0.6):
@@ -274,7 +303,7 @@ class ModelNetDataLoader_clean_per_inj(Dataset):
             probs = [self.per_prob, self.inject_prob, self.removal_prob, self.scale_prob, 1-self.per_prob-self.inject_prob-self.removal_prob-self.scale_prob]
             idx = np.random.choice(len(probs), p=probs)
             if idx == 0:
-                point_set_aug, cd = perturb_attack(point_set, channels=self.channels_per, eps_max=self.eps_per)
+                point_set_aug, cd = perturb_partial_attack(point_set, channels=self.channels_per, eps_max=self.eps_per)
             elif idx == 1:
                 point_set_aug, cd = inject_attack(point_set, npoints_inj=self.npoints_inj, clutter_size_inj=self.clutter_size_inj)
             elif idx == 2:

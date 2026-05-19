@@ -28,7 +28,7 @@ def plot_comparison(car_data, clutter_data, title, xlabel, filename, num_bins=70
     
     # plt.title(title, fontsize=15, fontweight='bold')
     plt.xlabel(xlabel, fontsize=22)
-    plt.ylabel("Frequency", fontsize=20)
+    plt.ylabel("Frequency", fontsize=22)
     plt.xticks(fontsize=16)
     plt.yticks(fontsize=16)
     plt.legend(prop={'size': 22})
@@ -80,7 +80,7 @@ colors = [
 ]
 
 plt.figure(figsize=(6,6))
-plt.pie(class_count, labels=labels, colors=colors, autopct='%1.1f%%', startangle=90, textprops={'fontsize': 16})
+plt.pie(class_count, labels=labels, colors=colors, autopct='%1.1f%%', startangle=90, textprops={'fontsize': 18})
 
 # plt.title("Class Distribution")
 plt.axis('equal')  # Makes the pie chart circular
@@ -96,9 +96,11 @@ sns.histplot(num_ps_vec, color="orange", label="Scene",
                 stat="count", kde=True, alpha=0.4, bins=40)
 
 # plt.title(title, fontsize=15, fontweight='bold')
-plt.xlabel("Number of points per sample", fontsize=16)
-plt.ylabel("Frequency", fontsize=16)
-plt.legend(prop={'size': 16})
+plt.xlabel("Number of points per sample", fontsize=22)
+plt.ylabel("Frequency", fontsize=22)
+plt.xticks(fontsize=16)
+plt.yticks(fontsize=16)
+plt.legend(prop={'size': 22})
 plt.grid(axis='y', alpha=0.3)
 plt.tight_layout()
 

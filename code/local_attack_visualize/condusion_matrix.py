@@ -12,9 +12,9 @@ import numpy as np
 # vanilla
 # tp, fn, fp, tn = 9110, 286, 2555, 8120
 # NoiseTrain
-tp, fn, fp, tn =  8983, 422, 1301, 9374
+# tp, fn, fp, tn =  8983, 422, 1301, 9374
 # PointGuard
-# tp, fn, fp, tn = 8503, 842, 497, 10178
+tp, fn, fp, tn = 8503, 842, 497, 10178
 
 #%%
 cm = np.array([[tp, fn], 

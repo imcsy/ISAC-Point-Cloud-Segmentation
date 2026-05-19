@@ -148,10 +148,12 @@ def plot_velocity_class_composition(class_v_dist, class_names, bin_size=2, max_v
         bottom_val += percentages[i]
 
     # plt.title('Velocity Composition', fontsize=14)
-    plt.xlabel('Velocity (m/s)', fontsize=16)
-    plt.ylabel('Percentage (%)', fontsize=16)
+    plt.xlabel('Velocity (m/s)', fontsize=22)
+    plt.ylabel('Percentage (%)', fontsize=22)
+    plt.xticks(fontsize=16)
+    plt.yticks(fontsize=16)
     plt.xticks(bins[::2]) # Show every second bin label for clarity
-    plt.legend(loc='upper right', bbox_to_anchor=(1.15, 1), fontsize=14)
+    plt.legend(loc='upper right', bbox_to_anchor=(1., 0.4), fontsize=20)
     plt.grid(axis='y', linestyle='--', alpha=0.7)
     plt.tight_layout()
     plt.show()
