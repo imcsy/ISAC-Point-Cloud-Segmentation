@@ -172,6 +172,47 @@ def test_SPR(loader):
 
     return all_targets, saliency_norm
 
+#   Discriminator
+# ==================================================
+def test_discriminator(loader):
+    # load cls model
+    cls_model = importlib.import_module("pointnet_cls")
+    classifier = cls_model.get_model(2, num_channel=args.num_channel)
+    checkpoint_path = '/content/drive/MyDrive/THESIS/Pointnet_Pointnet2_pytorch-master/log/classification/pointnet_discriminator_mymodelnet/epoch_10_npoint_16_bsize_64/checkpoints/best_model.pth'
+    checkpoint = torch.load(checkpoint_path, weights_only=False)
+    classifier.load_state_dict(checkpoint['model_state_dict'])
+    if not args.use_cpu:
+        classifier = classifier.cuda()
+    classifier.eval()
+
+    all_targets = []
+    all_preds = []
+
+    with torch.no_grad():
+        for j, (points_aug, _, _) in tqdm(enumerate(loader), total=len(loader)):
+            points_aug = points_aug.float()
+            points, target = torch.split(points_aug, [4,1], dim=2)    # points (B, N, 4); target (B,N,1)
+            B, N, _ = points.shape
+            if not args.use_cpu:
+                points, target = points.cuda(), target.cuda()
+            
+            points_input = points.permute(0, 2, 1)
+            pred, _ = classifier(points_input)    # pred: (B, 2)  (either attack or clean)
+            prob = F.softmax(pred, dim=1)         # prob: (B, 2)
+
+            pred = prob[:, 1].unsqueeze(1).expand(B, N)      # pred: (B, 1)
+
+            # Move to CPU and flatten
+            all_targets.append(target.reshape(-1))
+            all_preds.append(pred.reshape(-1))
+
+    all_preds = torch.cat(all_preds)            # (num_batchs * B * N,)
+    all_targets = torch.cat(all_targets)
+
+    return all_targets, all_preds
+
+#   Main
+# ==================================================
 def main(args):
     def log_string(str):
         logger.info(str)
@@ -237,6 +278,13 @@ def main(args):
         all_targets, all_preds = test_SPR(testDataLoader)
         np.savez(
                 experiment_dir + f'/numerical result/spr_targets_pred_per{args.per_prob}_inj{args.inject_prob}.npz',
+                all_targets=all_targets.cpu().numpy(),
+                all_preds=all_preds.cpu().numpy()
+            )
+    elif args.baseline == "discriminator":
+        all_targets, all_preds = test_discriminator(testDataLoader)
+        np.savez(
+                experiment_dir + f'/numerical result/discriminator_targets_pred_per{args.per_prob}_inj{args.inject_prob}.npz',
                 all_targets=all_targets.cpu().numpy(),
                 all_preds=all_preds.cpu().numpy()
             )
