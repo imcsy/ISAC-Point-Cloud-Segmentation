@@ -14,10 +14,12 @@ import json
 #%%
 per_data_path = r"G:\我的云端硬盘\THESIS\Pointnet_Pointnet2_pytorch-master\log\pointguard\pointguard_classification_mix\epoch_10_npoint_16_bsize_64\numerical result\per_sensitivity.json"
 
-baseline_ls = ["SOR"] #, "SPR", "Instance-Dis", "PointGuard"]
-baseline_jsonname_ls = ["sor", "pointguard"]
-baseline_colors = ["#1f77b4"] #, "#2ca02c", "#d62728", "#ff7f0e"]
+baseline_ls = ["SOR", "SPR", "Instance-Dis",  "PointGuard"] #,"Instance-Dis",
+baseline_jsonname_ls = ["sor", "spr", "discriminator", "pointguard"]
+baseline_colors = ["#1f77b4", "#2ca02c", "#d62728", "#ff7f0e"] #, ,  ]
 N_basline = len(baseline_ls)
+perturbation_percentage_ls = [0.2, 0.5]
+linestyle_ls = ['-', '--']
 
 #%%
 per_intensity = np.array([0.2, 0.5, 1.0, 2.0, 5.0])
@@ -32,31 +34,27 @@ fig, ax = plt.subplots(figsize=(12, 8))
 fig.patch.set_facecolor('white')
 ax.set_facecolor('white')
 
-for i in range(N_basline):
-        auc20 = []
-        auc20_min = []
-        auc20_max = []
+for j in range(2):
+        for i in range(N_basline):
+                auc20 = []
+                auc20_min = []
+                auc20_max = []
 
-        for val in per_intensity:
-                item = next((d for d in per_json_data
-                        if d["percentage"] == 0.2 and d["baseline"] == "sor" and d["intensity"] == 5))
-                auc20.append(item["mean_auc"])
-                auc20_min.append(item["min_auc"])
-                auc20_max.append(item["max_auc"])
+                for val in per_intensity:
+                        item = next((d for d in per_json_data
+                                if d["percentage"] == perturbation_percentage_ls[j] 
+                                and d["baseline"] == baseline_jsonname_ls[i] and d["intensity"] == val))
+                        auc20.append(item["mean_auc"])
+                        auc20_min.append(item["min_auc"])
+                        auc20_max.append(item["max_auc"])
+                auc20, auc20_min, auc20_max = np.array(auc20), np.array(auc20_min), np.array(auc20_max), 
 
-        ax.plot(per_x_pos, auc20, label='PointGuard', color=baseline_colors[3], markersize=8, linewidth=2.5, zorder=3)
-        yerr = [per_auc20 - per_auc20_min,  per_auc20_max - per_auc20]
-ax.errorbar(
-    per_x_pos,
-    per_auc20,
-    yerr=yerr,
-    label='PointGuard',
-    color=baseline_colors[3],
-    markersize=8,
-    linewidth=2.5,
-    capsize=6,
-    zorder=3
-)
+                ax.plot(per_x_pos, auc20, linestyle_ls[j], label=baseline_ls[i], color=baseline_colors[i], 
+                        markersize=8, linewidth=2.5, zorder=3)
+
+                ax.errorbar(per_x_pos, auc20, yerr=[auc20-auc20_min, auc20_max-auc20], 
+                        fmt='none', color=baseline_colors[i], capsize=6, linewidth=2, zorder=2)
+
 
 ax.set_xticks(per_x_pos)
 ax.set_xticklabels(per_intensity)
@@ -71,28 +69,28 @@ ax.spines['top'].set_color('#D9D9D9B9')
 ax.spines['bottom'].set_linewidth(3)
 ax.spines['top'].set_linewidth(3)
 
-ax.set_ylabel('AUC', fontsize=18, labelpad=15)
-ax.set_xlabel('Perturbation Intensity', fontsize=18, labelpad=15)
+ax.set_ylabel('AUC', fontsize=22, labelpad=15)
+ax.set_xlabel('Perturbation Intensity', fontsize=22, labelpad=15)
 
-# ax.set_ylim(50, 100)
-ax.tick_params(axis='both', which='major', labelsize=14, color='white')
+ax.set_ylim(0.45, 0.95)
+ax.tick_params(axis='both', which='major', labelsize=20, color='white')
 
-# model_legend = [
-#     Line2D([0], [0], color=vanilla_color[0], marker=vanilla_color[1], lw=3, label='Vanilla'),
-#     Line2D([0], [0], color=noitrain_color[0], marker=noitrain_color[1], lw=3, label='NoiseTrain'),
-# #     Line2D([0], [0], color=advtrain_color[0], marker=advtrain_color[1], lw=3, label='AdvTrain'),
-#     Line2D([0], [0], color=pointnet_color[0], marker=pointnet_color[1], lw=3, label='PointGuard'),
-# ]
-# attack_legend = [
-#     Line2D([0], [0], color='#000000', lw=2.5, label='Perturbation', linestyle='-'), 
-#     Line2D([0], [0], color='#000000', lw=2.5, label='Injection', linestyle='--'),
-# ]
+model_legend = [
+    Line2D([0], [0], color=baseline_colors[0], lw=3, label='SOR'),
+    Line2D([0], [0], color=baseline_colors[1], lw=3, label='SPR'),
+    Line2D([0], [0], color=baseline_colors[2], lw=3, label='Instance-Dis'),
+    Line2D([0], [0], color=baseline_colors[3], lw=3, label='PointGuard'),
+]
+attack_legend = [
+    Line2D([0], [0], color='#000000', lw=2.5, label='20%', linestyle='-'), 
+    Line2D([0], [0], color='#000000', lw=2.5, label='50%', linestyle='--'),
+]
 
-# leg1 = ax.legend(handles=model_legend, loc='lower left', ncol=1, prop={'size': 14},
-#                   frameon=True, edgecolor='grey', bbox_to_anchor=(0.02, 0.02))
-# ax.add_artist(leg1)
-# leg2 = ax.legend(handles=attack_legend, loc='lower left', ncol=1, prop={'size': 14},
-#                   frameon=True, edgecolor='grey', bbox_to_anchor=(0.2, 0.02))
+leg1 = ax.legend(handles=model_legend, loc='lower left', ncol=1, prop={'size': 16},
+                  frameon=True, edgecolor='grey', bbox_to_anchor=(0.02, 0.75))
+ax.add_artist(leg1)
+leg2 = ax.legend(handles=attack_legend, loc='lower left', ncol=1, prop={'size': 16},
+                  frameon=True, edgecolor='grey', bbox_to_anchor=(0.01, 0.9))
 
 plt.tight_layout()
 plt.show()

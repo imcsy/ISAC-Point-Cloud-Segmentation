@@ -274,24 +274,27 @@ def main(args):
             test_dataset = ModelNetDataLoader_clean_per_inj(root=data_path, args=args, split='test', process_data=False,  per_prob=args.per_prob, inject_prob=args.inject_prob)
             testDataLoader = torch.utils.data.DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False, num_workers=10)
             
-            with torch.no_grad():
-                if args.baseline == "pointguard":
+            if args.baseline == "pointguard":
+                with torch.no_grad():
                     all_targets, all_preds = test_pointguard(scorer, testDataLoader)
-                elif args.baseline == "sor":
+            elif args.baseline == "sor":
+                with torch.no_grad():
                     all_targets, all_preds = test_SOR(testDataLoader, k=7)
-                elif args.baseline == "spr":
-                    all_targets, all_preds = test_SPR(testDataLoader)
-                elif args.baseline == "discriminator":
+            elif args.baseline == "spr":
+                all_targets, all_preds = test_SPR(testDataLoader)
+            elif args.baseline == "discriminator":
+                with torch.no_grad():
                     all_targets, all_preds = test_discriminator(testDataLoader)
 
-                all_targets[all_targets < 1] = 0
-                fpr, tpr, thresholds = roc_curve(1-all_targets, 1-all_preds, pos_label=1)
-                roc_auc = auc(fpr, tpr)
-                all_aucs.append(roc_auc)
+            all_targets[all_targets < 1] = 0
+            all_targets, all_preds = all_targets.cpu(), all_preds.cpu()
+            fpr, tpr, thresholds = roc_curve(1-all_targets, 1-all_preds, pos_label=1)
+            roc_auc = auc(fpr, tpr)
+            all_aucs.append(roc_auc)
 
         all_aucs = np.array(all_aucs)
         results = {
-            "percentage": 0.20,
+            "percentage": 0.50,
             "baseline": args.baseline,
             "intensity": val,
             "mean_auc": float(all_aucs.mean()),

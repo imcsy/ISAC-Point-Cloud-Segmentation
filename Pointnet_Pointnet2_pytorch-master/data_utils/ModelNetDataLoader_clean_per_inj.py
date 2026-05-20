@@ -192,7 +192,7 @@ def perturb_partial_attack(clean_points, channels=[0,1,2,3], eps_max=1.5):
     noise = np.random.randn(clean_points.shape[0], len(channels)) 
     jitter = noise * sigma[channels] * eps
     N = clean_points.shape[0]
-    mask = (np.random.rand(N, 1) < 0.2).astype(np.float32)
+    mask = (np.random.rand(N, 1) < 0.6).astype(np.float32)
     per_points[:, channels] += jitter * mask                # (N, 4)
 
     cd, _, d_SpS = Chamfer_Dist(clean_points, per_points)   # cd (1);  d_SpS (N)
