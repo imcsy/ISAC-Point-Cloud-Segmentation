@@ -2,7 +2,7 @@
     {
         "surface":"off",
         "baseline":"sor",
-        "inj_clutter_size":1,
+        "inj_clutter_size":1.0,
         "mean_auc":0.7820397269,
         "std_auc":0.0073508252,
         "min_auc":0.7743791827,
@@ -13,12 +13,18 @@
             0.7845169574,
             0.7743791827,
             0.7952095067
-        ]
+        ],
+        "inject_prob":null,
+        "per_prob":null,
+        "channels_per":null,
+        "eps_per":null,
+        "npoints_inj":null,
+        "clutter_size_inj":null
     },
     {
         "surface":"off",
         "baseline":"sor",
-        "inj_clutter_size":2,
+        "inj_clutter_size":2.0,
         "mean_auc":0.7097134616,
         "std_auc":0.0053899777,
         "min_auc":0.7025186197,
@@ -29,12 +35,18 @@
             0.7141075597,
             0.7168234569,
             0.7102373232
-        ]
+        ],
+        "inject_prob":null,
+        "per_prob":null,
+        "channels_per":null,
+        "eps_per":null,
+        "npoints_inj":null,
+        "clutter_size_inj":null
     },
     {
         "surface":"off",
         "baseline":"sor",
-        "inj_clutter_size":4,
+        "inj_clutter_size":4.0,
         "mean_auc":0.7227215958,
         "std_auc":0.0018311756,
         "min_auc":0.720084506,
@@ -45,12 +57,18 @@
             0.7228121909,
             0.7247729194,
             0.7213149376
-        ]
+        ],
+        "inject_prob":null,
+        "per_prob":null,
+        "channels_per":null,
+        "eps_per":null,
+        "npoints_inj":null,
+        "clutter_size_inj":null
     },
     {
         "surface":"off",
         "baseline":"sor",
-        "inj_clutter_size":6,
+        "inj_clutter_size":6.0,
         "mean_auc":0.7007491513,
         "std_auc":0.002876263,
         "min_auc":0.6974072379,
@@ -61,12 +79,18 @@
             0.705216029,
             0.6984238056,
             0.7027838057
-        ]
+        ],
+        "inject_prob":null,
+        "per_prob":null,
+        "channels_per":null,
+        "eps_per":null,
+        "npoints_inj":null,
+        "clutter_size_inj":null
     },
     {
         "surface":"off",
         "baseline":"sor",
-        "inj_clutter_size":8,
+        "inj_clutter_size":8.0,
         "mean_auc":0.6977291818,
         "std_auc":0.0027806777,
         "min_auc":0.6950227229,
@@ -77,12 +101,18 @@
             0.6982198904,
             0.6964296308,
             0.6950227229
-        ]
+        ],
+        "inject_prob":null,
+        "per_prob":null,
+        "channels_per":null,
+        "eps_per":null,
+        "npoints_inj":null,
+        "clutter_size_inj":null
     },
     {
         "surface":"off",
         "baseline":"spr",
-        "inj_clutter_size":1,
+        "inj_clutter_size":1.0,
         "mean_auc":0.4726969539,
         "std_auc":0.0014255366,
         "min_auc":0.471301571,
@@ -93,12 +123,18 @@
             0.4752723347,
             0.4721900563,
             0.471301571
-        ]
+        ],
+        "inject_prob":null,
+        "per_prob":null,
+        "channels_per":null,
+        "eps_per":null,
+        "npoints_inj":null,
+        "clutter_size_inj":null
     },
     {
         "surface":"off",
         "baseline":"spr",
-        "inj_clutter_size":2,
+        "inj_clutter_size":2.0,
         "mean_auc":0.5034174953,
         "std_auc":0.0013974612,
         "min_auc":0.5010365437,
@@ -109,12 +145,18 @@
             0.5034323676,
             0.5010365437,
             0.5054196314
-        ]
+        ],
+        "inject_prob":null,
+        "per_prob":null,
+        "channels_per":null,
+        "eps_per":null,
+        "npoints_inj":null,
+        "clutter_size_inj":null
     },
     {
         "surface":"off",
         "baseline":"spr",
-        "inj_clutter_size":4,
+        "inj_clutter_size":4.0,
         "mean_auc":0.5687482041,
         "std_auc":0.0009768525,
         "min_auc":0.5669191137,
@@ -125,12 +167,18 @@
             0.5691697066,
             0.5669191137,
             0.5694035781
-        ]
+        ],
+        "inject_prob":null,
+        "per_prob":null,
+        "channels_per":null,
+        "eps_per":null,
+        "npoints_inj":null,
+        "clutter_size_inj":null
     },
     {
         "surface":"off",
         "baseline":"spr",
-        "inj_clutter_size":6,
+        "inj_clutter_size":6.0,
         "mean_auc":0.6116007169,
         "std_auc":0.001734106,
         "min_auc":0.6089124999,
@@ -141,12 +189,18 @@
             0.6108299914,
             0.6116305301,
             0.6124983549
-        ]
+        ],
+        "inject_prob":null,
+        "per_prob":null,
+        "channels_per":null,
+        "eps_per":null,
+        "npoints_inj":null,
+        "clutter_size_inj":null
     },
     {
         "surface":"off",
         "baseline":"spr",
-        "inj_clutter_size":8,
+        "inj_clutter_size":8.0,
         "mean_auc":0.6695441279,
         "std_auc":0.0019279564,
         "min_auc":0.6675376631,
@@ -157,12 +211,18 @@
             0.6726187004,
             0.668134959,
             0.6709520478
-        ]
+        ],
+        "inject_prob":null,
+        "per_prob":null,
+        "channels_per":null,
+        "eps_per":null,
+        "npoints_inj":null,
+        "clutter_size_inj":null
     },
     {
         "surface":"off",
         "baseline":"discriminator",
-        "inj_clutter_size":1,
+        "inj_clutter_size":1.0,
         "mean_auc":0.6294768782,
         "std_auc":0.002985211,
         "min_auc":0.6263787907,
@@ -173,12 +233,18 @@
             0.6273750431,
             0.6289862432,
             0.6349782465
-        ]
+        ],
+        "inject_prob":null,
+        "per_prob":null,
+        "channels_per":null,
+        "eps_per":null,
+        "npoints_inj":null,
+        "clutter_size_inj":null
     },
     {
         "surface":"off",
         "baseline":"discriminator",
-        "inj_clutter_size":2,
+        "inj_clutter_size":2.0,
         "mean_auc":0.6363013918,
         "std_auc":0.0030325832,
         "min_auc":0.6317609129,
@@ -189,12 +255,18 @@
             0.6372314088,
             0.6399256978,
             0.6386783985
-        ]
+        ],
+        "inject_prob":null,
+        "per_prob":null,
+        "channels_per":null,
+        "eps_per":null,
+        "npoints_inj":null,
+        "clutter_size_inj":null
     },
     {
         "surface":"off",
         "baseline":"discriminator",
-        "inj_clutter_size":4,
+        "inj_clutter_size":4.0,
         "mean_auc":0.6366752958,
         "std_auc":0.0028744778,
         "min_auc":0.6317670182,
@@ -205,12 +277,18 @@
             0.6363545278,
             0.6375899915,
             0.6369649111
-        ]
+        ],
+        "inject_prob":null,
+        "per_prob":null,
+        "channels_per":null,
+        "eps_per":null,
+        "npoints_inj":null,
+        "clutter_size_inj":null
     },
     {
         "surface":"off",
         "baseline":"discriminator",
-        "inj_clutter_size":6,
+        "inj_clutter_size":6.0,
         "mean_auc":0.6471037874,
         "std_auc":0.0037329802,
         "min_auc":0.6419554543,
@@ -221,12 +299,18 @@
             0.6419554543,
             0.64415784,
             0.6502121524
-        ]
+        ],
+        "inject_prob":null,
+        "per_prob":null,
+        "channels_per":null,
+        "eps_per":null,
+        "npoints_inj":null,
+        "clutter_size_inj":null
     },
     {
         "surface":"off",
         "baseline":"discriminator",
-        "inj_clutter_size":8,
+        "inj_clutter_size":8.0,
         "mean_auc":0.6765948743,
         "std_auc":0.0032682655,
         "min_auc":0.6726994862,
@@ -237,12 +321,18 @@
             0.6731564484,
             0.6810187971,
             0.6791913427
-        ]
+        ],
+        "inject_prob":null,
+        "per_prob":null,
+        "channels_per":null,
+        "eps_per":null,
+        "npoints_inj":null,
+        "clutter_size_inj":null
     },
     {
         "surface":"off",
         "baseline":"pointguard",
-        "inj_clutter_size":1,
+        "inj_clutter_size":1.0,
         "mean_auc":0.8749095565,
         "std_auc":0.0039160523,
         "min_auc":0.8691756953,
@@ -253,12 +343,18 @@
             0.8761774448,
             0.8809865524,
             0.8755120656
-        ]
+        ],
+        "inject_prob":null,
+        "per_prob":null,
+        "channels_per":null,
+        "eps_per":null,
+        "npoints_inj":null,
+        "clutter_size_inj":null
     },
     {
         "surface":"off",
         "baseline":"pointguard",
-        "inj_clutter_size":2,
+        "inj_clutter_size":2.0,
         "mean_auc":0.9016390971,
         "std_auc":0.0012739164,
         "min_auc":0.899729855,
@@ -269,12 +365,18 @@
             0.899729855,
             0.9035154828,
             0.9014898879
-        ]
+        ],
+        "inject_prob":null,
+        "per_prob":null,
+        "channels_per":null,
+        "eps_per":null,
+        "npoints_inj":null,
+        "clutter_size_inj":null
     },
     {
         "surface":"off",
         "baseline":"pointguard",
-        "inj_clutter_size":4,
+        "inj_clutter_size":4.0,
         "mean_auc":0.9049233049,
         "std_auc":0.0011559993,
         "min_auc":0.9030267718,
@@ -285,12 +387,18 @@
             0.9062267655,
             0.9030267718,
             0.9049752476
-        ]
+        ],
+        "inject_prob":null,
+        "per_prob":null,
+        "channels_per":null,
+        "eps_per":null,
+        "npoints_inj":null,
+        "clutter_size_inj":null
     },
     {
         "surface":"off",
         "baseline":"pointguard",
-        "inj_clutter_size":6,
+        "inj_clutter_size":6.0,
         "mean_auc":0.9074701284,
         "std_auc":0.002093848,
         "min_auc":0.9049033949,
@@ -301,12 +409,18 @@
             0.9109720329,
             0.9065737646,
             0.9049033949
-        ]
+        ],
+        "inject_prob":null,
+        "per_prob":null,
+        "channels_per":null,
+        "eps_per":null,
+        "npoints_inj":null,
+        "clutter_size_inj":null
     },
     {
         "surface":"off",
         "baseline":"pointguard",
-        "inj_clutter_size":8,
+        "inj_clutter_size":8.0,
         "mean_auc":0.904988191,
         "std_auc":0.0013147618,
         "min_auc":0.9028859116,
@@ -317,12 +431,18 @@
             0.9046315958,
             0.9065209944,
             0.9028859116
-        ]
+        ],
+        "inject_prob":null,
+        "per_prob":null,
+        "channels_per":null,
+        "eps_per":null,
+        "npoints_inj":null,
+        "clutter_size_inj":null
     },
     {
         "surface":"on",
         "baseline":"sor",
-        "inj_clutter_size":1,
+        "inj_clutter_size":1.0,
         "mean_auc":0.7324823026,
         "std_auc":0.0042128221,
         "min_auc":0.727386042,
@@ -333,12 +453,18 @@
             0.727386042,
             0.7374762315,
             0.7368378052
-        ]
+        ],
+        "inject_prob":null,
+        "per_prob":null,
+        "channels_per":null,
+        "eps_per":null,
+        "npoints_inj":null,
+        "clutter_size_inj":null
     },
     {
         "surface":"on",
         "baseline":"sor",
-        "inj_clutter_size":2,
+        "inj_clutter_size":2.0,
         "mean_auc":0.6627615927,
         "std_auc":0.002278429,
         "min_auc":0.6591710125,
@@ -349,12 +475,18 @@
             0.6620463251,
             0.6591710125,
             0.6634242265
-        ]
+        ],
+        "inject_prob":null,
+        "per_prob":null,
+        "channels_per":null,
+        "eps_per":null,
+        "npoints_inj":null,
+        "clutter_size_inj":null
     },
     {
         "surface":"on",
         "baseline":"sor",
-        "inj_clutter_size":4,
+        "inj_clutter_size":4.0,
         "mean_auc":0.701338574,
         "std_auc":0.0025767321,
         "min_auc":0.6964009091,
@@ -365,12 +497,18 @@
             0.7026306159,
             0.7012790149,
             0.7028169311
-        ]
+        ],
+        "inject_prob":null,
+        "per_prob":null,
+        "channels_per":null,
+        "eps_per":null,
+        "npoints_inj":null,
+        "clutter_size_inj":null
     },
     {
         "surface":"on",
         "baseline":"sor",
-        "inj_clutter_size":6,
+        "inj_clutter_size":6.0,
         "mean_auc":0.6809346096,
         "std_auc":0.0025811142,
         "min_auc":0.6780363107,
@@ -381,12 +519,18 @@
             0.6782969723,
             0.684609867,
             0.6806998511
-        ]
+        ],
+        "inject_prob":null,
+        "per_prob":null,
+        "channels_per":null,
+        "eps_per":null,
+        "npoints_inj":null,
+        "clutter_size_inj":null
     },
     {
         "surface":"on",
         "baseline":"sor",
-        "inj_clutter_size":8,
+        "inj_clutter_size":8.0,
         "mean_auc":0.6896191872,
         "std_auc":0.0028293976,
         "min_auc":0.6861399995,
@@ -397,12 +541,18 @@
             0.6913535826,
             0.6941280953,
             0.6888552555
-        ]
+        ],
+        "inject_prob":null,
+        "per_prob":null,
+        "channels_per":null,
+        "eps_per":null,
+        "npoints_inj":null,
+        "clutter_size_inj":null
     },
     {
         "surface":"on",
         "baseline":"spr",
-        "inj_clutter_size":1,
+        "inj_clutter_size":1.0,
         "mean_auc":0.473374174,
         "std_auc":0.0008506437,
         "min_auc":0.472031209,
@@ -413,12 +563,18 @@
             0.4739286666,
             0.4744973123,
             0.472031209
-        ]
+        ],
+        "inject_prob":null,
+        "per_prob":null,
+        "channels_per":null,
+        "eps_per":null,
+        "npoints_inj":null,
+        "clutter_size_inj":null
     },
     {
         "surface":"on",
         "baseline":"spr",
-        "inj_clutter_size":2,
+        "inj_clutter_size":2.0,
         "mean_auc":0.5046615145,
         "std_auc":0.0005371319,
         "min_auc":0.5038876563,
@@ -429,12 +585,18 @@
             0.5049108705,
             0.5053388331,
             0.5049794928
-        ]
+        ],
+        "inject_prob":null,
+        "per_prob":null,
+        "channels_per":null,
+        "eps_per":null,
+        "npoints_inj":null,
+        "clutter_size_inj":null
     },
     {
         "surface":"on",
         "baseline":"spr",
-        "inj_clutter_size":4,
+        "inj_clutter_size":4.0,
         "mean_auc":0.5702671717,
         "std_auc":0.0026780738,
         "min_auc":0.5672586003,
@@ -445,12 +607,18 @@
             0.5672586003,
             0.5709356526,
             0.5706682933
-        ]
+        ],
+        "inject_prob":null,
+        "per_prob":null,
+        "channels_per":null,
+        "eps_per":null,
+        "npoints_inj":null,
+        "clutter_size_inj":null
     },
     {
         "surface":"on",
         "baseline":"spr",
-        "inj_clutter_size":6,
+        "inj_clutter_size":6.0,
         "mean_auc":0.611975942,
         "std_auc":0.0019700739,
         "min_auc":0.6082986225,
@@ -461,12 +629,18 @@
             0.6141541681,
             0.6120446448,
             0.6129265925
-        ]
+        ],
+        "inject_prob":null,
+        "per_prob":null,
+        "channels_per":null,
+        "eps_per":null,
+        "npoints_inj":null,
+        "clutter_size_inj":null
     },
     {
         "surface":"on",
         "baseline":"spr",
-        "inj_clutter_size":8,
+        "inj_clutter_size":8.0,
         "mean_auc":0.6707967626,
         "std_auc":0.002250707,
         "min_auc":0.6673524466,
@@ -477,12 +651,18 @@
             0.6673524466,
             0.6699149819,
             0.6701655907
-        ]
+        ],
+        "inject_prob":null,
+        "per_prob":null,
+        "channels_per":null,
+        "eps_per":null,
+        "npoints_inj":null,
+        "clutter_size_inj":null
     },
     {
         "surface":"on",
         "baseline":"discriminator",
-        "inj_clutter_size":1,
+        "inj_clutter_size":1.0,
         "mean_auc":0.6297271288,
         "std_auc":0.0041547458,
         "min_auc":0.6233199261,
@@ -493,12 +673,18 @@
             0.6356228847,
             0.6233199261,
             0.6307067813
-        ]
+        ],
+        "inject_prob":null,
+        "per_prob":null,
+        "channels_per":null,
+        "eps_per":null,
+        "npoints_inj":null,
+        "clutter_size_inj":null
     },
     {
         "surface":"on",
         "baseline":"discriminator",
-        "inj_clutter_size":2,
+        "inj_clutter_size":2.0,
         "mean_auc":0.6515745314,
         "std_auc":0.0037364613,
         "min_auc":0.6467384851,
@@ -509,12 +695,18 @@
             0.6467384851,
             0.6488871391,
             0.657727539
-        ]
+        ],
+        "inject_prob":null,
+        "per_prob":null,
+        "channels_per":null,
+        "eps_per":null,
+        "npoints_inj":null,
+        "clutter_size_inj":null
     },
     {
         "surface":"on",
         "baseline":"discriminator",
-        "inj_clutter_size":4,
+        "inj_clutter_size":4.0,
         "mean_auc":0.6331776764,
         "std_auc":0.0059424047,
         "min_auc":0.6238986429,
@@ -525,12 +717,18 @@
             0.6393854132,
             0.6238986429,
             0.633079894
-        ]
+        ],
+        "inject_prob":null,
+        "per_prob":null,
+        "channels_per":null,
+        "eps_per":null,
+        "npoints_inj":null,
+        "clutter_size_inj":null
     },
     {
         "surface":"on",
         "baseline":"discriminator",
-        "inj_clutter_size":6,
+        "inj_clutter_size":6.0,
         "mean_auc":0.6439095545,
         "std_auc":0.0035423339,
         "min_auc":0.6395662133,
@@ -541,12 +739,18 @@
             0.6441429357,
             0.6493235702,
             0.6395662133
-        ]
+        ],
+        "inject_prob":null,
+        "per_prob":null,
+        "channels_per":null,
+        "eps_per":null,
+        "npoints_inj":null,
+        "clutter_size_inj":null
     },
     {
         "surface":"on",
         "baseline":"discriminator",
-        "inj_clutter_size":8,
+        "inj_clutter_size":8.0,
         "mean_auc":0.6667462872,
         "std_auc":0.0057265277,
         "min_auc":0.65973176,
@@ -557,12 +761,18 @@
             0.676723825,
             0.6653683568,
             0.6684089264
-        ]
+        ],
+        "inject_prob":null,
+        "per_prob":null,
+        "channels_per":null,
+        "eps_per":null,
+        "npoints_inj":null,
+        "clutter_size_inj":null
     },
     {
         "surface":"on",
         "baseline":"pointguard",
-        "inj_clutter_size":1,
+        "inj_clutter_size":1.0,
         "mean_auc":0.8527558822,
         "std_auc":0.0040172812,
         "min_auc":0.8493705879,
@@ -573,12 +783,18 @@
             0.8494820279,
             0.8493705879,
             0.8601423451
-        ]
+        ],
+        "inject_prob":null,
+        "per_prob":null,
+        "channels_per":null,
+        "eps_per":null,
+        "npoints_inj":null,
+        "clutter_size_inj":null
     },
     {
         "surface":"on",
         "baseline":"pointguard",
-        "inj_clutter_size":2,
+        "inj_clutter_size":2.0,
         "mean_auc":0.8786651951,
         "std_auc":0.0010568241,
         "min_auc":0.8773298789,
@@ -589,12 +805,18 @@
             0.8779415393,
             0.8782592598,
             0.8800912601
-        ]
+        ],
+        "inject_prob":null,
+        "per_prob":null,
+        "channels_per":null,
+        "eps_per":null,
+        "npoints_inj":null,
+        "clutter_size_inj":null
     },
     {
         "surface":"on",
         "baseline":"pointguard",
-        "inj_clutter_size":4,
+        "inj_clutter_size":4.0,
         "mean_auc":0.889283725,
         "std_auc":0.00077172,
         "min_auc":0.8886687184,
@@ -605,12 +827,18 @@
             0.8886687184,
             0.890772945,
             0.8890332543
-        ]
+        ],
+        "inject_prob":null,
+        "per_prob":null,
+        "channels_per":null,
+        "eps_per":null,
+        "npoints_inj":null,
+        "clutter_size_inj":null
     },
     {
         "surface":"on",
         "baseline":"pointguard",
-        "inj_clutter_size":6,
+        "inj_clutter_size":6.0,
         "mean_auc":0.8905510546,
         "std_auc":0.0009982581,
         "min_auc":0.8886865976,
@@ -621,12 +849,18 @@
             0.8911816955,
             0.8886865976,
             0.8915562185
-        ]
+        ],
+        "inject_prob":null,
+        "per_prob":null,
+        "channels_per":null,
+        "eps_per":null,
+        "npoints_inj":null,
+        "clutter_size_inj":null
     },
     {
         "surface":"on",
         "baseline":"pointguard",
-        "inj_clutter_size":8,
+        "inj_clutter_size":8.0,
         "mean_auc":0.8926056671,
         "std_auc":0.0012954151,
         "min_auc":0.8904592604,
@@ -637,6 +871,12 @@
             0.8939977009,
             0.8936067066,
             0.8904592604
-        ]
+        ],
+        "inject_prob":null,
+        "per_prob":null,
+        "channels_per":null,
+        "eps_per":null,
+        "npoints_inj":null,
+        "clutter_size_inj":null
     }
 ]

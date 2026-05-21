@@ -10,7 +10,7 @@ class get_model(nn.Module):
     def __init__(self, num_class):
         super(get_model, self).__init__()
         self.k = num_class
-        self.feat = PointNetEncoder(global_feat=False, feature_transform=True, channel=9)
+        self.feat = PointNetEncoder(global_feat=False, feature_transform=True, channel=4)
         # if global_feat = False, return 
         # global feature(copy) + local per-point feature
         # (B,1024,N) + (B,64,N)

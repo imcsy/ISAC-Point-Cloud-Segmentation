@@ -24,7 +24,7 @@ sys.path.append(os.path.join(ROOT_DIR, 'models'))
 
 # classes = ['ceiling', 'floor', 'wall', 'beam', 'column', 'window', 'door', 'table', 'chair', 'sofa', 'bookcase',
 #            'board', 'clutter']
-classes = ['car', 'building', 'pole', 'clutter']
+classes = ['attacked', 'clean']
 class2label = {cls: i for i, cls in enumerate(classes)}
 seg_classes = class2label
 seg_label_to_cat = {}
@@ -38,15 +38,15 @@ def inplace_relu(m):
 
 def parse_args():
     parser = argparse.ArgumentParser('Model')
-    parser.add_argument('--model', type=str, default='pointnet2_sem_seg', help='model name [default: pointnet_sem_seg]')
+    parser.add_argument('--model', type=str, default='pointnet_sem_seg', help='model name [default: pointnet_sem_seg]')
     parser.add_argument('--batch_size', type=int, default=64, help='Batch Size during training [default: 16]')
-    parser.add_argument('--epoch', default=10, type=int, help='Epoch to run [default: 32]')
+    parser.add_argument('--epoch', default=5, type=int, help='Epoch to run [default: 32]')
     parser.add_argument('--learning_rate', default=0.001, type=float, help='Initial learning rate [default: 0.001]')
     parser.add_argument('--gpu', type=str, default='0', help='GPU to use [default: GPU 0]')
     parser.add_argument('--optimizer', type=str, default='Adam', help='Adam or SGD [default: Adam]')
     parser.add_argument('--log_dir', type=str, default=None, help='Log path [default: None]')
     parser.add_argument('--decay_rate', type=float, default=1e-4, help='weight decay [default: 1e-4]')
-    parser.add_argument('--npoint', type=int, default=1024, help='Point Number [default: 1024]')
+    parser.add_argument('--num_point', type=int, default=16, help='Point Number [default: 1024]')
     parser.add_argument('--step_size', type=int, default=10, help='Decay step for lr decay [default: every 10 epochs]')
     parser.add_argument('--lr_decay', type=float, default=0.7, help='Decay rate for lr decay [default: 0.7]')
     # parser.add_argument('--test_area', type=int, default=5, help='Which area to use for test, option: 1-6 [default: 5]')
@@ -65,6 +65,7 @@ def parse_args():
     parser.add_argument('--eps_per', type=float, default=1, help='Eps of Perturbation')
     # keep some parameters just to pass to ModelLoader
     parser.add_argument('--num_category', default=2, type=int, choices=[2, 10, 40],  help='training on ModelNet10/40')
+    parser.add_argument('--num_channel', type=int, default=4, help='Input Channel Number')  
 
     return parser.parse_args()
 
@@ -88,7 +89,7 @@ def main(args):
     else:
         experiment_dir = experiment_dir.joinpath(args.log_dir)
 
-    param_name = f"epoch_{args.epoch}_npoint_{args.npoint}_bsize_{args.batch_size}"
+    param_name = f"epoch_{args.epoch}_npoint_{args.num_point}_bsize_{args.batch_size}"
     if args.dropout:
         param_name = param_name + "_dropout"
     if args.shift:
@@ -113,29 +114,24 @@ def main(args):
     log_string('PARAMETER ...')
     log_string(args)
 
-    root = '/content/drive/MyDrive/THESIS_dataset/mmw/MyS3DIS_seg'
-    # '/content/drive/MyDrive/THESIS_dataset/S3DIS/stanford_indoor3d'
-    NUM_CLASSES = 4
-    NUM_POINT = args.npoint
+    data_path = '/content/drive/MyDrive/THESIS_dataset/mmw/MyModelNet_cls'
+
+    NUM_CLASSES = 2
+    NUM_POINT = args.num_point
     BATCH_SIZE = args.batch_size
 
     train_dataset = ModelNetDataLoader_clean_per_inj(root=data_path, args=args, split='train', process_data=False, per_prob=args.per_prob, inject_prob=args.inject_prob)
     test_dataset = ModelNetDataLoader_clean_per_inj(root=data_path, args=args, split='test', process_data=False, per_prob=args.per_prob, inject_prob=args.inject_prob)
+    trainDataLoader = torch.utils.data.DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=10, drop_last=True)
+    testDataLoader = torch.utils.data.DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False, num_workers=10)
+    weights = torch.tensor([0.7, 0.3]).cuda()
 
-    trainDataLoader = torch.utils.data.DataLoader(TRAIN_DATASET, batch_size=BATCH_SIZE, shuffle=True, num_workers=10,
-                                                  pin_memory=True, drop_last=True,
-                                                  worker_init_fn=lambda x: np.random.seed(x + int(time.time())))
-    testDataLoader = torch.utils.data.DataLoader(TEST_DATASET, batch_size=BATCH_SIZE, shuffle=False, num_workers=10,
-                                                 pin_memory=True, drop_last=True)
-    weights = torch.Tensor(TRAIN_DATASET.labelweights).cuda()
-
-    log_string("The number of training data is: %d" % len(TRAIN_DATASET))
-    log_string("The number of test data is: %d" % len(TEST_DATASET))
+    log_string("The number of training data is: %d" % len(train_dataset))
+    log_string("The number of test data is: %d" % len(test_dataset))
 
     '''MODEL LOADING'''
     MODEL = importlib.import_module(args.model)
     shutil.copy('models/%s.py' % args.model, str(experiment_dir))
-    shutil.copy('models/pointnet2_utils.py', str(experiment_dir))
 
     classifier = MODEL.get_model(NUM_CLASSES).cuda()
     criterion = MODEL.get_loss().cuda()
@@ -181,7 +177,7 @@ def main(args):
     MOMENTUM_DECCAY_STEP = args.step_size
 
     global_epoch = 0
-    best_iou = 0
+    best_point_acc = 0
 
     for epoch in range(start_epoch, args.epoch):
         '''Train on UNchopped scenes'''
@@ -201,16 +197,13 @@ def main(args):
         loss_sum = 0
         classifier = classifier.train()
 
-        for i, (points, target) in tqdm(enumerate(trainDataLoader), total=len(trainDataLoader), smoothing=0.9):
+        for i, (points_aug, _, _) in tqdm(enumerate(trainDataLoader), total=len(trainDataLoader), smoothing=0.9):
             optimizer.zero_grad()
+            points_aug = points_aug.float()
+            points, target = torch.split(points_aug, [4,1], dim=2)      # (B,N,4) and (B,N,1)
+            target[target<1] = 0
 
             points = points.data.numpy()
-
-            if args.dropout:
-                points = provider.random_point_dropout(points)
-            if args.shift:
-                points[:, :, 0:3] = provider.shift_point_cloud(points[:, :, 0:3], shift_range=0.7)
-
             points = torch.Tensor(points)
             points, target = points.float().cuda(), target.long().cuda()
             points = points.transpose(2, 1)
@@ -232,19 +225,7 @@ def main(args):
         log_string('Training mean loss: %f' % (loss_sum / num_batches))
         log_string('Training accuracy: %f' % (total_correct / float(total_seen)))
 
-        if epoch % 5 == 0:
-            logger.info('Save model...')
-            savepath = str(checkpoints_dir) + '/model.pth'
-            log_string('Saving at %s' % savepath)
-            state = {
-                'epoch': epoch,
-                'model_state_dict': classifier.state_dict(),
-                'optimizer_state_dict': optimizer.state_dict(),
-            }
-            torch.save(state, savepath)
-            log_string('Saving model....')
-
-        '''Evaluate on UNchopped scenes'''
+        # '''Evaluate on UNchopped scenes'''
         with torch.no_grad():
             num_batches = len(testDataLoader)
             total_correct = 0
@@ -257,7 +238,11 @@ def main(args):
             classifier = classifier.eval()
 
             log_string('---- EPOCH %03d EVALUATION ----' % (global_epoch + 1))
-            for i, (points, target) in tqdm(enumerate(testDataLoader), total=len(testDataLoader), smoothing=0.9):
+            for i, (points_aug, _, _) in tqdm(enumerate(testDataLoader), total=len(trainDataLoader), smoothing=0.9):
+                points_aug = points_aug.float()
+                points, target = torch.split(points_aug, [4,1], dim=2)      # (B,N,4) and (B,N,1)
+                target[target<1] = 0
+                
                 points = points.data.numpy()
                 points = torch.Tensor(points)
                 points, target = points.float().cuda(), target.long().cuda()
@@ -267,54 +252,35 @@ def main(args):
                 pred_val = seg_pred.contiguous().cpu().data.numpy()
                 seg_pred = seg_pred.contiguous().view(-1, NUM_CLASSES)
 
-                batch_label = target.cpu().data.numpy()
+                batch_label = target.cpu().data.numpy().squeeze(-1)
                 target = target.view(-1, 1)[:, 0]
                 loss = criterion(seg_pred, target, trans_feat, weights)
                 loss_sum += loss
                 pred_val = np.argmax(pred_val, 2)
+                
                 correct = np.sum((pred_val == batch_label))
                 total_correct += correct
                 total_seen += (BATCH_SIZE * NUM_POINT)
                 tmp, _ = np.histogram(batch_label, range(NUM_CLASSES + 1))
                 labelweights += tmp
 
-                for l in range(NUM_CLASSES):
-                    total_seen_class[l] += np.sum((batch_label == l))           # calculate the no. of points each class (ground truth)
-                    total_correct_class[l] += np.sum((pred_val == l) & (batch_label == l))      # intersection
-                    total_iou_deno_class[l] += np.sum(((pred_val == l) | (batch_label == l)))   # union
+            point_acc = total_correct / float(total_seen)
+            log_string('eval point accuracy: %f' % (point_acc)) 
 
-            labelweights = labelweights.astype(np.float32) / np.sum(labelweights.astype(np.float32))
-            mIoU = np.mean(np.array(total_correct_class) / (np.array(total_iou_deno_class, dtype=np.float64) + 1e-6)) # mean IoU over all classes
-            log_string('eval mean loss: %f' % (loss_sum / float(num_batches)))
-            log_string('eval point avg class IoU: %f' % (mIoU))
-            log_string('eval point accuracy: %f' % (total_correct / float(total_seen)))    
-            log_string('eval point avg class acc: %f' % (
-                np.mean(np.array(total_correct_class) / (np.array(total_seen_class, dtype=np.float64) + 1e-6))))
-
-            iou_per_class_str = '------- IoU --------\n'
-            for l in range(NUM_CLASSES):
-                iou_per_class_str += 'class %s weight: %.3f, IoU: %.3f \n' % (
-                    seg_label_to_cat[l] + ' ' * (14 - len(seg_label_to_cat[l])), labelweights[l - 1],
-                    total_correct_class[l] / float(total_iou_deno_class[l]))
-
-            log_string(iou_per_class_str)
-            log_string('Eval mean loss: %f' % (loss_sum / num_batches))
-            log_string('Eval accuracy: %f' % (total_correct / float(total_seen)))
-
-            if mIoU >= best_iou:
-                best_iou = mIoU
+            if point_acc >= best_point_acc:
+                best_point_acc = point_acc
                 logger.info('Save model...')
                 savepath = str(checkpoints_dir) + '/best_model.pth'
                 log_string('Saving at %s' % savepath)
                 state = {
                     'epoch': epoch,
-                    'class_avg_iou': mIoU,
+                    'point_acc': best_point_acc,
                     'model_state_dict': classifier.state_dict(),
                     'optimizer_state_dict': optimizer.state_dict(),
                 }
                 torch.save(state, savepath)
                 log_string('Saving model....')
-            log_string('Best mIoU: %f' % best_iou)
+            log_string('Best Point Accuracy: %f' % best_point_acc)
         global_epoch += 1
 
 

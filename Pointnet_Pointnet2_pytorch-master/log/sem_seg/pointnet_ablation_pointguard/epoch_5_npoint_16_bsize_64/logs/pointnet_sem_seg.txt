@@ -1,0 +1,55 @@
+2026-05-21 15:11:52,273 - Model - INFO - PARAMETER ...
+2026-05-21 15:11:52,274 - Model - INFO - Namespace(model='pointnet_sem_seg', batch_size=64, epoch=5, learning_rate=0.001, gpu='0', optimizer='Adam', log_dir='pointnet_ablation_pointguard', decay_rate=0.0001, num_point=16, step_size=10, lr_decay=0.7, samples_per_frame=4, dropout=False, shift=False, per_prob=0.4, inject_prob=0.4, npoints_inj=4, clutter_size_inj=2, channels_per=[0, 1, 2, 3], eps_per=1, num_category=2, num_channel=4)
+2026-05-21 15:11:52,649 - Model - INFO - The number of training data is: 9368
+2026-05-21 15:11:52,649 - Model - INFO - The number of test data is: 4016
+2026-05-21 15:11:52,709 - Model - INFO - No existing model, starting training from scratch...
+2026-05-21 15:11:53,803 - Model - INFO - **** Epoch 1 (1/5) ****
+2026-05-21 15:11:53,804 - Model - INFO - Learning rate:0.001000
+2026-05-21 15:12:18,576 - Model - INFO - Training mean loss: 0.648320
+2026-05-21 15:12:18,577 - Model - INFO - Training accuracy: 0.522066
+2026-05-21 15:12:18,590 - Model - INFO - ---- EPOCH 001 EVALUATION ----
+2026-05-21 15:12:28,142 - Model - INFO - eval point accuracy: 0.668682
+2026-05-21 15:12:28,143 - Model - INFO - Save model...
+2026-05-21 15:12:28,144 - Model - INFO - Saving at log/sem_seg/pointnet_ablation_pointguard/epoch_5_npoint_16_bsize_64/checkpoints/best_model.pth
+2026-05-21 15:12:28,570 - Model - INFO - Saving model....
+2026-05-21 15:12:28,572 - Model - INFO - Best Point Accuracy: 0.668682
+2026-05-21 15:12:28,573 - Model - INFO - **** Epoch 2 (2/5) ****
+2026-05-21 15:12:28,574 - Model - INFO - Learning rate:0.001000
+2026-05-21 15:12:53,126 - Model - INFO - Training mean loss: 0.564813
+2026-05-21 15:12:53,127 - Model - INFO - Training accuracy: 0.625134
+2026-05-21 15:12:53,139 - Model - INFO - ---- EPOCH 002 EVALUATION ----
+2026-05-21 15:13:03,939 - Model - INFO - eval point accuracy: 0.670805
+2026-05-21 15:13:03,941 - Model - INFO - Save model...
+2026-05-21 15:13:03,941 - Model - INFO - Saving at log/sem_seg/pointnet_ablation_pointguard/epoch_5_npoint_16_bsize_64/checkpoints/best_model.pth
+2026-05-21 15:13:04,321 - Model - INFO - Saving model....
+2026-05-21 15:13:04,322 - Model - INFO - Best Point Accuracy: 0.670805
+2026-05-21 15:13:04,348 - Model - INFO - **** Epoch 3 (3/5) ****
+2026-05-21 15:13:04,349 - Model - INFO - Learning rate:0.001000
+2026-05-21 15:13:29,519 - Model - INFO - Training mean loss: 0.510082
+2026-05-21 15:13:29,520 - Model - INFO - Training accuracy: 0.677179
+2026-05-21 15:13:29,546 - Model - INFO - ---- EPOCH 003 EVALUATION ----
+2026-05-21 15:13:40,023 - Model - INFO - eval point accuracy: 0.710410
+2026-05-21 15:13:40,024 - Model - INFO - Save model...
+2026-05-21 15:13:40,025 - Model - INFO - Saving at log/sem_seg/pointnet_ablation_pointguard/epoch_5_npoint_16_bsize_64/checkpoints/best_model.pth
+2026-05-21 15:13:40,363 - Model - INFO - Saving model....
+2026-05-21 15:13:40,364 - Model - INFO - Best Point Accuracy: 0.710410
+2026-05-21 15:13:40,392 - Model - INFO - **** Epoch 4 (4/5) ****
+2026-05-21 15:13:40,394 - Model - INFO - Learning rate:0.001000
+2026-05-21 15:14:06,590 - Model - INFO - Training mean loss: 0.461278
+2026-05-21 15:14:06,591 - Model - INFO - Training accuracy: 0.724757
+2026-05-21 15:14:06,604 - Model - INFO - ---- EPOCH 004 EVALUATION ----
+2026-05-21 15:14:16,962 - Model - INFO - eval point accuracy: 0.748016
+2026-05-21 15:14:16,978 - Model - INFO - Save model...
+2026-05-21 15:14:16,980 - Model - INFO - Saving at log/sem_seg/pointnet_ablation_pointguard/epoch_5_npoint_16_bsize_64/checkpoints/best_model.pth
+2026-05-21 15:14:17,453 - Model - INFO - Saving model....
+2026-05-21 15:14:17,454 - Model - INFO - Best Point Accuracy: 0.748016
+2026-05-21 15:14:17,455 - Model - INFO - **** Epoch 5 (5/5) ****
+2026-05-21 15:14:17,458 - Model - INFO - Learning rate:0.001000
+2026-05-21 15:14:42,444 - Model - INFO - Training mean loss: 0.452516
+2026-05-21 15:14:42,445 - Model - INFO - Training accuracy: 0.736783
+2026-05-21 15:14:42,457 - Model - INFO - ---- EPOCH 005 EVALUATION ----
+2026-05-21 15:14:53,371 - Model - INFO - eval point accuracy: 0.759487
+2026-05-21 15:14:53,394 - Model - INFO - Save model...
+2026-05-21 15:14:53,396 - Model - INFO - Saving at log/sem_seg/pointnet_ablation_pointguard/epoch_5_npoint_16_bsize_64/checkpoints/best_model.pth
+2026-05-21 15:14:53,730 - Model - INFO - Saving model....
+2026-05-21 15:14:53,731 - Model - INFO - Best Point Accuracy: 0.759487

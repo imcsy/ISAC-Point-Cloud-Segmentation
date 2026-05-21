@@ -173,7 +173,7 @@ def inject_attack_onoff_surface(clean_points, npoints_inj, clutter_size_inj):
         cd_upper = 1.5
     else:
         cd_upper = 2
-        
+
     while cd > cd_upper:
         inj_points_aug = np.column_stack((clean_points, np.ones(N)))
 
@@ -351,7 +351,7 @@ class ModelNetDataLoader_clean_per_inj(Dataset):
             if idx == 0:
                 point_set_aug, cd = perturb_partial_attack(point_set, channels=self.channels_per, eps_max=self.eps_per)
             elif idx == 1:
-                point_set_aug, cd = inject_attack_onoff_surface(point_set, npoints_inj=self.npoints_inj, clutter_size_inj=self.clutter_size_inj)
+                point_set_aug, cd = inject_attack(point_set, npoints_inj=self.npoints_inj, clutter_size_inj=self.clutter_size_inj)
             elif idx == 2:
                 point_set_aug, cd = removal_attack(point_set)
             elif idx == 3:
