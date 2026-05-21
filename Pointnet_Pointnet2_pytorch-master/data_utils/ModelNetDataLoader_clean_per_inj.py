@@ -149,6 +149,52 @@ def inject_attack(clean_points, npoints_inj, clutter_size_inj):
     cd, _, _ = Chamfer_Dist(clean_points, inj_points_aug[:, :4])
     return inj_points_aug, cd       # inj_points_aug (N + npoints_inj, 5);  cd (1)
 
+
+def inject_attack_onoff_surface(clean_points, npoints_inj, clutter_size_inj):
+    '''
+    input: a clean point set, 
+           npoints_inj: number of points injected
+           clutter_size_inj: the approximate number od points for the injected clutter
+
+    output: an augumented injected point set (with reliability score),
+            chamfer distance
+    '''
+    N = clean_points.shape[0]
+    clutter_sizes = split_evenly(npoints_inj, clutter_size_inj)
+    xmin, ymin, zmin, vmin = clean_points.min(axis=0)
+    xmax, ymax, zmax, vmax = clean_points.max(axis=0)
+    xyzscale = ((xmax - xmin) + (ymax - ymin) + (zmax - zmin)) * 0.1 / 3
+    vscale = 1.0
+
+    cd = 100
+    if npoints_inj < 4:
+        cd_upper = 1
+    elif npoints_inj < 8:
+        cd_upper = 1.5
+    else:
+        cd_upper = 2
+        
+    while cd > cd_upper:
+        inj_points_aug = np.column_stack((clean_points, np.ones(N)))
+
+        clutter_ls = []
+        for s in clutter_sizes:
+            xyz_cen = np.random.uniform(low=[xmin, ymin, zmin], high=[xmax, ymax, zmax])
+            v_cen = np.random.uniform(vmin, vmax)
+            
+            xyz = np.random.normal(loc=xyz_cen, scale=xyzscale, size=(s,3))
+            v = np.random.normal(loc=v_cen, scale=vscale, size=(s, 1))
+            a = np.zeros((s, 1))
+            clutter = np.concatenate([xyz, v, a], axis=1)      # (s, 5)
+            clutter_ls.append(clutter)
+        inj_points_aug = np.concatenate([inj_points_aug] + clutter_ls, axis=0).astype(np.float32)
+            
+        cd, _, _ = Chamfer_Dist(clean_points, inj_points_aug[:, :4])
+
+    return inj_points_aug, cd       # inj_points_aug (N + npoints_inj, 5);  cd (1)
+
+
+
 #  Perturbation
 # ==================================================
 def perturb_attack(clean_points, channels=[0,1,2,3], eps_max=1):
@@ -305,7 +351,7 @@ class ModelNetDataLoader_clean_per_inj(Dataset):
             if idx == 0:
                 point_set_aug, cd = perturb_partial_attack(point_set, channels=self.channels_per, eps_max=self.eps_per)
             elif idx == 1:
-                point_set_aug, cd = inject_attack(point_set, npoints_inj=self.npoints_inj, clutter_size_inj=self.clutter_size_inj)
+                point_set_aug, cd = inject_attack_onoff_surface(point_set, npoints_inj=self.npoints_inj, clutter_size_inj=self.clutter_size_inj)
             elif idx == 2:
                 point_set_aug, cd = removal_attack(point_set)
             elif idx == 3:

@@ -39,8 +39,8 @@ def parse_args():
     parser.add_argument('--epoch', default=10, type=int, help='number of epoch in training')
     parser.add_argument('--num_point', type=int, default=16, help='Point Number')
     # probability of two attacks
-    parser.add_argument('--per_prob', type=float, default=0.8, help='Data proportion of Perturbation')
-    parser.add_argument('--inject_prob', type=float, default=0, help='Data Proportion of Injection')
+    parser.add_argument('--per_prob', type=float, default=0, help='Data proportion of Perturbation')
+    parser.add_argument('--inject_prob', type=float, default=0.8, help='Data Proportion of Injection')
     # add parameters for injection attack
     parser.add_argument('--npoints_inj', type=int, default=4, help='Number of Points Injected')
     parser.add_argument('--clutter_size_inj', type=int, default=2, help='The approximate number od points for the injected clutter')
@@ -264,10 +264,15 @@ def main(args):
     checkpoint = torch.load(str(experiment_dir) + '/checkpoints/best_model.pth', weights_only=False)
     scorer.load_state_dict(checkpoint['model_state_dict'])
 
-    per_intensities = [0.2, 0.5, 1.0, 2.0, 5.0]
+    # per_intensities = [0.2, 0.5, 1.0, 2.0, 5.0]
+    inj_clutter_size = [1, 2, 4, 6, 8]
     N_runs = 5
-    for val in per_intensities:
-        args.eps_per = val
+    # for val in per_intensities:
+    for val in inj_clutter_size:
+        # args.eps_per = val
+        args.npoints_inj = val
+        args.clutter_size_inj = val
+
         all_aucs = []
         
         for run in range(N_runs):
@@ -292,11 +297,11 @@ def main(args):
             roc_auc = auc(fpr, tpr)
             all_aucs.append(roc_auc)
 
-        all_aucs = np.array(all_aucs)
+        all_aucs = np.array(all_aucs)   
         results = {
-            "percentage": 0.50,
+            "surface": "on",
             "baseline": args.baseline,
-            "intensity": val,
+            "inj_clutter_size": val,
             "mean_auc": float(all_aucs.mean()),
             "std_auc": float(all_aucs.std()),
             "min_auc": float(all_aucs.min()),
@@ -304,7 +309,7 @@ def main(args):
             "all_aucs": all_aucs.tolist()
         }
         
-        save_path = '/content/drive/MyDrive/THESIS/Pointnet_Pointnet2_pytorch-master/log/pointguard/pointguard_classification_mix/epoch_10_npoint_16_bsize_64/numerical result/per_sensitivity.json'
+        save_path = '/content/drive/MyDrive/THESIS/Pointnet_Pointnet2_pytorch-master/log/pointguard/pointguard_classification_mix/epoch_10_npoint_16_bsize_64/numerical result/inj_sensitivity.json'
         os.makedirs(os.path.dirname(save_path), exist_ok=True)
 
         new_df = pd.DataFrame([results])
@@ -320,33 +325,18 @@ def main(args):
 
         print(f"Saved results cleanly using Pandas to {save_path}")
 
-            # np.savez(
-            #     experiment_dir + f'/numerical result/pointguard_targets_preds_per{args.per_prob}_inj{args.inject_prob}.npz',
-            #     all_targets=all_targets.numpy(),
-            #     all_preds=all_preds.numpy()
-            # )
-    # elif args.baseline == "sor":
-    #     with torch.no_grad():
-    #         all_targets, all_preds = test_SOR(testDataLoader, k=7)
-    #         np.savez(
-    #             experiment_dir + f'/numerical result/sor_targets_preds_per{args.per_prob}_inj{args.inject_prob}.npz',
-    #             all_targets=all_targets.numpy(),
-    #             all_preds=all_preds.numpy()
-    #         )
-    # elif args.baseline == "spr":
-    #     all_targets, all_preds = test_SPR(testDataLoader)
-    #     np.savez(
-    #             experiment_dir + f'/numerical result/spr_targets_pred_per{args.per_prob}_inj{args.inject_prob}.npz',
-    #             all_targets=all_targets.cpu().numpy(),
-    #             all_preds=all_preds.cpu().numpy()
-    #         )
-    # elif args.baseline == "discriminator":
-    #     all_targets, all_preds = test_discriminator(testDataLoader)
-    #     np.savez(
-    #             experiment_dir + f'/numerical result/discriminator_targets_pred_per{args.per_prob}_inj{args.inject_prob}.npz',
-    #             all_targets=all_targets.cpu().numpy(),
-    #             all_preds=all_preds.cpu().numpy()
-            # )
+        # results = {
+        #     "percentage": 0.50,
+        #     "baseline": args.baseline,
+        #     "intensity": val,
+        #     "mean_auc": float(all_aucs.mean()),
+        #     "std_auc": float(all_aucs.std()),
+        #     "min_auc": float(all_aucs.min()),
+        #     "max_auc": float(all_aucs.max()),
+        #     "all_aucs": all_aucs.tolist()
+        # }
+        
+        # save_path = '/content/drive/MyDrive/THESIS/Pointnet_Pointnet2_pytorch-master/log/pointguard/pointguard_classification_mix/epoch_10_npoint_16_bsize_64/numerical result/per_sensitivity.json'
 
 if __name__ == '__main__':
     args = parse_args() 

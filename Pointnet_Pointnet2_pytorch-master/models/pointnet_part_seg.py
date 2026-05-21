@@ -9,10 +9,11 @@ from pointnet_utils import STN3d, STNkd, feature_transform_reguliarzer
 class get_model(nn.Module):
     def __init__(self, part_num=50, normal_channel=True):
         super(get_model, self).__init__()
-        if normal_channel:
-            channel = 6
-        else:
-            channel = 3
+        # if normal_channel:
+        #     channel = 6
+        # else:
+        #     channel = 3
+        channel = 4
         self.part_num = part_num
         self.stn = STN3d(channel)
         self.conv1 = torch.nn.Conv1d(channel, 64, 1)
