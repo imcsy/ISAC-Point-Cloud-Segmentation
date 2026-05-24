@@ -97,6 +97,7 @@ def test_pointnet_seg(loader):
 
     all_preds = []
     all_targets = []    
+    all_pred_labels = []
 
     for j, (points_aug, _, _) in tqdm(enumerate(loader), total=len(loader)):
         points_aug = points_aug.float()
@@ -110,16 +111,19 @@ def test_pointnet_seg(loader):
         points = points.transpose(2, 1)
 
         pred, trans_feat = classifier(points)
+        pred_label = torch.argmax(pred, dim=2)
         pred = F.softmax(pred, dim=2)[:,:,1]
 
         # Move to CPU and flatten
         all_preds.append(pred.detach().cpu().reshape(-1))
         all_targets.append(target.detach().cpu().reshape(-1))
+        all_pred_labels.append(pred_label.detach().cpu().reshape(-1))
     
     all_preds = torch.cat(all_preds).float()           # (num_batchs * B * N,)
     all_targets = torch.cat(all_targets).float()
+    all_pred_labels = torch.cat(all_pred_labels).float()
 
-    return all_targets, all_preds
+    return all_targets, all_preds, all_pred_labels
 
 #   Main
 # ==================================================
@@ -178,7 +182,8 @@ def main(args):
                 all_targets, all_preds = test_pointguard(scorer, testDataLoader)
         elif args.baseline == "pointnet_seg":
             with torch.no_grad():
-                all_targets, all_preds = test_pointnet_seg(testDataLoader)
+                all_targets, all_preds, all_pred_labels = test_pointnet_seg(testDataLoader)
+                all_pred_labels = all_pred_labels.cpu()
 
         all_targets[all_targets < 1] = 0
         all_targets, all_preds = all_targets.cpu(), all_preds.cpu()
@@ -187,8 +192,9 @@ def main(args):
         all_aucs.append(roc_auc)
 
         best_idx = np.argmax(tpr - fpr)
-        pred_label = (all_preds >= thresholds[best_idx]).int()
-        best_f1 = f1_score(all_targets.cpu().numpy(), pred_label.cpu().numpy())
+        if args.baseline == "pointguard":
+            all_pred_labels = (all_preds >= thresholds[best_idx]).int()
+        best_f1 = f1_score((1-all_targets).cpu().numpy(), (1-all_pred_labels).cpu().numpy())
         all_F1.append(best_f1)
 
     all_aucs = np.array(all_aucs)   

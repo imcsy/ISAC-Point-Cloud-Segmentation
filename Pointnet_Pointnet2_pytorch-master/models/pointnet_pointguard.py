@@ -33,9 +33,12 @@ class get_model(nn.Module):
         x = F.relu(self.bn2(self.conv2(x)))     # (B,256,N)
         x = F.relu(self.bn3(self.conv3(x)))     # (B,128,N)
         x = F.relu(self.bn4(self.conv4(x)))     # (B,64,N)
+
+        latent_64d = x
+
         x = torch.sigmoid(self.conv5(x))        # (B,1,N) values between 0 and 1
         x = x.squeeze(1)                        # (B, N)
-        return x, trans_feat                    # x:(B,N)   trans_feat:(B,64,64)
+        return x, trans_feat, latent_64d        # x:(B,N)   trans_feat:(B,64,64)    latent_64d:(B,64,N)
 
 class get_loss(torch.nn.Module):
     def __init__(self, mat_diff_loss_scale=0.001):

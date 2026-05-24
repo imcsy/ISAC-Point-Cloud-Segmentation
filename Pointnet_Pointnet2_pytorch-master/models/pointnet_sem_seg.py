@@ -29,11 +29,12 @@ class get_model(nn.Module):
         x = F.relu(self.bn1(self.conv1(x)))     # (B,512,N)
         x = F.relu(self.bn2(self.conv2(x)))     # (B,256,N)
         x = F.relu(self.bn3(self.conv3(x)))     # (B,128,N)
+        latent_128d = x
         x = self.conv4(x)                       # (B,num_class,N)
         x = x.transpose(2,1).contiguous()       # (B,N,num_class)
         x = F.log_softmax(x.view(-1,self.k), dim=-1)
         x = x.view(batchsize, n_pts, self.k)    # (B,N,num_class)
-        return x, trans_feat                    # (B,N,num_class)
+        return x, trans_feat, latent_128d       # (B,N,num_class)   
 
 class get_loss(torch.nn.Module):
     def __init__(self, mat_diff_loss_scale=0.001):

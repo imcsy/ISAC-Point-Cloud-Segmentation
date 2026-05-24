@@ -1,0 +1,107 @@
+2026-05-24 11:03:26,046 - Model - INFO - PARAMETER ...
+2026-05-24 11:03:26,047 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=64, model='pointnet_pointguard', epoch=20, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointguard_classification_mix', decay_rate=0.0001, num_channel=4, per_prob=0.4, inject_prob=0.4, npoints_inj=4, clutter_size_inj=2, channels_per=[0, 1, 2, 3], eps_per=0.5, num_category=2)
+2026-05-24 11:03:26,048 - Model - INFO - Load dataset ...
+2026-05-24 11:03:37,039 - Model - INFO - Start training...
+2026-05-24 11:03:37,051 - Model - INFO - Epoch 1 (1/20):
+2026-05-24 11:06:21,685 - Model - INFO - PARAMETER ...
+2026-05-24 11:06:21,686 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=64, model='pointnet_pointguard', epoch=20, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointguard_classification_mix', decay_rate=0.0001, num_channel=4, per_prob=0.4, inject_prob=0.4, npoints_inj=4, clutter_size_inj=2, channels_per=[0, 1, 2, 3], eps_per=0.5, num_category=2)
+2026-05-24 11:06:21,687 - Model - INFO - Load dataset ...
+2026-05-24 11:06:23,167 - Model - INFO - Start training...
+2026-05-24 11:06:23,167 - Model - INFO - Epoch 1 (1/20):
+2026-05-24 11:10:39,972 - Model - INFO - PARAMETER ...
+2026-05-24 11:10:39,986 - Model - INFO - Namespace(use_cpu=False, gpu='0', batch_size=64, model='pointnet_pointguard', epoch=20, learning_rate=0.001, num_point=16, optimizer='Adam', log_dir='pointguard_classification_mix', decay_rate=0.0001, num_channel=4, per_prob=0.4, inject_prob=0.4, npoints_inj=4, clutter_size_inj=2, channels_per=[0, 1, 2, 3], eps_per=0.5, num_category=2)
+2026-05-24 11:10:39,988 - Model - INFO - Load dataset ...
+2026-05-24 11:10:41,644 - Model - INFO - Start training...
+2026-05-24 11:10:41,644 - Model - INFO - Epoch 1 (1/20):
+2026-05-24 11:17:16,151 - Model - INFO - Train MSE loss: 0.151879
+2026-05-24 11:21:16,130 - Model - INFO - Test MSE loss: 0.157752
+2026-05-24 11:21:16,130 - Model - INFO - Best test MSE loss: 0.157752
+2026-05-24 11:21:16,131 - Model - INFO - Save model...
+2026-05-24 11:21:16,131 - Model - INFO - Saving at log/pointguard/pointguard_classification_mix/epoch_20_npoint_16_bsize_64/checkpoints/best_model.pth
+2026-05-24 11:21:16,307 - Model - INFO - Epoch 2 (2/20):
+2026-05-24 11:21:41,176 - Model - INFO - Train MSE loss: 0.130531
+2026-05-24 11:21:52,367 - Model - INFO - Test MSE loss: 0.117594
+2026-05-24 11:21:52,368 - Model - INFO - Best test MSE loss: 0.117594
+2026-05-24 11:21:52,368 - Model - INFO - Save model...
+2026-05-24 11:21:52,369 - Model - INFO - Saving at log/pointguard/pointguard_classification_mix/epoch_20_npoint_16_bsize_64/checkpoints/best_model.pth
+2026-05-24 11:21:52,807 - Model - INFO - Epoch 3 (3/20):
+2026-05-24 11:22:19,990 - Model - INFO - Train MSE loss: 0.116196
+2026-05-24 11:22:30,238 - Model - INFO - Test MSE loss: 0.143250
+2026-05-24 11:22:30,239 - Model - INFO - Best test MSE loss: 0.117594
+2026-05-24 11:22:30,240 - Model - INFO - Epoch 4 (4/20):
+2026-05-24 11:22:56,367 - Model - INFO - Train MSE loss: 0.110031
+2026-05-24 11:23:07,636 - Model - INFO - Test MSE loss: 0.211703
+2026-05-24 11:23:07,637 - Model - INFO - Best test MSE loss: 0.117594
+2026-05-24 11:23:07,638 - Model - INFO - Epoch 5 (5/20):
+2026-05-24 11:23:32,578 - Model - INFO - Train MSE loss: 0.104351
+2026-05-24 11:23:43,451 - Model - INFO - Test MSE loss: 0.091294
+2026-05-24 11:23:43,452 - Model - INFO - Best test MSE loss: 0.091294
+2026-05-24 11:23:43,453 - Model - INFO - Save model...
+2026-05-24 11:23:43,454 - Model - INFO - Saving at log/pointguard/pointguard_classification_mix/epoch_20_npoint_16_bsize_64/checkpoints/best_model.pth
+2026-05-24 11:23:43,886 - Model - INFO - Epoch 6 (6/20):
+2026-05-24 11:24:10,939 - Model - INFO - Train MSE loss: 0.095345
+2026-05-24 11:24:21,214 - Model - INFO - Test MSE loss: 0.096144
+2026-05-24 11:24:21,220 - Model - INFO - Best test MSE loss: 0.091294
+2026-05-24 11:24:21,222 - Model - INFO - Epoch 7 (7/20):
+2026-05-24 11:24:46,166 - Model - INFO - Train MSE loss: 0.085153
+2026-05-24 11:24:57,499 - Model - INFO - Test MSE loss: 0.104779
+2026-05-24 11:24:57,500 - Model - INFO - Best test MSE loss: 0.091294
+2026-05-24 11:24:57,501 - Model - INFO - Epoch 8 (8/20):
+2026-05-24 11:25:22,362 - Model - INFO - Train MSE loss: 0.074241
+2026-05-24 11:25:32,970 - Model - INFO - Test MSE loss: 0.322439
+2026-05-24 11:25:32,971 - Model - INFO - Best test MSE loss: 0.091294
+2026-05-24 11:25:32,971 - Model - INFO - Epoch 9 (9/20):
+2026-05-24 11:25:58,608 - Model - INFO - Train MSE loss: 0.074700
+2026-05-24 11:26:08,415 - Model - INFO - Test MSE loss: 0.099465
+2026-05-24 11:26:08,417 - Model - INFO - Best test MSE loss: 0.091294
+2026-05-24 11:26:08,417 - Model - INFO - Epoch 10 (10/20):
+2026-05-24 11:26:33,373 - Model - INFO - Train MSE loss: 0.069969
+2026-05-24 11:26:44,096 - Model - INFO - Test MSE loss: 0.151404
+2026-05-24 11:26:44,096 - Model - INFO - Best test MSE loss: 0.091294
+2026-05-24 11:26:44,097 - Model - INFO - Epoch 11 (11/20):
+2026-05-24 11:27:08,120 - Model - INFO - Train MSE loss: 0.063661
+2026-05-24 11:27:18,807 - Model - INFO - Test MSE loss: 0.128813
+2026-05-24 11:27:18,808 - Model - INFO - Best test MSE loss: 0.091294
+2026-05-24 11:27:18,809 - Model - INFO - Epoch 12 (12/20):
+2026-05-24 11:27:43,762 - Model - INFO - Train MSE loss: 0.065659
+2026-05-24 11:27:53,648 - Model - INFO - Test MSE loss: 0.125561
+2026-05-24 11:27:53,649 - Model - INFO - Best test MSE loss: 0.091294
+2026-05-24 11:27:53,650 - Model - INFO - Epoch 13 (13/20):
+2026-05-24 11:28:18,594 - Model - INFO - Train MSE loss: 0.066820
+2026-05-24 11:28:28,964 - Model - INFO - Test MSE loss: 0.142840
+2026-05-24 11:28:28,966 - Model - INFO - Best test MSE loss: 0.091294
+2026-05-24 11:28:28,966 - Model - INFO - Epoch 14 (14/20):
+2026-05-24 11:28:53,157 - Model - INFO - Train MSE loss: 0.059873
+2026-05-24 11:29:03,945 - Model - INFO - Test MSE loss: 0.087559
+2026-05-24 11:29:03,947 - Model - INFO - Best test MSE loss: 0.087559
+2026-05-24 11:29:03,947 - Model - INFO - Save model...
+2026-05-24 11:29:03,948 - Model - INFO - Saving at log/pointguard/pointguard_classification_mix/epoch_20_npoint_16_bsize_64/checkpoints/best_model.pth
+2026-05-24 11:29:04,365 - Model - INFO - Epoch 15 (15/20):
+2026-05-24 11:29:30,213 - Model - INFO - Train MSE loss: 0.057559
+2026-05-24 11:29:40,079 - Model - INFO - Test MSE loss: 0.160828
+2026-05-24 11:29:40,080 - Model - INFO - Best test MSE loss: 0.087559
+2026-05-24 11:29:40,080 - Model - INFO - Epoch 16 (16/20):
+2026-05-24 11:30:05,534 - Model - INFO - Train MSE loss: 0.055543
+2026-05-24 11:30:15,304 - Model - INFO - Test MSE loss: 0.177162
+2026-05-24 11:30:15,305 - Model - INFO - Best test MSE loss: 0.087559
+2026-05-24 11:30:15,306 - Model - INFO - Epoch 17 (17/20):
+2026-05-24 11:30:40,059 - Model - INFO - Train MSE loss: 0.051924
+2026-05-24 11:30:50,924 - Model - INFO - Test MSE loss: 0.140798
+2026-05-24 11:30:50,926 - Model - INFO - Best test MSE loss: 0.087559
+2026-05-24 11:30:50,926 - Model - INFO - Epoch 18 (18/20):
+2026-05-24 11:31:14,879 - Model - INFO - Train MSE loss: 0.051999
+2026-05-24 11:31:25,435 - Model - INFO - Test MSE loss: 0.075759
+2026-05-24 11:31:25,437 - Model - INFO - Best test MSE loss: 0.075759
+2026-05-24 11:31:25,440 - Model - INFO - Save model...
+2026-05-24 11:31:25,441 - Model - INFO - Saving at log/pointguard/pointguard_classification_mix/epoch_20_npoint_16_bsize_64/checkpoints/best_model.pth
+2026-05-24 11:31:25,824 - Model - INFO - Epoch 19 (19/20):
+2026-05-24 11:31:53,003 - Model - INFO - Train MSE loss: 0.048389
+2026-05-24 11:32:02,749 - Model - INFO - Test MSE loss: 0.075922
+2026-05-24 11:32:02,751 - Model - INFO - Best test MSE loss: 0.075759
+2026-05-24 11:32:02,752 - Model - INFO - Epoch 20 (20/20):
+2026-05-24 11:32:27,663 - Model - INFO - Train MSE loss: 0.046816
+2026-05-24 11:32:38,372 - Model - INFO - Test MSE loss: 0.047301
+2026-05-24 11:32:38,373 - Model - INFO - Best test MSE loss: 0.047301
+2026-05-24 11:32:38,374 - Model - INFO - Save model...
+2026-05-24 11:32:38,375 - Model - INFO - Saving at log/pointguard/pointguard_classification_mix/epoch_20_npoint_16_bsize_64/checkpoints/best_model.pth
+2026-05-24 11:32:38,784 - Model - INFO - End of training...

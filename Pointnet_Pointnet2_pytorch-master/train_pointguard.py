@@ -32,7 +32,7 @@ def parse_args():
     parser.add_argument('--gpu', type=str, default='0', help='specify gpu device')
     parser.add_argument('--batch_size', type=int, default=64, help='batch size in training')
     parser.add_argument('--model', default='pointnet_cls', help='model name [default: pointnet_cls]')
-    parser.add_argument('--epoch', default=200, type=int, help='number of epoch in training')
+    parser.add_argument('--epoch', default=20, type=int, help='number of epoch in training')
     parser.add_argument('--learning_rate', default=0.001, type=float, help='learning rate in training')
     parser.add_argument('--num_point', type=int, default=16, help='Point Number')
     parser.add_argument('--optimizer', type=str, default='Adam', help='optimizer for training')
@@ -47,7 +47,7 @@ def parse_args():
     parser.add_argument('--clutter_size_inj', type=int, default=2, help='The approximate number od points for the injected clutter')
     # add parameters for perturbation attack
     parser.add_argument('--channels_per', type=int, nargs='+', default=[0, 1, 2, 3], help='Channels of Perturbation')
-    parser.add_argument('--eps_per', type=float, default=1, help='Eps of Perturbation')
+    parser.add_argument('--eps_per', type=float, default=0.5, help='Eps of Perturbation')
     # keep some parameters just to pass to ModelLoader
     parser.add_argument('--num_category', default=2, type=int, choices=[2, 10, 40],  help='training on ModelNet10/40')
     return parser.parse_args()
@@ -70,7 +70,7 @@ def test(model, loader):
         target = target.squeeze(2)
 
         points = points.transpose(2,1)
-        pred, _ = scorer(points)
+        pred, _, _ = scorer(points)
         
         mse = F.mse_loss(pred, target.float()).item()
         mse_ls.append(mse)
@@ -179,7 +179,7 @@ def main(args):
             target = target.squeeze(2)
 
             points = points.transpose(2,1)
-            pred, trans_feat = scorer(points)
+            pred, trans_feat, _ = scorer(points)
             loss = criterion(pred, target, trans_feat)
 
             mse_ls.append(F.mse_loss(pred, target))
