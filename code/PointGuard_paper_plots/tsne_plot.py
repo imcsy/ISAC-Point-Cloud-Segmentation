@@ -147,7 +147,7 @@ plot_results(embedding_pn, embedding_pg, scores_pg_subset, scores_pn_subnet, lab
 
 
 #%%
-data_path = r"G:\我的云端硬盘\THESIS\Pointnet_Pointnet2_pytorch-master\log\pointguard\pointguard_classification_mix_small\epoch_20_npoint_16_bsize_64\numerical result\ablation_data.pt"
+data_path = r"G:\我的云端硬盘\THESIS\Pointnet_Pointnet2_pytorch-master\log\pointguard\pointguard_classification_mix_small\epoch_20_npoint_16_bsize_64\numerical result\ablation_data_unseen.pt"
 
 data = torch.load(data_path, map_location=torch.device('cpu'))
 
@@ -159,31 +159,31 @@ labels = data['labels'].numpy().flatten()
 
 def check_scores():
     # scores_pg_dis = np.exp(scores_pg_dis).reshape(-1,2)[:,1]
-    print("MSE of PointGuard:", np.mean((scores_pg-gt_scores)**2))
     print("MSE of PointNet:", np.mean((scores_pn-gt_scores)**2))
+    print("MSE of PointGuard:", np.mean((scores_pg-gt_scores)**2))
     print("MSE of PointGuard + Discriminator:", np.mean((scores_pg_dis-gt_scores)**2))
 
-    delta_pg = scores_pg - gt_scores
-    delta_pn = scores_pn - gt_scores
-    delta_pg_dis = scores_pg_dis - gt_scores
+    # delta_pg = scores_pg - gt_scores
+    # delta_pn = scores_pn - gt_scores
+    # delta_pg_dis = scores_pg_dis - gt_scores
 
-    fig, ax = plt.subplots(figsize=(8, 6))
+    # fig, ax = plt.subplots(figsize=(8, 6))
 
-    # Plot overlapping histograms with transparency (alpha)
-    ax.hist(delta_pg, bins=30, alpha=0.6, label=r'$\delta_{pg}$ (scores_pg - gt_scores)', color='steelblue', edgecolor='black')
-    ax.hist(delta_pn, bins=30, alpha=0.6, label=r'$\delta_{pn}$ (scores_pn - gt_scores)', color='darkorange', edgecolor='black')
-    ax.hist(delta_pg_dis, bins=30, alpha=0.6, label=r'$\delta_{pndis}$ (scores_pn_dis - gt_scores)', color='pink', edgecolor='black')
+    # # Plot overlapping histograms with transparency (alpha)
+    # ax.hist(delta_pn, bins=30, alpha=0.6, label=r'$\delta_{pn}$ (scores_pn - gt_scores)', color='darkorange', edgecolor='black')
+    # ax.hist(delta_pg, bins=30, alpha=0.6, label=r'$\delta_{pg}$ (scores_pg - gt_scores)', color='steelblue', edgecolor='black')
+    # ax.hist(delta_pg_dis, bins=30, alpha=0.6, label=r'$\delta_{pndis}$ (scores_pn_dis - gt_scores)', color='pink', edgecolor='black')
 
-    # 4. Add formatting and labels
-    ax.set_xlabel(r'Difference ($\delta$)', fontsize=12)
-    ax.set_ylabel('Frequency', fontsize=12)
-    ax.set_title(r'Distribution of $\delta_{pg}$ and $\delta_{pn}$', fontsize=14)
-    ax.legend(fontsize=10)
-    ax.grid(True, linestyle='--', alpha=0.5)
+    # # 4. Add formatting and labels
+    # ax.set_xlabel(r'Difference ($\delta$)', fontsize=12)
+    # ax.set_ylabel('Frequency', fontsize=12)
+    # ax.set_title(r'Distribution of $\delta_{pg}$ and $\delta_{pn}$', fontsize=14)
+    # ax.legend(fontsize=10)
+    # ax.grid(True, linestyle='--', alpha=0.5)
 
-    # Adjust layout and save the plot
-    plt.tight_layout()
-    plt.savefig('delta_distribution.png')
+    # # Adjust layout and save the plot
+    # plt.tight_layout()
+    # # plt.savefig('delta_distribution.png')
 
 def evaluate_scores(labels, scores, name="Model"):
     # AUC
@@ -198,7 +198,7 @@ def evaluate_scores(labels, scores, name="Model"):
     best_thresh = thresholds[best_idx]
 
     # Binary prediction using best threshold
-    preds = (scores >= best_thresh).astype(int)
+    preds = (scores >= 0.5).astype(int)
 
     # F1
     f1 = f1_score(labels, preds)
@@ -211,7 +211,70 @@ def evaluate_scores(labels, scores, name="Model"):
 
     return auc, best_thresh, f1
 
+check_scores()
 
-evaluate_scores(labels, scores_pg, "PointGuard")
 evaluate_scores(labels, scores_pn, "PointNet")
+evaluate_scores(labels, scores_pg, "PointGuard")
 evaluate_scores(labels, scores_pg_dis, "PG Discriminator")
+
+
+#%%
+import matplotlib.pyplot as plt
+import numpy as np
+
+# -----------------------------
+# Data
+# -----------------------------
+scenarios = ['Mixed', 'Small', 'Extreme', 'Unseen']
+
+pointnet_seg = {
+    'MSE': [0.16045323, 0.14009212, 0.1355, 0.1522774],
+    'AUC': [0.7729, 0.6207, 0.8156, 0.5967],
+    'F1':  [0.7636, 0.5927, 0.7168, 0.5691]
+}
+
+pointguard = {
+    'MSE': [0.079084784, 0.048572235, 0.0823, 0.1169044],
+    'AUC': [0.8180, 0.6081, 0.7980, 0.6178],
+    'F1':  [0.7947, 0.5592, 0.7471, 0.6148]
+}
+
+pointguard_disc = {
+    'MSE': [0.10631681, 0.074893266, 0.1193, 0.10820968],
+    'AUC': [0.8142, 0.6051, 0.8093, 0.6149],
+    'F1':  [0.7963, 0.5379, 0.7427, 0.6052]
+}
+
+# -----------------------------
+# Plot settings
+# -----------------------------
+def plot_metric(metric_name, ylabel):
+    x = np.arange(len(scenarios))
+    width = 0.25
+
+    plt.figure(figsize=(6,4))
+
+    plt.bar(x - width, pointnet_seg[metric_name],
+            width, label='PointNet_seg')
+
+    plt.bar(x, pointguard[metric_name],
+            width, label='PointGuard')
+
+    plt.bar(x + width, pointguard_disc[metric_name],
+            width, label='PointGuard_Dis')
+
+    plt.xticks(x, scenarios)
+    plt.ylabel(ylabel)
+    # plt.title(f'{metric_name} Comparison')
+    plt.grid(axis='y', linestyle='--', alpha=0.5)
+
+    plt.legend()
+    plt.tight_layout()
+    plt.show()
+
+# -----------------------------
+# Plot each metric separately
+# -----------------------------
+plot_metric('MSE', 'MSE')
+plot_metric('AUC', 'AUC')
+plot_metric('F1', 'F1')

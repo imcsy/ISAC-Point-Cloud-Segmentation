@@ -61,7 +61,7 @@ def parse_args():
     parser.add_argument('--clutter_size_inj', type=int, default=2, help='The approximate number od points for the injected clutter')
     # add parameters for perturbation attack
     parser.add_argument('--channels_per', type=int, nargs='+', default=[0, 1, 2, 3], help='Channels of Perturbation')
-    parser.add_argument('--eps_per', type=float, default=1, help='Eps of Perturbation')
+    parser.add_argument('--eps_per', type=float, default=1.5, help='Eps of Perturbation')
     # keep some parameters just to pass to ModelLoader
     parser.add_argument('--num_category', default=2, type=int, choices=[2, 10, 40],  help='training on ModelNet10/40')
     parser.add_argument('--num_channel', type=int, default=5, help='Input Channel Number')  

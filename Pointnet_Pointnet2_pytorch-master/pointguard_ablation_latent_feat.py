@@ -45,8 +45,8 @@ def parse_args():
     parser.add_argument('--epoch', default=20, type=int, help='number of epoch in training')
     parser.add_argument('--num_point', type=int, default=16, help='Point Number')
     # probability of two attacks
-    parser.add_argument('--per_prob', type=float, default=0.8, help='Data proportion of Perturbation')
-    parser.add_argument('--inject_prob', type=float, default=0, help='Data Proportion of Injection')
+    parser.add_argument('--per_prob', type=float, default=0.4, help='Data proportion of Perturbation')
+    parser.add_argument('--inject_prob', type=float, default=0.4, help='Data Proportion of Injection')
     # add parameters for injection attack
     parser.add_argument('--npoints_inj', type=int, default=4, help='Number of Points Injected')
     parser.add_argument('--clutter_size_inj', type=int, default=2, help='The approximate number od points for the injected clutter')
