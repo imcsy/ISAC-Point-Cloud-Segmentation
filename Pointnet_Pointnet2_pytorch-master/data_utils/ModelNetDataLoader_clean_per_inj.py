@@ -231,7 +231,7 @@ def perturb_partial_attack(clean_points, channels=[0,1,2,3], eps_max=1.5):
             chamfer distance
     '''
     # eps = random.uniform(0, eps_max)
-    eps = eps_max
+    eps = random.uniform(0, eps_max)
     per_points = clean_points.copy()       # (N, 4)
     sigma = np.array([0.5, 0.5, 0.5, 1])          # [0.7221, 0.6430, 0.3123, 4.4498]
 

@@ -130,7 +130,42 @@ class PointNetEncoder(nn.Module):
         else:
             x = x.view(-1, 1024, 1).repeat(1, 1, N) # (B,1024,N)
             return torch.cat([x, pointfeat], 1), trans, trans_feat  # (B,1024+64,N)  (B,3,3)  (B,64,64)
-        
+    
+
+class PointNetEncoder_small(nn.Module):
+    def __init__(self, global_feat=True, channel=3):
+        super(PointNetEncoder_small, self).__init__()
+        self.stn = STN3d(channel)
+        self.conv1 = torch.nn.Conv1d(channel, 32, 1)
+        self.bn1 = nn.BatchNorm1d(32)
+        self.conv2 = torch.nn.Conv1d(32, 128, 1)
+        self.bn2 = nn.BatchNorm1d(128)
+        self.global_feat = global_feat
+
+
+    def forward(self, x):
+        B, D, N = x.size()      # batch size, input dim, npoints (B,4,N)
+        trans = self.stn(x)     # (B,3,3)  # from STN3d
+        x = x.transpose(2, 1)   # (B,N,4)
+        if D > 3:
+            feature = x[:, :, 3:]   # (B,N,1)
+            x = x[:, :, :3]         # (B,N,3)
+        x = torch.bmm(x, trans)     # (B,N,3)      # make it invariant to geometric transformations
+        if D > 3:
+            x = torch.cat([x, feature], dim=2)      # (B,N,4)
+        x = x.transpose(2, 1)                       # (B,4,N)
+        x = F.relu(self.bn1(self.conv1(x)))         # (B,32,N)
+
+        pointfeat = x                               # (B,32,N)
+        x = self.bn2(self.conv2(x))         # (B,128,N)
+        x = torch.max(x, 2, keepdim=True)[0]        # (B,128,1)
+        x = x.view(-1, 128)                        # (B,128)
+        if self.global_feat:
+            return x, trans, pointfeat             # (B,128)  (B,3,3) 
+        else:
+            x = x.view(-1, 128, 1).repeat(1, 1, N) # (B,1024,N)
+            return torch.cat([x, pointfeat], 1), trans, pointfeat  # (B,128+32,N)  (B,3,3)  
+
 
 class PointNetEncoder_PointGuard(nn.Module):
     def __init__(self, global_feat=True, feature_transform=False, channel=5):
