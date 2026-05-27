@@ -163,7 +163,7 @@ class PointNetEncoder_small(nn.Module):
         if self.global_feat:
             return x, trans, pointfeat             # (B,128)  (B,3,3) 
         else:
-            x = x.view(-1, 128, 1).repeat(1, 1, N) # (B,1024,N)
+            x = x.view(-1, 128, 1).repeat(1, 1, N) # (B,128,N)
             return torch.cat([x, pointfeat], 1), trans, pointfeat  # (B,128+32,N)  (B,3,3)  
 
 

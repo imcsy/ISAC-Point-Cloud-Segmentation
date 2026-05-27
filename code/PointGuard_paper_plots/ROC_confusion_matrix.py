@@ -53,19 +53,19 @@ for i in range(N_baselines):
 
     # Plot ROC
     width = 13
-    plt.plot(fpr, tpr, linewidth=2, label=f'{baseline_ls[i]}', color=baseline_colors[i])
+    plt.plot(fpr, tpr, linewidth=3, label=f'{baseline_ls[i]}', color=baseline_colors[i])
     # plt.plot(fpr, tpr, linewidth=2, label=f'{baseline_ls[i]:<{width}} AUC = {roc_auc:.4f}', color=baseline_colors[i])
 
     # Mark best point
-    plt.scatter(fpr[best_idx], tpr[best_idx], s=150, marker='^', color=baseline_colors[i])
+    plt.scatter(fpr[best_idx], tpr[best_idx], s=200, marker='^', color=baseline_colors[i])
 
 # Random classifier line
 plt.plot([0,1], [0,1], linestyle='--', linewidth=2, color="#BEBBAA")
-plt.xlabel("False Positive Rate", fontsize=22)
-plt.ylabel("True Positive Rate", fontsize=22)
+plt.xlabel("False Positive Rate", fontsize=30)
+plt.ylabel("True Positive Rate", fontsize=30)
 plt.xticks(fontsize=20)
 plt.yticks(fontsize=20)
-plt.legend(loc="lower right", fontsize=22) #, prop={'family': 'monospace', 'size': 20})
+plt.legend(loc="lower right", fontsize=26) #, prop={'family': 'monospace', 'size': 20})
 
 plt.grid(True)
 plt.tight_layout()

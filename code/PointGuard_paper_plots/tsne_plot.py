@@ -252,7 +252,7 @@ def plot_metric(metric_name, ylabel):
     x = np.arange(len(scenarios))
     width = 0.25
 
-    plt.figure(figsize=(6,4))
+    plt.figure(figsize=(12,8))
 
     plt.bar(x - width, pointnet_seg[metric_name],
             width, label='PointNet_seg')
@@ -263,12 +263,13 @@ def plot_metric(metric_name, ylabel):
     plt.bar(x + width, pointguard_disc[metric_name],
             width, label='PointGuard_Dis')
 
-    plt.xticks(x, scenarios)
-    plt.ylabel(ylabel)
+    plt.xticks(x, scenarios, fontsize=36)
+    plt.yticks(fontsize=30)
+    plt.ylabel(ylabel, fontsize=36)
     # plt.title(f'{metric_name} Comparison')
     plt.grid(axis='y', linestyle='--', alpha=0.5)
 
-    plt.legend()
+    plt.legend(fontsize=28, loc='lower right')
     plt.tight_layout()
     plt.show()
 

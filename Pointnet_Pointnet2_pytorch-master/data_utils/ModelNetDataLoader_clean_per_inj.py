@@ -150,7 +150,7 @@ def inject_attack(clean_points, npoints_inj, clutter_size_inj):
     return inj_points_aug, cd       # inj_points_aug (N + npoints_inj, 5);  cd (1)
 
 
-def inject_attack_onoff_surface(clean_points, npoints_inj, clutter_size_inj):
+def inject_attack_on_surface(clean_points, npoints_inj, clutter_size_inj):
     '''
     input: a clean point set, 
            npoints_inj: number of points injected
@@ -238,7 +238,7 @@ def perturb_partial_attack(clean_points, channels=[0,1,2,3], eps_max=1.5):
     noise = np.random.randn(clean_points.shape[0], len(channels)) 
     jitter = noise * sigma[channels] * eps
     N = clean_points.shape[0]
-    mask = (np.random.rand(N, 1) < 0.6).astype(np.float32)
+    mask = (np.random.rand(N, 1) < 0.2).astype(np.float32)
     per_points[:, channels] += jitter * mask                # (N, 4)
 
     cd, _, d_SpS = Chamfer_Dist(clean_points, per_points)   # cd (1);  d_SpS (N)
@@ -351,7 +351,7 @@ class ModelNetDataLoader_clean_per_inj(Dataset):
             if idx == 0:
                 point_set_aug, cd = perturb_partial_attack(point_set, channels=self.channels_per, eps_max=self.eps_per)
             elif idx == 1:
-                point_set_aug, cd = inject_attack(point_set, npoints_inj=self.npoints_inj, clutter_size_inj=self.clutter_size_inj)
+                point_set_aug, cd = inject_attack_on_surface(point_set, npoints_inj=self.npoints_inj, clutter_size_inj=self.clutter_size_inj)
             elif idx == 2:
                 point_set_aug, cd = removal_attack(point_set)
             elif idx == 3:

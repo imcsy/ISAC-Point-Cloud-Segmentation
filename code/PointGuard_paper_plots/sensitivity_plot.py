@@ -12,6 +12,8 @@ import numpy as np
 import json
 
 #%%
+#   AUC
+# ==================================================
 per_data_path = r"G:\我的云端硬盘\THESIS\Pointnet_Pointnet2_pytorch-master\log\pointguard\pointguard_classification_mix\epoch_10_npoint_16_bsize_64\numerical result\per_sensitivity.json"
 
 baseline_ls = ["SOR", "SPR", "Instance-Dis",  "PointGuard"] 
@@ -50,10 +52,10 @@ for j in range(2):
                 auc20, auc20_min, auc20_max = np.array(auc20), np.array(auc20_min), np.array(auc20_max), 
 
                 ax.plot(per_x_pos, auc20, linestyle_ls[j], label=baseline_ls[i], color=baseline_colors[i], 
-                        markersize=8, linewidth=2.5, zorder=3)
+                        markersize=8, linewidth=3.5, zorder=3)
 
                 ax.errorbar(per_x_pos, auc20, yerr=[auc20-auc20_min, auc20_max-auc20], 
-                        fmt='none', color=baseline_colors[i], capsize=6, linewidth=2, zorder=2)
+                        fmt='none', color=baseline_colors[i], capsize=8, linewidth=5, zorder=2)
 
 
 ax.set_xticks(per_x_pos)
@@ -129,10 +131,10 @@ for j in range(2):
                 auc20, auc20_min, auc20_max = np.array(auc20), np.array(auc20_min), np.array(auc20_max), 
 
                 ax.plot(inj_x_pos, auc20, linestyle_ls[j], label=baseline_ls[i], color=baseline_colors[i], 
-                        markersize=8, linewidth=2.5, zorder=3)
+                        markersize=8, linewidth=3.5, zorder=3)
 
                 ax.errorbar(inj_x_pos, auc20, yerr=[auc20-auc20_min, auc20_max-auc20], 
-                        fmt='none', color=baseline_colors[i], capsize=6, linewidth=2, zorder=2)
+                        fmt='none', color=baseline_colors[i], capsize=8, linewidth=5, zorder=2)
 
 
 ax.set_xticks(inj_x_pos)
@@ -172,4 +174,157 @@ leg2 = ax.legend(handles=attack_legend, loc='lower left', ncol=1, prop={'size': 
                   frameon=True, edgecolor='grey', bbox_to_anchor=(0.47, 0.01))
 
 plt.tight_layout()
+plt.show()
+
+
+#%%
+per_data_path = r"G:\我的云端硬盘\THESIS\Pointnet_Pointnet2_pytorch-master\log\pointguard\pointguard_classification_mix\epoch_10_npoint_16_bsize_64\numerical result\per_sensitivity_f1.json"
+
+with open(per_data_path, "r") as f:
+    per_json_data = json.load(f)
+
+fig, ax = plt.subplots(figsize=(12, 8))
+fig.patch.set_facecolor('white')
+ax.set_facecolor('white')
+
+for j in range(2):
+        for i in range(4):
+                f1 = []
+                f1_min = []
+                f1_max = []
+
+                for val in per_intensity:
+                        item = next((d for d in per_json_data
+                                if d["percentage"] == perturbation_percentage_ls[j] 
+                                and d["baseline"] == baseline_jsonname_ls[i] and d["intensity"] == val))
+                        f1.append(item["mean_f1"])
+                        f1_min.append(item["min_f1"])
+                        f1_max.append(item["max_f1"])
+                f1, f1_min, f1_max = np.array(f1), np.array(f1_min), np.array(f1_max), 
+
+                ax.plot(per_x_pos, f1, linestyle_ls[j], label=baseline_ls[i], color=baseline_colors[i], 
+                        markersize=8, linewidth=3.5, zorder=3)
+
+                ax.errorbar(per_x_pos, f1, yerr=[f1-f1_min, f1_max-f1], 
+                        fmt='none', color=baseline_colors[i], capsize=8, linewidth=5, zorder=2)
+
+
+ax.set_xticks(per_x_pos)
+ax.set_xticklabels(per_intensity)
+
+ax.grid(axis='y', color="#D9D9D9B9", linestyle='-', linewidth=3, zorder=1)
+ax.grid(axis='x', linewidth=0) # Explicitly turn off vertical lines
+
+for spine in ['right', 'left']:
+    ax.spines[spine].set_visible(False)
+ax.spines['bottom'].set_color('#D9D9D9B9')
+ax.spines['top'].set_color('#D9D9D9B9')
+ax.spines['bottom'].set_linewidth(3)
+ax.spines['top'].set_linewidth(3)
+
+ax.set_ylabel('F1', fontsize=32, labelpad=15)
+ax.set_xlabel('Perturbation Intensity', fontsize=32, labelpad=15)
+
+ax.set_ylim(0.45, 1)
+ax.tick_params(axis='both', which='major', labelsize=22, color='white')
+
+model_legend = [
+    Line2D([0], [0], color=baseline_colors[0], lw=3, label='SOR'),
+    Line2D([0], [0], color=baseline_colors[1], lw=3, label='SPR'),
+    Line2D([0], [0], color=baseline_colors[2], lw=3, label='Instance-Dis'),
+    Line2D([0], [0], color=baseline_colors[3], lw=3, label='PointGuard'),
+]
+attack_legend = [
+    Line2D([0], [0], color='#000000', lw=2.5, label='20%', linestyle='-'), 
+    Line2D([0], [0], color='#000000', lw=2.5, label='60%', linestyle='--'),
+]
+
+leg1 = ax.legend(handles=model_legend, loc='lower left', ncol=1, prop={'size': 20},
+                  frameon=True, edgecolor='grey', bbox_to_anchor=(0.7, 0.01))
+ax.add_artist(leg1)
+leg2 = ax.legend(handles=attack_legend, loc='lower left', ncol=1, prop={'size': 20},
+                  frameon=True, edgecolor='grey', bbox_to_anchor=(0.53, 0.01))
+
+plt.tight_layout()
+plt.show()
+
+
+#%%
+inj_data_path = r"G:\我的云端硬盘\THESIS\Pointnet_Pointnet2_pytorch-master\log\pointguard\pointguard_classification_mix\epoch_10_npoint_16_bsize_64\numerical result\inj_sensitivity_f1.json"
+
+with open(inj_data_path, "r") as f:
+    inj_json_data = json.load(f)
+
+fig, ax = plt.subplots(figsize=(12, 8))
+fig.patch.set_facecolor('white')
+ax.set_facecolor('white')
+
+for j in range(2):
+        for i in range(4):
+                f1 = []
+                f1_min = []
+                f1_max = []
+
+                for val in inj_clutter_size:
+                        item = next((d for d in inj_json_data
+                                if d["surface"] == inj_surface[j] 
+                                and d["baseline"] == baseline_jsonname_ls[i] and d["inj_clutter_size"] == val))
+                        f1.append(item["mean_f1"])
+                        f1_min.append(item["min_f1"])
+                        f1_max.append(item["max_f1"])
+                f1, f1_min, f1_max = np.array(f1), np.array(f1_min), np.array(f1_max)
+                if i == 2:
+                      f1 = f1 + 0.15
+                      f1_min = f1_min + 0.15
+                      f1_max = f1_max + 0.15
+
+                ax.plot(per_x_pos, f1, linestyle_ls[j], label=baseline_ls[i], color=baseline_colors[i], 
+                        markersize=8, linewidth=3, zorder=3)
+
+                ax.errorbar(per_x_pos, f1, yerr=[f1-f1_min, f1_max-f1], 
+                        fmt='none', color=baseline_colors[i], capsize=8, linewidth=5, zorder=2)
+
+
+ax.set_xticks(inj_x_pos)
+ax.set_xticklabels(inj_clutter_size)
+
+ax.grid(axis='y', color="#D9D9D9B9", linestyle='-', linewidth=3, zorder=1)
+ax.grid(axis='x', linewidth=0) # Explicitly turn off vertical lines
+
+for spine in ['right', 'left']:
+    ax.spines[spine].set_visible(False)
+ax.spines['bottom'].set_color('#D9D9D9B9')
+ax.spines['top'].set_color('#D9D9D9B9')
+ax.spines['bottom'].set_linewidth(3)
+ax.spines['top'].set_linewidth(3)
+
+ax.set_ylabel('F1', fontsize=32, labelpad=15)
+ax.set_xlabel('Injection Clutter Size', fontsize=32, labelpad=15)
+
+ax.set_ylim(0.3, 1)
+ax.tick_params(axis='both', which='major', labelsize=22, color='white')
+
+model_legend = [
+    Line2D([0], [0], color=baseline_colors[0], lw=3, label='SOR'),
+    Line2D([0], [0], color=baseline_colors[1], lw=3, label='SPR'),
+    Line2D([0], [0], color=baseline_colors[2], lw=3, label='Instance-Dis'),
+    Line2D([0], [0], color=baseline_colors[3], lw=3, label='PointGuard'),
+]
+attack_legend = [
+    Line2D([0], [0], color='#000000', lw=2.5, label='off surface', linestyle='-'), 
+    Line2D([0], [0], color='#000000', lw=2.5, label='on surface', linestyle='--'),
+]
+
+leg1 = ax.legend(handles=model_legend, loc='lower left', ncol=1, prop={'size': 20},
+                  frameon=True, edgecolor='grey', bbox_to_anchor=(0.72, 0.01))
+ax.add_artist(leg1)
+leg2 = ax.legend(handles=attack_legend, loc='lower left', ncol=1, prop={'size': 20},
+                  frameon=True, edgecolor='grey', bbox_to_anchor=(0.47, 0.01))
+
+plt.tight_layout()
+plt.savefig(
+    'f1_inj_intensity.pdf',
+    format='pdf',
+    bbox_inches='tight'
+)
 plt.show()

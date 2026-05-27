@@ -19,7 +19,8 @@ from sklearn.metrics import (
     roc_curve,
     auc,
     confusion_matrix,
-    ConfusionMatrixDisplay
+    ConfusionMatrixDisplay,
+    f1_score
 )
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -70,7 +71,7 @@ def test_pointguard(scorer, loader):
         target = target.squeeze(2)          # target (B,N)
 
         points = points.transpose(2,1)
-        pred, _ = scorer(points)            # pred (B,N)
+        pred, _, _ = scorer(points)            # pred (B,N)
 
         # Move to CPU and flatten
         all_preds.append(pred.detach().cpu().reshape(-1))
@@ -274,22 +275,28 @@ def main(args):
         args.clutter_size_inj = val
 
         all_aucs = []
+        all_f1 = []
         
         for run in range(N_runs):
             test_dataset = ModelNetDataLoader_clean_per_inj(root=data_path, args=args, split='test', process_data=False,  per_prob=args.per_prob, inject_prob=args.inject_prob)
             testDataLoader = torch.utils.data.DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False, num_workers=10)
             
+            threshold = -1
             if args.baseline == "pointguard":
                 with torch.no_grad():
                     all_targets, all_preds = test_pointguard(scorer, testDataLoader)
+                    threshold = 0.7936
             elif args.baseline == "sor":
                 with torch.no_grad():
                     all_targets, all_preds = test_SOR(testDataLoader, k=7)
+                    threshold = 0.9154 
             elif args.baseline == "spr":
                 all_targets, all_preds = test_SPR(testDataLoader)
+                threshold = 0.9451 
             elif args.baseline == "discriminator":
                 with torch.no_grad():
                     all_targets, all_preds = test_discriminator(testDataLoader)
+                    threshold = 0.2786 
 
             all_targets[all_targets < 1] = 0
             all_targets, all_preds = all_targets.cpu(), all_preds.cpu()
@@ -297,19 +304,76 @@ def main(args):
             roc_auc = auc(fpr, tpr)
             all_aucs.append(roc_auc)
 
-        all_aucs = np.array(all_aucs)   
+            # best threshold
+            threshold = thresholds[np.argmax(tpr-fpr)]
+
+            all_pred_labels = (all_preds > threshold).float()
+            print(all_targets.shape, all_pred_labels.shape)
+            print(all_targets.mean(), all_pred_labels.mean())
+            f1 = f1_score(all_targets, all_pred_labels)
+            all_f1.append(f1)
+
+        #   F1 with fixed threshold from default attack settings
+        # ==================================================
+        # all_f1 = np.array(all_f1)
+        # results = {
+        #     "percentage": 0.20,
+        #     "baseline": args.baseline,
+        #     "intensity": val,
+        #     "mean_f1": float(all_f1.mean()),
+        #     "std_f1": float(all_f1.std()),
+        #     "min_f1": float(all_f1.min()),
+        #     "max_f1": float(all_f1.max()),
+        #     "all_f1": all_f1.tolist()
+        # }
+        # save_path = '/content/drive/MyDrive/THESIS/Pointnet_Pointnet2_pytorch-master/log/pointguard/pointguard_classification_mix/epoch_10_npoint_16_bsize_64/numerical result/per_sensitivity_f1.json'
+
+        all_f1 = np.array(all_f1)
         results = {
             "surface": "on",
             "baseline": args.baseline,
             "inj_clutter_size": val,
-            "mean_auc": float(all_aucs.mean()),
-            "std_auc": float(all_aucs.std()),
-            "min_auc": float(all_aucs.min()),
-            "max_auc": float(all_aucs.max()),
-            "all_aucs": all_aucs.tolist()
+            "mean_f1": float(all_f1.mean()),
+            "std_f1": float(all_f1.std()),
+            "min_f1": float(all_f1.min()),
+            "max_f1": float(all_f1.max()),
+            "all_f1": all_f1.tolist()
         }
+        save_path = '/content/drive/MyDrive/THESIS/Pointnet_Pointnet2_pytorch-master/log/pointguard/pointguard_classification_mix/epoch_10_npoint_16_bsize_64/numerical result/inj_sensitivity_f1.json'
+
+
+
+        #   AUC with no fixed threshold
+        # ==================================================
+        # all_aucs = np.array(all_aucs)   
+        # results = {
+        #     "surface": "on",
+        #     "baseline": args.baseline,
+        #     "inj_clutter_size": val,
+        #     "mean_auc": float(all_aucs.mean()),
+        #     "std_auc": float(all_aucs.std()),
+        #     "min_auc": float(all_aucs.min()),
+        #     "max_auc": float(all_aucs.max()),
+        #     "all_aucs": all_aucs.tolist()
+        # }
         
-        save_path = '/content/drive/MyDrive/THESIS/Pointnet_Pointnet2_pytorch-master/log/pointguard/pointguard_classification_mix/epoch_10_npoint_16_bsize_64/numerical result/inj_sensitivity.json'
+        # save_path = '/content/drive/MyDrive/THESIS/Pointnet_Pointnet2_pytorch-master/log/pointguard/pointguard_classification_mix/epoch_10_npoint_16_bsize_64/numerical result/inj_sensitivity.json'
+
+        # results = {
+        #     "percentage": 0.50,
+        #     "baseline": args.baseline,
+        #     "intensity": val,
+        #     "mean_auc": float(all_aucs.mean()),
+        #     "std_auc": float(all_aucs.std()),
+        #     "min_auc": float(all_aucs.min()),
+        #     "max_auc": float(all_aucs.max()),
+        #     "all_aucs": all_aucs.tolist()
+        # }
+        
+        # save_path = '/content/drive/MyDrive/THESIS/Pointnet_Pointnet2_pytorch-master/log/pointguard/pointguard_classification_mix/epoch_10_npoint_16_bsize_64/numerical result/per_sensitivity.json'
+
+
+
         os.makedirs(os.path.dirname(save_path), exist_ok=True)
 
         new_df = pd.DataFrame([results])
@@ -324,19 +388,6 @@ def main(args):
         final_df.to_json(save_path, orient='records', indent=4)
 
         print(f"Saved results cleanly using Pandas to {save_path}")
-
-        # results = {
-        #     "percentage": 0.50,
-        #     "baseline": args.baseline,
-        #     "intensity": val,
-        #     "mean_auc": float(all_aucs.mean()),
-        #     "std_auc": float(all_aucs.std()),
-        #     "min_auc": float(all_aucs.min()),
-        #     "max_auc": float(all_aucs.max()),
-        #     "all_aucs": all_aucs.tolist()
-        # }
-        
-        # save_path = '/content/drive/MyDrive/THESIS/Pointnet_Pointnet2_pytorch-master/log/pointguard/pointguard_classification_mix/epoch_10_npoint_16_bsize_64/numerical result/per_sensitivity.json'
 
 if __name__ == '__main__':
     args = parse_args() 
